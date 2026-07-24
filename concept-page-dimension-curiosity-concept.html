@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Curiosity — Showing Up (preview)</title>
+</head>
+<body>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+
+<noscript><style>
+  .dmc-block [class*="-reveal"] { opacity: 1 !important; transform: none !important; }
+</style></noscript>
+
+<style>
+  .dmc-block *, .dmc-block *::before, .dmc-block *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .dmc-block {
+    --c-coral: #FF8269;
+    --c-cream: #FFF6F1;
+    --c-ink:   #1e1d1d;
+    --c-text:  #353434;
+    /* The six modality ramp steps for the edge strip - coral over white,
+       deepened from the shade-lab tints for clearer section distinction */
+    --t-define:   #FFEBE7;  /*  16% */
+    --t-assess:   #FFD7CF;  /*  32% */
+    --t-learn:    #FFC3B7;  /*  48% */
+    --t-toolkits: #FFAF9F;  /*  64% */
+    --t-play:     #FF9984;  /*  82% */
+    --t-manager:  #FF8269;  /* 100% - solid coral */
+    --su-ease: cubic-bezier(.16, 1, .3, 1);
+    --su-dur:  .8s;
+    --type-h1: clamp(44px, 5.5vw, 76px);
+    --type-h2: clamp(28px, 3vw, 40px);
+
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: #ffffff;
+    color: var(--c-text);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dmc-block [class*="-reveal"] { transition: none !important; opacity: 1 !important; transform: none !important; }
+    .dmc-block .dmc-ring { animation: none !important; opacity: 0.2 !important; transform: translate(-50%, -50%) scale(1) !important; }
+    .dmc-block .dmc-ghost { transition: none !important; }
+  }
+
+  .dmc-block [class*="-reveal"] {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity var(--su-dur) var(--su-ease), transform var(--su-dur) var(--su-ease);
+  }
+  .dmc-block .is-revealed { opacity: 1; transform: none; }
+
+  /* ---------- Header (dark) ---------- */
+  .dmc-block .dmc-header {
+    background: var(--c-ink);
+    padding: 96px 80px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .dmc-block .dmc-measure { max-width: 1280px; margin: 0 auto; }
+  .dmc-block .dmc-header .dmc-measure { position: relative; z-index: 1; }
+
+  /* Ghost watermark - atmospheric backdrop, ported from the production dh- header */
+  .dmc-block .dmc-ghost {
+    position: absolute;
+    top: 50%; right: -4%;
+    transform: translateY(-50%);
+    width: 620px; height: 620px;
+    color: var(--c-coral);
+    opacity: 0;
+    transition: opacity 1.6s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .dmc-block .dmc-ghost svg { width: 100%; height: 100%; }
+  .dmc-block .dmc-header.dmc-head-on .dmc-ghost { opacity: 0.04; }
+  .dmc-block .dmc-overline {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--c-coral);
+    margin-bottom: 24px; text-align: left !important;
+  }
+  .dmc-block .dmc-overline::before { content: ''; display: block; width: 32px; height: 1px; background: var(--c-coral); }
+  .dmc-block .dmc-head-grid { display: flex; align-items: center; gap: 48px; }
+  .dmc-block .dmc-h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--type-h1); font-weight: 300; line-height: 1.04;
+    letter-spacing: -.03em; color: var(--c-cream);
+    text-align: left !important;
+  }
+  .dmc-block .dmc-tagline {
+    margin-top: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 21px; font-weight: 500; letter-spacing: -.01em;
+    color: var(--c-coral);
+    text-align: left !important;
+  }
+  .dmc-block .dmc-head-body {
+    margin-top: 22px; max-width: 620px;
+    font-size: 17px; line-height: 1.65; color: rgba(255,246,241,.75);
+    text-align: left !important;
+  }
+  /* Icon column - hero icon + amplification rings, ported from the production dh- header */
+  .dmc-block .dmc-head-icon {
+    margin-left: auto; flex: 0 0 auto;
+    position: relative;
+    width: 400px; height: 360px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .dmc-block .dmc-hero-icon { position: relative; z-index: 1; width: 160px; height: 160px; color: var(--c-coral); }
+  .dmc-block .dmc-hero-icon svg { width: 100%; height: 100%; display: block; }
+  .dmc-block .dmc-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid var(--c-coral);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .dmc-block .dmc-ring-1 { width: 220px; height: 260px; }
+  .dmc-block .dmc-ring-2 { width: 300px; height: 340px; }
+  .dmc-block .dmc-ring-3 { width: 380px; height: 420px; }
+  .dmc-block .dmc-header.dmc-head-on .dmc-ring { animation: dmc-expand 3.5s cubic-bezier(.16,1,.3,1) forwards; }
+  .dmc-block .dmc-header.dmc-head-on .dmc-ring-1 { animation-delay: .4s; }
+  .dmc-block .dmc-header.dmc-head-on .dmc-ring-2 { animation-delay: .65s; }
+  .dmc-block .dmc-header.dmc-head-on .dmc-ring-3 { animation-delay: .9s; }
+  @keyframes dmc-expand {
+    0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+    40%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1.15); }
+  }
+  /* Rings hand off to a breathing loop once the expand finishes (JS adds the class) */
+  .dmc-block .dmc-ring.dmc-ring-loop { animation: dmc-breathe 6s ease-in-out infinite !important; }
+  .dmc-block .dmc-ring-1.dmc-ring-loop { animation-delay: 0s !important; }
+  .dmc-block .dmc-ring-2.dmc-ring-loop { animation-delay: 0.8s !important; }
+  .dmc-block .dmc-ring-3.dmc-ring-loop { animation-delay: 1.6s !important; }
+  @keyframes dmc-breathe {
+    0%, 100% { opacity: 0.15; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: 0.35; transform: translate(-50%, -50%) scale(1.04); }
+  }
+
+  /* Band index rail in the header */
+  .dmc-block .dmc-index {
+    margin-top: 44px; display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .dmc-block .dmc-index a,
+  .dmc-block .dmc-index a:link, .dmc-block .dmc-index a:visited {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 500; color: var(--c-ink) !important;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    padding: 8px 16px 8px 10px; border-radius: 100px;
+  }
+  .dmc-block .dmc-index a:hover, .dmc-block .dmc-index a:active {
+    color: var(--c-ink) !important; text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+    filter: brightness(1.04);
+  }
+  .dmc-block .dmc-index .dmc-ix-n {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: rgba(30,29,29,.14); font-size: 10.5px; font-weight: 600;
+  }
+  /* Scrollspy: ink ring on the pill for the band in view */
+  .dmc-block .dmc-index a.dmc-ix-on,
+  .dmc-block .dmc-index a.dmc-ix-on:link, .dmc-block .dmc-index a.dmc-ix-on:visited {
+    box-shadow: inset 0 0 0 1.5px var(--c-ink);
+  }
+
+  /* ---------- Bands (white, stepped edge strip) ----------
+     The six modality tints run down a 12px left strip - the modality-shade-lab
+     "Edge accent" surface, widened. Band surfaces stay white. */
+  .dmc-block .dmc-band {
+    padding: 88px 80px;
+    position: relative;
+    background: #ffffff;
+    border-top: 1px solid rgba(30,29,29,.08);
+  }
+  .dmc-block .dmc-band::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 18px;
+  }
+  .dmc-block .dmc-band--define::before   { background: var(--t-define); }
+  .dmc-block .dmc-band--assess::before   { background: var(--t-assess); }
+  .dmc-block .dmc-band--learn::before    { background: var(--t-learn); }
+  .dmc-block .dmc-band--toolkits::before { background: var(--t-toolkits); }
+  .dmc-block .dmc-band--play::before     { background: var(--t-play); }
+  .dmc-block .dmc-band--manager::before  { background: var(--t-manager); }
+
+  .dmc-block .dmc-band-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+  .dmc-block .dmc-chip {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--c-coral); color: var(--c-ink);
+    font-size: 15px; font-weight: 600; flex: 0 0 auto;
+  }
+  .dmc-block .dmc-band-label {
+    font-size: 11px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--c-ink);
+    text-align: left !important;
+  }
+  .dmc-block .dmc-h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--type-h2); font-weight: 300; line-height: 1.18;
+    letter-spacing: -.025em; color: var(--c-ink);
+    max-width: 760px; margin-bottom: 18px;
+    text-align: left !important;
+  }
+  .dmc-block .dmc-h2 em { font-style: normal; font-weight: 600; color: var(--c-coral); }
+  .dmc-block .dmc-body {
+    font-size: 17px; line-height: 1.65; max-width: 640px;
+    color: var(--c-text);
+    text-align: left !important;
+  }
+  .dmc-block .dmc-body + .dmc-body { margin-top: 14px; }
+
+  .dmc-block .dmc-cta-row { margin-top: 28px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .dmc-block .dmc-pill,
+  .dmc-block .dmc-pill:link, .dmc-block .dmc-pill:visited {
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: var(--c-ink) !important; color: var(--c-cream) !important;
+    font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500;
+    padding: 14px 28px; border-radius: 100px;
+    transition: background .2s, color .2s;
+    width: fit-content;
+  }
+  .dmc-block .dmc-pill:hover, .dmc-block .dmc-pill:active {
+    background: var(--c-coral) !important; color: var(--c-ink) !important;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+  }
+  .dmc-block .dmc-link,
+  .dmc-block .dmc-link:link, .dmc-block .dmc-link:visited {
+    font-size: 15px; font-weight: 500; color: var(--c-ink) !important;
+    text-decoration: none !important; border: none !important;
+    border-bottom: 1px solid rgba(30,29,29,.35) !important;
+    padding-bottom: 2px;
+  }
+  .dmc-block .dmc-link:hover, .dmc-block .dmc-link:active {
+    color: var(--c-coral) !important; border-bottom-color: var(--c-coral) !important;
+    text-decoration: none !important;
+  }
+
+  /* Cards (Learn modules, Assess, examples) */
+  .dmc-block .dmc-cards {
+    margin-top: 36px;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+  }
+  .dmc-block .dmc-cards > * { min-width: 0; }
+  .dmc-block .dmc-card {
+    background: #fff;
+    border: 1px solid rgba(30,29,29,.12);
+    border-radius: 8px; overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform .25s var(--su-ease);
+  }
+  .dmc-block .dmc-card:hover { transform: translateY(-3px); }
+  .dmc-block .dmc-card img { display: block; width: 100%; height: auto; }
+  .dmc-block .dmc-card-pad { padding: 22px 24px 24px; display: flex; flex-direction: column; flex: 1; }
+  .dmc-block .dmc-card-kicker {
+    font-size: 10.5px; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--c-coral); margin-bottom: 8px;
+    text-align: left !important;
+  }
+  .dmc-block .dmc-card-title {
+    font-size: 19px; font-weight: 500; line-height: 1.3; color: var(--c-ink);
+    margin-bottom: 8px; text-align: left !important;
+  }
+  .dmc-block .dmc-card-body {
+    font-size: 14.5px; line-height: 1.6; color: rgba(53,52,52,.85);
+    text-align: left !important;
+  }
+  .dmc-block .dmc-card-note {
+    margin-top: auto; padding-top: 14px;
+    font-size: 12px; font-weight: 500; color: rgba(53,52,52,.6);
+    text-align: left !important;
+  }
+
+  /* In-production state */
+  .dmc-block .dmc-soon {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--c-ink);
+    border: 1px solid rgba(30,29,29,.35); border-radius: 100px;
+    padding: 6px 14px; margin-bottom: 18px;
+  }
+  .dmc-block .dmc-soon::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--c-coral); }
+
+  /* ---------- Close (dark) ---------- */
+  .dmc-block .dmc-close { background: var(--c-ink); padding: 88px 80px; }
+  .dmc-block .dmc-close .dmc-h2 { color: var(--c-cream); }
+  .dmc-block .dmc-close .dmc-body { color: rgba(255,246,241,.75); }
+  .dmc-block .dmc-close .dmc-pill,
+  .dmc-block .dmc-close .dmc-pill:link, .dmc-block .dmc-close .dmc-pill:visited {
+    background: var(--c-coral) !important; color: var(--c-ink) !important;
+  }
+  .dmc-block .dmc-close .dmc-pill:hover, .dmc-block .dmc-close .dmc-pill:active {
+    background: var(--c-cream) !important; color: var(--c-ink) !important;
+  }
+  .dmc-block .dmc-close .dmc-link,
+  .dmc-block .dmc-close .dmc-link:link, .dmc-block .dmc-close .dmc-link:visited {
+    color: var(--c-cream) !important; border-bottom-color: rgba(255,246,241,.4) !important;
+  }
+  .dmc-block .dmc-close .dmc-link:hover, .dmc-block .dmc-close .dmc-link:active {
+    color: var(--c-coral) !important; border-bottom-color: var(--c-coral) !important;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .dmc-block .dmc-header { padding: 72px 32px 56px; }
+    .dmc-block .dmc-band, .dmc-block .dmc-close { padding: 64px 32px; }
+    .dmc-block .dmc-head-grid { flex-direction: column; align-items: flex-start; gap: 28px; }
+    .dmc-block .dmc-head-grid > * { align-self: stretch !important; }
+    /* Icon column hides on mobile - the ghost watermark carries the visual (as dh-) */
+    .dmc-block .dmc-head-icon { display: none !important; }
+    .dmc-block .dmc-ghost { width: 340px; height: 340px; right: -8%; top: 18%; transform: translateY(0); }
+    .dmc-block .dmc-header.dmc-head-on .dmc-ghost { opacity: 0.06; }
+    .dmc-block .dmc-cards { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 540px) {
+    .dmc-block .dmc-header { padding: 56px 20px 48px; }
+    .dmc-block .dmc-band, .dmc-block .dmc-close { padding: 56px 20px; }
+    .dmc-block .dmc-band::before { width: 10px; }
+    .dmc-block .dmc-tagline { font-size: 19px; }
+  }
+</style>
+
+<div class="dmc-block">
+
+  
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="dmc-ic-curiosity" viewBox="0 0 84 78"><path d="M83.9002 7.15985C83.7698 7.18216 83.5626 7.20446 83.2711 7.20446H83.0639C82.0588 7.20446 80.555 7.26394 78.4834 7.33829L78.376 7.34572L75.66 7.44981L72.8826 7.54647L71.0642 7.61338L70.2509 9.18959L69.008 11.5836C68.9236 11.7472 68.8468 11.9033 68.7701 12.052L68.7471 12.1115L68.7241 12.1561C68.6934 12.223 68.655 12.2974 68.6167 12.3643L68.609 12.3717L68.563 12.4387L68.4555 12.5874C63.9748 18.8625 51.3536 39.1673 48.5379 45.7175L48.4918 45.829L48.4841 45.8364C47.364 48.4833 46.0903 51.0855 44.7553 53.8364L44.7246 53.8885C43.8423 55.6952 42.9753 57.4795 42.116 59.316L42.1007 59.368L42.093 59.3755L42.0853 59.3978C39.5841 64.9442 37.5893 69.7546 35.978 75.1598C35.464 76.8476 34.8348 76.8476 34.5279 76.8476C34.2364 76.8476 33.8988 76.7732 33.5842 76.6394C33.0088 76.3643 30.5306 74.9517 31.6585 71.5242C38.3642 51.9182 45.8525 35.3085 54.5607 20.7509L59.1335 13.1078L62.1181 8.11152L56.1873 8.65427L47.1108 9.49442L44.5328 9.73234L42.4766 9.92565L41.1339 10.052L40.3207 11.0929L39.0777 12.6914C29.1112 25.4796 15.0246 50.2751 9.07074 63.9257C6.46211 69.5911 5.05805 73.6431 4.38287 77.4572C4.32916 77.7026 4.27546 77.8736 4.22942 78C3.90718 77.9777 3.42381 77.8587 2.9251 77.5985C1.91234 77.0335 0.999317 76.0669 0.485262 75.0111C-0.0748269 73.8662 -0.151551 72.7138 0.262761 71.487C3.87649 60.6171 15.3238 37.3011 22.1983 24.6468L25.3057 18.9145L27.3465 15.1673L23.0116 14.5874L16.3979 13.6952C14.7023 13.4647 13.0297 12.3643 12.2395 10.9517L12.2011 10.8773L12.1704 10.8253C11.7868 10.1413 11.7868 9.59108 11.8482 9.44981C11.8482 9.44981 12.063 9.13011 13.0834 8.82528C21.4311 6.3197 34.3592 3.73978 41.2951 3.19703C45.4228 2.9145 50.3179 2.37918 55.4968 1.80669L55.6272 1.79182C63.5605 0.914498 71.77 0 77.486 0C77.6702 0 77.862 0.00743494 78.0231 0.00743494C81.1842 0.0669145 83.225 3.10781 83.8235 5.13755C84.0767 5.99256 84.0153 6.78067 83.9002 7.15985Z" fill="currentColor"/></symbol>
+  </svg>
+
+  
+  <section class="dmc-header" aria-label="Curiosity">
+    
+    <div class="dmc-ghost" aria-hidden="true"><svg viewBox="0 0 84 78" fill="none"><use href="#dmc-ic-curiosity"/></svg></div>
+    <div class="dmc-measure">
+      <div class="dmc-overline dmc-reveal">The Nine Dimensions of the Very Best Consultants &#183; Thinking cluster</div>
+      <div class="dmc-head-grid">
+        <div>
+          <h1 class="dmc-h1 dmc-reveal">Curiosity</h1>
+          <div class="dmc-tagline dmc-reveal">See what others are missing</div>
+          <p class="dmc-head-body dmc-reveal">Everything the very best consultants do begins with curiosity. Its symbol is Pi, the number that never ends: there is always more to notice, more to learn, and another question worth asking. Six ways to grow it sit below, each one a shade deeper than the last.</p>
+        </div>
+        <div class="dmc-head-icon dmc-reveal" aria-hidden="true">
+          <div class="dmc-ring dmc-ring-1"></div>
+          <div class="dmc-ring dmc-ring-2"></div>
+          <div class="dmc-ring dmc-ring-3"></div>
+          <div class="dmc-hero-icon"><svg viewBox="0 0 84 78" fill="none"><use href="#dmc-ic-curiosity"/></svg></div>
+        </div>
+      </div>
+      <nav class="dmc-index dmc-reveal" aria-label="On this page">
+        <a href="#dmc-define" style="background:#FFEBE7;"><span class="dmc-ix-n">1</span>Define</a>
+        <a href="#dmc-assess" style="background:#FFD7CF;"><span class="dmc-ix-n">2</span>Assess</a>
+        <a href="#dmc-learn" style="background:#FFC3B7;"><span class="dmc-ix-n">3</span>Learn</a>
+        <a href="#dmc-toolkits" style="background:#FFAF9F;"><span class="dmc-ix-n">4</span>Toolkits</a>
+        <a href="#dmc-play" style="background:#FF9984;"><span class="dmc-ix-n">5</span>Play</a>
+        <a href="#dmc-manager" style="background:#FF8269;"><span class="dmc-ix-n">6</span>Manager</a>
+      </nav>
+    </div>
+  </section>
+
+  
+  <section class="dmc-band dmc-band--define" id="dmc-define" aria-label="Define">
+    <div class="dmc-measure">
+      <div class="dmc-band-head dmc-reveal">
+        <span class="dmc-chip">1</span>
+        <span class="dmc-band-label">Define</span>
+      </div>
+      <h2 class="dmc-h2 dmc-reveal">What great <em>curiosity</em> looks like</h2>
+      <p class="dmc-body dmc-reveal">There are three distinct ways of being curious, and the difference between them matters enormously. Epistemic curiosity digs deep into facts, figures and the analysis underneath the data. Diversive curiosity wanders sideways, collecting dots long before you can see how they will join up. Empathetic curiosity takes a sincere interest in the people the work will affect, right to the far end of the change.</p>
+      <p class="dmc-body dmc-reveal">Most of us have a natural spike in one. The best nurture all three, and that is how you ask the most thoughtful questions in the room.</p>
+      <div class="dmc-cta-row dmc-reveal">
+        <a href="page-nine-dimensions-concept.html" class="dmc-pill">Get access to the Nine Dimensions framework</a>
+        <a href="page-homepage-concept-r3.html" class="dmc-link">See the full offer &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="dmc-band dmc-band--assess" id="dmc-assess" aria-label="Assess">
+    <div class="dmc-measure">
+      <div class="dmc-band-head dmc-reveal">
+        <span class="dmc-chip">2</span>
+        <span class="dmc-band-label">Assess</span>
+      </div>
+      <h2 class="dmc-h2 dmc-reveal">Find your natural <em>curiosity style</em></h2>
+      <p class="dmc-body dmc-reveal">Sixteen short prompts about how you approach life and work, and your natural style at the end: epistemic, diversive or empathetic. Understanding your default is the first step to expanding your range. It runs in the browser, right now.</p>
+      <div class="dmc-cards dmc-reveal">
+        <div class="dmc-card">
+          <img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/5050e896659295fa2513ea0c296c4803.jpg" width="1280" height="720" alt="Your Natural Curiosity Style - self-reflection assessment" loading="lazy" />
+          <div class="dmc-card-pad">
+            <div class="dmc-card-kicker">Self-reflection assessment</div>
+            <div class="dmc-card-title">Your Natural Curiosity Style: An Insight Assessment</div>
+            <div class="dmc-card-body">Discover which of the three curiosity styles comes most naturally to you, and use it to ask better questions and become more perceptive in client conversations.</div>
+          </div>
+        </div>
+      </div>
+      <div class="dmc-cta-row dmc-reveal">
+        <a href="https://www.showinguplearning.com/assessment" class="dmc-pill">Take the Curiosity self-assessment</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="dmc-band dmc-band--learn" id="dmc-learn" aria-label="Learn">
+    <div class="dmc-measure">
+      <div class="dmc-band-head dmc-reveal">
+        <span class="dmc-chip">3</span>
+        <span class="dmc-band-label">Learn</span>
+      </div>
+      <h2 class="dmc-h2 dmc-reveal">Video lessons, one <em>behaviour</em> at a time</h2>
+      <p class="dmc-body dmc-reveal">Concise video learning that develops one behaviour and skill at a time. Each lesson teaches something you can apply the same day.</p>
+      <div class="dmc-cards dmc-reveal">
+        <div class="dmc-card">
+          <img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/9d4b0cd56621b9f436bec1f6b08c6377.jpg" width="1280" height="720" alt="Epistemic Curiosity - the discipline of deep learning" loading="lazy" />
+          <div class="dmc-card-pad">
+            <div class="dmc-card-kicker">Module</div>
+            <div class="dmc-card-title">Epistemic Curiosity: The Discipline of Deep Learning</div>
+            <div class="dmc-card-body">The desire to understand things deeply. Gather meaningful data, uncover patterns and build true knowledge about subjects and clients.</div>
+          </div>
+        </div>
+        <div class="dmc-card">
+          <img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/9d4b0cd56621b9f436bec1f6b08c6377.jpg" width="1280" height="720" alt="Diversive Curiosity - expanding perspective and possibility" loading="lazy" />
+          <div class="dmc-card-pad">
+            <div class="dmc-card-kicker">Module</div>
+            <div class="dmc-card-title">Diversive Curiosity: Expanding Perspective and Possibility</div>
+            <div class="dmc-card-body">The instinct to explore widely and notice what others overlook. Breadth that sparks new connections and gives you fresh angles in client work.</div>
+          </div>
+        </div>
+        <div class="dmc-card">
+          <img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/9d4b0cd56621b9f436bec1f6b08c6377.jpg" width="1280" height="720" alt="Empathetic Curiosity - understanding before responding" loading="lazy" />
+          <div class="dmc-card-pad">
+            <div class="dmc-card-kicker">Module</div>
+            <div class="dmc-card-title">Empathetic Curiosity: Understanding Before Responding</div>
+            <div class="dmc-card-body">A sincere interest in the people the work will affect. See the situation through their eyes and care how it feels from where they stand.</div>
+          </div>
+        </div>
+        <div class="dmc-card">
+          <img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/9d4b0cd56621b9f436bec1f6b08c6377.jpg" width="1280" height="720" alt="Why you must balance the three forms of curiosity" loading="lazy" />
+          <div class="dmc-card-pad">
+            <div class="dmc-card-kicker">Module</div>
+            <div class="dmc-card-title">Why You Must Balance the Three Forms of Curiosity</div>
+            <div class="dmc-card-body">In any client conversation all three should be running at once: the hunger to understand, the open eyes, and the feeling for the people involved.</div>
+          </div>
+        </div>
+      </div>
+      <div class="dmc-cta-row dmc-reveal">
+        <a href="page-video-learning-concept.html" class="dmc-link">How video learning works &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="dmc-band dmc-band--toolkits" id="dmc-toolkits" aria-label="Toolkits">
+    <div class="dmc-measure">
+      <div class="dmc-band-head dmc-reveal">
+        <span class="dmc-chip">4</span>
+        <span class="dmc-band-label">Toolkits</span>
+      </div>
+      <h2 class="dmc-h2 dmc-reveal">Downloadable <em>toolkits</em> that make it stick</h2>
+      <div class="dmc-reveal"><span class="dmc-soon">Curiosity toolkits in production</span></div>
+      <p class="dmc-body dmc-reveal">Every dimension is getting downloadable toolkits: practical workbooks your team can use in live client work the same week. The curiosity set is in production. Here is the shape they take, from the platform library today.</p>
+      <div class="dmc-cards dmc-reveal">
+        <div class="dmc-card">
+          <img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/e59e1c4bbf970f86905d5391d58e9679.png" width="1920" height="1080" alt="Question Funnel toolkit" loading="lazy" />
+          <div class="dmc-card-pad">
+            <div class="dmc-card-kicker">From the platform library</div>
+            <div class="dmc-card-title">Question Funnel</div>
+            <div class="dmc-card-note">Example of the toolkit format</div>
+          </div>
+        </div>
+        <div class="dmc-card">
+          <img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/fc99c8c7005f1cfef9ce3a7e76206970.png" width="1920" height="1080" alt="Beyond Small Talk toolkit" loading="lazy" />
+          <div class="dmc-card-pad">
+            <div class="dmc-card-kicker">From the platform library</div>
+            <div class="dmc-card-title">Beyond Small Talk</div>
+            <div class="dmc-card-note">Example of the toolkit format</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="dmc-band dmc-band--play" id="dmc-play" aria-label="Play">
+    <div class="dmc-measure">
+      <div class="dmc-band-head dmc-reveal">
+        <span class="dmc-chip">5</span>
+        <span class="dmc-band-label">Play</span>
+      </div>
+      <h2 class="dmc-h2 dmc-reveal">Team games that build the <em>habit</em> together</h2>
+      <div class="dmc-reveal"><span class="dmc-soon">Curiosity games in production</span></div>
+      <p class="dmc-body dmc-reveal">Learning lands deeper when a team plays with it together. Curiosity team games are in production. To feel the format now, try a live one from the same Thinking cluster.</p>
+      <div class="dmc-cards dmc-reveal">
+        <div class="dmc-card">
+          <div class="dmc-card-pad">
+            <div class="dmc-card-kicker">Live team game &#183; Creativity</div>
+            <div class="dmc-card-title">Can You Connect the 9 Dots in One Continuous Move?</div>
+            <div class="dmc-card-body">A short, sharp challenge that shows a team its own thinking boundaries, then breaks them.</div>
+            <div class="dmc-card-note">Played inside the Creativity dimension today</div>
+          </div>
+        </div>
+      </div>
+      <div class="dmc-cta-row dmc-reveal">
+        <a href="page-team-challenges-concept.html" class="dmc-link">How team games work &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="dmc-band dmc-band--manager" id="dmc-manager" aria-label="Manager">
+    <div class="dmc-measure">
+      <div class="dmc-band-head dmc-reveal">
+        <span class="dmc-chip">6</span>
+        <span class="dmc-band-label">Manager</span>
+      </div>
+      <h2 class="dmc-h2 dmc-reveal">Manager toolkits: coach <em>curiosity</em> in your team</h2>
+      <div class="dmc-reveal"><span class="dmc-soon">In production</span></div>
+      <p class="dmc-body dmc-reveal">Managers make learning stick or let it fade. Each dimension is getting a manager toolkit: how to spot the behaviour, coach it in the field and recognise it when it shows up. The first manager toolkit is live in Critical Thinking; the curiosity edition follows it.</p>
+    </div>
+  </section>
+
+  
+  <section class="dmc-close" aria-label="Keep exploring">
+    <div class="dmc-measure">
+      <h2 class="dmc-h2 dmc-reveal">One dimension down, eight to go</h2>
+      <p class="dmc-body dmc-reveal">Curiosity is one of the Nine Dimensions of the Very Best Consultants. Every dimension page follows this same six-band shape, in its own cluster colour.</p>
+      <div class="dmc-cta-row dmc-reveal">
+        <a href="page-nine-dimensions-concept.html" class="dmc-pill">Explore the Nine Dimensions</a>
+        <a href="https://www.showinguplearning.com/contact-us" class="dmc-link">Book a Discovery Call &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  function dmcInit() {
+    var wrap = document.querySelector('.dmc-block');
+    if (!wrap) return;
+
+    /* Index rail: eased scroll instead of the default anchor jump */
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+    function easeOut(t) { return 1 - Math.pow(1 - t, 4); }
+    var indexLinks = wrap.querySelectorAll('.dmc-index a[href^="#"]');
+    indexLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var id = link.getAttribute('href').slice(1);
+        var target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        if (reduce && reduce.matches) {
+          target.scrollIntoView();
+          history.replaceState(null, '', '#' + id);
+          return;
+        }
+        var startY = window.pageYOffset;
+        var dist = target.getBoundingClientRect().top;
+        /* duration scales gently with distance, clamped so short and long hops both feel deliberate */
+        var dur = Math.min(900, Math.max(450, Math.abs(dist) * 0.35));
+        var t0 = performance.now();
+        var rafId = 0, toId = 0;
+        /* rAF drives the animation; the timeout is a watchdog so a throttled/hidden
+           tab still completes the scroll (progress is wall-clock, not frame-count) */
+        function tick() {
+          cancelAnimationFrame(rafId); clearTimeout(toId);
+          var p = Math.min(1, (performance.now() - t0) / dur);
+          window.scrollTo(0, startY + dist * easeOut(p));
+          if (p < 1) {
+            rafId = requestAnimationFrame(tick);
+            toId = setTimeout(tick, 90);
+          } else {
+            history.replaceState(null, '', '#' + id);
+          }
+        }
+        tick();
+      });
+    });
+
+    /* Header effects: rings + ghost keyed on a header-level class (ported from dh-).
+       Rings hand off from the expand animation to the breathing loop. */
+    var header = wrap.querySelector('.dmc-header');
+    if (header) {
+      header.querySelectorAll('.dmc-ring').forEach(function (ring) {
+        ring.addEventListener('animationend', function (e) {
+          if (e.animationName === 'dmc-expand') ring.classList.add('dmc-ring-loop');
+        });
+      });
+      if (!('IntersectionObserver' in window)) {
+        header.classList.add('dmc-head-on');
+      } else {
+        var headObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            header.classList.add('dmc-head-on');
+            headObs.unobserve(header);
+          });
+        }, { threshold: 0.15 });
+        headObs.observe(header);
+      }
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) { el.classList.add('is-revealed'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+    wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) { observer.observe(el); });
+
+    /* Scrollspy: ink ring on the pill whose band crosses mid-viewport */
+    var pillById = {};
+    indexLinks.forEach(function (link) { pillById[link.getAttribute('href').slice(1)] = link; });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var pill = pillById[entry.target.id];
+        if (!pill) return;
+        indexLinks.forEach(function (link) { link.classList.remove('dmc-ix-on'); });
+        pill.classList.add('dmc-ix-on');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    Object.keys(pillById).forEach(function (id) {
+      var section = document.getElementById(id);
+      if (section) spy.observe(section);
+    });
+  }
+  if (document.readyState !== 'loading') { dmcInit(); }
+  else { document.addEventListener('DOMContentLoaded', dmcInit); }
+})();
+</script>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="concept-page-dimension-curiosity-concept.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] concept-page-dimension-curiosity-concept.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

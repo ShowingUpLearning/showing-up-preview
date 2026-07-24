@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Terms &amp; Conditions — Showing Up (preview)</title>
+</head>
+<body>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* -- SCOPED RESET -- */
+  .tc *, .tc *::before, .tc *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .tc { font-size: 16px; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; background: #FFF6F1; color: #353434; }
+
+  /* -- Pill button (dark bg -> coral fill) -- */
+  .tc-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: #FF8269 !important; color: #FFF6F1 !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    padding: 14px 28px; border-radius: 100px;
+    transition: background .2s, color .2s;
+    width: fit-content;
+  }
+  .tc-pill:link, .tc-pill:visited {
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: #FF8269 !important; color: #FFF6F1 !important;
+  }
+  .tc-pill:hover, .tc-pill:active {
+    background: #FFF6F1 !important; color: #1e1d1d !important;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+  }
+
+  /* ========================================
+     HEADER - compact cream
+     ======================================== */
+  .tc-header {
+    background: #FFF6F1;
+    padding: 96px 80px 64px;
+    border-bottom: 1px solid rgba(30,29,29,.08);
+  }
+  .tc-header-inner { max-width: 780px; margin: 0 auto; }
+  .tc-overline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: #FF8269;
+    margin-bottom: 20px;
+    text-align: left !important;
+  }
+  .tc-hl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 300; line-height: 1.08;
+    letter-spacing: -.02em;
+    color: #1e1d1d;
+    margin-bottom: 18px;
+    text-align: left !important;
+  }
+  .tc-meta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 400;
+    color: rgba(53,52,52,.55);
+    margin-bottom: 28px;
+    text-align: left !important;
+  }
+  .tc-intro {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.6; font-weight: 400;
+    color: #353434;
+    text-align: left !important;
+  }
+
+  /* ========================================
+     BODY - policy content
+     ======================================== */
+  .tc-body {
+    background: #FFF6F1;
+    padding: 80px 80px 140px;
+  }
+  .tc-body-inner { max-width: 780px; margin: 0 auto; }
+
+  .tc-section { margin-top: 56px; }
+  .tc-section:first-of-type { margin-top: 0; }
+
+  .tc-h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px; font-weight: 500;
+    letter-spacing: -.01em;
+    color: #1e1d1d;
+    margin-bottom: 20px;
+    text-align: left !important;
+  }
+  .tc-h2-num {
+    color: #FF8269;
+    font-weight: 500;
+    margin-right: 10px;
+  }
+
+  .tc-p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; line-height: 1.6; font-weight: 400;
+    color: #353434;
+    margin-bottom: 16px;
+    text-align: left !important;
+  }
+  .tc-p:last-child { margin-bottom: 0; }
+
+  .tc-strong {
+    font-weight: 600;
+    color: #1e1d1d;
+  }
+
+  /* Definition list (clause 1) */
+  .tc-dl { margin: 4px 0 0; padding: 0; }
+  .tc-dl-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; line-height: 1.6; font-weight: 400;
+    color: #353434;
+    margin-bottom: 18px;
+    padding-left: 20px;
+    border-left: 2px solid rgba(255,130,105,.25);
+    text-align: left !important;
+    list-style: none;
+  }
+  .tc-term {
+    font-weight: 600;
+    color: #1e1d1d;
+    letter-spacing: -.005em;
+  }
+
+  /* Numbered sub-clause lists (e.g. 2.1, 3.4.1, 6.1.1)
+     Grid with baseline alignment keeps numbers sitting exactly on the
+     text baseline. Each item has exactly two grid children:
+       .tc-num  (the clause number, in the fixed 44px column)
+       .tc-num-body  (a block wrapper holding the clause text, in 1fr)
+     Keeping content inside a single wrapper prevents inline spans /
+     anchors / text runs from being split into their own grid items
+     and collapsing into the number column. */
+  .tc-num-list { margin: 8px 0 16px; padding: 0; list-style: none; }
+  .tc-num-item {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    column-gap: 12px;
+    align-items: baseline;
+    margin-bottom: 8px;
+    text-align: left !important;
+  }
+  .tc-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; line-height: 1.6;
+    font-weight: 500;
+    color: #FF8269;
+    letter-spacing: .01em;
+    text-align: left;
+  }
+  .tc-num-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; line-height: 1.6; font-weight: 400;
+    color: #353434;
+  }
+
+  /* Nested numbered list (3.4.1 under 3.4) lives inside .tc-num-body
+     so it indents under the parent clause automatically. */
+  .tc-num-body > .tc-num-list { margin: 10px 0 0; }
+  .tc-num-item .tc-num-item { grid-template-columns: 48px 1fr; }
+
+  /* Inline site mention */
+  .tc-wwww {
+    font-weight: 600;
+    color: #1e1d1d;
+  }
+
+  /* Inline link inside body copy */
+  .tc-inline {
+    color: #FF8269 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: 1px solid rgba(255,130,105,.4) !important;
+    font-weight: 500;
+    padding-bottom: 1px;
+    transition: color .2s, border-color .2s;
+  }
+  .tc-inline:link, .tc-inline:visited {
+    color: #FF8269 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: 1px solid rgba(255,130,105,.4) !important;
+  }
+  .tc-inline:hover, .tc-inline:active {
+    color: #1e1d1d !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: 1px solid rgba(30,29,29,.5) !important;
+  }
+
+  /* ========================================
+     CLOSE CTA - dark
+     ======================================== */
+  .tc-close {
+    background: #1e1d1d; color: #FFF6F1;
+    padding: 96px 80px;
+  }
+  .tc-close-inner {
+    max-width: 780px; margin: 0 auto;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 20px;
+  }
+  .tc-close-hl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(26px, 3vw, 32px);
+    font-weight: 300;
+    letter-spacing: -.01em;
+    color: #FFF6F1;
+    text-align: left !important;
+  }
+  .tc-close-p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; line-height: 1.6; font-weight: 400;
+    color: rgba(255,246,241,.78);
+    margin-bottom: 8px;
+    text-align: left !important;
+  }
+  .tc-mail {
+    color: #FF8269 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: 1px solid rgba(255,130,105,.4) !important;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    padding-bottom: 1px;
+    transition: color .2s, border-color .2s;
+  }
+  .tc-mail:link, .tc-mail:visited {
+    color: #FF8269 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: 1px solid rgba(255,130,105,.4) !important;
+  }
+  .tc-mail:hover, .tc-mail:active {
+    color: #FFF6F1 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: 1px solid rgba(255,246,241,.6) !important;
+  }
+
+  /* ========================================
+     MOBILE
+     ======================================== */
+  @media (max-width: 860px) {
+    .tc-header { padding: 64px 24px 48px; }
+    .tc-body { padding: 56px 24px 96px; }
+    .tc-close { padding: 72px 24px; }
+
+    .tc-section { margin-top: 44px; }
+
+    .tc-dl-item { padding-left: 16px; }
+    .tc-num-item { grid-template-columns: 36px 1fr; column-gap: 10px; }
+    .tc-num-item .tc-num-item { grid-template-columns: 40px 1fr; }
+
+    .tc-close-inner > * { align-self: stretch !important; }
+    .tc-close-inner .tc-pill { align-self: flex-start !important; }
+  }
+</style>
+
+<div class="tc">
+
+  
+  <header class="tc-header">
+    <div class="tc-header-inner">
+      <div class="tc-overline">Legal</div>
+      <h1 class="tc-hl">Terms &amp; Conditions</h1>
+      <div class="tc-meta">Last updated: 21 April 2026</div>
+      <p class="tc-intro">
+        These Terms govern the relationship between you, the User of this Web Site, and
+        <span class="tc-strong">Showing Up Learning Limited</span>, the owner and provider of
+        this Web Site and the Services made available through it. By accessing or using the
+        Web Site or any Services, you agree to be bound by these Terms. If you do not accept
+        these Terms, you must discontinue use of the Web Site immediately.
+      </p>
+    </div>
+  </header>
+
+  
+  <div class="tc-body">
+    <div class="tc-body-inner">
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">1.</span>Definitions and Interpretation</h2>
+        <p class="tc-p">In these Terms the following expressions shall have the following meanings:</p>
+        <ul class="tc-dl">
+          <li class="tc-dl-item">
+            <span class="tc-term">"Account"</span> means collectively the personal information, Payment Information and credentials used by Users to access Content, Services and / or any communications System on the Web Site.
+          </li>
+          <li class="tc-dl-item">
+            <span class="tc-term">"Content"</span> means any text, graphics, images, audio, video, software, workbooks, data compilations and any other form of educational or informational material made available through the Web Site or the Services.
+          </li>
+          <li class="tc-dl-item">
+            <span class="tc-term">"Foundation"</span> means the Showing Up Foundation initiative described in Clause 9, through which <span class="tc-strong">Showing Up Learning Limited</span> provides training opportunities to individuals facing barriers to entering the workforce.
+          </li>
+          <li class="tc-dl-item">
+            <span class="tc-term">"Payment Information"</span> means any details required for the purchase of Services from this Web Site, including but not limited to credit / debit card numbers, bank account numbers and sort codes.
+          </li>
+          <li class="tc-dl-item">
+            <span class="tc-term">"Services"</span> means collectively any training programmes, courses, digital Content, coaching offerings and other facilities that <span class="tc-strong">Showing Up Learning Limited</span> makes available through the Web Site either now or in the future.
+          </li>
+          <li class="tc-dl-item">
+            <span class="tc-term">"Showing Up Learning Limited"</span> means <span class="tc-strong">Showing Up Learning Limited</span>, the provider of the Web Site and the Services.
+          </li>
+          <li class="tc-dl-item">
+            <span class="tc-term">"Systems"</span> means any online communications infrastructure that <span class="tc-strong">Showing Up Learning Limited</span> makes available through the Web Site either now or in the future. This includes, but is not limited to, web-based email, message boards, live chat facilities and email links.
+          </li>
+          <li class="tc-dl-item">
+            <span class="tc-term">"User" / "Users"</span> means any third party that accesses the Web Site or the Services and is not employed by <span class="tc-strong">Showing Up Learning Limited</span> and acting in the course of their employment.
+          </li>
+          <li class="tc-dl-item">
+            <span class="tc-term">"Website"</span> means the website that you are currently using (<span class="tc-wwww">www.showinguplearning.com</span>) and any sub-domains of this site unless expressly excluded by their own terms and conditions.
+          </li>
+        </ul>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">2.</span>Acceptance of these Terms</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">2.1</span>
+            <div class="tc-num-body">These Terms form a binding contract between you and <span class="tc-strong">Showing Up Learning Limited</span>. By accessing or using the Web Site or the Services, you agree to be bound by these Terms in their entirety.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">2.2</span>
+            <div class="tc-num-body">If you do not accept these Terms, or any part of them, you must discontinue use of the Web Site and the Services immediately. Continued use constitutes acceptance.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">3.</span>Age and Eligibility</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">3.1</span>
+            <div class="tc-num-body">Users must be 18 years of age or older to create an Account and to purchase or access the Services.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">3.2</span>
+            <div class="tc-num-body">Where a User is under the age of 18, the Services may be accessed only with the express permission and under the supervision of a parent or legal guardian, who assumes responsibility for the User's compliance with these Terms.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">4.</span>Account Registration</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">4.1</span>
+            <div class="tc-num-body">When registering for an Account, you agree to provide accurate, current and complete information, and to update it promptly in the event of any change.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">4.2</span>
+            <div class="tc-num-body">You are responsible for maintaining the confidentiality of your login credentials and for all activity that occurs under your Account.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">4.3</span>
+            <div class="tc-num-body"><span class="tc-strong">Showing Up Learning Limited</span> is not liable for any loss or damage arising from unauthorised access to your Account, save where such access is caused by our negligence.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">5.</span>Intellectual Property</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">5.1</span>
+            <div class="tc-num-body">All Content made available through the Web Site and the Services is owned by <span class="tc-strong">Showing Up Learning Limited</span> or is properly licensed to it. All rights are reserved.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">5.2</span>
+            <div class="tc-num-body">You may not copy, reproduce, download, distribute, modify, publish, broadcast, transmit or otherwise exploit any Content, nor use any Content for commercial purposes, without the prior written permission of <span class="tc-strong">Showing Up Learning Limited</span>.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">6.</span>Access to Services</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">6.1</span>
+            <div class="tc-num-body">Access to the Services is granted following successful payment or enrolment, and will typically be activated within two working days of order confirmation.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">6.2</span>
+            <div class="tc-num-body"><span class="tc-strong">Showing Up Learning Limited</span> reserves the right to modify, add to, remove or suspend any feature of the Web Site or the Services at its discretion and without prior notice.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">7.</span>Payments</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">7.1</span>
+            <div class="tc-num-body">All prices are stated in Pounds Sterling (GBP) and, where applicable, include VAT at the prevailing rate.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">7.2</span>
+            <div class="tc-num-body">Payments are processed securely by authorised third-party payment providers using the Payment Information supplied by the User. You warrant that all Payment Information provided is accurate, current and belongs to you or that you are otherwise authorised to use it.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">7.3</span>
+            <div class="tc-num-body">Where a Service is offered on a subscription basis, billing will recur at the interval specified at the point of purchase until cancelled in accordance with Clause 8 or the cancellation mechanism provided within your Account.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">8.</span>Cancellation and Refunds</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">8.1</span>
+            <div class="tc-num-body">Users who purchase Services as consumers (and not in the course of a business, trade or profession) have the right to cancel their order within 14 days of purchase, provided that no Content has been accessed or downloaded.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">8.2</span>
+            <div class="tc-num-body">By accessing, downloading or otherwise consuming any Content prior to the expiry of the 14-day period, you expressly waive your right to cancel and to receive a refund.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">8.3</span>
+            <div class="tc-num-body">Cancellation and refund requests should be directed to <a href="mailto:contact@showinguplearning.com" class="tc-inline">contact@showinguplearning.com</a>.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">9.</span>The Foundation Access Commitment</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">9.1</span>
+            <div class="tc-num-body">For every paid place taken on a training programme, <span class="tc-strong">Showing Up Learning Limited</span> commits, through the Foundation, to providing an equivalent training place free of charge to an individual facing barriers to entering the workforce.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">9.2</span>
+            <div class="tc-num-body">The Foundation Access Commitment is not a charitable donation made by the User and is not tax-deductible. No portion of the fees paid by a User constitutes a gift to charity.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">9.3</span>
+            <div class="tc-num-body">The Foundation Access Commitment is non-contractual and does not form part of the Services supplied to paying Users. <span class="tc-strong">Showing Up Learning Limited</span> reserves the right to determine the eligibility of Foundation participants and the manner in which Foundation places are delivered.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">10.</span>Platform and Availability</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">10.1</span>
+            <div class="tc-num-body"><span class="tc-strong">Showing Up Learning Limited</span> uses reasonable endeavours to ensure that the Web Site and the Services are available and operate as intended.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">10.2</span>
+            <div class="tc-num-body">We do not warrant or guarantee that access will be uninterrupted, error-free, or free from delays caused by matters outside of our reasonable control.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">10.3</span>
+            <div class="tc-num-body">Scheduled maintenance, unforeseen downtime or interruptions caused by third parties may occur from time to time. <span class="tc-strong">Showing Up Learning Limited</span> accepts no liability for any such interruption, subject to Clause 14.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">11.</span>Acceptable Use</h2>
+        <p class="tc-p">When using the Web Site and the Services you agree that you will not:</p>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">11.1</span>
+            <div class="tc-num-body">share your Account credentials with any third party, or allow any third party to access the Services through your Account;</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">11.2</span>
+            <div class="tc-num-body">copy, record, screen-capture, re-transmit or otherwise reproduce any training Content, whether in whole or in part;</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">11.3</span>
+            <div class="tc-num-body">upload, post or transmit any material that is unlawful, defamatory, obscene, harassing, discriminatory or otherwise inappropriate;</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">11.4</span>
+            <div class="tc-num-body">use the Services or any Systems for the purpose of unsolicited marketing, spam or commercial solicitation; or</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">11.5</span>
+            <div class="tc-num-body">otherwise use the Web Site or the Services in any manner that is unlawful or that adversely affects the experience of other Users.</div>
+          </li>
+        </ol>
+        <p class="tc-p">Breach of this Clause 11 may result in suspension of your Account or permanent removal from the Web Site and the Services, without refund and without prejudice to any other rights available to <span class="tc-strong">Showing Up Learning Limited</span>.</p>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">12.</span>Data Protection</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">12.1</span>
+            <div class="tc-num-body">The processing of personal data in connection with the Web Site and the Services is carried out in accordance with the UK GDPR and the Data Protection Act 2018.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">12.2</span>
+            <div class="tc-num-body">For further details on how we collect, use and safeguard your personal data, please see our <a href="https://www.showinguplearning.com/privacy" class="tc-inline">Privacy Policy</a>, which forms part of these Terms by reference.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">13.</span>Third Party Links</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">13.1</span>
+            <div class="tc-num-body">The Web Site and the Services may contain links to external websites that are not owned or controlled by <span class="tc-strong">Showing Up Learning Limited</span>.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">13.2</span>
+            <div class="tc-num-body">We accept no responsibility for the content, policies or practices of any third-party website, and the inclusion of a link does not constitute an endorsement. You access such sites at your own risk.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">14.</span>Limitation of Liability</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">14.1</span>
+            <div class="tc-num-body">To the maximum extent permitted by law, <span class="tc-strong">Showing Up Learning Limited</span> limits its liability to you in connection with the Web Site and the Services as set out in this Clause 14.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">14.2</span>
+            <div class="tc-num-body">We exclude all liability for any indirect, consequential, special or punitive loss or damage, including but not limited to loss of profit, loss of business, loss of opportunity or loss of data.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">14.3</span>
+            <div class="tc-num-body">Whilst the Services are designed to support professional development, we do not warrant or guarantee any specific training, commercial or career outcome.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">14.4</span>
+            <div class="tc-num-body">Our total aggregate liability to you arising out of or in connection with the Services shall not exceed the amount actually paid by you to <span class="tc-strong">Showing Up Learning Limited</span> for the relevant Services in the twelve months preceding the event giving rise to the claim.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">14.5</span>
+            <div class="tc-num-body">Nothing in these Terms shall exclude or limit our liability for death or personal injury caused by our negligence, for fraud or fraudulent misrepresentation, or for any other liability that cannot lawfully be excluded or limited.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">15.</span>Termination</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">15.1</span>
+            <div class="tc-num-body"><span class="tc-strong">Showing Up Learning Limited</span> may suspend or terminate your access to the Web Site and the Services, in whole or in part, where you have breached these Terms or misused the platform.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">15.2</span>
+            <div class="tc-num-body">You may close your Account at any time by contacting us at <a href="mailto:contact@showinguplearning.com" class="tc-inline">contact@showinguplearning.com</a>. Termination does not affect any rights or obligations that have accrued prior to the date of termination.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">16.</span>Changes to these Terms</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">16.1</span>
+            <div class="tc-num-body"><span class="tc-strong">Showing Up Learning Limited</span> reserves the right to update or amend these Terms from time to time as we deem necessary or as may be required by law.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">16.2</span>
+            <div class="tc-num-body">Where material changes are made, we will communicate them via email or through a notification on the platform.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">16.3</span>
+            <div class="tc-num-body">Your continued use of the Web Site or the Services following such changes constitutes acceptance of the revised Terms.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">17.</span>Governing Law and Jurisdiction</h2>
+        <ol class="tc-num-list">
+          <li class="tc-num-item">
+            <span class="tc-num">17.1</span>
+            <div class="tc-num-body">These Terms, and any dispute or claim arising out of or in connection with them (including non-contractual disputes or claims), are governed by and construed in accordance with the laws of England and Wales.</div>
+          </li>
+          <li class="tc-num-item">
+            <span class="tc-num">17.2</span>
+            <div class="tc-num-body">The parties irrevocably agree that the courts of England and Wales shall have exclusive jurisdiction to settle any such dispute or claim.</div>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="tc-section">
+        <h2 class="tc-h2"><span class="tc-h2-num">18.</span>Contacting Us</h2>
+        <p class="tc-p">
+          If you have any questions about these Terms you may contact us at <a href="mailto:contact@showinguplearning.com" class="tc-inline">contact@showinguplearning.com</a>.
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+
+</div>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="page-terms.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] page-terms.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

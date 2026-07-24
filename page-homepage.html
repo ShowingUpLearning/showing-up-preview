@@ -1,0 +1,3131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>The learning platform built for the speed and complexity of consulting — Showing Up (preview)</title>
+</head>
+<body>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.showinguplearning.com/#organization",
+      "name": "Showing Up Learning",
+      "url": "https://www.showinguplearning.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/62de69105eee39a89b40248a7c7b343f.png",
+        "width": 285,
+        "height": 160
+      },
+      "description": "The learning platform built for the speed and complexity of consulting."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.showinguplearning.com/#website",
+      "name": "Showing Up Learning",
+      "url": "https://www.showinguplearning.com",
+      "publisher": {
+        "@id": "https://www.showinguplearning.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://fast.wistia.net" />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+<noscript><style>
+  /* If JS fails, surface all reveal-targeted content rather than leaving the page blank.
+     Hero (s1) entrance is pure CSS animation now &#8212; it needs no fallback here. */
+  .showing-up-wrapper [class*="-reveal"] { opacity: 1 !important; transform: none !important; }
+  /* The catch-all above doesn't reach descendants or pseudo-elements &#8212; restore the
+     reveal-gated stat ticks and quote mark explicitly. */
+  .showing-up-wrapper .s5-card .s5-card-stat::after { transform: scaleX(1) !important; }
+  /* v3 messaging headings: capsules + accents rest at their branded states */
+  .showing-up-wrapper h1 em, .showing-up-wrapper h2 em, .showing-up-wrapper h3 em,
+  .showing-up-wrapper .ep-em { border-color: var(--c-coral) !important; transform: none !important; }
+  .showing-up-wrapper .hpm-accent { opacity: 1 !important; transform: none !important; }
+</style></noscript>
+<style>
+  .showing-up-wrapper *, .showing-up-wrapper *::before, .showing-up-wrapper *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* -- Render performance: below-the-fold sections skip layout and paint until the
+        viewport approaches them. The hero (s1) is deliberately excluded &#8212; it must
+        render immediately. Browsers without support simply ignore this.
+        (IntersectionObserver fires independently of paint, so reveals are unaffected.) -- */
+  .hp-intro, .s5, .ep-feature, .cg-section, .sp, .sf, .s7, .s6, .s2, .sc {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 700px;
+  }
+
+  /* Cross-section lead-paragraph treatment (replaces inline `style="font-weight: 300; font-size: 20px"` overrides) */
+  .hp-lead { font-size: 20px !important; font-weight: 300 !important; }
+
+  /* Bold coral, non-italic emphasis &#8212; distinct from the existing italic-coral <em> spans */
+  .showing-up-wrapper .hp-coral-strong { font-weight: 600; color: var(--c-coral); font-style: normal; }
+
+  /* Honour user motion preferences &#8212; kills floats, marquees, entrance animations and reveal transitions.
+     Ring rotation is SMIL; it's frozen via svg.pauseAnimations() in the script block.
+     The Wistia embed drops autoplay under reduced motion in the script block too. */
+  @media (prefers-reduced-motion: reduce) {
+    .s1-icon-float,
+    .wbm-track--left,
+    .wbm-track--right { animation: none !important; }
+
+    .showing-up-wrapper .s1-headline,
+    .showing-up-wrapper .s1-ring-outer,
+    .showing-up-wrapper .s1-ring-mid,
+    .showing-up-wrapper .s1-ring-inner,
+    .showing-up-wrapper .s1-node { animation: none !important; }
+    .showing-up-wrapper .s1-headline { opacity: 1 !important; transform: none !important; }
+    .showing-up-wrapper .s1-ring-outer { opacity: .25 !important; }
+    .showing-up-wrapper .s1-ring-mid { opacity: 1 !important; stroke-dashoffset: 0 !important; }
+    .showing-up-wrapper .s1-ring-inner { opacity: .22 !important; }
+    .showing-up-wrapper .s1-node { opacity: 1 !important; transform: none !important; }
+
+    .showing-up-wrapper [class*="-reveal"] { transition: none !important; opacity: 1 !important; transform: none !important; }
+
+    /* Micro-interactions &#8212; freeze at their resting states */
+    .showing-up-wrapper .s5-card .s5-card-stat::after { transition: none !important; transform: scaleX(1) !important; }
+    .showing-up-wrapper .cg-go,
+    .showing-up-wrapper .cg-go svg { transition: none !important; transform: none !important; }
+    .showing-up-wrapper .sp-pill:active,
+    .showing-up-wrapper .s6-pill:active,
+    .showing-up-wrapper .sc-pill:active { transform: none !important; }
+
+    /* Ambient motion &#8212; ovals rest at their base transforms */
+    .showing-up-wrapper .s2-section::before,
+    .showing-up-wrapper .sc-section::before,
+    .showing-up-wrapper .s5-intro-img-glow { animation: none !important; }
+
+    /* v3 messaging headings: capsules + accents rest at their branded states */
+    .showing-up-wrapper h1 em, .showing-up-wrapper h2 em, .showing-up-wrapper h3 em,
+    .showing-up-wrapper .ep-em {
+      animation: none !important; transition: none !important;
+      border-color: var(--c-coral) !important; transform: none !important;
+    }
+    .showing-up-wrapper .hpm-accent {
+      animation: none !important; transition: none !important;
+      opacity: 1 !important; transform: none !important;
+    }
+  }
+
+  /* -- Design tokens (brand colours, motion easing, type scale) -- */
+  .showing-up-wrapper {
+    --c-coral:     #FF8269;
+    --c-coral-dk:  #e8614a;
+    --c-cream:     #FFF6F1;
+    --c-ink:       #1e1d1d;
+    --c-text:      #353434;
+    --c-mint:      #A7DDC3;
+    --c-purple:    #C8B4E4;
+    --c-blue:      #D8F2F8;
+    --c-dark-soft: #2a2828;
+    /* -- Motion tokens (v2): every entrance/hover on the page derives from these.
+          --su-ease   settle curve for all reveals (was --reveal-ease, kept as alias)
+          --su-pop    back-out overshoot, reserved for small elements (hero icon pops)
+          --su-dur    entrance duration        --su-quick  hover/press duration
+          --su-rise   entrance rise distance   --su-step   stagger step between siblings
+          --su-line-step  stagger between headline lines (line-mask reveals) -- */
+    --su-ease:  cubic-bezier(.16, 1, .3, 1);
+    --su-pop:   cubic-bezier(.34, 1.56, .64, 1);
+    --su-dur:   .8s;
+    --su-quick: .25s;
+    --su-rise:  24px;
+    --su-step:  70ms;
+    --su-line-step: 90ms;
+    --reveal-ease: var(--su-ease);
+    --type-h2:     clamp(26px, 3vw, 40px); /* EXPERIMENT: non-hero headings unified to the ep-h3 size for consistency (was clamp(36px,4.5vw,64px)) */
+  }
+
+  /* Unified reveal pattern &#8212; replaces 10 prefix-specific .sX-reveal/.sX-reveal.sX-vis rule pairs.
+     Scoped to the wrapper: an unscoped [class*="-reveal"] would hide any LearnWorlds-native
+     element whose class happens to contain "-reveal". */
+  .showing-up-wrapper [class*="-reveal"] {
+    opacity: 0;
+    transform: translateY(var(--su-rise));
+    transition: opacity var(--su-dur) var(--su-ease), transform var(--su-dur) var(--su-ease);
+  }
+  /* Media reveals settle from a slight scale instead of rising &#8212; imagery gets its own
+     entrance grammar without adding new directions. Must precede the .is-revealed rule:
+     same specificity, so source order decides the pre-reveal state. */
+  .showing-up-wrapper .ep-feature-media[class*="-reveal"],
+  .showing-up-wrapper .s5-intro-img-col[class*="-reveal"],
+  .showing-up-wrapper .sf-feature-media[class*="-reveal"],
+  .showing-up-wrapper .s6-image-wrap[class*="-reveal"] { transform: scale(.97); }
+  /* Card grammar: card-shaped elements rise a shorter distance and settle from a slight
+     scale, so grids read as surfaces landing rather than text sliding. Same source-order
+     rule as the media block above. */
+  .showing-up-wrapper .s5-card[class*="-reveal"],
+  .showing-up-wrapper .sf-card[class*="-reveal"],
+  .showing-up-wrapper .sp-card[class*="-reveal"],
+  .showing-up-wrapper .s2-item[class*="-reveal"] { transform: translateY(16px) scale(.98); }
+  /* The s2 accent bar draws from the left; the generic .is-revealed transform:none lands it */
+  .showing-up-wrapper .s2-accent { transform: scaleX(0); transform-origin: left; }
+  .showing-up-wrapper [class*="-reveal"].is-revealed { opacity: 1; transform: none; }
+
+  /* -- Interaction lane: once an element's entrance has settled (su-live, added by the
+        script ~1.6s after its reveal fires), transitions hand over from the slow reveal
+        pair to quick hover/press fades. The shorthand also sheds any lingering stagger
+        pair to quick hover/press fades. The shorthand also sheds any lingering stagger
+        transition-delay &#8212; in v1 that delay lagged every later hover on pills and s2
+        items by up to half a second. -- */
+  .showing-up-wrapper [class*="-reveal"].su-live {
+    transition: background var(--su-quick), border-color var(--su-quick),
+                color var(--su-quick), opacity var(--su-quick),
+                transform var(--su-quick) var(--su-ease);
+  }
+
+  /* -- Headline line-mask reveals: the script regroups each opted-in headline into
+        per-line masks once fonts are ready; lines rise out of their masks with a small
+        stagger, then the script restores the original markup after the entrance.
+        The .su-line padding/negative-margin pair (set inline in px by the script,
+        proportional to font-size) keeps descenders from clipping against the mask.
+        No noscript/reduced-motion rules needed &#8212; the splitter never runs there. -- */
+  .showing-up-wrapper .su-line { display: block; overflow: hidden; }
+  .showing-up-wrapper .su-line-inner {
+    display: block;
+    /* 135%: far enough that no ascender/capsule edge peeks through the mask's
+       padding area while hidden (masks carry ~0.2em vertical padding for capsules) */
+    transform: translateY(135%);
+    transition: transform var(--su-dur) var(--su-ease);
+    transition-delay: calc(var(--su-line-i, 0) * var(--su-line-step));
+  }
+  /* Split succeeded: disarm the block-level fade (the masks own the entrance now).
+     Three-class specificity beats both the hide rule and the .is-revealed landing. */
+  .showing-up-wrapper .su-split[class*="-reveal"] { opacity: 1; transform: none; }
+  .showing-up-wrapper .su-split.is-revealed .su-line-inner { transform: none; }
+
+  /* -- Ambient breathing on the decorative ovals (brand "breathing ovals" pattern).
+        Two keyframe sets because the ovals carry different base transforms that the
+        scale must compose with, or the oval jumps on the first frame. Paused when the
+        section is off-screen (su-anim-off) and under reduced motion. -- */
+  @keyframes su-breathe-y {
+    0%, 100% { transform: translateY(-50%) scale(1); }
+    50%      { transform: translateY(-50%) scale(1.06); }
+  }
+  @keyframes su-breathe-xy {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50%      { transform: translate(-50%, -50%) scale(1.06); }
+  }
+
+  /* == V3: 2025 messaging-style heading kit ==============================
+        Headline emphasis is a coral pill capsule around ONE word (never the last word,
+        never touching punctuation) &#8212; EB Garamond italic is retired from headings only.
+        Recipe verbatim from experiments/brand-guidelines-2025 (approved exploration).
+        The .07em/.52em capsule padding and em-sized accents scale with the fluid
+        headline font &#8212; an accepted own-font-relative exception to the px rule, like
+        letter-spacing. inline-block + max-width + white-space keep a capsule from ever
+        breaking across lines (long words wrap INSIDE the pill on narrow screens). */
+  .showing-up-wrapper .s1-headline em,
+  .showing-up-wrapper .hp-intro-headline em,
+  .showing-up-wrapper .s5-headline em,
+  .showing-up-wrapper .sp-headline em,
+  .showing-up-wrapper .sf-headline em,
+  .showing-up-wrapper .s7-headline em,
+  .showing-up-wrapper .s6-headline em,
+  .showing-up-wrapper .s2-headline em,
+  .showing-up-wrapper .sc-headline em,
+  .showing-up-wrapper .ep-em {
+    display: inline-block;
+    max-width: 100%;              /* never spill past the headline / screen edge */
+    white-space: normal;          /* one line where it fits; wraps INSIDE the capsule when narrow */
+    line-height: 1.1;
+    vertical-align: baseline;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: inherit;
+    color: inherit;
+    border: 2px solid var(--c-coral);
+    border-radius: 100px;
+    /* Capsule padding: DM Sans 300's line box is top-heavy (~.17em slack above the
+       ink, ~0 below descenders at line-height 1.1), so bottom-only vertical padding
+       optically centres the ink, matching the guidelines lockup vertically (~.2em
+       top / ~.09em descender ink gaps at 48px). Sides stay at the roomier .52em
+       deliberately - do not snug them to .2em. em is the own-font exception, like
+       letter-spacing. */
+    padding: 0 .52em .06em;
+  }
+
+  /* Coral bold highlight (2025 heading kit) - a non-capsule alternative to the pill:
+     coral, DM Sans 600, no border, non-italic. Opt a headline em in with .hp-coral-strong.
+     Unlike the pill it can span multiple words and reads well on numbers ("11,000+"). */
+  .showing-up-wrapper h1 em.hp-coral-strong,
+  .showing-up-wrapper h2 em.hp-coral-strong,
+  .showing-up-wrapper h3 em.hp-coral-strong,
+  .showing-up-wrapper .ep-em.hp-coral-strong {
+    display: inline; border: none; border-radius: 0; padding: 0;
+    max-width: none; white-space: normal;
+    font-family: 'DM Sans', sans-serif; font-style: normal; font-weight: 600; color: var(--c-coral);
+  }
+
+  /* hpm-: directional accents (2025 messaging style) &#8212; used sparingly:
+     2 light-blue chevrons (dark bgs) + 2 coral arrows across the page.
+     The svg accents' negative block margins cancel their line-height contribution so
+     their height can never land differently split vs natural (the JS line-splitter can
+     place a mid-line accent on a different line than the natural wrap). They are safe
+     ONLY with vertical-align: middle, which aligns on the margin-box midpoint &#8212; immune
+     to symmetric negative margins. vertical-align: middle centres on the x-height midline,
+     which sits ~.1em below the cap-height midline of a title-case heading, so the accent
+     reads low; position/top nudges the paint up .1em to optically centre it on the caps
+     (paint-only, so it doesn't disturb layout or the transform-based reveal). */
+  .showing-up-wrapper .hpm-accent {
+    display: inline-block; vertical-align: middle; flex: none;
+    margin-top: -1em; margin-bottom: -1em;
+    position: relative; top: -.1em;
+  }
+  /* The hero chevron sits mid-sentence between two lowercase words ("the [chev] speed"),
+     unlike every other accent which leads a title-case line. The shared cap-height nudge
+     (top:-.1em) then reads high against the lowercase text, so centre this one on the
+     text's optical/x-height middle (vertical-align: middle, no nudge) instead. */
+  .showing-up-wrapper .s1-headline .hpm-accent { top: 0; }
+  .showing-up-wrapper svg.hpm-chev  { width: .82em; height: .58em; }
+  .showing-up-wrapper svg.hpm-arrow { width: 1.05em; height: .52em; }
+  .showing-up-wrapper .hpm-accent--coral { color: var(--c-coral); }
+  .showing-up-wrapper .hpm-accent--blue  { color: #9fd8e6; }
+
+  /* -- Branded elements ride the heading's own reveal --
+        Capsules, arrows and chevrons live inside the heading, so they arrive with
+        it: on split headlines they sit inside .su-line-inner and rise out of the line
+        mask with their line; on non-split / fallback / hero headlines they fade up as
+        part of the heading block. No separate delay, no separate pop &#8212; they are drawn
+        fully formed (coral border, visible accent) the instant their line lands, which
+        is the "load with the heading" behaviour. Kept intentionally minimal. */
+
+  .s1 {
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--c-ink);
+    color: var(--c-cream);
+  }
+
+  /* -- HERO -- */
+  .s1-hero {
+    padding: 96px 80px 80px;
+    border-bottom: 1px solid rgba(255,246,241,.1);
+  }
+  .s1-hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    column-gap: 48px;
+    align-items: center;
+  }
+  .s1-hero-grid > * { min-width: 0; }
+  /* Hero entrance is pure CSS animation (not the JS reveal observer): the h1 is the LCP
+     element and must paint without waiting for script execution. `both` fill keeps the
+     from-state during the delay and holds the end-state after. */
+  @keyframes s1-fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .s1-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(44px, 6vw, 88px);
+    font-weight: 300; line-height: 1.04; /* v3 weight; coral-bold hero emphasis (no capsule) lets leading tighten back toward the pre-uplift footprint without a pill inflating its line, and holds line count across widths (c4) */
+    letter-spacing: -.03em; color: var(--c-cream);
+    text-align: left !important;
+    animation: s1-fade-up .8s var(--reveal-ease) .05s both;
+  }
+  /* The shared pill selector (.s1-headline em) sets line-height: 1.1 for capsule clearance.
+     The hero now uses coral-bold, not a capsule, so shed that 1.1 or the "complexity" line
+     would render ~5px taller than its neighbours at the tight 1.04 leading. */
+  .showing-up-wrapper .s1-headline em.hp-coral-strong { line-height: inherit; }
+
+  /* -- LOGO MARK (NONOGON & ICONS) -- */
+  .s1-mark-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+  }
+  .s1-mark {
+    width: 100%;
+    max-width: 440px;
+    overflow: visible;
+  }
+
+  /* Icon float (CSS). Ring rotations live as SMIL <animateTransform> inside the SVG markup below.
+     Why SMIL: CSS rotation with transform-origin/transform-box couldn't be made to resolve to
+     (250,250) inside the LearnWorlds-rendered page in Safari &#8212; rings drifted off-centre.
+     SMIL bakes the rotation pivot into the animation itself, immune to any CSS interference. */
+  @keyframes s1-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Ring/node entrances are CSS animations: they run on parse with no JS dependency.
+     Keyframes declare only the from-state &#8212; each animates to its element's computed value. */
+
+  /* Outer ring: dashed charcoal scaffold, fades in */
+  @keyframes s1-ring-outer-in { from { opacity: 0; } }
+  .s1-ring-outer {
+    opacity: 0.25;
+    animation: s1-ring-outer-in 2s ease both;
+  }
+
+  /* Middle ring: solid coral hero mark, draws on as the h1 settles (v2: the hero reads
+     as a sequence &#8212; headline, then ring draw, then the nine icons pop in radially) */
+  @keyframes s1-ring-mid-in { from { opacity: 0; stroke-dashoffset: 700; } }
+  .s1-ring-mid {
+    stroke-dasharray: 700;
+    stroke-dashoffset: 0;
+    opacity: 1;
+    animation: s1-ring-mid-in 1.6s var(--su-ease) 0.45s both;
+  }
+
+  /* Inner ring: dashed charcoal scaffold, delayed fade */
+  @keyframes s1-ring-inner-in { from { opacity: 0; } }
+  .s1-ring-inner {
+    opacity: 0.22;
+    animation: s1-ring-inner-in 2.5s ease 0.7s both;
+  }
+
+  /* Nodes popping in &#8212; opacity lands early (60%) so the back-out overshoot rides only
+     on transform, never on clamped opacity */
+  @keyframes s1-node-in {
+    from { opacity: 0; transform: scale(0.6); }
+    60%  { opacity: 1; }
+  }
+  .s1-node {
+    opacity: 1;
+    transform: scale(1);
+    transform-box: view-box; /* Safari: anchor each node's per-vertex transform-origin to viewBox coords */
+    transform-origin: center;
+    animation: s1-node-in .7s var(--su-pop) both;
+  }
+
+  /* Radial stagger for the 9 points, starting once the ring draw is under way &#8212; they are
+     children 4&#8211;12 of the root svg (after the three ring wrappers), so the ladder starts
+     at nth-child(4). DOM order is already clockwise from the top vertex. */
+  .s1-node:nth-child(4)  { animation-delay: 1.05s; }
+  .s1-node:nth-child(5)  { animation-delay: 1.13s; }
+  .s1-node:nth-child(6)  { animation-delay: 1.21s; }
+  .s1-node:nth-child(7)  { animation-delay: 1.29s; }
+  .s1-node:nth-child(8)  { animation-delay: 1.37s; }
+  .s1-node:nth-child(9)  { animation-delay: 1.45s; }
+  .s1-node:nth-child(10) { animation-delay: 1.53s; }
+  .s1-node:nth-child(11) { animation-delay: 1.61s; }
+  .s1-node:nth-child(12) { animation-delay: 1.69s; }
+
+  /* The subtle floating of the dimension icons */
+  .s1-icon-float { animation: s1-float 5s ease-in-out infinite; }
+  .s1-icon-float.i1 { animation-delay: 0s; }
+  .s1-icon-float.i2 { animation-delay: -1.2s; }
+  .s1-icon-float.i3 { animation-delay: -2.4s; }
+  .s1-icon-float.i4 { animation-delay: -3.6s; }
+  .s1-icon-float.i5 { animation-delay: -0.5s; }
+  .s1-icon-float.i6 { animation-delay: -1.8s; }
+  .s1-icon-float.i7 { animation-delay: -4.1s; }
+  .s1-icon-float.i8 { animation-delay: -2.7s; }
+  .s1-icon-float.i9 { animation-delay: -0.9s; }
+
+  /* Group colours &#8212; sprite icons paint with currentColor, inherited through <use> */
+  .s1-icon-float.i1, .s1-icon-float.i2, .s1-icon-float.i3 { color: var(--c-coral); }
+  .s1-icon-float.i4, .s1-icon-float.i5, .s1-icon-float.i6 { color: var(--c-purple); }
+  .s1-icon-float.i7, .s1-icon-float.i8, .s1-icon-float.i9 { color: var(--c-blue); }
+
+  @media (max-width: 960px) {
+    .s1-hero { padding: 64px 32px 48px; }
+    .s1-hero-grid { display: flex; flex-direction: column; gap: 32px; }
+    .s1-hero-grid > * { align-self: stretch !important; }
+    .s1-headline { margin-bottom: 0; }
+    .s1-mark-wrap { padding: 8px 0; width: 100%; justify-content: center; }
+    .s1-mark { max-width: 300px; }
+  }
+
+
+  /* ================= CLUSTER GRID (cg-) =================
+     Cream section: intro copy + a single 4-column grid (row label + 3 tiles, x3).
+     Solid cluster tiles, title-only, Explore rollover. Ink text passes AA on all three
+     cluster fills (coral 6.93 / purple 8.89 / mint 11.03).
+     Self-scoped to .cg-section, so this block is identical on every page carrying it -
+     no page-wrapper coupling. Reveal pre-states are NOT defined here: .cg-reveal is
+     picked up by each page's shared [class*="-reveal"] rules and observer. */
+  .cg-section {
+    font-size: 16px; font-family: 'DM Sans', sans-serif;
+    background: var(--c-cream); color: var(--c-ink);
+    padding: 120px 80px 96px;
+    border-bottom: 1px solid rgba(30,29,29,.06);
+    text-align: left !important;
+  }
+  .cg-section .cg-intro { max-width: 860px; margin: 0 0 64px; }
+  .cg-section .cg-overline {
+    display: flex; align-items: center; justify-content: flex-start; gap: 12px;
+    font-size: 11px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--c-coral); margin-bottom: 24px;
+    text-align: left !important;
+  }
+  .cg-section .cg-overline::before { content: ''; display: block; width: 32px; height: 1px; background: var(--c-coral); }
+  .cg-section .cg-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--type-h2); font-weight: 300; line-height: 1.18;
+    letter-spacing: -.025em; color: var(--c-ink); margin-bottom: 24px;
+    text-align: left !important;
+  }
+  /* Coral-bold emphasis on one key word - the non-capsule half of the heading kit,
+     replacing the pill outline this block used to carry. Plain inline, so the word wraps
+     with the rest of the headline and inherits its leading: nothing here inflates the
+     line box the way an inline-block capsule did. */
+  .cg-section .cg-headline em {
+    display: inline; white-space: normal; vertical-align: baseline;
+    font-family: 'DM Sans', sans-serif; font-style: normal;
+    font-weight: 600; color: var(--c-coral);
+  }
+  .cg-section .cg-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px; line-height: 1.65; font-weight: 400; color: var(--c-text);
+    max-width: 640px; text-align: left !important;
+  }
+
+  .cg-section .cg-grid { display: grid; grid-template-columns: 200px repeat(3, 1fr); gap: 12px; }
+  .cg-section .cg-grid > * { min-width: 0; }
+  .cg-section .cg-rowlab { display: flex; flex-direction: column; justify-content: center; }
+  .cg-section .cg-rowlab-cluster {
+    font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    color: rgba(53,52,52,.72); text-align: left !important;
+  }
+  .cg-section .cg-rowlab-name {
+    font-size: 20px; font-weight: 500; color: var(--c-ink); margin-top: 2px;
+    text-align: left !important;
+  }
+  /* LearnWorlds anchor overrides - all four link states */
+  .cg-section .cg-tile,
+  .cg-section .cg-tile:link, .cg-section .cg-tile:visited {
+    display: flex; flex-direction: column;
+    text-decoration: none !important; color: var(--c-ink) !important;
+    border: none !important; border-bottom: none !important;
+    border-radius: 8px; padding: 24px 24px 20px; min-height: 150px;
+    transition: transform var(--su-quick) var(--su-ease);
+  }
+  .cg-section .cg-tile * { text-decoration: none !important; }
+  .cg-section .cg-tile:hover, .cg-section .cg-tile:active {
+    color: var(--c-ink) !important; text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+    transform: translateY(-3px);
+  }
+  .cg-section .cg-tile:focus-visible { outline: 2px solid var(--c-ink) !important; outline-offset: 2px; }
+  .cg-section .cg-thinking { background: var(--c-coral); }
+  .cg-section .cg-presence { background: var(--c-purple); }
+  .cg-section .cg-impact   { background: var(--c-mint); }
+  .cg-section .cg-name {
+    font-size: 21px; font-weight: 500; letter-spacing: -.01em; color: var(--c-ink);
+    text-align: left !important;
+  }
+  .cg-section .cg-icon {
+    height: 34px; width: auto; max-width: 44px; margin-top: 14px; display: block;
+    color: var(--c-ink); opacity: .8; overflow: visible;
+    transition: opacity var(--su-quick);
+  }
+  .cg-section .cg-tile:hover .cg-icon { opacity: 1; }
+  .cg-section .cg-go {
+    margin-top: auto; padding-top: 16px;
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; color: var(--c-ink);
+    opacity: 0; transform: translateX(-4px);
+    transition: opacity var(--su-quick), transform var(--su-quick) var(--su-ease);
+  }
+  .cg-section .cg-tile:hover .cg-go { opacity: 1; transform: none; }
+  .cg-section .cg-go svg { transition: transform var(--su-quick) var(--su-ease); }
+  .cg-section .cg-tile:hover .cg-go svg { transform: translateX(3px); }
+
+  /* ---- Cluster tiles: pointer-tracking edge glow (cg-glow) ----
+     One layer: a conic mask aimed at the pointer (--cg-deg) over a stacked box-shadow
+     glow whose opacity rises with closeness to the tile edge (--cg-d, 0-100). Both
+     custom properties are set by the pointermove handler in suInit. The glow spans are
+     injected by JS, never shipped in the markup, so no-JS, touch and reduced-motion
+     tiles keep the plain rollover untouched. Glow colour is a deeper shade of each
+     cluster's own colour. This is a registered exception to the no-shadow rule: the
+     shadow is a coloured edge glow, never an elevation drop shadow. */
+  .cg-section .cg-tile { position: relative; }
+  .cg-section .cg-tile > * { position: relative; z-index: 1; }
+  .cg-section .cg-tile > .cg-glow {
+    position: absolute;
+    inset: -28px;
+    border-radius: 36px; /* tile 8px + 28px spill */
+    z-index: 0;
+    pointer-events: none;
+    opacity: calc((var(--cg-d, 0) - 30) / 70); /* dead zone in the tile centre, ramps to 1 at the edge */
+    transition: opacity var(--su-quick) var(--su-ease);
+    -webkit-mask-image: conic-gradient(from var(--cg-deg, 45deg) at center, #000 10%, transparent 28%, transparent 72%, #000 90%);
+    mask-image: conic-gradient(from var(--cg-deg, 45deg) at center, #000 10%, transparent 28%, transparent 72%, #000 90%);
+  }
+  .cg-section .cg-glow::before {
+    content: '';
+    position: absolute;
+    inset: 28px; /* back to the tile's own rect */
+    border-radius: 8px;
+    box-shadow:
+      inset 0 0 0 1px rgb(var(--cg-glow) / 100%),
+      inset 0 0 3px 0 rgb(var(--cg-glow) / 70%),
+      inset 0 0 8px 0 rgb(var(--cg-glow) / 55%),
+      inset 0 0 18px 0 rgb(var(--cg-glow) / 40%),
+      inset 0 0 32px 4px rgb(var(--cg-glow) / 30%),
+      0 0 4px 0 rgb(var(--cg-glow) / 65%),
+      0 0 10px 0 rgb(var(--cg-glow) / 50%),
+      0 0 20px 0 rgb(var(--cg-glow) / 40%),
+      0 0 36px 3px rgb(var(--cg-glow) / 28%);
+  }
+  /* Deeper shade of each cluster's own colour (RGB triplets for the alpha ramp) */
+  .cg-section .cg-thinking .cg-glow { --cg-glow: 232 97 74; }   /* coral dark  #e8614a */
+  .cg-section .cg-presence .cg-glow { --cg-glow: 155 122 205; } /* deep purple #9b7acd */
+  .cg-section .cg-impact   .cg-glow { --cg-glow: 95 190 146; }  /* deep mint   #5fbe92 */
+  /* At rest the glow is gone regardless of where the pointer last was */
+  .cg-section .cg-tile:not(:hover) .cg-glow {
+    opacity: 0;
+    transition: opacity .5s var(--su-ease);
+  }
+
+  @media (max-width: 960px) {
+    .cg-section { padding: 64px 32px; }
+    .cg-section .cg-intro { margin-bottom: 48px; }
+    .cg-section .cg-grid { grid-template-columns: repeat(2, 1fr); }
+    .cg-section .cg-rowlab { grid-column: 1 / -1; padding-top: 10px; }
+  }
+  @media (max-width: 540px) {
+    .cg-section { padding: 56px 20px; }
+    .cg-section .cg-grid { grid-template-columns: 1fr; }
+  }
+
+
+  .s2 {
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--c-cream);
+    color: var(--c-ink);
+  }
+
+  .s2-section {
+    padding: 120px 80px;
+    border-bottom: 1px solid rgba(30,29,29,.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative background oval &#8212; breathes slowly (keyframes compose the base translateY) */
+  .s2-section::before {
+    content: '';
+    position: absolute;
+    left: -80px; top: 50%; transform: translateY(-50%);
+    width: 400px; height: 560px;
+    background: radial-gradient(ellipse at center, rgba(255,130,105,.09) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: su-breathe-y 9s ease-in-out infinite;
+  }
+
+  .s2-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--type-h2);
+    font-weight: 300; line-height: 1.18; /* v3: messaging-style weight; leading bumped only for capsule clearance */
+    letter-spacing: -.03em; color: var(--c-ink);
+    text-align: left !important;
+    margin-bottom: 64px;
+    max-width: 900px;
+    position: relative;
+  }
+
+  .s2-layout {
+    display: grid; grid-template-columns: 2fr 3fr; gap: 80px;
+    position: relative;
+  }
+
+  /* Left column */
+  .s2-left {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .s2-stat {
+    display: flex;
+    flex-direction: column;
+  }
+  .s2-stat-number {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 64px;
+    font-weight: 200;
+    line-height: 1;
+    color: var(--c-coral);
+    letter-spacing: -.03em;
+    text-align: left !important;
+    font-variant-numeric: tabular-nums; /* steady digit widths during the count-up */
+  }
+  .s2-stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(53,52,52,.72);
+    margin-top: 8px;
+    text-align: left !important;
+  }
+
+  /* Coral accent line between stat and body */
+  .s2-accent {
+    width: 32px; height: 2px;
+    background: var(--c-coral);
+  }
+
+  .s2-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.7; font-weight: 300;
+    color: rgba(53,52,52,.65);
+    text-align: left !important;
+  }
+
+  /* Right column &#8212; card list */
+  .s2-list {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }
+  .s2-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px 28px;
+    background: rgba(255,130,105,.035);
+    border-radius: 16px;
+    transition: background .25s;
+  }
+  .s2-item:hover {
+    background: rgba(255,130,105,.07);
+  }
+  .s2-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    color: var(--c-coral);
+    margin-top: 2px;
+  }
+  .s2-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .s2-item-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--c-ink);
+    text-align: left !important;
+  }
+  .s2-item-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(53,52,52,.72);
+    text-align: left !important;
+  }
+  .s2-d1 { transition-delay: calc(var(--su-step) * 1); }
+  .s2-d2 { transition-delay: calc(var(--su-step) * 2); }
+  .s2-d3 { transition-delay: calc(var(--su-step) * 3); }
+  .s2-d4 { transition-delay: calc(var(--su-step) * 4); }
+  .s2-d5 { transition-delay: calc(var(--su-step) * 5); }
+  .s2-d6 { transition-delay: calc(var(--su-step) * 6); }
+  .s2-d7 { transition-delay: calc(var(--su-step) * 7); }
+
+  @media (max-width: 960px) {
+    .s2-section { padding: 80px 32px; }
+    .s2-layout { grid-template-columns: 1fr; gap: 48px; }
+    .s2-layout > * { align-self: stretch !important; }
+    .s2-stat-number { font-size: 48px; }
+  }
+
+
+
+  /* -- SECTION: THE PLATFORM (s5-) -- */
+  .s5 { font-size: 16px; font-family: 'DM Sans', sans-serif; background: var(--c-ink); color: var(--c-cream); }
+  .s5-section { padding: 120px 80px 48px; }
+  .s5-section--cards-only { padding: 0 80px 0; border-bottom: none; }
+  .s5-section--cards-only::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: rgba(255,246,241,.12);
+    margin-top: 120px;
+  }
+
+  /* Intro: headline+body left, image right */
+  .s5-intro-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    column-gap: 72px;
+    align-items: start;
+    margin-bottom: 72px;
+  }
+  .s5-intro-grid > * { min-width: 0; }
+  .s5-intro-text { display: flex; flex-direction: column; }
+
+  .s5-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--type-h2);
+    font-weight: 300; line-height: 1.18; /* v3: messaging-style weight; leading bumped only for capsule clearance */
+    letter-spacing: -.03em; color: var(--c-cream);
+    margin-bottom: 28px;
+    text-align: left !important;
+  }
+
+  .s5-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.7; font-weight: 300;
+    color: rgba(255,246,241,.68);
+    text-align: left !important;
+  }
+
+  /* Image column */
+  .s5-intro-img-col { position: relative; }
+  .s5-intro-img-glow {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%; height: 120%;
+    background: radial-gradient(ellipse at center, rgba(255,130,105,.10) 0%, transparent 65%);
+    border-radius: 50%; pointer-events: none;
+    animation: su-breathe-xy 11s ease-in-out infinite;
+  }
+  .s5-intro-img-wrap {
+    border-radius: 8px; overflow: hidden;
+    border: 1px solid rgba(255,246,241,.08);
+    aspect-ratio: 16/9; position: relative;
+    background: var(--c-dark-soft); /* fills the frame until the lazy Wistia iframe loads */
+  }
+  .s5-intro-video {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0; display: block;
+    opacity: 0; /* fades in once the lazy player has loaded (su-video-on, script block) */
+    transition: opacity .6s ease;
+  }
+  .s5-intro-video.su-video-on { opacity: 1; }
+
+  /* Sub-section */
+  .s5-sub-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(24px, 2.4vw, 32px);
+    font-weight: 300; line-height: 1.2;
+    letter-spacing: -.02em; color: var(--c-cream);
+    margin-bottom: 20px;
+    text-align: left !important;
+  }
+  .s5-sub-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.7; font-weight: 300;
+    color: rgba(255,246,241,.68);
+    max-width: 820px;
+    text-align: left !important;
+  }
+
+  .s5-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-top: 0;
+  }
+  .s5-cards > * { min-width: 0; }
+  .s5-card,
+  .ep-feature-cards .s5-card {
+    background: #ffffff;
+    border: 1px solid rgba(30,29,29,.08);
+    border-radius: 20px;
+    padding: 48px 44px;
+    display: flex; flex-direction: column;
+  }
+  /* Hover grammar: border deepens (fade arrives via the su-live interaction lane) */
+  .s5-card:hover,
+  .ep-feature-cards .s5-card:hover { border-color: rgba(30,29,29,.18); }
+  .s5-card .s5-card-icon { width: 64px; height: 64px; margin-bottom: 32px; color: var(--c-coral); }
+  .s5-card .s5-card-stat {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 64px; font-weight: 200; line-height: 1;
+    letter-spacing: -.03em;
+    color: var(--c-coral);
+    margin-bottom: 32px;
+    font-variant-numeric: tabular-nums; /* steady digit widths during the count-up */
+    position: relative; /* anchors the post-count tick */
+  }
+  /* Post-count tick: a coral underline draws in once the stat's count-up lands
+     (su-counted, added by the script). Absolutely positioned &#8212; zero layout shift. */
+  .s5-card .s5-card-stat::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -10px;
+    width: 32px; height: 2px;
+    background: var(--c-coral);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .5s var(--su-ease) .15s;
+  }
+  .s5-card .s5-card-stat.su-counted::after { transform: scaleX(1); }
+  .s5-card .s5-card-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px; font-weight: 500; line-height: 1.25;
+    letter-spacing: -.01em;
+    color: var(--c-ink);
+    margin-bottom: 14px;
+    text-align: left !important;
+  }
+  .s5-card .s5-card-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; font-weight: 300; line-height: 1.6;
+    color: rgba(53,52,52,.72);
+    max-width: 480px;
+    text-align: left !important;
+  }
+  .s5-d1 { transition-delay: calc(var(--su-step) * 1); }
+  .s5-d2 { transition-delay: calc(var(--su-step) * 2); }
+  .s5-d3 { transition-delay: calc(var(--su-step) * 3); }
+  .s5-d4 { transition-delay: calc(var(--su-step) * 4); }
+  .s5-d5 { transition-delay: calc(var(--su-step) * 5); }
+  .s5-d6 { transition-delay: calc(var(--su-step) * 6); }
+
+  @media (max-width: 960px) {
+    .s5-section { padding: 80px 32px 32px; }
+    .s5-intro-grid { display: flex; flex-direction: column; gap: 32px; margin-bottom: 56px; }
+    .s5-intro-grid > * { align-self: stretch !important; }
+    /* Mobile stacking order: headline -> image -> body */
+    .s5-intro-text { display: contents; }
+    .s5-intro-text > .s5-headline { order: 1; margin-bottom: 0; }
+    .s5-intro-img-col { order: 2; }
+    .s5-intro-text > .s5-body { order: 3; }
+  }
+
+  /* -- EXPLORE PLATFORM FEATURE SECTIONS (ep-, ported from Explore Platform) -- */
+  .ep-h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 300; line-height: 1.18;
+    letter-spacing: -.02em;
+  }
+  .ep-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.7; font-weight: 300;
+  }
+  .ep-body--light { color: rgba(255,246,241,.65); }
+  .ep-body--dark  { color: rgba(30,29,29,.65); }
+  .ep-img { width: 100%; height: auto; display: block; border-radius: 8px; }
+  .ep-d1 { transition-delay: calc(var(--su-step) * 1); }
+  .ep-d2 { transition-delay: calc(var(--su-step) * 2); }
+  .ep-d3 { transition-delay: calc(var(--su-step) * 3); }
+  .ep-d4 { transition-delay: calc(var(--su-step) * 4); }
+
+  .ep-feature {
+    padding: 100px 80px;
+    border-bottom: 1px solid rgba(30,29,29,.06);
+    text-align: left !important;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .ep-feature--cream { background: var(--c-cream); }
+  .ep-feature--dark  { background: var(--c-ink); border-bottom-color: rgba(255,246,241,.06); }
+
+  /* Named areas instead of row/column coordinates: the mobile stack re-declares the
+     areas in one place, so no align-self/order resets are needed at the breakpoint. */
+  .ep-feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "media head"
+      "media body";
+    column-gap: 80px; row-gap: 28px;
+  }
+  .ep-feature-grid > * { min-width: 0; }
+  .ep-feature-grid .ep-feature-media { grid-area: media; align-self: center; }
+  .ep-feature-grid .ep-feature-head  { grid-area: head;  align-self: end; }
+  .ep-feature-grid .ep-feature-body  { grid-area: body;  align-self: start; }
+
+  /* Reverse layout: heading+body left, image right */
+  .ep-feature-grid--reverse {
+    grid-template-areas:
+      "head media"
+      "body media";
+  }
+
+  .ep-feature .ep-h3 { margin-bottom: 20px; }
+  .ep-feature--cream .ep-h3 { color: var(--c-ink); }
+  .ep-feature--dark  .ep-h3 { color: var(--c-cream); }
+
+  /* Stat cards grid under Modules */
+  .ep-feature-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .ep-feature-cards > * { min-width: 0; }
+  .ep-feature-card {
+    padding: 28px 24px 24px;
+    position: relative;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; line-height: 1.55; font-weight: 300;
+    border-radius: 6px;
+  }
+  .ep-feature--cream .ep-feature-card {
+    background: #fff;
+    color: rgba(30,29,29,.7);
+    border: 1px solid rgba(30,29,29,.06);
+  }
+  .ep-feature--dark .ep-feature-card {
+    background: rgba(255,246,241,.05);
+    color: rgba(255,246,241,.65);
+    border: 1px solid rgba(255,246,241,.06);
+  }
+  .ep-feature-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--c-coral);
+    border-radius: 6px 6px 0 0;
+  }
+
+  /* Text alignment &#8212; LearnWorlds global override fix (applied directly on children) */
+  .ep-feature-head,
+  .ep-feature-body { text-align: left !important; }
+  .ep-feature-head .ep-h3,
+  .ep-feature-body .ep-body { text-align: left !important; }
+
+  /* Workbook/toolkit marquee */
+  .wbm { position: relative; overflow: hidden; }
+  .wbm::before,
+  .wbm::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 56px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .wbm::before { left: 0; background: linear-gradient(to right, var(--c-cream) 0%, transparent 100%); }
+  .wbm::after  { right: 0; background: linear-gradient(to left, var(--c-cream) 0%, transparent 100%); }
+  .wbm--dark::before { background: linear-gradient(to right, var(--c-ink) 0%, transparent 100%); }
+  .wbm--dark::after  { background: linear-gradient(to left, var(--c-ink) 0%, transparent 100%); }
+  .wbm-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .wbm-row:last-child { margin-bottom: 0; }
+  .wbm-track {
+    display: flex;
+    gap: 10px;
+    width: max-content;
+  }
+  .wbm-track--left  { animation: wbm-left  34s linear infinite; }
+  .wbm-track--right { animation: wbm-right 28s linear infinite; }
+  @keyframes wbm-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes wbm-right {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+  .wbm-slide {
+    flex-shrink: 0;
+    width: 230px;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(30, 29, 29, 0.08);
+    transition: border-color var(--su-quick);
+  }
+  /* Card hover reads clearly because the whole-marquee hover already pauses the track */
+  .wbm-slide:hover { border-color: rgba(30, 29, 29, .25); }
+  .wbm--dark .wbm-slide:hover { border-color: rgba(255, 246, 241, .35); }
+  .wbm-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .wbm:hover .wbm-track { animation-play-state: paused; }
+  /* Off-screen pause &#8212; class toggled by IntersectionObserver in the script block.
+     Covers the hero floats, both marquee tracks and the three breathing ovals. */
+  .su-anim-off .s1-icon-float,
+  .su-anim-off .wbm-track,
+  .su-anim-off .s5-intro-img-glow { animation-play-state: paused; }
+  .s2-section.su-anim-off::before,
+  .sc-section.su-anim-off::before { animation-play-state: paused; }
+
+  @media (max-width: 960px) {
+    .ep-feature { padding: 72px 32px; }
+    .ep-feature-cards { grid-template-columns: repeat(2, 1fr); }
+    /* Single column, stacked headline -> image -> body. Re-declaring the areas is the
+       whole mobile layout: grid placement stays valid, so nothing needs resetting. */
+    .ep-feature-grid,
+    .ep-feature-grid--reverse {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "head"
+        "media"
+        "body";
+      row-gap: 28px;
+    }
+    .ep-feature-grid .ep-feature-media,
+    .ep-feature-grid .ep-feature-head,
+    .ep-feature-grid .ep-feature-body { align-self: stretch; }
+  }
+  @media (max-width: 540px) {
+    .ep-feature-cards { grid-template-columns: 1fr; }
+  }
+
+
+  /* -- SECTION: HOW IT WORKS FOR YOUR FIRM (sf-) -- */
+  .sf {
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--c-ink);
+    color: var(--c-cream);
+  }
+  .sf-section {
+    padding: 120px 80px 56px;
+    max-width: 1280px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(255,246,241,.08);
+  }
+  .sf-section--cards-only {
+    padding-top: 56px;
+    padding-bottom: 120px;   /* mirror the 120px above the "Designed to elevate" headline */
+    border-bottom: none;
+  }
+
+  .sf-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    grid-template-areas:
+      "head media"
+      "body media";
+    column-gap: 80px;
+    row-gap: 28px;
+    margin-bottom: 80px;
+  }
+  .sf-intro-grid > * { min-width: 0; }
+  .sf-intro-grid .sf-feature-head  { grid-area: head;  align-self: end; }
+  .sf-intro-grid .sf-feature-body  { grid-area: body;  align-self: start; }
+  .sf-intro-grid .sf-feature-media { grid-area: media; align-self: center; }
+  .sf-feature-head,
+  .sf-feature-body { text-align: left !important; }
+
+  .sf-overline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--c-coral);
+    margin-bottom: 24px;
+    text-align: left !important;
+  }
+  .sf-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(26px, 3vw, 40px); /* EXPERIMENT: unified to ep-h3 size (was clamp(30px,3.4vw,48px)) */
+    line-height: 1.18;
+    letter-spacing: -0.03em;
+    color: var(--c-cream);
+    text-align: left !important;
+  }
+
+  .sf-body-stack { display: flex; flex-direction: column; gap: 20px; }
+  .sf-body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(255,246,241,.75);
+    text-align: left !important;
+  }
+
+  .sf-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* Photo block */
+  .sf-photo-row { margin: 56px 0 80px; }
+  .sf-photo-wrap {
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--c-dark-soft);
+    border: 1px solid rgba(255,246,241,.10);
+    position: relative;
+  }
+  .sf-feature-media .sf-photo-wrap {
+    aspect-ratio: auto;
+    background: transparent;
+    border: none;
+  }
+  .sf-feature-media .sf-photo-img { height: auto; }
+  .sf-photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background:
+      repeating-linear-gradient(45deg, rgba(255,246,241,.04) 0 12px, rgba(255,246,241,.02) 12px 24px),
+      var(--c-dark-soft);
+  }
+  .sf-photo-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .sf-photo-placeholder span {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(255,246,241,.5);
+    letter-spacing: .02em;
+  }
+
+  /* Lifted-cards heading */
+  .sf-cards-heading {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 300;
+    letter-spacing: -.02em;
+    line-height: 1.18;
+    color: var(--c-cream);
+    margin-bottom: 40px;
+    max-width: 720px;
+    text-align: left !important;
+  }
+  .sf-cards > * { min-width: 0; }
+  .sf-card {
+    background: rgba(255,246,241,.03);
+    border: 1px solid rgba(255,246,241,.12);
+    border-radius: 20px;
+    padding: 36px 32px;
+    position: relative;
+  }
+  /* Hover grammar: border deepens + surface lifts a shade (fade via su-live lane) */
+  .sf-card:hover {
+    border-color: rgba(255,246,241,.28);
+    background: rgba(255,246,241,.06);
+  }
+  .sf-card-icon { width: 40px; height: 40px; margin-bottom: 24px; color: var(--c-coral); }
+  .sf-card-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.25;
+    color: var(--c-cream);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+    text-align: left !important;
+  }
+  .sf-card-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255,246,241,.72);
+    text-align: left !important;
+  }
+  .sf-d1 { transition-delay: calc(var(--su-step) * 1); }
+  .sf-d2 { transition-delay: calc(var(--su-step) * 2); }
+  .sf-d3 { transition-delay: calc(var(--su-step) * 3); }
+  .sf-d4 { transition-delay: calc(var(--su-step) * 4); }
+  .sf-d5 { transition-delay: calc(var(--su-step) * 5); }
+  .sf-d6 { transition-delay: calc(var(--su-step) * 6); }
+
+  @media (max-width: 960px) {
+    .sf-section { padding: 80px 32px 40px; }
+    .sf-section--cards-only { padding-top: 40px; padding-bottom: 80px; }
+    .sf-intro-grid {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "head"
+        "media"
+        "body";
+      row-gap: 28px;
+      margin-bottom: 56px;
+    }
+    .sf-intro-grid > * { align-self: stretch; }
+    .sf-cards { grid-template-columns: 1fr; gap: 16px; }
+    .sf-cards > * { align-self: stretch !important; }
+    .sf-card { padding: 32px 28px; }
+    .sf-photo-row { margin: 32px 0 48px; }
+    .sf-photo-wrap { border-radius: 18px; }
+    .sf-cards-heading { margin-bottom: 28px; }
+  }
+
+
+  /* -- SECTION: PRICING SIGNAL (sp-) -- */
+  .sp {
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--c-cream);
+    color: var(--c-ink);
+  }
+  .sp-section {
+    padding: 100px 80px;
+    max-width: 1280px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(30,29,29,.1);
+  }
+
+  .sp-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .sp-grid > * { min-width: 0; }
+
+  .sp-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(26px, 3vw, 40px);
+    line-height: 1.18;
+    letter-spacing: -.02em;
+    color: var(--c-ink);
+    margin-bottom: 28px;
+    text-align: left !important;
+  }
+  .sp-body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(30,29,29,.78);
+    margin-bottom: 36px;
+    max-width: 520px;
+    text-align: left !important;
+  }
+
+  /* Pricing card */
+  .sp-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(30,29,29,.10);
+    border-radius: 20px;
+    padding: 40px 40px 36px 40px;
+    position: relative;
+  }
+  .sp-card-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(30,29,29,.55);
+    margin-bottom: 12px;
+    text-align: left !important;
+  }
+  .sp-card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .sp-card-number {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 200;
+    font-size: clamp(52px, 6vw, 88px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--c-coral);
+  }
+  .sp-card-unit {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.4;
+    color: rgba(30,29,29,.68);
+    white-space: nowrap;
+  }
+  .sp-card-divider {
+    height: 1px;
+    background: rgba(30,29,29,.10);
+    margin-bottom: 24px;
+  }
+  .sp-card-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .sp-card-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.4;
+    color: rgba(30,29,29,.82);
+    text-align: left !important;
+  }
+  .sp-card-tick {
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
+    color: var(--c-coral);
+  }
+  .sp-card-note {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(30,29,29,.55);
+    text-align: left !important;
+  }
+
+  /* -- PILL CTAs &#8212; one definition, themed per section via custom properties.
+        The !important anchor overrides stay on the painted properties, so the
+        LearnWorlds global <a> styles are still beaten on every link state. -- */
+  .sp-pill, .s6-pill, .sc-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: none !important;
+    background: var(--pill-bg) !important;
+    color: var(--pill-fg) !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 28px;
+    border-radius: 100px;
+    transition: background .2s, color .2s, transform .15s var(--su-ease);
+    width: fit-content;
+  }
+  .sp-pill:link, .sp-pill:visited,
+  .s6-pill:link, .s6-pill:visited,
+  .sc-pill:link, .sc-pill:visited {
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: none !important;
+    background: var(--pill-bg) !important;
+    color: var(--pill-fg) !important;
+  }
+  .sp-pill:hover, .sp-pill:active,
+  .s6-pill:hover, .s6-pill:active,
+  .sc-pill:hover, .sc-pill:active {
+    background: var(--pill-bg-hover) !important;
+    color: var(--pill-fg-hover) !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: none !important;
+  }
+  .sp-pill:focus-visible, .s6-pill:focus-visible, .sc-pill:focus-visible {
+    outline: 2px solid var(--pill-focus) !important;
+    outline-offset: 3px;
+  }
+  /* Press state &#8212; a slight give under the pointer. Transform only, so no !important
+     is needed against the LearnWorlds anchor overrides (those fight on colour/border). */
+  .sp-pill:active, .s6-pill:active, .sc-pill:active { transform: scale(.98); }
+  .sp-pill { --pill-bg: var(--c-ink);   --pill-fg: var(--c-cream); --pill-bg-hover: var(--c-coral); --pill-fg-hover: var(--c-ink); --pill-focus: var(--c-ink); }
+  .s6-pill { --pill-bg: var(--c-coral); --pill-fg: var(--c-ink);   --pill-bg-hover: var(--c-cream); --pill-fg-hover: var(--c-ink); --pill-focus: var(--c-cream); margin-top: 12px; }
+  .sc-pill { --pill-bg: var(--c-coral); --pill-fg: var(--c-cream); --pill-bg-hover: var(--c-cream); --pill-fg-hover: var(--c-ink); --pill-focus: var(--c-cream); }
+  .sp-d1 { transition-delay: calc(var(--su-step) * 1); }
+  .sp-d2 { transition-delay: calc(var(--su-step) * 2); }
+  .sp-d3 { transition-delay: calc(var(--su-step) * 3); }
+  .sp-d4 { transition-delay: calc(var(--su-step) * 4); }
+
+  @media (max-width: 960px) {
+    .sp-section { padding: 72px 32px; }
+    .sp-grid { display: flex; flex-direction: column; gap: 40px; align-items: stretch; }
+    .sp-grid > * { align-self: stretch !important; }
+    .sp-card { padding: 32px 28px 28px 28px; }
+    .sp-card-number { font-size: 56px; }
+  }
+
+
+  .s6 {
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--c-ink);
+    color: var(--c-cream);
+  }
+
+  .s6-section {
+    padding: 120px 80px;
+    border-bottom: 1px solid rgba(255,246,241,.07);
+  }
+
+  .s6-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--type-h2);
+    font-weight: 300; line-height: 1.18; /* v3: messaging-style weight; leading bumped only for capsule clearance */
+    letter-spacing: -.03em; color: var(--c-cream);
+    margin-bottom: 64px;
+    max-width: 1000px;
+  }
+
+  .s6-content {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  }
+
+  .s6-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.7; font-weight: 300;
+    color: rgba(255,246,241,.72);
+    margin-bottom: 20px;
+  }
+
+  .s6-highlight {
+    color: var(--c-coral);
+    font-weight: 400;
+  }
+
+  /* .s6-pill is defined with the shared pill block (sp- section) */
+
+  /* The image links to /foundation &#8212; the hover zoom is a real affordance, not decoration */
+  .s6-image-link, .s6-image-link:link, .s6-image-link:visited,
+  .s6-image-link:hover, .s6-image-link:active {
+    display: block;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: none !important;
+    color: inherit !important;
+  }
+  .s6-image-link:focus-visible { outline: 2px solid var(--c-cream) !important; outline-offset: 3px; }
+  .s6-image-wrap {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255,246,241,.12);
+    position: relative;
+    aspect-ratio: 4/3;
+  }
+  .s6-image {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 20%;
+    display: block;
+    transition: transform 0.6s var(--reveal-ease);
+  }
+  .s6-image-wrap:hover .s6-image { transform: scale(1.03); }
+
+  /* Reveal */
+  .s6-d1 { transition-delay: calc(var(--su-step) * 1); }
+  .s6-d2 { transition-delay: calc(var(--su-step) * 2); }
+  .s6-d3 { transition-delay: calc(var(--su-step) * 3); }
+
+  @media (max-width: 960px) {
+    .s6-section { padding: 80px 32px; }
+    .s6-content { grid-template-columns: 1fr; gap: 48px; }
+    .s6-headline { margin-bottom: 48px; }
+    .s6-content > div:last-child { order: -1; }
+  }
+
+
+  .s7 {
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--c-ink);
+    color: var(--c-cream);
+  }
+
+  .s7-section {
+    padding: 120px 80px 0;
+    border-bottom: 1px solid rgba(255,246,241,.07);
+    text-align: center;
+  }
+
+  .s7-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--type-h2);
+    font-weight: 300; line-height: 1.18; /* v3: messaging-style weight; leading bumped only for capsule clearance */
+    letter-spacing: -.03em; color: var(--c-cream);
+    margin-bottom: 120px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .s7-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 19px; line-height: 1.6; font-weight: 300;
+    color: rgba(255,246,241,.72);
+    max-width: 800px;
+    margin: 0 auto 64px;
+  }
+
+  /* reveal */
+  .s7-d1 { transition-delay: calc(var(--su-step) * 1); }
+  .s7-d2 { transition-delay: calc(var(--su-step) * 2); }
+  .s7-d3 { transition-delay: calc(var(--su-step) * 3); }
+  .s7-d4 { transition-delay: calc(var(--su-step) * 4); }
+
+  @media (max-width: 960px) {
+    .s7-section { padding: 80px 32px 0; text-align: left; }
+    .s7-headline { margin-left: 0; margin-right: 0; }
+    .s7-body { margin-left: 0; margin-right: 0; }
+  }
+
+
+  /* -- CLOSING CTA SECTION -- */
+  .sc {
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--c-ink);
+    color: var(--c-cream);
+  }
+  .sc-section {
+    padding: 120px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .sc-section::before {
+    content: '';
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse at center, rgba(255,130,105,.05) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: su-breathe-xy 10s ease-in-out infinite;
+  }
+  .sc-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--type-h2);
+    font-weight: 300; line-height: 1.18; /* v3: messaging-style weight; leading bumped only for capsule clearance */
+    letter-spacing: -.03em; color: var(--c-cream);
+    max-width: 900px;
+    margin: 0 auto 24px;
+  }
+  .sc-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px; line-height: 1.65; font-weight: 300;
+    color: rgba(255,246,241,.75);
+    max-width: 640px;
+    margin: 0 auto 48px;
+  }
+  /* .sc-pill is defined with the shared pill block (sp- section) */
+  .sc-d1 { transition-delay: calc(var(--su-step) * 1); }
+  .sc-d2 { transition-delay: calc(var(--su-step) * 2); }
+  .sc-d3 { transition-delay: calc(var(--su-step) * 3); }
+
+  @media (max-width: 960px) {
+    .sc-section { padding: 80px 32px; }
+  }
+
+  /* -- SECTION: INTRO (hp-intro-) -- */
+  .hp-intro {
+    font-size: 16px; font-family: 'DM Sans', sans-serif;
+    background: var(--c-cream); color: var(--c-ink);
+  }
+  .hp-intro-section {
+    padding: 120px 80px;
+    max-width: 1280px; margin: 0 auto;
+    border-bottom: 1px solid rgba(30,29,29,.06);
+  }
+  .hp-intro-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(36px, 4.5vw, 52px); font-weight: 300; line-height: 1.18; /* EXPERIMENT: intro statement is the one MEDIUM tier between the hero and the (now smaller) section headings (was var(--type-h2)); capped 64 to 52 for 2-line hold */
+    letter-spacing: -.03em; color: var(--c-ink);
+    max-width: 880px; margin: 0 auto 32px; text-align: center !important;
+  }
+  .hp-intro-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px; font-weight: 300; line-height: 1.65;
+    color: rgba(53,52,52,.85); max-width: 720px; margin: 0 auto; text-align: center !important;
+  }
+  .hp-intro-d1 { transition-delay: calc(var(--su-step) * 1); }
+  .hp-intro-d2 { transition-delay: calc(var(--su-step) * 2); }
+  @media (max-width: 960px) {
+    .hp-intro-section { padding: 72px 32px; }
+  }
+
+  /* -- SECTION: ACCESSING THE PLATFORM (light variant) -- */
+  .sf--light { background: var(--c-cream); color: var(--c-ink); }
+  .sf--light .sf-cards-heading { color: var(--c-ink); }
+  .sf--light .sf-card {
+    background: #ffffff;
+    border: 1px solid rgba(30,29,29,.08);
+  }
+  .sf--light .sf-card:hover {
+    background: #ffffff;
+    border-color: rgba(30,29,29,.18);
+  }
+  .sf--light .sf-card-title { color: var(--c-ink); }
+  .sf--light .sf-card-desc { color: rgba(53,52,52,.72); }
+  .sf--light .sf-section { border-bottom-color: rgba(30,29,29,.06); }
+
+</style>
+
+<div class="showing-up-wrapper">
+
+  
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="hpm-chev" viewBox="0 0 40 28">
+      <path d="M4 5 L17 14 L4 23" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M22 5 L35 14 L22 23" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="hpm-arrow" viewBox="0 0 48 24">
+      <path d="M3 12 H42 M31 3 L43 12 L31 21" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="su-ic-curiosity" viewBox="0 0 84 78"><path d="M83.9002 7.15985C83.7698 7.18216 83.5626 7.20446 83.2711 7.20446H83.0639C82.0588 7.20446 80.555 7.26394 78.4834 7.33829L78.376 7.34572L75.66 7.44981L72.8826 7.54647L71.0642 7.61338L70.2509 9.18959L69.008 11.5836C68.9236 11.7472 68.8468 11.9033 68.7701 12.052L68.7471 12.1115L68.7241 12.1561C68.6934 12.223 68.655 12.2974 68.6167 12.3643L68.609 12.3717L68.563 12.4387L68.4555 12.5874C63.9748 18.8625 51.3536 39.1673 48.5379 45.7175L48.4918 45.829L48.4841 45.8364C47.364 48.4833 46.0903 51.0855 44.7553 53.8364L44.7246 53.8885C43.8423 55.6952 42.9753 57.4795 42.116 59.316L42.1007 59.368L42.093 59.3755L42.0853 59.3978C39.5841 64.9442 37.5893 69.7546 35.978 75.1598C35.464 76.8476 34.8348 76.8476 34.5279 76.8476C34.2364 76.8476 33.8988 76.7732 33.5842 76.6394C33.0088 76.3643 30.5306 74.9517 31.6585 71.5242C38.3642 51.9182 45.8525 35.3085 54.5607 20.7509L59.1335 13.1078L62.1181 8.11152L56.1873 8.65427L47.1108 9.49442L44.5328 9.73234L42.4766 9.92565L41.1339 10.052L40.3207 11.0929L39.0777 12.6914C29.1112 25.4796 15.0246 50.2751 9.07074 63.9257C6.46211 69.5911 5.05805 73.6431 4.38287 77.4572C4.32916 77.7026 4.27546 77.8736 4.22942 78C3.90718 77.9777 3.42381 77.8587 2.9251 77.5985C1.91234 77.0335 0.999317 76.0669 0.485262 75.0111C-0.0748269 73.8662 -0.151551 72.7138 0.262761 71.487C3.87649 60.6171 15.3238 37.3011 22.1983 24.6468L25.3057 18.9145L27.3465 15.1673L23.0116 14.5874L16.3979 13.6952C14.7023 13.4647 13.0297 12.3643 12.2395 10.9517L12.2011 10.8773L12.1704 10.8253C11.7868 10.1413 11.7868 9.59108 11.8482 9.44981C11.8482 9.44981 12.063 9.13011 13.0834 8.82528C21.4311 6.3197 34.3592 3.73978 41.2951 3.19703C45.4228 2.9145 50.3179 2.37918 55.4968 1.80669L55.6272 1.79182C63.5605 0.914498 71.77 0 77.486 0C77.6702 0 77.862 0.00743494 78.0231 0.00743494C81.1842 0.0669145 83.225 3.10781 83.8235 5.13755C84.0767 5.99256 84.0153 6.78067 83.9002 7.15985Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-critical-thinking" viewBox="0 0 71 77"><path d="M70.4456 4.90006C69.87 6.18889 68.9248 7.45904 67.931 8.30581C66.9979 9.09655 66.0769 9.50125 65.1984 9.50125C65.0226 9.50125 64.8287 9.48258 64.6349 9.44522L64.5682 9.43899C59.7027 8.64826 55.6733 8.31204 51.1108 8.31204C50.2685 8.31204 49.3233 8.32449 48.2266 8.34317L41.0222 8.51751L36.3142 8.62335L39.1378 12.4961L43.458 18.4235C44.3608 19.6563 45.2152 20.6089 45.9726 21.4619L46.1301 21.6362C46.3058 21.8355 46.4755 22.0222 46.6209 22.1903L46.6936 22.2775L46.7542 22.3522L46.8269 22.4207L46.8814 22.4768C47.6449 23.2613 48.3659 23.996 48.887 24.6871L48.9658 24.7867L49.0203 24.8676L49.087 24.9486L49.1597 25.0233C49.9898 25.9884 50.6381 26.8663 51.3107 27.9496C51.9954 29.0517 51.9106 29.4003 51.2077 30.2222L51.1956 30.2409L51.1835 30.2596L51.1532 30.2907L51.1168 30.3405C50.4867 31.1126 49.6323 31.8784 48.3478 32.8248C46.9845 33.7961 45.403 34.8794 43.6337 36.0562L43.5974 36.0749L43.555 36.106C34.7328 42.1081 26.874 47.9732 21.4147 52.6367L9.09638 63.1404L1.03161 70.0204L11.211 67.4801L26.771 63.5949C36.5627 61.1542 48.2932 59.3237 58.9392 58.5765C59.0968 58.5703 59.2604 58.5641 59.4179 58.5641C62.0597 58.5641 63.8593 59.8591 64.2107 61.0733L64.2228 61.1168L64.2349 61.1542L64.241 61.1853L64.2471 61.1978C64.3622 61.5714 64.2895 61.6897 64.2592 61.7395C64.0653 62.0695 63.3018 62.6921 61.6598 62.9847C52.4559 64.3919 40.8041 67.7353 29.6673 71.0415C23.8444 72.7475 18.9183 74.1359 15.0283 75.1633C10.7687 76.284 7.75125 76.9004 6.04256 77C5.05491 76.9751 2.00108 74.827 0.558996 71.2968C-0.192343 69.4476 -0.186284 68.084 0.577174 67.2372L0.643825 67.1812L0.710476 67.1003C9.55082 57.6924 28.3828 42.4692 36.4354 35.9628L36.4657 35.9379L39.5862 33.4163L41.6281 31.7663L39.8831 29.7864L37.2171 26.7604C31.8183 20.6338 24.1656 13.6604 22.3902 12.2595C22.2872 12.0914 22.1539 11.3255 22.4205 10.0554C22.778 8.36808 23.699 6.4753 24.8806 4.981C26.0742 3.48047 27.2133 2.77068 27.8132 2.62748C35.1327 0.884127 42.8642 0 50.8011 0C57.1693 0 63.7072 0.566589 70.2572 1.68731H70.2693L70.3178 1.69354C70.645 1.74958 70.8449 1.81806 70.9479 1.86165C71.0691 2.34107 71.0091 3.63613 70.4456 4.90006Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-creativity" viewBox="0 0 78 103"><path d="M77.0667 28.942C75.7904 21.5078 71.7187 16.1134 68.7354 12.3333L70.6225 10.0495L70.6381 9.97861C71.2465 9.09266 71.8542 8.2067 72.4626 7.32074C73.4468 5.88746 74.8249 4.68965 74.6816 2.78465C74.6213 1.98296 74.3003 1.20726 73.796 0.58512C72.515 -0.994637 70.9263 1.00723 70.1879 2.08928C68.9414 3.91789 67.6204 5.67877 66.3786 7.51369L65.8539 8.29333C64.3271 7.29318 61.9389 5.72602 61.9389 5.72602C54.3123 2.66259 45.5035 5.20626 38.4798 8.89971C35.5357 10.4432 32.8265 12.4042 30.0233 14.1761C27.2984 15.9007 24.6988 17.8144 22.2402 19.9092C17.3229 24.0909 12.985 28.9577 9.38311 34.3286C1.92101 45.4641 -4.17082 61.3089 3.64364 73.8855C3.70628 73.9879 3.76892 74.0824 3.83156 74.1848C6.29022 78.02 10.4793 80.7054 14.3161 82.9813L16.2736 84.139L16.485 84.0839C10.9413 92.9277 6.45465 100.189 4.84164 103C7.96586 99.5901 12.6796 93.0773 18.0589 85.1943L18.7714 85.6195L19.7032 85.8558C33.2125 89.2807 47.1783 87.1315 58.0003 78.0003C62.6491 74.0777 66.406 69.1644 69.5646 63.9809C72.764 58.7306 75.6471 53.14 77.0667 47.1163C78.4949 41.0611 78.1128 35.0279 77.0667 28.942ZM18.7714 80.4534C16.5328 79.6037 14.1932 78.3043 14.1908 78.3027C4.27553 72.798 3.43144 59.9874 7.50154 50.4435C11.1277 41.9407 15.9964 34.1286 22.2519 27.3166C24.5211 24.8453 26.9711 22.5419 29.5864 20.4455C34.6462 16.3882 40.3896 13.1901 46.5065 11.0622C49.9048 9.88017 53.0439 8.96035 56.6301 9.5628C59.0895 9.97625 60.7706 11.5757 62.613 13.0822L48.4484 34.0459C44.4002 40.0389 30.0398 62.5225 18.7722 80.4542L18.7714 80.4534ZM71.2019 35.7304C70.6146 39.4317 69.4088 43.07 68.0464 46.4564C66.0411 51.4405 63.324 56.1207 60.091 60.3993C55.9731 65.8481 51.0621 70.7079 45.4776 74.6289C39.7193 78.672 32.9518 82.2324 25.7504 82.1174C24.4725 82.097 23.197 81.9505 21.9497 81.6662C21.613 81.5323 21.2293 81.3906 20.83 81.233C29.0124 69.0817 36.8817 56.7177 44.8606 44.4324C48.0944 39.4632 51.3596 34.5019 54.844 29.7059C58.2971 24.9493 62.3061 20.6573 65.7435 15.8929C65.7435 16.0504 68.3431 19.4761 68.5389 19.8147C69.5098 21.4763 70.2615 23.264 70.7861 25.1225C71.7649 28.5876 71.7735 32.1866 71.2019 35.7304Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-character" viewBox="0 0 70 88"><path d="M57.7165 63.5936C58.0873 62.6048 58.4711 61.5965 58.8419 60.6273C60.6827 55.8005 62.5886 50.8111 63.6489 45.8022L63.6619 45.7242L63.6749 45.6656L63.6945 45.6006L63.714 45.5225C63.9677 44.5142 64.3059 43.3303 64.6702 42.0813C65.5288 39.1475 66.5891 35.4982 67.4282 30.9772C68.6863 24.1917 69.2119 17.3321 68.9966 10.5415C68.9322 8.51644 68.0787 6.59159 66.6041 5.20211C65.9575 4.59258 65.2329 3.95443 64.5134 3.38914L64.5199 3.37613C61.4496 1.32053 57.8395 0 55.2505 0C53.5268 0 53.3056 0.48788 53.1039 0.917215C42.3651 24.6152 14.5895 56.3795 3.32961 66.0525C0.259328 68.7066 -0.436689 73.7415 0.233309 77.5535C0.890297 81.2679 6.23727 86.9403 10.0881 87.0964C21.9269 82.8876 53.8201 77.3908 66.5696 77.3908H66.7192C66.5891 77.1241 66.4135 76.8184 66.1923 76.4866C65.0865 74.8539 63.4213 73.4878 61.5023 72.6291L57.5929 70.8858L55.3553 69.8905L56.2139 67.6007L57.7165 63.5936ZM47.3348 67.5617L46.3331 70.2743L45.7606 71.829L44.1084 71.9656L41.2268 72.2063C37.8703 72.486 34.4292 72.9154 30.793 73.3772C29.6091 73.5268 28.3862 73.6764 27.1243 73.8326L15.5782 75.2377L8.9693 76.0443L13.282 70.9703L20.8146 62.1104C22.9482 59.606 24.8541 57.2121 26.4868 54.9939L26.5063 54.9679L26.5193 54.9418L26.5389 54.9223L26.5714 54.8833C29.9669 50.4859 33.447 45.6656 37.1417 40.5656C39.2168 37.6904 41.8057 34.1061 44.4206 30.5738L58.6857 11.2733L62.6342 5.92677C63.1272 5.25935 64.1856 5.67568 64.0913 6.50052L63.5325 11.3858C63.3718 12.7883 63.1077 14.1765 62.7422 15.5393L57.0725 36.6697C54.3405 46.8567 50.6067 58.6953 47.3348 67.5617Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-communication" viewBox="0 0 73 83"><path d="M72.6288 81.3189C71.4505 83.0991 67.7812 83.2455 66.1003 82.7616C63.6179 82.047 62.1436 79.8655 60.4249 78.1226C58.282 75.949 56.1688 73.7459 54.1232 71.483C50.1631 67.1012 46.5007 62.4736 43.243 57.5576L42.3705 56.696C41.4258 55.2714 40.9701 54.1261 39.9625 52.628L39.6132 52.1023C39.3842 51.7631 39.1552 51.4296 38.9262 51.0847L33.2354 42.6841L30.5932 38.1752L30.0258 42.5564L29.3216 52.6303L29.3102 52.7603L29.2987 52.9073C28.8865 58.8714 27.6172 66.7858 28.3386 72.699L28.3443 72.7159V72.7498L28.3501 72.7725C28.4588 73.5978 28.2069 74.3271 27.5497 75.0614C26.6376 76.0807 24.4707 76.9479 23.0989 76.7687C20.7046 76.4555 21.3819 72.6006 21.4002 71.0646C21.4701 65.1893 23.0279 59.461 23.4968 53.6213C24.4626 41.6055 28.0426 34.7771 20.0663 24.3923L19.906 24.1774C19.6827 23.8948 19.4651 23.6065 19.2418 23.3125C15.1374 17.8855 8.0754 6.55205 1.17711 3.03014L1.15993 3.02448L1.12558 3.00752L0.83932 2.86619C0.822717 2.85772 0.805541 2.84924 0.788938 2.84132C-0.449423 2.22682 -0.168315 0.386159 1.20173 0.183211C1.96432 0.0701477 2.81165 4.8666e-05 3.73055 4.8666e-05C6.81013 4.8666e-05 12.8176 -0.028217 14.163 1.27766C23.3291 10.2209 30.6041 21.9173 36.9075 32.3191C38.9858 35.7392 41.0068 39.3064 42.9648 42.7661C47.5335 50.8218 54.5411 59.1489 60.4896 66.7411C62.5621 69.3811 65.0812 72.4508 68.1156 75.1869C69.3557 76.3091 70.8448 76.875 72.0488 78.0101C72.6253 78.5539 73.0112 79.2962 72.9998 80.0831C72.9929 80.5619 72.8583 80.9718 72.6288 81.3189Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-collaboration" viewBox="0 0 78 80"><path d="M8.53258 39.3405C1.80455 53.3484 -0.275527 66.4653 0.0285195 77.3747C0.0509925 78.174 0.257877 78.8649 0.72981 79.3279C3.17673 81.7309 9.12944 75.5054 9.82941 72.0858C10.2405 70.0771 9.63772 68.6279 9.18959 67.1219C6.92311 59.5006 8.91264 48.9433 14.324 37.635C17.0571 31.9234 20.6707 26.0023 25.0555 20.1632C28.5911 15.4556 33.1815 12.2533 38.0754 10.5049C48.6569 6.72597 57.658 10.3193 60.7731 15.9404C67.523 28.1207 69.1952 51.8636 48.6093 75.4479C47.0897 77.1891 46.8398 78.9375 48.1334 79.2242C60.3124 81.9258 67.6043 68.1365 70.841 58.6638C72.8934 52.6562 74.7547 46.1083 76.1242 39.9522C77.8606 32.1499 78.1758 23.5306 75.7349 15.8341C72.4584 5.50332 61.6912 -5.28055 42.9355 2.86119C27.3478 9.62902 15.3822 25.0816 8.53258 39.3405Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-curation" viewBox="0 0 75 75"><path d="M71.581 9.16663C65.192 -0.862917 53.4314 -1.96031 43.108 2.49582C34.155 6.36094 27.0474 13.3565 21.4804 21.1869C15.7562 29.2375 11.5295 36.8745 11.1226 46.978C10.8897 52.7518 13.2691 60.8422 15.0576 67.0035C13.266 67.0203 8.14282 67.0035 7.18066 67.0035C2.47627 66.9457 -3.59342 76.0284 2.69349 74.7705C5.7227 74.8165 8.62359 74.8613 11.6528 74.9074C12.1624 75.0536 12.6926 74.9074 13.2478 74.9416C24.596 75.6539 18.6001 69.8714 14.9374 56.5758C10.1817 39.3125 23.8911 14.7506 41.5587 9.30971C48.4991 7.17216 56.0887 7.79427 60.0006 14.8141C66.3933 26.2863 61.0911 48.6471 41.5943 70.86C40.1552 72.4998 39.9185 74.1465 41.1436 74.4171C44.124 75.0753 47.5852 74.8066 50.6319 74.7892C54.4743 74.7668 59.9912 75.484 62.8057 72.5434C63.8111 71.4926 67.1314 66.9189 63.5901 66.8741C61.6382 66.8493 54.0474 67.0042 53.8088 67.0042C53.7256 67.0042 53.6924 67.0546 53.6367 67.0042C56.5789 64.0741 64.7607 52.9341 66.8221 49.6525C69.2692 45.7581 71.2141 41.5496 72.5938 37.1669C73.6593 33.7826 74.3879 30.2939 74.7504 26.7647C75.3789 20.6388 74.992 14.5254 71.5797 9.16787L71.581 9.16663Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-commerciality" viewBox="0 0 102 62"><path d="M101.163 4.63127C101.127 4.4603 101.079 4.29133 101.02 4.12566C99.7443 0.552633 94.9861 0.761369 91.8816 0.962816C84.7591 1.42402 79.2447 5.14284 74.1312 9.89407C69.5781 14.1244 65.169 19.2136 60.9319 23.7217C58.3194 26.5008 56.738 26.0436 55.2309 22.8735C51.1478 14.2855 47.2088 6.11164 37.9844 2.3027C28.6199 -1.56388 17.2053 -0.718337 9.36443 6.03742C-5.50126 18.8452 -1.4069 42.2382 12.8062 53.828C19.6279 59.391 31.2716 63.3722 39.7949 59.3387C42.9452 57.8477 45.5291 55.378 48.3647 53.4019C51.8927 50.9428 54.6779 47.4851 58.6474 50.3829C61.1132 52.1827 64.0464 54.9108 66.2492 57.0233C69.918 60.542 75.2154 61.9442 80.1921 61.1212C84.6914 60.377 91.3086 57.024 91.7176 51.8315C91.9155 49.316 88.9172 45.9981 86.3386 47.3638C85.3427 47.8913 84.6197 48.8025 83.7672 49.5387C75.9284 56.3077 61.2294 45.4918 61.7751 36.6812C62.2412 29.1601 68.1062 24.1438 73.1572 18.936C78.045 13.8965 83.5933 8.27852 91.1134 8.74502C93.1869 8.87358 95.8199 10.4229 97.7612 10.0299C100.089 9.55876 101.649 6.92935 101.163 4.63259V4.63127ZM48.8075 42.1527C45.6533 47.9231 39.4457 52.6969 33.8044 53.9248C16.5845 57.6734 3.33145 37.202 5.71955 21.8994C6.66961 15.8122 9.95864 8.9743 15.7612 6.14344C24.3689 1.94421 33.3138 7.06188 39.3262 13.2835C45.3831 19.5509 52.7552 30.1368 50.0086 39.2993C49.7118 40.2893 49.3035 41.2456 48.8075 42.1527Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-coaching" viewBox="0 0 60 76"><path d="M59.6923 8.31368C59.6472 8.12606 59.5956 7.93843 59.5441 7.75728C58.5713 4.39946 54.5704 0.161745 51.362 0C41.0474 3.66837 13.5632 8.43661 2.20489 8.52072C2.27575 8.64364 2.35951 8.77304 2.4497 8.9089C3.39033 10.3064 4.8077 11.4709 6.44412 12.202L9.83293 13.7224L12.0427 14.7123L11.1923 16.9897L9.89092 20.4769C9.60744 21.2403 9.31752 22.0167 9.02761 22.7672L8.9052 23.0842C7.30099 27.3155 5.6388 31.689 4.7175 36.0691L4.69817 36.1532L4.69173 36.1791L4.68529 36.1985L4.6724 36.2697C4.6724 36.2697 4.66596 36.2891 4.65952 36.302C4.43403 37.2142 4.15055 38.2106 3.81554 39.3557C3.06175 41.9437 2.13402 45.1527 1.41244 49.0928C0.162579 55.8667 -0.262633 62.7246 0.156136 69.4856C0.185128 69.549 0.232159 69.6059 0.275324 69.6603C0.350059 69.7541 0.429947 69.844 0.511124 69.9326C0.620004 70.0517 0.730817 70.1681 0.843563 70.2833C0.978857 70.4217 1.11544 70.5583 1.25331 70.6941C1.40794 70.8462 1.56385 70.9969 1.7204 71.1464C1.88791 71.3062 2.05606 71.464 2.22615 71.6219C2.4001 71.783 2.57469 71.9428 2.75057 72.1013C2.92388 72.2579 3.09848 72.4125 3.27371 72.5665C3.43993 72.7121 3.60744 72.8563 3.77688 72.9987C3.85355 73.0634 3.92828 73.1326 4.01139 73.1876C4.14153 73.2749 4.27232 73.3597 4.40504 73.4425C4.52745 73.5188 4.6505 73.5932 4.7742 73.667C5.02095 73.8132 5.27157 73.9549 5.52412 74.0908C5.77473 74.2253 6.02857 74.3547 6.28434 74.4783C6.53625 74.5999 6.79138 74.717 7.04844 74.8277C7.2997 74.9364 7.55354 75.0392 7.80995 75.1363C8.05864 75.2307 8.30926 75.3194 8.56181 75.4022C8.80534 75.4818 9.0508 75.5555 9.2982 75.6222C9.53464 75.6862 9.77302 75.7438 10.0127 75.7943C10.2401 75.8421 10.4688 75.8829 10.6982 75.9159C10.914 75.9469 11.1311 75.9702 11.3489 75.9845C11.5003 75.9942 11.6523 76 11.8044 76C13.1444 76 13.2991 75.6636 13.4408 75.3466C18.7431 63.5974 28.1364 50.7484 35.0815 42.0336C42.8964 32.2254 51.5231 22.8054 57.0573 18.0242C59.5377 15.8827 60.5685 12.0655 59.6923 8.31304V8.31368ZM48.6625 14.1494L42.1362 21.8614C40.2807 24.0482 38.6185 26.1444 37.1882 28.0983L37.1303 28.1695L37.1174 28.1889L37.0981 28.2148C34.1409 32.0578 31.0935 36.2891 27.8658 40.7726C25.933 43.4576 23.7361 46.5049 21.4941 49.5586L9.13069 66.3477L4.17697 73.0084C4.13574 73.064 4.04747 73.0317 4.05134 72.9624L4.35156 67.8532C4.49652 65.385 4.89145 62.9381 5.52927 60.5508L9.96179 43.9687C12.3584 34.9951 15.6248 24.5917 18.4854 16.8085L19.3551 14.447L19.9221 12.9008L21.5585 12.7649L24.0582 12.5514C27.0089 12.3055 30.1465 11.9109 33.1745 11.5292L34.1667 11.4062C34.8882 11.3092 35.6291 11.2186 36.3829 11.128L46.3883 9.90525L52.934 9.103L48.6625 14.1494Z" fill="currentColor"/></symbol>
+  </svg>
+
+<div class="s1">
+  <section class="s1-hero" aria-label="Hero">
+    <div class="s1-hero-grid">
+      <div>
+        <h1 class="s1-headline">The learning platform built for the <svg class="hpm-accent hpm-chev hpm-accent--blue" aria-hidden="true"><use href="#hpm-chev"/></svg> <em class="hp-coral-strong">speed</em> and <em class="hp-coral-strong">complexity</em> of consulting</h1>
+      </div>
+
+      <div class="s1-mark-wrap">
+        <svg class="s1-mark" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          
+          
+          <g class="s1-ring-outer-wrap">
+            <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 250 250" to="360 250 250" dur="160s" repeatCount="indefinite" />
+            <polygon class="s1-ring-outer" points="250,90 352.8,127.4 407.6,222.2 388.6,330 304.7,400.3 195.3,400.3 111.4,330 92.4,222.2 147.2,127.4" stroke="var(--c-cream)" stroke-width="0.75" stroke-dasharray="4 8" />
+          </g>
+
+          
+          <g class="s1-ring-mid-wrap">
+            <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 250 250" to="-360 250 250" dur="120s" repeatCount="indefinite" />
+            <polygon class="s1-ring-mid" points="250,138 322,164.2 360.3,230.5 347,306 288.3,355.2 211.7,355.2 153,306 139.7,230.5 178,164.2" stroke="var(--c-coral)" stroke-width="2.25" />
+          </g>
+
+          
+          <g class="s1-ring-inner-wrap">
+            <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 250 250" to="360 250 250" dur="90s" repeatCount="indefinite" />
+            <polygon class="s1-ring-inner" points="250,178 296.3,194.8 320.9,237.5 312.4,286 274.6,317.6 225.4,317.6 187.6,286 179.1,237.5 203.7,194.8" stroke="var(--c-cream)" stroke-width="0.75" stroke-dasharray="2 6" />
+          </g>
+
+          <g class="s1-node" style="transform-origin: 250px 90px;">
+            <g class="s1-icon-float i1"><svg x="228" y="68" width="44" height="44" viewBox="0 0 84 78"><use href="#su-ic-curiosity"/></svg></g>
+          </g>
+
+          <g class="s1-node" style="transform-origin: 352.8px 127.4px;">
+            <g class="s1-icon-float i2"><svg x="330.8" y="105.4" width="44" height="44" viewBox="0 0 71 77"><use href="#su-ic-critical-thinking"/></svg></g>
+          </g>
+
+          <g class="s1-node" style="transform-origin: 407.6px 222.2px;">
+            <g class="s1-icon-float i3"><svg x="385.6" y="200.2" width="44" height="44" viewBox="0 0 78 103"><use href="#su-ic-creativity"/></svg></g>
+          </g>
+
+          <g class="s1-node" style="transform-origin: 388.6px 330px;">
+            <g class="s1-icon-float i4"><svg x="366.6" y="308" width="44" height="44" viewBox="0 0 70 88"><use href="#su-ic-character"/></svg></g>
+          </g>
+
+          <g class="s1-node" style="transform-origin: 304.7px 400.3px;">
+            <g class="s1-icon-float i5"><svg x="282.7" y="378.3" width="44" height="44" viewBox="0 0 73 83"><use href="#su-ic-communication"/></svg></g>
+          </g>
+
+          <g class="s1-node" style="transform-origin: 195.3px 400.3px;">
+            <g class="s1-icon-float i6"><svg x="173.3" y="378.3" width="44" height="44" viewBox="0 0 78 80"><use href="#su-ic-collaboration"/></svg></g>
+          </g>
+
+          <g class="s1-node" style="transform-origin: 111.4px 330px;">
+            <g class="s1-icon-float i7"><svg x="89.4" y="308" width="44" height="44" viewBox="0 0 75 75"><use href="#su-ic-curation"/></svg></g>
+          </g>
+
+          <g class="s1-node" style="transform-origin: 92.4px 222.2px;">
+            <g class="s1-icon-float i8"><svg x="70.4" y="200.2" width="44" height="44" viewBox="0 0 102 62"><use href="#su-ic-commerciality"/></svg></g>
+          </g>
+
+          <g class="s1-node" style="transform-origin: 147.2px 127.4px;">
+            <g class="s1-icon-float i9"><svg x="125.2" y="105.4" width="44" height="44" viewBox="0 0 60 76"><use href="#su-ic-coaching"/></svg></g>
+          </g>
+
+        </svg>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<div class="hp-intro">
+  <section class="hp-intro-section" aria-label="Introducing Showing Up">
+    <h2 class="hp-intro-headline hp-intro-reveal hp-intro-d1">Develop the behaviours and skills that define <em class="hp-coral-strong">great</em> <em class="hp-coral-strong">consulting</em></h2>
+    <p class="hp-intro-body hp-intro-reveal hp-intro-d2">Consulting is hard. You're solving complex problems, building trust with clients, and delivering work that has to land. We build training that develops those qualities in you and your team, so the work you deliver makes a real difference to your clients and to society.</p>
+  </section>
+</div>
+
+<div class="s5">
+  <section class="s5-section" aria-label="Why we built the platform">
+    <div class="s5-intro-grid">
+      <div class="s5-intro-text">
+        <h2 class="s5-headline s5-reveal s5-d1">The Showing Up platform provides video learning that helps you develop in the <em class="hp-coral-strong">moments</em> <em class="hp-coral-strong">that</em> <em class="hp-coral-strong">matter</em></h2>
+        <p class="s5-body s5-reveal s5-d2 hp-lead">Before those big moments, whether it's a pitch, starting a new role, or facing a complex client challenge, you rarely have the time to step into a classroom. We built a learning platform that fixes that problem.</p>
+      </div>
+
+      <div class="s5-intro-img-col s5-reveal s5-d2">
+        <div class="s5-intro-img-glow"></div>
+        <div class="s5-intro-img-wrap">
+          
+          <iframe
+            class="s5-intro-video"
+            data-src="https://fast.wistia.net/embed/iframe/uzixiqzyy0?autoPlay=true&muted=true&playbar=false&playButton=false&volumeControl=false&fullscreenButton=false&controlsVisibleOnLoad=false&endVideoBehavior=loop&fitStrategy=cover&silentAutoPlay=allow"
+            allowtransparency="true"
+            allow="autoplay; fullscreen"
+            allowfullscreen
+            title="The Showing Up Learning Platform"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<section class="ep-feature ep-feature--cream" aria-label="Concise modules">
+  <div class="ep-feature-grid ep-feature-grid--reverse">
+    <div class="ep-feature-head ep-reveal">
+      <h3 class="ep-h3">The platform provides <em class="ep-em hp-coral-strong">concise learning</em> content to develop one behaviour and skill at a time</h3>
+    </div>
+    <div class="ep-feature-media ep-reveal ep-d1">
+      <img class="ep-img" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/1584e016a978239f797ed623006dcfde.jpg" width="1600" height="829" alt="Showing Up Learning platform showing the Asking Thoughtful Questions module with a video lesson and lesson outline" decoding="async" loading="lazy" />
+    </div>
+    <div class="ep-feature-body ep-reveal ep-d2">
+      <p class="ep-body ep-body--dark hp-lead">Each learning component is built around a single idea, tool, and strategy that you can apply immediately to elevate your impact with clients. No theory for its own sake. An empirically backed concept, why it matters, and how to use it.</p>
+    </div>
+  </div>
+</section>
+
+
+<div class="sc">
+  <section class="sc-section" aria-label="Get in touch (mid-page)">
+    <h2 class="sc-headline sc-reveal sc-d1">Looking to support your team's <em class="hp-coral-strong">growth</em> and development?</h2>
+    <p class="sc-body sc-reveal sc-d2 hp-lead">Please get in touch with our team for an initial discovery call</p>
+    <a href="https://www.showinguplearning.com/contact-us" class="sc-pill sc-reveal sc-d3">Book a Discovery Call</a>
+  </section>
+</div>
+
+
+<section class="ep-feature ep-feature--cream" aria-label="Platform stats">
+  <div class="ep-feature-cards ep-reveal ep-d3">
+    <div class="s5-card s5-reveal s5-d1">
+      <div class="s5-card-stat" data-su-count="15">15</div>
+      <h3 class="s5-card-title">Self-assessments that pinpoint growth</h3>
+      <div class="s5-card-desc">15 diagnostic assessments give you a clear view of your natural strengths, your preferences and where your next development leap will come from.</div>
+    </div>
+    <div class="s5-card s5-reveal s5-d2">
+      <div class="s5-card-stat" data-su-count="80" data-su-suffix="+">80+</div>
+      <h3 class="s5-card-title">Engaging, practical modules</h3>
+      <div class="s5-card-desc">80+ bite-sized modules tied to the real consulting challenges you face every day, so you can apply new skills the same week you finish the lesson.</div>
+    </div>
+    <div class="s5-card s5-reveal s5-d3">
+      <div class="s5-card-stat">24/7</div>
+      <h3 class="s5-card-title">On-demand access</h3>
+      <div class="s5-card-desc">Access your learning anytime, anywhere, so it fits around client work, billable hours and travel, and your development never competes with delivery.</div>
+    </div>
+    <div class="s5-card s5-reveal s5-d4">
+      <div class="s5-card-stat" data-su-count="9">9</div>
+      <h3 class="s5-card-title">The Nine Dimensions</h3>
+      <div class="s5-card-desc">Every learning component is mapped to the Nine Dimensions, our consulting methodology, so you access the right learning at the right moment.</div>
+    </div>
+  </div>
+</section>
+
+
+<section class="ep-feature ep-feature--dark" aria-label="Downloadable toolkits">
+  <div class="ep-feature-grid ep-feature-grid--reverse">
+    <div class="ep-feature-head ep-reveal">
+      <h3 class="ep-h3">Access downloadable <em class="ep-em hp-coral-strong">toolkits</em> that not only make learning stick, but also provide effective, practical tools that immediately enhance your client delivery and results</h3>
+    </div>
+    <div class="ep-feature-media ep-reveal ep-d1">
+      <div class="wbm wbm--dark">
+
+        
+        <div class="wbm-row">
+          <div class="wbm-track wbm-track--left">
+            <div class="wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/942d1741e93547dc0844c182c6d375e3.png" width="1920" height="1080" alt="Trust Value Matrix" loading="lazy" /></div>
+            <div class="wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/72a7af124d8fb026033d83911f02723f.png" width="1920" height="1080" alt="Data Story Tree" loading="lazy" /></div>
+            <div class="wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/57c1454f0b16b64b1bf170580eb41bd2.png" width="1920" height="1080" alt="SUN Storytelling" loading="lazy" /></div>
+            <div class="wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/78ac2dac01d389b95ce7fc4c1731e42d.png" width="1920" height="1080" alt="5S Storytelling" loading="lazy" /></div>
+            <div class="wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/e59e1c4bbf970f86905d5391d58e9679.png" width="1920" height="1080" alt="Question Funnel" loading="lazy" /></div>
+            <div class="wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/fc99c8c7005f1cfef9ce3a7e76206970.png" width="1920" height="1080" alt="Beyond Small Talk" loading="lazy" /></div>
+            
+            <div class="wbm-slide" aria-hidden="true"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/942d1741e93547dc0844c182c6d375e3.png" width="1920" height="1080" alt="Trust Value Matrix" loading="lazy" /></div>
+            <div class="wbm-slide" aria-hidden="true"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/72a7af124d8fb026033d83911f02723f.png" width="1920" height="1080" alt="Data Story Tree" loading="lazy" /></div>
+            <div class="wbm-slide" aria-hidden="true"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/57c1454f0b16b64b1bf170580eb41bd2.png" width="1920" height="1080" alt="SUN Storytelling" loading="lazy" /></div>
+            <div class="wbm-slide" aria-hidden="true"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/78ac2dac01d389b95ce7fc4c1731e42d.png" width="1920" height="1080" alt="5S Storytelling" loading="lazy" /></div>
+            <div class="wbm-slide" aria-hidden="true"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/e59e1c4bbf970f86905d5391d58e9679.png" width="1920" height="1080" alt="Question Funnel" loading="lazy" /></div>
+            <div class="wbm-slide" aria-hidden="true"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/fc99c8c7005f1cfef9ce3a7e76206970.png" width="1920" height="1080" alt="Beyond Small Talk" loading="lazy" /></div>
+          </div>
+        </div>
+
+        
+        <div class="wbm-row">
+          <div class="wbm-track wbm-track--right">
+            <div class="wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/78ac2dac01d389b95ce7fc4c1731e42d.png" width="1920" height="1080" alt="5S Storytelling" loading="lazy" /></div>
+            <div class="wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/e59e1c4bbf970f86905d5391d58e9679.png" width="1920" height="1080" alt="Question Funnel" loading="lazy" /></div>
+            <div class="wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/fc99c8c7005f1cfef9ce3a7e76206970.png" width="1920" height="1080" alt="Beyond Small Talk" loading="lazy" /></div>
+            <div class="wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/942d1741e93547dc0844c182c6d375e3.png" width="1920" height="1080" alt="Trust Value Matrix" loading="lazy" /></div>
+            <div class="wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/72a7af124d8fb026033d83911f02723f.png" width="1920" height="1080" alt="Data Story Tree" loading="lazy" /></div>
+            <div class="wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/57c1454f0b16b64b1bf170580eb41bd2.png" width="1920" height="1080" alt="SUN Storytelling" loading="lazy" /></div>
+            
+            <div class="wbm-slide" aria-hidden="true"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/78ac2dac01d389b95ce7fc4c1731e42d.png" width="1920" height="1080" alt="5S Storytelling" loading="lazy" /></div>
+            <div class="wbm-slide" aria-hidden="true"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/e59e1c4bbf970f86905d5391d58e9679.png" width="1920" height="1080" alt="Question Funnel" loading="lazy" /></div>
+            <div class="wbm-slide" aria-hidden="true"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/fc99c8c7005f1cfef9ce3a7e76206970.png" width="1920" height="1080" alt="Beyond Small Talk" loading="lazy" /></div>
+            <div class="wbm-slide" aria-hidden="true"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/942d1741e93547dc0844c182c6d375e3.png" width="1920" height="1080" alt="Trust Value Matrix" loading="lazy" /></div>
+            <div class="wbm-slide" aria-hidden="true"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/72a7af124d8fb026033d83911f02723f.png" width="1920" height="1080" alt="Data Story Tree" loading="lazy" /></div>
+            <div class="wbm-slide" aria-hidden="true"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/57c1454f0b16b64b1bf170580eb41bd2.png" width="1920" height="1080" alt="SUN Storytelling" loading="lazy" /></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="ep-feature ep-feature--cream" aria-label="Team challenges">
+  <div class="ep-feature-grid ep-feature-grid--reverse">
+    <div class="ep-feature-head ep-reveal">
+      <h3 class="ep-h3">The platform provides team challenges that turn learning into <em class="ep-em hp-coral-strong">shared</em> progress. Come together with your colleagues to solve real-world consulting problems.</h3>
+    </div>
+    <div class="ep-feature-media ep-reveal ep-d1">
+      <img class="ep-img" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/cf70c530238c3a9b8e0a77301f9f98a7.png" width="2740" height="1579" alt="Team challenges" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<section class="cg-section" aria-label="The Nine Dimensions">
+
+  <div class="cg-intro">
+    <div class="cg-overline cg-reveal">Award-Winning Methodology</div>
+    <h2 class="cg-headline cg-reveal">How people find <em class="hp-coral-strong">the right learning</em> at the right time</h2>
+    <p class="cg-body cg-reveal">All of our learning is organised by The Nine Dimensions. Built over two decades of research with 11,000+ consultants, the Nine Dimensions define the values, behaviours and skills of the people and teams who make the greatest impact with clients. Click on the dimension that interests you most, and you'll be taken directly to the platform's learning content for that dimension.</p>
+  </div>
+
+  <div class="cg-grid">
+        <div class="cg-rowlab cg-reveal">
+          <span class="cg-rowlab-cluster">Cluster 1</span>
+          <span class="cg-rowlab-name">Thinking</span>
+        </div>
+        <a href="https://www.showinguplearning.com/curiosity" class="cg-tile cg-thinking cg-reveal" aria-label="Explore the Curiosity dimension">
+          <span class="cg-name">Curiosity</span>
+          <svg class="cg-icon" viewBox="0 0 84 78" aria-hidden="true"><use href="#su-ic-curiosity"/></svg>
+          <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a href="https://www.showinguplearning.com/critical-thinking" class="cg-tile cg-thinking cg-reveal" aria-label="Explore the Critical Thinking dimension">
+          <span class="cg-name">Critical Thinking</span>
+          <svg class="cg-icon" viewBox="0 0 71 77" aria-hidden="true"><use href="#su-ic-critical-thinking"/></svg>
+          <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a href="https://www.showinguplearning.com/creativity" class="cg-tile cg-thinking cg-reveal" aria-label="Explore the Creativity dimension">
+          <span class="cg-name">Creativity</span>
+          <svg class="cg-icon" viewBox="0 0 78 103" aria-hidden="true"><use href="#su-ic-creativity"/></svg>
+          <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <div class="cg-rowlab cg-reveal">
+          <span class="cg-rowlab-cluster">Cluster 2</span>
+          <span class="cg-rowlab-name">Presence</span>
+        </div>
+        <a href="https://www.showinguplearning.com/character" class="cg-tile cg-presence cg-reveal" aria-label="Explore the Character dimension">
+          <span class="cg-name">Character</span>
+          <svg class="cg-icon" viewBox="0 0 70 88" aria-hidden="true"><use href="#su-ic-character"/></svg>
+          <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a href="https://www.showinguplearning.com/communication" class="cg-tile cg-presence cg-reveal" aria-label="Explore the Communication dimension">
+          <span class="cg-name">Communication</span>
+          <svg class="cg-icon" viewBox="0 0 73 83" aria-hidden="true"><use href="#su-ic-communication"/></svg>
+          <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a href="https://www.showinguplearning.com/collaboration" class="cg-tile cg-presence cg-reveal" aria-label="Explore the Collaboration dimension">
+          <span class="cg-name">Collaboration</span>
+          <svg class="cg-icon" viewBox="0 0 78 80" aria-hidden="true"><use href="#su-ic-collaboration"/></svg>
+          <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <div class="cg-rowlab cg-reveal">
+          <span class="cg-rowlab-cluster">Cluster 3</span>
+          <span class="cg-rowlab-name">Impact</span>
+        </div>
+        <a href="https://www.showinguplearning.com/curation" class="cg-tile cg-impact cg-reveal" aria-label="Explore the Curation dimension">
+          <span class="cg-name">Curation</span>
+          <svg class="cg-icon" viewBox="0 0 75 75" aria-hidden="true"><use href="#su-ic-curation"/></svg>
+          <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a href="https://www.showinguplearning.com/commerciality" class="cg-tile cg-impact cg-reveal" aria-label="Explore the Commerciality dimension">
+          <span class="cg-name">Commerciality</span>
+          <svg class="cg-icon" viewBox="0 0 102 62" aria-hidden="true"><use href="#su-ic-commerciality"/></svg>
+          <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a href="https://www.showinguplearning.com/coaching" class="cg-tile cg-impact cg-reveal" aria-label="Explore the Coaching dimension">
+          <span class="cg-name">Coaching</span>
+          <svg class="cg-icon" viewBox="0 0 60 76" aria-hidden="true"><use href="#su-ic-coaching"/></svg>
+          <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+  </div>
+</section>
+
+<div class="sp">
+  <section class="sp-section" aria-label="Plans for teams">
+    <div class="sp-grid">
+      <div>
+        <h2 class="sp-headline sp-reveal sp-d1">The platform provides all of the learning you need, at a simple, <em class="hp-coral-strong">fixed</em> annual price. Whether you're a team of ten or ten thousand, you can access all learning content, 24/7, with all reporting and support included.</h2>
+        <a href="https://www.showinguplearning.com/pricing" class="sp-pill sp-reveal sp-d2">See Pricing</a>
+      </div>
+
+      <div class="sp-card sp-reveal sp-d2">
+        <div class="sp-card-eyebrow">Starting from</div>
+        <div class="sp-card-price">
+          <div class="sp-card-number">&pound;495</div>
+          <div class="sp-card-unit">per person, per year</div>
+        </div>
+        <div class="sp-card-divider"></div>
+        <ul class="sp-card-list">
+          <li class="sp-card-item">
+            <svg class="sp-card-tick" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5l3.5 3.5L14 5.5"/></svg>
+            Full platform access
+          </li>
+          <li class="sp-card-item">
+            <svg class="sp-card-tick" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5l3.5 3.5L14 5.5"/></svg>
+            Reporting &amp; analytics
+          </li>
+          <li class="sp-card-item">
+            <svg class="sp-card-tick" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5l3.5 3.5L14 5.5"/></svg>
+            Ongoing support
+          </li>
+        </ul>
+        <div class="sp-card-note">Custom plans available for larger teams and firm-wide rollouts.</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sf">
+  <section class="sf-section" aria-label="Designed to elevate your existing learning investment">
+    <div class="sf-intro-grid">
+      <div class="sf-feature-head">
+        <h2 class="sf-headline sf-reveal sf-d1"><svg class="hpm-accent hpm-arrow hpm-accent--coral" aria-hidden="true"><use href="#hpm-arrow"/></svg> Designed to <em class="hp-coral-strong">elevate</em> your existing learning and development offer</h2>
+      </div>
+      <div class="sf-feature-media sf-reveal sf-d3">
+        <div class="sf-photo-wrap">
+          <img class="sf-photo-img" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/f36522f734a03fb6580e7913e5f0323f.png" width="1920" height="1080" alt="Designed to elevate your existing learning investment" loading="lazy" />
+        </div>
+      </div>
+      <div class="sf-feature-body sf-body-stack">
+        <p class="sf-body sf-reveal sf-d2 hp-lead">Your organisation already invests in your people: The Showing Up platform both elevates and embeds the learning you already have, and creates the learning you don't have, in the moments that matter most.</p>
+      </div>
+    </div>
+    </section>
+</div>
+
+<div class="sf sf--light">
+  <section class="sf-section sf-section--cards-only" aria-label="How to access the platform">
+    <h2 class="sf-cards-heading sf-reveal sf-d3">Accessing the platform is easy, and can be rolled out in days</h2>
+
+    <div class="sf-cards">
+      <div class="sf-card sf-reveal sf-d4">
+        <svg class="sf-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 30l8-10 6 6 10-14"/>
+          <path d="M23 12h6v6"/>
+          <path d="M5 35h30"/>
+        </svg>
+        <h3 class="sf-card-title">Track engagement and progress</h3>
+        <div class="sf-card-desc">See who's engaged, what they've completed, and how your team's capability is developing over time, with leadership reports ready in minutes.</div>
+      </div>
+
+      <div class="sf-card sf-reveal sf-d5">
+        <svg class="sf-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 8h24M8 16h24M8 24h16M8 32h10"/>
+          <circle cx="32" cy="28" r="5"/>
+          <path d="M30 28l1.5 1.5L34 27"/>
+        </svg>
+        <h3 class="sf-card-title">Assign pathways by role and level</h3>
+        <div class="sf-card-desc">Curate the learning journey for different career stages, from early-career to senior consultant, or let your people chart their own path through it.</div>
+      </div>
+
+      <div class="sf-card sf-reveal sf-d6">
+        <svg class="sf-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="15" cy="20" r="9"/>
+          <circle cx="25" cy="20" r="9"/>
+        </svg>
+        <h3 class="sf-card-title">Complement your existing programmes</h3>
+        <div class="sf-card-desc">Use the platform as pre-work before workshops, reinforcement after training, or continuous development that fits around the programmes you already run.</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="s7">
+  <section class="s7-section" aria-label="Consultants supported">
+    <h2 class="s7-headline s7-reveal s7-d1">
+      To date, we have helped <em class="hp-coral-strong">11,000+</em> consultants elevate their impact, build deeper trust with clients, and solve some of society's most complex problems.
+    </h2>
+  </section>
+</div>
+
+
+<style>
+  .st-section *, .st-section *::before, .st-section *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .st-section button { background: none; border: none; cursor: pointer; font: inherit; color: inherit; }
+
+  .st-section {
+    --st-coral: #FF8269;
+    --st-coral-dark: #e8614a;
+    --st-cream: #FFF6F1;
+    --st-ink: #1e1d1d;
+    --st-text: #353434;
+    --st-ease: cubic-bezier(.16, 1, .3, 1);
+    --st-dur: .8s;
+    --st-quick: .25s;
+    /* Deck geometry (tunable) */
+    --st-card-w: 760px;
+    --st-peek: 78%;    /* how far the side cards slide off-centre */
+    --st-peek-scale: .9;
+
+    font-family: 'DM Sans', sans-serif;
+    background: var(--st-cream);
+    color: var(--st-text);
+    padding: 96px 80px;
+    overflow: hidden; /* the amplification orbs bleed off the edge */
+  }
+
+  .st-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .st-overline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--st-coral);
+    margin: 0 0 24px;
+    text-align: left !important;
+  }
+  .st-overline::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--st-coral);
+    flex: 0 0 30px;
+  }
+
+  .st-headline {
+    font-size: clamp(34px, 4.4vw, 56px);
+    font-weight: 300;
+    line-height: 1.18;
+    letter-spacing: -.03em;
+    color: var(--st-ink);
+    margin: 0 0 56px;
+    max-width: 760px;
+    text-align: left !important;
+  }
+  .st-headline em {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--st-coral);
+  }
+
+  /* -- DECK -- */
+  .st-deck-wrap {
+    position: relative;
+  }
+  .st-deck {
+    position: relative;
+    width: 100%;
+    max-width: var(--st-card-w);
+    margin: 0 auto;
+    /* JS sets a FIXED height = the tallest card, so advancing never shifts the controls */
+    min-height: 320px;
+  }
+
+  /* Amplification accent - concentric coral oval rings bleeding off a corner */
+  .st-orbs {
+    position: absolute;
+    right: -140px;
+    bottom: -120px;
+    width: 420px;
+    height: 340px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .st-orb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255, 130, 105, .4);
+    border-radius: 50%;
+    animation: st-breathe 7s ease-in-out infinite alternate;
+  }
+  .st-orb:nth-child(1) { width: 40%; height: 50%; }
+  .st-orb:nth-child(2) { width: 68%; height: 78%; animation-delay: .7s; opacity: .7; }
+  .st-orb:nth-child(3) { width: 100%; height: 100%; animation-delay: 1.4s; opacity: .45; }
+  @keyframes st-breathe {
+    from { transform: translate(-50%, -50%) scale(.96); }
+    to { transform: translate(-50%, -50%) scale(1.05); }
+  }
+
+  .st-card {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    border-radius: 24px;
+    transition: transform var(--st-dur) var(--st-ease), opacity var(--st-dur) var(--st-ease);
+    will-change: transform, opacity;
+    z-index: 1;
+  }
+  /* Deck positions - set by JS via is-active / is-prev / is-next / is-hidden.
+     translateY(-50%) keeps every card vertically centred in the fixed-height deck. */
+  .st-card.is-active { transform: translateX(0) translateY(-50%) scale(1); opacity: 1; z-index: 3; }
+  .st-card.is-next { transform: translateX(var(--st-peek)) translateY(-50%) scale(var(--st-peek-scale)); opacity: .5; z-index: 1; }
+  .st-card.is-prev { transform: translateX(calc(-1 * var(--st-peek))) translateY(-50%) scale(var(--st-peek-scale)); opacity: .5; z-index: 1; }
+  .st-card.is-hidden { transform: translateY(-50%) scale(.85); opacity: 0; z-index: 0; pointer-events: none; }
+  .st-card.is-next:hover, .st-card.is-prev:hover { opacity: .78; }
+
+  /* The side cards are clickable to advance; the active card is not a button */
+  .st-card.is-next, .st-card.is-prev { cursor: pointer; }
+
+  .st-card-inner {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 56px;
+    align-items: center;
+    padding: 56px;
+    border-radius: 24px;
+  }
+  /* Active = coral fill; side cards = white with a hairline border, ink text */
+  .st-card.is-active .st-card-inner {
+    background: var(--st-coral);
+  }
+  .st-card:not(.is-active) .st-card-inner {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, .08);
+  }
+
+  /* Photo window: a circle, echoing the amplification ovals */
+  .st-photo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, .18);
+  }
+  .st-card:not(.is-active) .st-photo { background: var(--st-cream); }
+  .st-photo-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  .st-quote-content { min-width: 0; }
+
+  .st-quote-mark {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 68px;
+    line-height: .8;
+    display: block;
+    margin: 0 0 12px;
+    user-select: none;
+    color: rgba(255, 255, 255, .42);
+  }
+  .st-card:not(.is-active) .st-quote-mark { color: rgba(255, 130, 105, .32); }
+
+  .st-quote { margin: 0; }
+  .st-quote-text {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(19px, 1.75vw, 25px);
+    line-height: 1.5;
+    letter-spacing: -.01em;
+    color: #ffffff;
+    margin: 0 0 36px;
+    text-align: left !important;
+  }
+  .st-card:not(.is-active) .st-quote-text { color: var(--st-ink); }
+
+  .st-attr-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 4px;
+    text-align: left !important;
+  }
+  .st-card:not(.is-active) .st-attr-name { color: var(--st-ink); }
+  .st-attr-role {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    color: rgba(255, 255, 255, .62);
+    text-align: left !important;
+  }
+  .st-card:not(.is-active) .st-attr-role { color: rgba(53, 52, 52, .6); }
+
+  /* -- CONTROLS -- */
+  .st-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 48px 0 0;
+  }
+  .st-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, .12);
+    color: var(--st-ink);
+    transition: background var(--st-quick), color var(--st-quick), border-color var(--st-quick);
+    flex: 0 0 auto;
+  }
+  .st-arrow:hover { background: var(--st-coral); color: var(--st-ink); border-color: var(--st-coral); }
+  .st-arrow:focus-visible { outline: 2px solid var(--st-coral); outline-offset: 3px; }
+  .st-chev { width: 20px; height: 20px; display: block; }
+
+  .st-dots {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .st-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(30, 29, 29, .2);
+    padding: 0;
+    transition: background var(--st-quick), width var(--st-quick), border-radius var(--st-quick);
+  }
+  .st-dot.is-on {
+    width: 26px;
+    border-radius: 100px;
+    background: var(--st-coral);
+  }
+  .st-dot:focus-visible { outline: 2px solid var(--st-coral); outline-offset: 3px; }
+
+  /* One card only: JS sets data-single and the controls are hidden */
+  .st-section[data-single="true"] .st-controls { display: none; }
+
+  /* -- SCROLL REVEAL -- */
+  .st-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity var(--st-dur) var(--st-ease), transform var(--st-dur) var(--st-ease);
+  }
+  .st-reveal.is-revealed { opacity: 1; transform: none; }
+  .st-r2 { transition-delay: .12s; }
+  .st-r3 { transition-delay: .24s; }
+
+  /* -- MOBILE: single full-width card, photo above quote, swipeable -- */
+  @media (max-width: 960px) {
+    .st-section { padding: 72px 32px; }
+    .st-headline { margin: 0 0 40px; }
+    .st-deck { max-width: 100%; }
+    .st-card.is-prev, .st-card.is-next {
+      opacity: 0 !important;
+      transform: translateY(-50%) scale(.92) !important;
+      pointer-events: none;
+    }
+    .st-card-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 40px 32px;
+    }
+    .st-photo {
+      order: -1;
+      aspect-ratio: 1 / 1;
+      width: 240px;
+      max-width: 68%;
+      margin: 0 auto;
+      align-self: center !important;
+      border-radius: 50%;
+    }
+    .st-photo-img { object-position: center top; }
+    .st-orbs { right: -120px; bottom: -100px; width: 300px; height: 240px; }
+    .st-controls { margin-top: 36px; gap: 16px; }
+  }
+
+  @media (max-width: 540px) {
+    .st-section { padding: 56px 22px; }
+    .st-card-inner { padding: 32px 24px; }
+    .st-quote-mark { font-size: 76px; }
+  }
+
+  /* -- REDUCED MOTION -- */
+  @media (prefers-reduced-motion: reduce) {
+    .st-section .st-orb { animation: none !important; }
+    .st-section .st-card { transition: opacity var(--st-quick) linear !important; }
+    .st-section .st-deck { transition: none !important; }
+    .st-section .st-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+
+<noscript>
+  <style>
+    /* Without JS the deck can't position itself - stack every quote in flow,
+       full opacity, and hide the controls so all testimonials stay readable. */
+    .st-deck { max-width: 720px !important; min-height: 0 !important; height: auto !important; }
+    .st-card {
+      position: static !important;
+      transform: none !important;
+      opacity: 1 !important;
+      margin: 0 0 24px !important;
+    }
+    .st-orbs, .st-controls { display: none !important; }
+  </style>
+</noscript>
+
+<section class="st-section" aria-label="What clients say" aria-roledescription="carousel">
+  <div class="st-inner">
+    <div class="st-deck-wrap st-reveal">
+      <div class="st-orbs" aria-hidden="true">
+        <span class="st-orb"></span><span class="st-orb"></span><span class="st-orb"></span>
+      </div>
+
+      <div class="st-deck">
+        
+        <article class="st-card">
+          <div class="st-card-inner">
+            <div class="st-photo">
+              <img
+                class="st-photo-img"
+                src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/ff6361942a6bd254ecda2896819b1a29.jpg"
+                width="719" height="1080"
+                alt="Ikigai Rose, Head of Consulting at Sustain the Future"
+                loading="lazy"
+              />
+            </div>
+            <div class="st-quote-content">
+              <span class="st-quote-mark" aria-hidden="true">&ldquo;</span>
+              <blockquote class="st-quote">
+                <p class="st-quote-text">What I love about the platform is that our team can access the right learning at the right time. It&rsquo;s helped our junior consultants show up more composed, capable, and compelling in front of clients, and it&rsquo;s helped our senior clients elevate their commercial performance. And they&rsquo;ve all genuinely loved the learning.</p>
+              </blockquote>
+              <div class="st-attr">
+                <div class="st-attr-name">Ikigai Rose</div>
+                <div class="st-attr-role">Head of Consulting at Sustain the Future</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        
+      </div>
+    </div>
+
+    <div class="st-controls">
+      <button class="st-arrow st-prev" type="button" aria-label="Previous testimonial">
+        <svg class="st-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="st-dots" role="tablist" aria-label="Choose a testimonial"></div>
+      <button class="st-arrow st-next" type="button" aria-label="Next testimonial">
+        <svg class="st-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    function init() {
+      var section = document.querySelector('.st-section');
+      if (!section || section.getAttribute('data-st-ready') === 'true') return;
+      section.setAttribute('data-st-ready', 'true');
+
+      var deck = section.querySelector('.st-deck');
+      var cards = Array.prototype.slice.call(section.querySelectorAll('.st-card'));
+      var controls = section.querySelector('.st-controls');
+      var dotsWrap = section.querySelector('.st-dots');
+      var prevBtn = section.querySelector('.st-prev');
+      var nextBtn = section.querySelector('.st-next');
+      var count = cards.length;
+      var active = 0;
+
+      // Scroll reveal (shared pattern)
+      var reveals = section.querySelectorAll('.st-reveal');
+      if ('IntersectionObserver' in window) {
+        var ro = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('is-revealed'); ro.unobserve(entry.target); }
+          });
+        }, { threshold: 0.15 });
+        Array.prototype.forEach.call(reveals, function (el) { ro.observe(el); });
+      } else {
+        Array.prototype.forEach.call(reveals, function (el) { el.classList.add('is-revealed'); });
+      }
+
+      // Single testimonial: nothing to rotate. Show it and hide the controls.
+      if (count <= 1) {
+        section.setAttribute('data-single', 'true');
+        if (cards[0]) { cards[0].classList.add('is-active'); }
+        if (controls) { controls.style.display = 'none'; }
+        sizeDeck();
+        window.addEventListener('resize', sizeDeck);
+        return;
+      }
+
+      // Build dot indicators
+      var dots = [];
+      for (var i = 0; i < count; i++) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'st-dot';
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', 'Testimonial ' + (i + 1) + ' of ' + count);
+        (function (idx) { dot.addEventListener('click', function () { go(idx); }); })(i);
+        dotsWrap.appendChild(dot);
+        dots.push(dot);
+      }
+
+      function relPos(i) {
+        // signed shortest distance from active, wrapped to [-half, +half]
+        var d = i - active;
+        var half = count / 2;
+        if (d > half) { d -= count; }
+        if (d < -half) { d += count; }
+        return d;
+      }
+
+      function render() {
+        cards.forEach(function (card, i) {
+          var d = relPos(i);
+          card.classList.remove('is-active', 'is-prev', 'is-next', 'is-hidden');
+          if (d === 0) { card.classList.add('is-active'); }
+          else if (d === 1) { card.classList.add('is-next'); }
+          else if (d === -1) { card.classList.add('is-prev'); }
+          else { card.classList.add('is-hidden'); }
+          card.setAttribute('aria-hidden', d === 0 ? 'false' : 'true');
+        });
+        dots.forEach(function (dot, i) {
+          var on = i === active;
+          dot.classList.toggle('is-on', on);
+          dot.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        sizeDeck();
+      }
+
+      function sizeDeck() {
+        // Fixed height = the tallest card, so the controls never move as cards change.
+        var max = 0;
+        cards.forEach(function (c) { if (c.offsetHeight > max) { max = c.offsetHeight; } });
+        if (max) { deck.style.height = max + 'px'; }
+      }
+
+      function go(i) { active = (i % count + count) % count; render(); }
+      function next() { go(active + 1); }
+      function prev() { go(active - 1); }
+
+      nextBtn.addEventListener('click', next);
+      prevBtn.addEventListener('click', prev);
+
+      // Click a peeking side card to bring it forward
+      cards.forEach(function (card, i) {
+        card.addEventListener('click', function () {
+          if (relPos(i) !== 0) { go(i); }
+        });
+      });
+
+      // Arrow keys when focus is inside the section
+      section.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { next(); e.preventDefault(); }
+        else if (e.key === 'ArrowLeft') { prev(); e.preventDefault(); }
+      });
+
+      // Touch swipe (mobile)
+      var x0 = null;
+      deck.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+      deck.addEventListener('touchend', function (e) {
+        if (x0 === null) { return; }
+        var dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 45) { dx < 0 ? next() : prev(); }
+        x0 = null;
+      });
+
+      // Re-measure once fonts/images settle and on resize
+      window.addEventListener('resize', sizeDeck);
+      var imgs = section.querySelectorAll('.st-photo-img');
+      Array.prototype.forEach.call(imgs, function (img) {
+        if (!img.complete) { img.addEventListener('load', sizeDeck); }
+      });
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(sizeDeck); }
+
+      render();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+
+
+<div class="s6">
+  <section class="s6-section" aria-label="The Showing Up Foundation">
+    <h2 class="s6-headline s6-reveal s6-d1">
+      <svg class="hpm-accent hpm-chev hpm-accent--blue" aria-hidden="true"><use href="#hpm-chev"/></svg> Great learning should create a <em class="hp-coral-strong">better</em> <em class="hp-coral-strong">future</em>
+    </h2>
+
+    <div class="s6-content">
+      <div>
+        <p class="s6-body s6-reveal s6-d2 hp-lead">
+          For every member of your team who joins the platform, we provide a free scholarship to a young person facing barriers to entering the workforce. We provide certification for your contribution to support at least <span class="s6-highlight">1 million</span> young people by 2035.
+        </p>
+        <a href="https://www.showinguplearning.com/foundation" class="s6-pill s6-reveal s6-d3">Learn More</a>
+      </div>
+
+      <div>
+        <a class="s6-image-link" href="https://www.showinguplearning.com/foundation" aria-label="Learn more about the Showing Up Foundation">
+          <div class="s6-image-wrap s6-reveal s6-d3">
+            <img
+              class="s6-image"
+              src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/4e68a398459d88f11ac25191c5d66ba8.jpg" width="722" height="670"
+              alt="Showing Up Foundation"
+              loading="lazy"
+            />
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="s2">
+  <section class="s2-section" aria-label="Built for teams worldwide">
+    <h2 class="s2-headline s2-reveal s2-d1">
+      Built for teams creating <em class="hp-coral-strong">meaningful</em> change
+    </h2>
+
+    <div class="s2-layout">
+      <div class="s2-left">
+        <div class="s2-stat s2-reveal s2-d2">
+          <div class="s2-stat-number" data-su-count="54" data-su-suffix="+">54+</div>
+          <div class="s2-stat-label">Markets worldwide</div>
+        </div>
+
+        <div class="s2-accent s2-reveal s2-d2"></div>
+
+        <p class="s2-body s2-reveal s2-d2 hp-lead">
+          Teams across multiple industries, united by a shared purpose: solving complex problems and improving how organisations and society build the best possible future.
+        </p>
+      </div>
+
+      <ul class="s2-list">
+        <li class="s2-item s2-reveal s2-d3">
+          <svg class="s2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="2" x2="12" y2="22"/>
+            <path d="M12 5h5l2.5 2.5L17 10h-5z" fill="rgba(255,130,105,.15)"/>
+            <path d="M12 14H7l-2.5 2.5L7 19h5z" fill="rgba(255,130,105,.08)"/>
+          </svg>
+          <div class="s2-item-content">
+            <div class="s2-item-label">Early-career consultants</div>
+            <div class="s2-item-desc">Building core consulting skills and confidence</div>
+          </div>
+        </li>
+        <li class="s2-item s2-reveal s2-d4">
+          <svg class="s2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9.5"/>
+            <line x1="12" y1="4" x2="12" y2="6.5"/>
+            <line x1="12" y1="17.5" x2="12" y2="20"/>
+            <line x1="4" y1="12" x2="6.5" y2="12"/>
+            <line x1="17.5" y1="12" x2="20" y2="12"/>
+            <path d="M12 8l2 4.5-2 1.5-2-1.5z" fill="rgba(255,130,105,.15)"/>
+            <line x1="12" y1="14" x2="12" y2="16.5"/>
+          </svg>
+          <div class="s2-item-content">
+            <div class="s2-item-label">Emerging leaders</div>
+            <div class="s2-item-desc">Stepping into management, leadership, or business development</div>
+          </div>
+        </li>
+        <li class="s2-item s2-reveal s2-d5">
+          <svg class="s2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="4.5" r="2" fill="rgba(255,130,105,.15)"/>
+            <circle cx="4" cy="18.5" r="2" fill="rgba(255,130,105,.1)"/>
+            <circle cx="20" cy="18.5" r="2" fill="rgba(255,130,105,.1)"/>
+            <line x1="10.3" y1="6" x2="5.4" y2="17"/>
+            <line x1="13.7" y1="6" x2="18.6" y2="17"/>
+            <line x1="6" y1="18.5" x2="18" y2="18.5"/>
+          </svg>
+          <div class="s2-item-content">
+            <div class="s2-item-label">Sales teams</div>
+            <div class="s2-item-desc">Becoming more consultative in how they engage customers</div>
+          </div>
+        </li>
+        <li class="s2-item s2-reveal s2-d6">
+          <svg class="s2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L6 13h7l-2 9 7-12h-7z" fill="rgba(255,130,105,.12)"/>
+          </svg>
+          <div class="s2-item-content">
+            <div class="s2-item-label">Professional services organisations</div>
+            <div class="s2-item-desc">Strengthening their advisory capability</div>
+          </div>
+        </li>
+        <li class="s2-item s2-reveal s2-d7">
+          <svg class="s2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l1.5 8.5-1.5 1.5-1.5-1.5z" fill="rgba(255,130,105,.15)"/>
+            <path d="M12 22l-1.5-8.5 1.5-1.5 1.5 1.5z" fill="rgba(255,130,105,.08)"/>
+            <path d="M22 12l-8.5-1.5-1.5 1.5 1.5 1.5z" fill="rgba(255,130,105,.08)"/>
+            <path d="M2 12l8.5 1.5 1.5-1.5-1.5-1.5z" fill="rgba(255,130,105,.08)"/>
+          </svg>
+          <div class="s2-item-content">
+            <div class="s2-item-label">Internal consulting teams</div>
+            <div class="s2-item-desc">Driving change and transformation across the business</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<div class="sc">
+  <section class="sc-section" aria-label="Get in touch">
+    <h2 class="sc-headline sc-reveal sc-d1">Looking to support your team's <em class="hp-coral-strong">growth</em> and development?</h2>
+    <p class="sc-body sc-reveal sc-d2 hp-lead">Please get in touch with our team for an initial discovery call</p>
+    <a href="https://www.showinguplearning.com/contact-us" class="sc-pill sc-reveal sc-d3">Book a Discovery Call</a>
+  </section>
+</div>
+
+</div>
+
+<script>
+(function () {
+  function suInit() {
+    var wrap = document.querySelector('.showing-up-wrapper');
+    if (!wrap) return;
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Stat count-up: numbers swell to their value as their card reveals. The markup ships
+    // the final value, so crawlers, no-JS and reduced-motion all read it untouched &#8212; JS only
+    // rewrites textContent once the (still-invisible) element starts revealing.
+    function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+    function countUp(el) {
+      var target = parseInt(el.getAttribute('data-su-count'), 10);
+      if (isNaN(target)) return;
+      // Consume the attribute: stats can sit inside two observed reveal ancestors
+      // (e.g. .s5-card within .ep-feature-cards) &#8212; the count must only run once.
+      el.removeAttribute('data-su-count');
+      var suffix = el.getAttribute('data-su-suffix') || '';
+      var start = null;
+      el.textContent = '0' + suffix;
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / 1200, 1);
+        el.textContent = Math.round(easeOutExpo(progress) * target) + suffix;
+        if (progress < 1) { requestAnimationFrame(step); }
+        else { el.classList.add('su-counted'); } /* releases the coral tick under the stat */
+      }
+      requestAnimationFrame(step);
+    }
+
+    // Reveal observer: adds `is-revealed` to any wrapper element matching `[class*="-reveal"]`.
+    // Scoped to the wrapper so LearnWorlds-native elements are never touched.
+    // Hero (s1) is pure CSS &#8212; not observed.
+    var revealElements = wrap.querySelectorAll('[class*="-reveal"]');
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.classList.add('is-revealed');
+        // Same tick as the reveal: the element is still at opacity 0, so zeroing
+        // the stat never flashes the final value.
+        if (!reducedMotion) {
+          el.querySelectorAll('[data-su-count]').forEach(countUp);
+          // Stats with no count (e.g. 24/7) get their tick on the same beat the
+          // counting siblings finish, so the card row lands together.
+          el.querySelectorAll('.s5-card-stat:not([data-su-count])').forEach(function (stat) {
+            setTimeout(function () { stat.classList.add('su-counted'); }, 1200);
+          });
+        }
+        // Hand transitions over to the quick interaction lane once the entrance has
+        // settled (covers --su-dur plus the longest stagger delay, with headroom).
+        setTimeout(function () { el.classList.add('su-live'); }, 1600);
+        // Split headlines restore their original markup after the line masks have
+        // finished rising (800/90 mirror --su-dur/--su-line-step), so later resizes
+        // re-wrap naturally. .is-revealed keeps them landed on plain opacity/transform.
+        if (el.suSavedNodes) {
+          var lineCount = el.querySelectorAll('.su-line').length;
+          setTimeout(function () { suUnsplit(el); }, 800 + lineCount * 90 + 250);
+        }
+        revealObserver.unobserve(el);
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+    // Split-target headlines are observed only AFTER they've been split (see the split
+    // scheduling near the end of suInit) &#8212; otherwise an above-the-fold headline reveals
+    // before fonts load, and the splitter skips already-revealed elements, so it would
+    // never get the line-mask entrance. Everything else is observed immediately.
+    var splitSel = '.hp-intro-headline, .s5-headline, .sp-headline, .sf-headline, ' +
+      '.sf-cards-heading, .s7-headline, .s6-headline, .s2-headline, .sc-headline';
+    revealElements.forEach(function (el) {
+      if (reducedMotion || !el.matches(splitSel)) revealObserver.observe(el);
+    });
+
+    // Pause ambient animations (hero icon-floats, marquee tracks, breathing ovals) while
+    // their section is off-screen. One threshold-0 observer serves every target, toggling
+    // a class (not inline styles): an inline animation-play-state would permanently
+    // outrank the `.wbm:hover` pause rule in the stylesheet.
+    // SMIL ring rotation can't be reached by CSS at all (animationPlayState doesn't apply
+    // to SMIL), so the hero entry additionally drives svg.pauseAnimations()/unpause.
+    // Reduced motion pauses the rings permanently &#8212; CSS @media can't reach SMIL either.
+    var markSvg = wrap.querySelector('.s1-mark');
+    var canSmil = !!(markSvg && typeof markSvg.pauseAnimations === 'function');
+    if (canSmil && reducedMotion) { markSvg.pauseAnimations(); }
+    var ambientObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.classList.toggle('su-anim-off', !entry.isIntersecting);
+        if (canSmil && !reducedMotion && entry.target.contains(markSvg)) {
+          if (entry.isIntersecting) { markSvg.unpauseAnimations(); }
+          else { markSvg.pauseAnimations(); }
+        }
+      });
+    }, { threshold: 0 });
+    wrap.querySelectorAll('.s1-mark-wrap, .wbm, .s2-section, .sc-section, .s5-intro-img-col')
+      .forEach(function (el) { ambientObserver.observe(el); });
+
+    // Cluster tiles: pointer-tracking edge glow. The glow spans are injected here (not
+    // in the markup) so no-JS, touch and reduced-motion tiles keep the plain rollover.
+    // --cg-deg aims the conic mask at the pointer; --cg-d (0-100) is closeness to the
+    // nearest tile edge and drives the glow opacity in CSS.
+    if (!reducedMotion && window.matchMedia('(hover: hover)').matches) {
+      wrap.querySelectorAll('.cg-tile').forEach(function (tile) {
+        var glow = document.createElement('span');
+        glow.className = 'cg-glow';
+        glow.setAttribute('aria-hidden', 'true');
+        tile.appendChild(glow);
+        tile.addEventListener('pointermove', function (e) {
+          var r = tile.getBoundingClientRect();
+          var cx = r.width / 2, cy = r.height / 2;
+          var dx = (e.clientX - r.left) - cx, dy = (e.clientY - r.top) - cy;
+          var deg = 0;
+          if (dx !== 0 || dy !== 0) {
+            deg = Math.atan2(dy, dx) * 180 / Math.PI + 90;
+            if (deg < 0) deg += 360;
+          }
+          // closeness to the nearest edge: 0 at centre, 1 on the boundary
+          var kx = dx === 0 ? Infinity : cx / Math.abs(dx);
+          var ky = dy === 0 ? Infinity : cy / Math.abs(dy);
+          var d = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
+          tile.style.setProperty('--cg-deg', deg.toFixed(1) + 'deg');
+          tile.style.setProperty('--cg-d', (d * 100).toFixed(1));
+        });
+      });
+    }
+
+    // Wistia facade: the iframe ships without src so the player (JS + video stream) costs
+    // nothing until the section approaches the viewport. Reduced-motion users get the
+    // player without autoplay instead of an unstoppable looping video.
+    var video = wrap.querySelector('.s5-intro-video[data-src]');
+    if (video) {
+      var src = video.getAttribute('data-src');
+      if (reducedMotion) {
+        src = src.replace('autoPlay=true', 'autoPlay=false');
+      }
+      // Fade the player in once it has actually loaded, instead of popping in over the
+      // dark placeholder. The timeout is a safety net: if the load event never fires
+      // (player blocked), the frame is revealed anyway.
+      video.addEventListener('load', function () { video.classList.add('su-video-on'); }, { once: true });
+      new IntersectionObserver(function (entries, obs) {
+        if (!entries[0].isIntersecting) return;
+        video.src = src;
+        video.removeAttribute('data-src');
+        setTimeout(function () { video.classList.add('su-video-on'); }, 2500);
+        obs.disconnect();
+      }, { rootMargin: '600px 0px' }).observe(video);
+    }
+
+    // -- Headline line-mask reveals ------------------------------
+    // Regroups opted-in headlines into per-line overflow masks so the lines rise
+    // individually (see the .su-line CSS). Only runs once fonts are ready (wrap
+    // points move when EB Garamond lands), never under reduced motion, and the
+    // original nodes are restored after the entrance so responsive re-wrapping is
+    // never constrained. The originals are parked in a DocumentFragment (no HTML
+    // serialisation); any failure puts them straight back and the headline simply
+    // keeps the standard block fade-up.
+    var splitTargets = [];
+
+    function suUnsplit(el) {
+      if (!el.suSavedNodes) return;
+      el.textContent = '';
+      el.appendChild(el.suSavedNodes);
+      el.suSavedNodes = null;
+      el.classList.remove('su-split');
+      el.removeAttribute('aria-label');
+    }
+
+    function suSplit(el) {
+      if (el.suSavedNodes || el.classList.contains('is-revealed')) return;
+      // Park the original child nodes so they can be restored verbatim.
+      var saved = document.createDocumentFragment();
+      while (el.firstChild) { saved.appendChild(el.firstChild); }
+      try {
+        // 1. Tokenise: text nodes split into words; element children become ATOMIC
+        //    tokens (deep-cloned). The v3 capsule <em>s are inline-block, so they can
+        //    never break across lines by design, and the hpm accent <svg>/<span>s are
+        //    indivisible &#8212; no per-word element splitting needed (unlike the v2 italics).
+        var tokens = [];
+        Array.prototype.slice.call(saved.childNodes).forEach(function (n) {
+          if (n.nodeType === 3) {
+            n.textContent.split(/\s+/).forEach(function (w) {
+              if (w) tokens.push({ text: w, node: null, noSpace: /^[.,!?;:)\]]+$/.test(w) });
+            });
+          } else if (n.nodeType === 1) {
+            tokens.push({ text: (n.textContent || '').replace(/\s+/g, ' ').trim(), node: n });
+          } else {
+            throw new Error('unsupported headline content');
+          }
+        });
+        if (tokens.length < 2) throw new Error('too short to split');
+
+        // 2. Measuring pass: lay the tokens out in place and read their tops.
+        //    The element is still at opacity 0 (un-revealed), but it is laid out.
+        tokens.forEach(function (t, ti) {
+          var box;
+          if (t.node) {
+            box = t.node.cloneNode(true);
+          } else {
+            box = document.createElement('span');
+            box.textContent = t.text;
+          }
+          if (ti > 0 && !t.noSpace) el.appendChild(document.createTextNode(' '));  // punctuation hugs prev word
+          t.span = box;
+          el.appendChild(box);
+        });
+
+        // 3. Group words into lines. Only real WORDS drive line breaks &#8212; tops are
+        //    compared with a half-font tolerance (DM Sans vs EB Garamond boxes on the
+        //    same line report slightly different tops, but a real break moves a word a
+        //    full line-height). Accent tokens (arrow/chevron &#8212; empty text, small and
+        //    vertically offset) must NOT define a line by their top: their bounding top
+        //    sits far below the tall text, so grouping them by top would strand them on
+        //    their own line and inflate the headline by a whole line-height. But an
+        //    accent CAN sit on a wrap boundary (the natural wrap breaks before it), and
+        //    gluing it to the previous word's line then mismatches the natural layout &#8212;
+        //    the whole line shifts sideways when the markup is restored after the
+        //    entrance. So accents detect a wrap HORIZONTALLY instead: if the measured
+        //    accent starts left of the previous token's right edge, it wrapped &#8212; open a
+        //    new line for it, and null lastTop so the next word joins that line rather
+        //    than opening another. (Left-edge wrap detection holds for centred headlines
+        //    too: a new centred line always starts left of the previous token's right.)
+        var fs = parseFloat(window.getComputedStyle(el).fontSize) || 48;
+        var lines = [];
+        var lastTop = null;
+        var lastRight = null;
+        tokens.forEach(function (t) {
+          var rect = t.span.getBoundingClientRect();
+          if (!t.text) {                          // accent token
+            if (lines.length === 0) {
+              lines.push([]);                     // leading accent opens the first line
+            } else if (lastRight !== null && rect.left < lastRight - 1) {
+              lines.push([]);                     // accent wrapped: it starts the new line
+              lastTop = null;                     // next word joins this line, top unchecked
+            }
+            lines[lines.length - 1].push(t);
+            lastRight = rect.right;
+            return;                               // does not update lastTop
+          }
+          if (lastTop === null) {
+            // First word (or first word after a line-opening accent): open a line only
+            // if an accent hasn't already opened one &#8212; otherwise the word would be
+            // stranded on its own line below the accent.
+            if (lines.length === 0) lines.push([]);
+          } else if (Math.abs(rect.top - lastTop) > fs * 0.5) {
+            lines.push([]);
+          }
+          lines[lines.length - 1].push(t);
+          lastTop = rect.top;
+          lastRight = rect.right;
+        });
+        if (lines.length < 2) throw new Error('single line'); // fade-up reads fine as-is
+
+        // 4. Rebuild as per-line masks. Bottom padding + an equal negative bottom
+        //    margin gives descenders (and the capsule's bottom border) clearance below
+        //    the text while cancelling in layout: adjacent lines' negative margins
+        //    collapse against the next line's zero top margin, so each line still
+        //    occupies exactly one line-height and split vs natural heights match (no
+        //    shift on unsplit). The capsule's TOP needs no padding &#8212; an inline-block
+        //    taller than the line grows the line box to fit it, so it is never clipped.
+        //    (A symmetric padding/margin pair does NOT cancel: adjacent negative margins
+        //    only overlap once, leaving ~pad of extra height per line while split.)
+        var pad = Math.max(2, Math.round(fs * 0.2));
+        el.textContent = '';
+        lines.forEach(function (words, li) {
+          var line = document.createElement('span');
+          line.className = 'su-line';
+          // Interior lines carry bottom clearance that cancels against the next line's
+          // margin. The LAST line has no next sibling, so its padding would be
+          // uncancelled height (an ~pad shift on unsplit) &#8212; omit it; its own line-box
+          // descent covers the final line's descenders.
+          if (li < lines.length - 1) {
+            line.style.paddingBottom = pad + 'px';
+            line.style.marginBottom = (0 - pad) + 'px';
+          }
+          var inner = document.createElement('span');
+          inner.className = 'su-line-inner';
+          inner.style.setProperty('--su-line-i', String(li));
+          words.forEach(function (t, wi) {
+            if (wi > 0 && !t.noSpace) inner.appendChild(document.createTextNode(' '));
+            if (t.node) { inner.appendChild(t.node.cloneNode(true)); }
+            else { inner.appendChild(document.createTextNode(t.text)); }
+          });
+          line.appendChild(inner);
+          el.appendChild(line);
+        });
+
+        // 5. While split, expose the unbroken text as the accessible name
+        //    (accent svgs contribute no text; the capsule word is included).
+        el.setAttribute('aria-label', tokens.map(function (t) { return t.text; }).filter(Boolean).join(' ').replace(/\s+([.,!?;:])/g, '$1'));
+        el.suSavedNodes = saved;
+        el.classList.add('su-split');
+      } catch (err) {
+        el.textContent = '';
+        el.appendChild(saved); // fall back to the standard fade-up, markup untouched
+      }
+    }
+
+    // Split the opted-in headlines, THEN start observing them for reveal &#8212; so an
+    // above-the-fold headline gets the line-mask entrance instead of revealing (and
+    // being skipped by the splitter) before fonts are ready. Gated on fonts.ready (wrap
+    // points move as EB Garamond loads); the timeout is a fallback if it never resolves.
+    if (!reducedMotion) {
+      splitTargets = Array.prototype.slice.call(wrap.querySelectorAll(splitSel));
+      var suSplitStarted = false;
+      var beginSplit = function () {
+        if (suSplitStarted) return;
+        suSplitStarted = true;
+        splitTargets.forEach(suSplit);
+        splitTargets.forEach(function (el) { revealObserver.observe(el); });
+      };
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(beginSplit);
+        setTimeout(beginSplit, 1500);
+      } else {
+        beginSplit();
+      }
+    }
+
+    // Re-split on resize while still unrevealed (wrap points move); release any
+    // still-split revealed headline straight back to natural wrapping.
+    var suResizeTimer = null;
+    window.addEventListener('resize', function () {
+      if (!splitTargets.length) return;
+      clearTimeout(suResizeTimer);
+      suResizeTimer = setTimeout(function () {
+        splitTargets.forEach(function (el) {
+          suUnsplit(el);
+          // Re-attempt every unrevealed target: a headline that fell back at one
+          // width (e.g. single-line at desktop) may need masks again at another.
+          if (!el.classList.contains('is-revealed')) suSplit(el);
+        });
+      }, 150);
+    });
+  }
+
+  // LearnWorlds can inject this block after DOMContentLoaded has already fired &#8212;
+  // waiting unconditionally would mean the handler never runs and reveals never fire.
+  if (document.readyState !== 'loading') { suInit(); }
+  else { document.addEventListener('DOMContentLoaded', suInit); }
+})();
+</script>
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="page-homepage.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] page-homepage.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

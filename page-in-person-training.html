@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Immersive in-person learning to accelerate capability and impact — Showing Up (preview)</title>
+</head>
+<body>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "In-Person Consultant Training \u2014 Showing Up Learning",
+  "description": "Immersive in-person learning to accelerate capability and impact. Stretching, practical programmes that place your team in high-pressure scenarios reflecting the pace, ambiguity and collaboration of real consulting.",
+  "url": "https://www.showinguplearning.com/in-person-training",
+  "inLanguage": "en",
+  "provider": {
+    "@type": "Organization",
+    "name": "Showing Up Learning",
+    "url": "https://www.showinguplearning.com"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+<noscript><style>
+  /* If JS fails, surface reveal-targeted content rather than leaving the page blank */
+  .ip .ip-reveal { opacity: 1 !important; transform: none !important; }
+  .ip .ip-em { border-color: #FF8269 !important; }
+</style></noscript>
+
+<style>
+  /* -- RESET -- */
+  .ip *, .ip *::before, .ip *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .ip {
+    font-size: 16px; font-family: 'DM Sans', sans-serif;
+    --su-ease: cubic-bezier(.16, 1, .3, 1);
+    --su-dur: .8s; --su-quick: .25s; --su-line-step: 90ms;
+  }
+
+  /* -- SHARED TOKENS -- */
+  .ip-overline {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: #FF8269;
+    margin-bottom: 32px;
+    text-align: left !important;
+  }
+  .ip-overline::before { content: ''; display: block; width: 32px; height: 1px; background: #FF8269; }
+
+  .ip-h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(44px, 6vw, 80px);
+    font-weight: 300; line-height: 1.04; /* c4: coral-bold hero emphasis lets leading tighten toward the pre-uplift footprint */
+    letter-spacing: -.03em;
+    text-align: left !important;
+  }
+  /* c4: hero emphasis is coral-bold, not a capsule, so the hero leading can
+     tighten without a pill inflating its line. Section-heading pills (.ip-em.su-strong) are
+     unaffected; line-height: inherit sheds the shared pill selector's 1.1. */
+  .ip-h1 .ip-em {
+    display: inline; border: none; border-radius: 0; padding: 0;
+    max-width: none; line-height: inherit;
+    font-family: 'DM Sans', sans-serif; font-style: normal; font-weight: 600; color: #FF8269;
+  }
+  .ip-h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(36px, 4.5vw, 64px);
+    font-weight: 300; line-height: 1.18;
+    letter-spacing: -.03em;
+    text-align: left !important;
+  }
+  .ip-h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 300; line-height: 1.18;
+    letter-spacing: -.02em;
+    text-align: left !important;
+  }
+  .ip-em {
+    display: inline-block; max-width: 100%; white-space: normal;
+    line-height: 1.1; vertical-align: baseline;
+    font-family: 'DM Sans', sans-serif; font-style: normal; font-weight: inherit; color: inherit;
+    border: 2px solid #FF8269; border-radius: 100px;
+    /* Capsule padding: DM Sans 300's line box is top-heavy (~.17em slack above the
+       ink, ~0 below descenders at line-height 1.1), so bottom-only vertical padding
+       optically centres the ink, matching the guidelines lockup vertically (~.2em
+       top / ~.09em descender ink gaps at 48px). Sides stay at the roomier .52em
+       deliberately - do not snug them to .2em. em is the own-font exception, like
+       letter-spacing. */
+    padding: 0 .52em .06em;
+  }
+  .ip-em.su-strong {
+    display: inline; border: none; border-radius: 0; padding: 0;
+    max-width: none; white-space: normal;
+    font-family: 'DM Sans', sans-serif; font-style: normal; font-weight: 600; color: #FF8269;
+  }
+
+  .ip-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.7; font-weight: 300;
+    text-align: left !important;
+  }
+  .ip-body--light { color: rgba(255,246,241,.6); }
+  .ip-body--dark  { color: rgba(30,29,29,.65); }
+
+  /* -- PILL (dark bg variant - coral fill) -- */
+  .ip-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: #FF8269 !important; color: #FFF6F1 !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    padding: 14px 28px; border-radius: 100px;
+    transition: background .2s, color .2s;
+    width: fit-content; cursor: pointer;
+  }
+  .ip-pill:link, .ip-pill:visited {
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: #FF8269 !important; color: #FFF6F1 !important;
+  }
+  .ip-pill:hover, .ip-pill:active {
+    background: #FFF6F1 !important; color: #1e1d1d !important;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+  }
+
+  /* -- PILL (cream bg variant - dark fill) -- */
+  .ip-pill--dark {
+    background: #1e1d1d !important; color: #FFF6F1 !important;
+  }
+  .ip-pill--dark:link, .ip-pill--dark:visited {
+    background: #1e1d1d !important; color: #FFF6F1 !important;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+  }
+  .ip-pill--dark:hover, .ip-pill--dark:active {
+    background: #FF8269 !important; color: #1e1d1d !important;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+  }
+
+  /* -- REAL IMAGE -- */
+  .ip-img {
+    width: 100%; height: auto; display: block;
+    border-radius: 8px;
+  }
+
+  /* -- REVEALS -- */
+  .ip-reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  .ip-reveal.is-revealed { opacity: 1; transform: none; }
+
+  /* Interaction lane (v3): hand from the slow reveal to quick hover/press fades ~1.6s
+     after reveal, and shed any stagger delay so later hovers don't lag. */
+  .ip [class*="-reveal"].su-live {
+    transition: background var(--su-quick), border-color var(--su-quick),
+                color var(--su-quick), opacity var(--su-quick),
+                transform var(--su-quick) var(--su-ease);
+  }
+
+  /* Headline line-mask reveals (v3): the script regroups an opted-in headline into
+     per-line overflow masks once fonts are ready; each line rises out of its mask with
+     a small stagger, then the original markup is restored. Bottom-only padding/negative
+     margin (set inline in px by the script) keeps split vs natural block heights equal. */
+  .ip .su-line { display: block; overflow: hidden; }
+  .ip .su-line-inner {
+    display: block; transform: translateY(135%);
+    transition: transform var(--su-dur) var(--su-ease);
+    transition-delay: calc(var(--su-line-i, 0) * var(--su-line-step));
+  }
+  .ip .su-split[class*="-reveal"] { opacity: 1; transform: none; }
+  .ip .su-split.is-revealed .su-line-inner { transform: none; }
+
+  .ip .hpm-accent { display: inline-block; vertical-align: middle; flex: none; margin-top: -1em; margin-bottom: -1em; position: relative; top: -.1em; }
+  .ip svg.hpm-chev  { width: .82em; height: .58em; }
+  .ip svg.hpm-arrow { width: 1.05em; height: .52em; }
+  .ip .hpm-accent--coral { color: #FF8269; }
+  .ip .hpm-accent--blue  { color: #9fd8e6; }
+
+
+  .ip-d1 { transition-delay: .05s; }
+  .ip-d2 { transition-delay: .15s; }
+  .ip-d3 { transition-delay: .25s; }
+  .ip-d4 { transition-delay: .35s; }
+
+  /* ==============================
+     SECTION 1 - HERO (dark)
+     ============================== */
+  .ip-hero {
+    background: #1e1d1d;
+    padding: 140px 80px 120px;
+    text-align: center;
+  }
+  .ip-hero-inner { max-width: 820px; margin: 0 auto; }
+  .ip-hero .ip-overline { justify-content: center; text-align: center !important; }
+  .ip-hero .ip-overline::before { display: none; }
+  .ip-hero .ip-h1 { color: #FFF6F1; margin-bottom: 36px; text-align: center !important; }
+  .ip-hero-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 19px; line-height: 1.65; font-weight: 300;
+    color: rgba(255,246,241,.6);
+    max-width: 640px; margin: 0 auto 48px;
+    text-align: center !important;
+  }
+  .ip-hero-rule {
+    width: 200px; height: 1px;
+    background: rgba(255,130,105,.15);
+    margin: 48px auto 0; border: none;
+  }
+
+  /* ==============================
+     SECTION 3 - FLAGSHIP SPOTLIGHT (dark)
+     ============================== */
+  .ip-flag {
+    position: relative;
+    background: #1e1d1d;
+    padding: 120px 80px 96px;
+    overflow: hidden;
+    border-top: 1px solid rgba(255,246,241,.04);
+    border-bottom: 1px solid rgba(255,246,241,.04);
+  }
+  .ip-flag-halo {
+    position: absolute;
+    left: -10%; top: -20%;
+    width: 700px; height: 700px;
+    background: radial-gradient(ellipse at center, rgba(255,130,105,.09) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: ip-flag-breathe 7s ease-in-out infinite;
+  }
+  .ip-flag-halo--2 {
+    left: auto; right: -10%; top: auto; bottom: -25%;
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse at center, rgba(255,130,105,.06) 0%, transparent 65%);
+    animation-duration: 9s;
+    animation-delay: 1.5s;
+  }
+  @keyframes ip-flag-breathe {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.08); opacity: .7; }
+  }
+  .ip-flag-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .ip-flag-overline {
+    font-family: 'EB Garamond', serif;
+    font-style: italic; font-weight: 400;
+    font-size: 15px; letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #FF8269;
+    margin-bottom: 28px;
+    text-align: left !important;
+  }
+  .ip-flag-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(44px, 6.2vw, 84px);
+    font-weight: 300; line-height: 1.18;
+    letter-spacing: -.03em;
+    color: #FFF6F1;
+    margin-bottom: 64px;
+    max-width: 900px;
+    text-align: left !important;
+  }
+  .ip-flag-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 88px;
+  }
+  .ip-flag-grid > * { min-width: 0; }
+  .ip-flag-copy { align-self: center; }
+  .ip-flag-duration {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: #FF8269;
+    margin-bottom: 28px;
+    text-align: left !important;
+  }
+  .ip-flag-duration::before {
+    content: ''; display: block;
+    width: 20px; height: 1px;
+    background: #FF8269;
+  }
+  .ip-flag-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.65; font-weight: 300;
+    color: rgba(255,246,241,.78);
+    margin-bottom: 40px;
+    max-width: 560px;
+    text-align: left !important;
+  }
+  .ip-flag-media { position: relative; }
+  .ip-flag-img-wrap {
+    width: 100%;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: 200px 48px 200px 48px;
+    border: 1px solid rgba(255,246,241,.08);
+  }
+  .ip-flag-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ip-flag-halo { animation: none !important; }
+    .ip-wbm-track { animation: none !important; }
+    .ip-reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
+    .ip .su-line-inner { transition: none !important; transform: none !important; }
+    .ip .ip-em { transition: none !important; border-color: #FF8269 !important; }
+  }
+
+  /* ==============================
+     SECTION 4 - CATALOGUE (cream)
+     ============================== */
+  .ip-cat {
+    background: #FFF6F1;
+    padding: 120px 80px 100px;
+  }
+  .ip-cat-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .ip-cat-head {
+    max-width: 720px;
+    margin-bottom: 56px;
+  }
+  .ip-cat-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(36px, 4.5vw, 64px);
+    font-weight: 300; line-height: 1.18;
+    letter-spacing: -.02em;
+    color: #1e1d1d;
+    margin-bottom: 20px;
+    text-align: left !important;
+  }
+  .ip-cat-lede {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.6; font-weight: 300;
+    color: rgba(30,29,29,.65);
+    text-align: left !important;
+  }
+
+  /* Catalogue grid - three columns (All view) */
+  .ip-cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto repeat(3, auto);
+    row-gap: 14px;
+    column-gap: 0;
+    align-items: stretch;
+  }
+  .ip-cat-grid > * { min-width: 0; }
+
+  .ip-cat-group {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+    row-gap: 14px;
+    padding: 0 16px;
+  }
+  .ip-cat-group + .ip-cat-group {
+    border-left: none;
+  }
+  .ip-cat-grid > .ip-cat-group:first-child { padding-left: 0; }
+  .ip-cat-grid > .ip-cat-group:last-child { padding-right: 0; }
+  .ip-cat-group-head {
+    padding-bottom: 20px;
+    margin-bottom: 4px;
+  }
+  .ip-cat-group-title-row {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 10px;
+  }
+  .ip-cat-group-bar {
+    width: 28px; height: 3px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .ip-cat-group-bar--coral  { background: #FF8269; }
+  .ip-cat-group-bar--purple { background: #C8B4E4; }
+  .ip-cat-group-bar--mint   { background: #A7DDC3; }
+  .ip-cat-group-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase;
+    text-align: left !important;
+  }
+  .ip-cat-group-name--coral  { color: #FF8269; }
+  .ip-cat-group-name--purple { color: #C8B4E4; }
+  .ip-cat-group-name--mint   { color: #A7DDC3; }
+  .ip-cat-group-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 14px; line-height: 1.5;
+    color: rgba(30,29,29,.55);
+    text-align: left !important;
+  }
+  .ip-cat-group-cards {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: 2 / span 3;
+    gap: 14px;
+  }
+
+  /* Module card */
+  .ip-cat-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 22px 24px 20px 28px;
+    background: #FFF6F1;
+    border: 1px solid rgba(30,29,29,.08);
+    border-radius: 18px;
+    text-decoration: none !important;
+    transition: border-color .25s, transform .25s, background .25s;
+    overflow: hidden;
+  }
+  .ip-cat-card:link, .ip-cat-card:visited {
+    text-decoration: none !important;
+    border: 1px solid rgba(30,29,29,.08) !important;
+    border-bottom: 1px solid rgba(30,29,29,.08) !important;
+    color: inherit !important;
+  }
+  .ip-cat-card:hover, .ip-cat-card:active {
+    text-decoration: none !important;
+    border: 1px solid rgba(255,130,105,.45) !important;
+    border-bottom: 1px solid rgba(255,130,105,.45) !important;
+    background: #ffffff;
+    transform: translateY(-2px);
+  }
+  .ip-cat-group[data-group="presence"] .ip-cat-card:hover, .ip-cat-group[data-group="presence"] .ip-cat-card:active {
+    border: 1px solid rgba(200,180,228,.65) !important;
+    border-bottom: 1px solid rgba(200,180,228,.65) !important;
+  }
+  .ip-cat-group[data-group="impact"] .ip-cat-card:hover, .ip-cat-group[data-group="impact"] .ip-cat-card:active {
+    border: 1px solid rgba(167,221,195,.75) !important;
+    border-bottom: 1px solid rgba(167,221,195,.75) !important;
+  }
+  .ip-cat-card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: rgba(30,29,29,.7);
+    text-align: left !important;
+  }
+  .ip-cat-card-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .ip-cat-card-tag--coral  .ip-cat-card-dot { background: #FF8269; }
+  .ip-cat-card-tag--purple .ip-cat-card-dot { background: #C8B4E4; }
+  .ip-cat-card-tag--mint   .ip-cat-card-dot { background: #A7DDC3; }
+  .ip-cat-card-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px; line-height: 1.25; font-weight: 500;
+    letter-spacing: -.01em;
+    color: #1e1d1d;
+    margin-bottom: 10px;
+    text-align: left !important;
+  }
+  .ip-cat-card-outcome {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 14px; line-height: 1.5;
+    color: rgba(30,29,29,.6);
+    margin-bottom: 18px;
+    text-align: left !important;
+  }
+  .ip-cat-card-meta {
+    position: relative;
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid rgba(30,29,29,.06);
+    margin-top: auto;
+  }
+  .ip-cat-card-meta::before {
+    content: ''; position: absolute;
+    left: 0; right: 0; top: -1px; height: 1px;
+    background: #FF8269;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .35s cubic-bezier(.16,1,.3,1);
+  }
+  .ip-cat-group[data-group="presence"] .ip-cat-card-meta::before { background: #C8B4E4; }
+  .ip-cat-group[data-group="impact"]   .ip-cat-card-meta::before { background: #A7DDC3; }
+  .ip-cat-card:hover .ip-cat-card-meta::before { transform: scaleX(1); }
+  .ip-cat-card-duration {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: rgba(30,29,29,.55);
+  }
+  .ip-cat-card-arrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px; font-weight: 400;
+    color: #FF8269;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity .25s, transform .25s;
+  }
+  .ip-cat-group[data-group="presence"] .ip-cat-card-arrow { color: #C8B4E4; }
+  .ip-cat-group[data-group="impact"]   .ip-cat-card-arrow { color: #A7DDC3; }
+  .ip-cat-card:hover .ip-cat-card-arrow {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ==============================
+     SECTIONS 4-18 - INDIVIDUAL COURSES (cream)
+     ============================== */
+  .ip-crs {
+    background: #FFF6F1;
+    padding: 80px 80px;
+    scroll-margin-top: 100px;
+  }
+  .ip-crs + .ip-crs {
+    padding-top: 0;
+  }
+  .ip-crs-divider {
+    max-width: 1280px;
+    margin: 0 auto 80px;
+    height: 1px;
+    background: rgba(30,29,29,.08);
+    border: none;
+  }
+  .ip-crs:first-of-type {
+    padding-top: 100px;
+    border-top: 1px solid rgba(30,29,29,.08);
+  }
+  .ip-crs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    max-width: 1280px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .ip-crs-grid > * { min-width: 0; }
+  .ip-crs-grid--rev .ip-crs-copy { order: 2; }
+  .ip-crs-grid--rev .ip-crs-media { order: 1; }
+  .ip-crs-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 300; line-height: 1.15;
+    letter-spacing: -.02em;
+    color: #1e1d1d;
+    margin-bottom: 16px;
+    text-align: left !important;
+  }
+  .ip-crs-duration {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: .06em; text-transform: uppercase;
+    color: #FF8269;
+    margin-bottom: 24px;
+    text-align: left !important;
+  }
+  .ip-crs-duration::before {
+    content: ''; display: block;
+    width: 16px; height: 1px;
+    background: #FF8269;
+  }
+  .ip-crs-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.7; font-weight: 300;
+    color: rgba(30,29,29,.65);
+    margin-bottom: 36px;
+    text-align: left !important;
+  }
+
+  /* ==============================
+     PRACTICAL TOOLS (cream)
+     ============================== */
+  .ip-tools {
+    background: #FFF6F1;
+    padding: 120px 80px;
+    border-top: 1px solid rgba(30,29,29,.08);
+    border-bottom: 1px solid rgba(30,29,29,.06);
+  }
+  .ip-tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 80px; row-gap: 28px;
+  }
+  .ip-tools-grid > * { min-width: 0; }
+  .ip-tools-head  { grid-column: 1; grid-row: 1; align-self: end; }
+  .ip-tools-body  { grid-column: 1; grid-row: 2; align-self: start; }
+  .ip-tools-media { grid-column: 2; grid-row: 1 / 3; align-self: center; }
+  .ip-tools .ip-h2 { color: #1e1d1d; margin-bottom: 0; }
+  .ip-tools .ip-body { margin-bottom: 36px; }
+  /* -- TOOLKIT MARQUEE -- */
+  .ip-wbm {
+    position: relative;
+    overflow: hidden;
+  }
+  .ip-wbm::before,
+  .ip-wbm::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 56px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .ip-wbm::before {
+    left: 0;
+    background: linear-gradient(to right, #FFF6F1 0%, transparent 100%);
+  }
+  .ip-wbm::after {
+    right: 0;
+    background: linear-gradient(to left, #FFF6F1 0%, transparent 100%);
+  }
+  .ip-wbm-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .ip-wbm-row:last-child { margin-bottom: 0; }
+  .ip-wbm-track {
+    display: flex;
+    gap: 10px;
+    width: max-content;
+  }
+  .ip-wbm-track--left  { animation: ip-wbm-left  34s linear infinite; }
+  .ip-wbm-track--right { animation: ip-wbm-right 28s linear infinite; }
+  @keyframes ip-wbm-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes ip-wbm-right {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+  .ip-wbm-slide {
+    flex-shrink: 0;
+    width: 230px;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(30, 29, 29, 0.08);
+  }
+  .ip-wbm-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .ip-wbm:hover .ip-wbm-track { animation-play-state: paused; }
+
+  /* ==============================
+     TEAM / SHARED LANGUAGE (dark)
+     ============================== */
+  .ip-team {
+    background: #1e1d1d;
+    padding: 120px 80px;
+    position: relative; overflow: hidden;
+    border-bottom: 1px solid rgba(255,246,241,.07);
+  }
+  .ip-team::before {
+    content: ''; position: absolute;
+    right: -80px; top: -80px;
+    width: 400px; height: 600px;
+    background: radial-gradient(ellipse at center, rgba(255,130,105,.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .ip-team::after {
+    content: ''; position: absolute;
+    left: -120px; bottom: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(ellipse at center, rgba(255,130,105,.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .ip-team-inner {
+    max-width: 780px; margin: 0 auto;
+    text-align: center; position: relative;
+  }
+  .ip-team .ip-overline { justify-content: center; text-align: center !important; }
+  .ip-team .ip-overline::before { display: none; }
+  .ip-team .ip-h2 { color: #FFF6F1; margin-bottom: 28px; text-align: center !important; }
+  .ip-team .ip-body { text-align: center !important; margin-bottom: 48px; color: rgba(255,246,241,.6); }
+
+  /* ==============================
+     PLATFORM CROSS-SELL (cream)
+     ============================== */
+  .ip-platform {
+    background: #FFF6F1;
+    padding: 100px 80px;
+    border-bottom: 1px solid rgba(30,29,29,.06);
+  }
+  .ip-platform-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 0 80px;
+    align-items: start;
+  }
+  .ip-platform-head { grid-column: 1; grid-row: 1; }
+  .ip-platform-body { grid-column: 1; grid-row: 2; padding-top: 28px; }
+  .ip-platform-media { grid-column: 2; grid-row: 1 / 3; align-self: center; }
+  .ip-platform .ip-h2 { color: #1e1d1d; margin-bottom: 0; }
+  .ip-platform .ip-body { margin-bottom: 36px; }
+  .ip-platform-img-wrap {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(30,29,29,.08);
+  }
+  .ip-platform-img-wrap img {
+    width: 100%; height: auto; display: block;
+  }
+  .ip-platform--dark {
+    background: #1e1d1d;
+    border-bottom: 1px solid rgba(255,246,241,.06);
+  }
+  .ip-platform--dark .ip-h2 { color: #FFF6F1; }
+  .ip-platform--dark .ip-body { color: rgba(255,246,241,.6); }
+  .ip-platform--dark .ip-platform-img-wrap {
+    border: 1px solid rgba(255,246,241,.08);
+  }
+
+  /* ==============================
+     FINAL CTA (cream)
+     ============================== */
+  .ip-close {
+    background: #FFF6F1;
+    padding: 120px 80px;
+    text-align: center;
+    border-top: 1px solid rgba(30,29,29,.08);
+  }
+  .ip-close-inner { max-width: 640px; margin: 0 auto; }
+  .ip-close .ip-h2 { color: #1e1d1d; margin-bottom: 24px; text-align: center !important; }
+  .ip-close .ip-body {
+    color: rgba(53,52,52,.65);
+    max-width: 540px; margin: 0 auto 48px;
+    text-align: center !important;
+  }
+
+  /* ==============================
+     MOBILE
+     ============================== */
+  @media (max-width: 960px) {
+    .ip-hero { padding: 100px 32px 80px; }
+    .ip-hero-body { font-size: 17px; }
+    .ip-hero-rule { margin-top: 56px; }
+
+    /* Flagship mobile */
+    .ip-flag { padding: 96px 32px 88px; }
+    .ip-flag-grid {
+      display: flex; flex-direction: column;
+      gap: 48px;
+      margin-bottom: 64px;
+    }
+    .ip-flag-copy  { order: 2; align-self: stretch !important; }
+    .ip-flag-media { order: 1; align-self: stretch !important; }
+    .ip-flag-img-wrap {
+      aspect-ratio: 3/2;
+      max-height: 420px;
+      border-radius: 48px 32px 48px 32px;
+    }
+    .ip-flag-title { margin-bottom: 48px; }
+    .ip-flag-desc { font-size: 17px; }
+    .ip-flag-halo { width: 420px; height: 420px; }
+    .ip-flag-halo--2 { width: 360px; height: 360px; }
+    
+    /* Catalogue mobile */
+    .ip-cat { padding: 80px 32px 80px; }
+    .ip-cat-head { margin-bottom: 40px; }
+    .ip-cat-lede { font-size: 17px; }
+
+    .ip-cat-grid {
+      display: flex;
+      flex-direction: column;
+      grid-template-columns: none;
+      grid-template-rows: none;
+      gap: 48px;
+    }
+    .ip-cat-grid > * {
+      align-self: stretch !important;
+      min-width: 0;
+    }
+    .ip-cat-group {
+      display: flex;
+      flex-direction: column;
+      grid-row: auto;
+      grid-template-rows: none;
+      gap: 16px;
+      padding: 0;
+      border-left: none;
+    }
+    .ip-cat-group + .ip-cat-group {
+      border-left: none;
+    }
+    .ip-cat-group-cards {
+      display: flex;
+      flex-direction: column;
+      grid-row: auto;
+      grid-template-rows: none;
+      gap: 14px;
+    }
+
+    /* Course sections mobile - UPDATED Interleaved Flow */
+    .ip-crs { padding: 56px 32px; }
+    .ip-crs:first-of-type { padding-top: 72px; }
+    .ip-crs + .ip-crs { padding-top: 0; }
+    .ip-crs-divider { margin-bottom: 40px; }
+    
+    .ip-crs-grid {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .ip-crs-copy { 
+      display: contents; 
+    }
+    .ip-crs-title { 
+      order: 1; 
+      font-size: clamp(24px, 6vw, 32px); 
+      margin-bottom: 12px;
+    }
+    .ip-crs-duration { 
+      order: 2; 
+      margin-bottom: 0; 
+    }
+    .ip-crs-media { 
+      order: 3; 
+      margin: 28px 0 32px 0; 
+      align-self: stretch !important; 
+    }
+    .ip-crs-desc { 
+      order: 4; 
+      font-size: 16px; 
+      margin-bottom: 32px; 
+    }
+    .ip-crs-copy .ip-pill { 
+      order: 5; 
+      align-self: flex-start; 
+    }
+
+    /* Remaining mobile overrides */
+    .ip-tools { padding: 80px 32px; }
+    .ip-tools-grid {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .ip-tools-head  { order: 1; align-self: stretch !important; }
+    .ip-tools-media { order: 2; align-self: stretch !important; margin: 40px 0; }
+    .ip-tools-body  { order: 3; align-self: stretch !important; padding-top: 0; }
+
+    .ip-team { padding: 80px 32px; }
+
+    .ip-platform { padding: 72px 32px; }
+    .ip-platform-grid {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .ip-platform-head  { order: 1; align-self: stretch !important; }
+    .ip-platform-media { order: 2; align-self: stretch !important; margin: 40px 0; }
+    .ip-platform-body  { order: 3; align-self: stretch !important; padding-top: 0; }
+
+    .ip-close { padding: 80px 32px; }
+  }
+</style>
+
+<div class="ip">
+
+  <section class="ip-hero">
+    <div class="ip-hero-inner">
+      <h1 class="ip-h1 ip-reveal ip-d1">
+        <svg class="hpm-accent hpm-chev hpm-accent--blue" viewBox="0 0 40 28" aria-hidden="true"><path d="M4 5 L17 14 L4 23" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 5 L35 14 L22 23" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg> Immersive in-person learning to accelerate <em class="ip-em">capability</em> and impact
+      </h1>
+      <p class="ip-hero-body ip-reveal ip-d2">
+        Imagine your team walking into a room and being immersed straight into the realities of client work. Our in-person programmes are designed to be stretching, practical, and deeply engaging. We place your team in high-pressure scenarios that reflect the pace, ambiguity, and collaboration of real consulting.
+      </p>
+    </div>
+  </section>
+
+    <section class="ip-flag" id="ip-crs-international-crisis">
+    <div class="ip-flag-halo" aria-hidden="true"></div>
+    <div class="ip-flag-halo ip-flag-halo--2" aria-hidden="true"></div>
+    <div class="ip-flag-inner">
+      <div class="ip-flag-overline ip-reveal ip-d1">The Signature Experience</div>
+      <h2 class="ip-flag-title ip-reveal ip-d2">
+        Solve the International <em class="ip-em su-strong">Crisis</em>
+      </h2>
+
+      <div class="ip-flag-grid">
+        <div class="ip-flag-copy ip-reveal ip-d3">
+          <div class="ip-flag-duration">One full day, 8am to 8pm</div>
+          <p class="ip-flag-desc">
+            Your team will be placed inside a high-pressure simulated environment where the stakes feel real. Working as part of a fictional intelligence unit, MW4, they collaborate with our facilitators and actors to resolve a complex international crisis. Under pressure, they draw on curiosity, critical thinking, problem solving, systems thinking, communication, collaboration, and, perhaps most importantly, character. The result is a step change in how they think under pressure, work together, and show up when it matters most.
+          </p>
+          <a href="https://www.showinguplearning.com/contact-us" class="ip-pill">Book a Discovery Call</a>
+        </div>
+        <div class="ip-flag-media ip-reveal ip-d4">
+          <div class="ip-flag-img-wrap">
+            <img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/80341d768e1afe09e51d867d0bdca687.jpg" alt="Solve the International Crisis - immersive training experience" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="ip-cat">
+    <div class="ip-cat-inner">
+      <div class="ip-cat-head ip-reveal">
+        <h2 class="ip-cat-title">
+          Where can your team <em class="ip-em su-strong">elevate</em>?
+        </h2>
+      </div>
+      
+      <div class="ip-cat-grid">
+
+        <div class="ip-cat-group" data-group="thinking">
+          <div class="ip-cat-group-head ip-reveal">
+            <div class="ip-cat-group-title-row">
+              <span class="ip-cat-group-bar ip-cat-group-bar--coral"></span>
+              <span class="ip-cat-group-name ip-cat-group-name--coral">Thinking</span>
+              </div>
+            <div class="ip-cat-group-desc">How consultants reason, question, and solve complex problems with clarity.</div>
+          </div>
+          <div class="ip-cat-group-cards">
+            <a href="#ip-crs-curiosity-pi" class="ip-cat-card ip-reveal">
+              <div class="ip-cat-card-tag ip-cat-card-tag--coral"><span class="ip-cat-card-dot"></span>Curiosity</div>
+              <div class="ip-cat-card-title">Curiosity Pi</div>
+              <div class="ip-cat-card-outcome">Ask the questions clients have never been asked before.</div>
+              <div class="ip-cat-card-meta"><span class="ip-cat-card-duration">1 day</span><span class="ip-cat-card-arrow">&darr;</span></div>
+            </a>
+            <a href="#ip-crs-complex-problems" class="ip-cat-card ip-reveal">
+              <div class="ip-cat-card-tag ip-cat-card-tag--coral"><span class="ip-cat-card-dot"></span>Critical Thinking</div>
+              <div class="ip-cat-card-title">Solve Complex Problems</div>
+              <div class="ip-cat-card-outcome">Structure thinking and separate signal from noise under pressure.</div>
+              <div class="ip-cat-card-meta"><span class="ip-cat-card-duration">1 to 2 days</span><span class="ip-cat-card-arrow">&darr;</span></div>
+            </a>
+            <a href="#ip-crs-creative-consultant" class="ip-cat-card ip-reveal">
+              <div class="ip-cat-card-tag ip-cat-card-tag--coral"><span class="ip-cat-card-dot"></span>Creativity</div>
+              <div class="ip-cat-card-title">The Creative Consultant</div>
+              <div class="ip-cat-card-outcome">Reframe problems and generate ideas clients remember and act on.</div>
+              <div class="ip-cat-card-meta"><span class="ip-cat-card-duration">1 day</span><span class="ip-cat-card-arrow">&darr;</span></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="ip-cat-group" data-group="presence">
+          <div class="ip-cat-group-head ip-reveal ip-d1">
+            <div class="ip-cat-group-title-row">
+              <span class="ip-cat-group-bar ip-cat-group-bar--purple"></span>
+              <span class="ip-cat-group-name ip-cat-group-name--purple">Presence</span>
+              </div>
+            <div class="ip-cat-group-desc">How consultants show up, earn trust, and move people through what they say and do.</div>
+          </div>
+          <div class="ip-cat-group-cards">
+            <a href="#ip-crs-character-integrity" class="ip-cat-card ip-reveal ip-d1">
+              <div class="ip-cat-card-tag ip-cat-card-tag--purple"><span class="ip-cat-card-dot"></span>Character</div>
+              <div class="ip-cat-card-title">Character and Integrity</div>
+              <div class="ip-cat-card-outcome">Become the kind of professional whose word and judgement clients rely on.</div>
+              <div class="ip-cat-card-meta"><span class="ip-cat-card-duration">1 to 3 days</span><span class="ip-cat-card-arrow">&darr;</span></div>
+            </a>
+            <a href="#ip-crs-compelling-presentations" class="ip-cat-card ip-reveal ip-d1">
+              <div class="ip-cat-card-tag ip-cat-card-tag--purple"><span class="ip-cat-card-dot"></span>Communication</div>
+              <div class="ip-cat-card-title">Writing and Delivering Compelling Presentations</div>
+              <div class="ip-cat-card-outcome">Build presentations that don't just inform, but move people to act.</div>
+              <div class="ip-cat-card-meta"><span class="ip-cat-card-duration">1 to 2 days</span><span class="ip-cat-card-arrow">&darr;</span></div>
+            </a>
+            <a href="#ip-crs-spiral-dynamics" class="ip-cat-card ip-reveal ip-d1">
+              <div class="ip-cat-card-tag ip-cat-card-tag--purple"><span class="ip-cat-card-dot"></span>Collaboration</div>
+              <div class="ip-cat-card-title">Understanding and Uniting Stakeholders: Spiral Dynamics</div>
+              <div class="ip-cat-card-outcome">Read what truly drives people - and build alignment where it looked impossible.</div>
+              <div class="ip-cat-card-meta"><span class="ip-cat-card-duration">2 days</span><span class="ip-cat-card-arrow">&darr;</span></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="ip-cat-group" data-group="impact">
+          <div class="ip-cat-group-head ip-reveal ip-d2">
+            <div class="ip-cat-group-title-row">
+              <span class="ip-cat-group-bar ip-cat-group-bar--mint"></span>
+              <span class="ip-cat-group-name ip-cat-group-name--mint">Impact</span>
+              </div>
+            <div class="ip-cat-group-desc">How consultants convert capability into commercial outcomes that last.</div>
+          </div>
+          <div class="ip-cat-group-cards">
+            <a href="#ip-crs-consultative-selling" class="ip-cat-card ip-reveal ip-d2">
+              <div class="ip-cat-card-tag ip-cat-card-tag--mint"><span class="ip-cat-card-dot"></span>Commerciality</div>
+              <div class="ip-cat-card-title">Consultative Selling</div>
+              <div class="ip-cat-card-outcome">Become the partner clients turn to first - trusted for the difference you make.</div>
+              <div class="ip-cat-card-meta"><span class="ip-cat-card-duration">2 days</span><span class="ip-cat-card-arrow">&darr;</span></div>
+            </a>
+            <a href="#ip-crs-winning-rfps" class="ip-cat-card ip-reveal ip-d2">
+              <div class="ip-cat-card-tag ip-cat-card-tag--mint"><span class="ip-cat-card-dot"></span>Curation</div>
+              <div class="ip-cat-card-title">Winning 85%+ of Request for Proposals (RFPs)</div>
+              <div class="ip-cat-card-outcome">Pursue the right RFPs - and respond to them in a way clients can't ignore.</div>
+              <div class="ip-cat-card-meta"><span class="ip-cat-card-duration">2 days</span><span class="ip-cat-card-arrow">&darr;</span></div>
+            </a>
+            <a href="#ip-crs-coaching" class="ip-cat-card ip-reveal ip-d2">
+              <div class="ip-cat-card-tag ip-cat-card-tag--mint"><span class="ip-cat-card-dot"></span>Coaching</div>
+              <div class="ip-cat-card-title">Coaching to Bring Out the Best in Others</div>
+              <div class="ip-cat-card-outcome">Draw out the best in clients and colleagues - in the moment, not just in formal settings.</div>
+              <div class="ip-cat-card-meta"><span class="ip-cat-card-duration">1 day</span><span class="ip-cat-card-arrow">&darr;</span></div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="ip-crs" id="ip-crs-curiosity-pi">
+    <div class="ip-crs-grid">
+      <div class="ip-crs-copy ip-reveal">
+        <h3 class="ip-crs-title">Curiosity Pi</h3>
+        <div class="ip-crs-duration">1 day</div>
+        <p class="ip-crs-desc">The very best client-facing teams ask the most thoughtful questions, the kind that prompt clients to say, 'No one has ever asked me that before.' In this highly interactive workshop, your team learn the three forms of curiosity, epistemic, empathetic, and diversive, and how to continuously nurture each one. The result is a noticeable shift in how they see the world, the questions they ask, and how they lay the ground for stronger insights and better ideas.</p>
+        <a href="https://www.showinguplearning.com/contact-us" class="ip-pill ip-pill--dark">Book a Discovery Call</a>
+      </div>
+      <div class="ip-crs-media ip-reveal ip-d2">
+        <img class="ip-img" width="1200" height="871" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/9595d7b19ba2a9a951a258063fc29951.jpg" alt="Curiosity Pi - developing deeper questioning skills" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="ip-crs" id="ip-crs-complex-problems">
+    <hr class="ip-crs-divider">
+    <div class="ip-crs-grid ip-crs-grid--rev">
+      <div class="ip-crs-copy ip-reveal">
+        <h3 class="ip-crs-title">Solve Complex Problems</h3>
+        <div class="ip-crs-duration">1 to 2 days</div>
+        <p class="ip-crs-desc">Your team take on a realistic challenge, helping a major international retailer enter a complex new market. Through the challenge and guided teaching, they develop six practical techniques to think more critically, structure their approach, and solve ambiguous problems with real clarity. They learn to separate signal from noise, frame the right questions, and test their thinking under pressure. The result is a stronger ability to handle complexity and deliver outcomes that meet and exceed client expectations.</p>
+        <a href="https://www.showinguplearning.com/contact-us" class="ip-pill ip-pill--dark">Book a Discovery Call</a>
+      </div>
+      <div class="ip-crs-media ip-reveal ip-d2">
+        <img class="ip-img" width="1200" height="870" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/0cc199dfacec03eb28048971b127154c.jpg" alt="Solve Complex Problems - structured problem-solving workshop" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="ip-crs" id="ip-crs-creative-consultant">
+    <hr class="ip-crs-divider">
+    <div class="ip-crs-grid">
+      <div class="ip-crs-copy ip-reveal">
+        <h3 class="ip-crs-title">The Creative Consultant</h3>
+        <div class="ip-crs-duration">1 day</div>
+        <p class="ip-crs-desc">Your team take on six different creative challenges, each designed to stretch how they think and the ideas they produce. Working individually and together, they apply practical creativity techniques to generate ideas grounded in real client contexts. They learn to reframe problems, challenge obvious thinking, and build on each other's ideas. The result is a stronger ability to think creatively in a way that is relevant, focused, and capable of delivering ideas that clients remember and act on.</p>
+        <a href="https://www.showinguplearning.com/contact-us" class="ip-pill ip-pill--dark">Book a Discovery Call</a>
+      </div>
+      <div class="ip-crs-media ip-reveal ip-d2">
+        <img class="ip-img" width="1200" height="871" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/ae440b6bdf53ec4ea8cce1f553b03428.jpg" alt="The Creative Consultant - practical creativity techniques" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="ip-crs" id="ip-crs-character-integrity">
+    <hr class="ip-crs-divider">
+    <div class="ip-crs-grid ip-crs-grid--rev">
+      <div class="ip-crs-copy ip-reveal">
+        <h3 class="ip-crs-title">Character and Integrity</h3>
+        <div class="ip-crs-duration">1 to 3 days</div>
+        <p class="ip-crs-desc">What distinguishes the most trusted professionals is not just what they do, but how they do it. Acting with integrity, especially when it is not the comfortable choice, is what earns real, lasting trust. This programme builds self-awareness, explores how trust is earned or eroded, and develops a more intentional way of showing up. The result is a team that balances confidence with humility, known as reliable, consistent, and genuinely caring in how they work with others.</p>
+        <a href="https://www.showinguplearning.com/contact-us" class="ip-pill ip-pill--dark">Book a Discovery Call</a>
+      </div>
+      <div class="ip-crs-media ip-reveal ip-d2">
+        <img class="ip-img" width="1200" height="871" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/84c9fbd8843cf12854337cedfd2b05da.jpg" alt="Character and Integrity - building trust through action" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="ip-crs" id="ip-crs-compelling-presentations">
+    <hr class="ip-crs-divider">
+    <div class="ip-crs-grid">
+      <div class="ip-crs-copy ip-reveal">
+        <h3 class="ip-crs-title">Writing and Delivering Compelling Presentations</h3>
+        <div class="ip-crs-duration">1 to 2 days</div>
+        <p class="ip-crs-desc">Your team will bring a presentation they are working on, or one that has not yet landed as intended. Working through a 12-step structure, they learn to build authentic presentations that hold any audience's attention and inspire action. The focus is on understanding where people are, crafting a clear and compelling narrative, and taking them forward with confidence. The result is a presentation that does not just inform, but moves people to think differently and act.</p>
+        <a href="https://www.showinguplearning.com/contact-us" class="ip-pill ip-pill--dark">Book a Discovery Call</a>
+      </div>
+      <div class="ip-crs-media ip-reveal ip-d2">
+        <img class="ip-img" width="1200" height="871" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/401148671b3f45668a266a9c40e83d15.jpg" alt="Writing and Delivering Compelling Presentations - narrative-driven communication" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="ip-crs" id="ip-crs-spiral-dynamics">
+    <hr class="ip-crs-divider">
+    <div class="ip-crs-grid ip-crs-grid--rev">
+      <div class="ip-crs-copy ip-reveal">
+        <h3 class="ip-crs-title">Understanding and Uniting Stakeholders: Spiral Dynamics</h3>
+        <div class="ip-crs-duration">2 days</div>
+        <p class="ip-crs-desc">People are complex, and so are the systems they create. Understanding what truly drives different behaviours is one of the most valuable skills a client-facing team can develop. Over the past two decades, no model has proven as practical or as revealing as Spiral Dynamics - the model that helped Nelson Mandela to end apartheid. This programme uses it to help your team understand why people think and behave as they do, navigate competing perspectives with confidence, and build the alignment needed to make real progress together.</p>
+        <a href="https://www.showinguplearning.com/contact-us" class="ip-pill ip-pill--dark">Book a Discovery Call</a>
+      </div>
+      <div class="ip-crs-media ip-reveal ip-d2">
+        <img class="ip-img" width="1200" height="871" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/67ffb341d78103b49207165f81f9ba80.jpg" alt="Understanding and Uniting Stakeholders - Spiral Dynamics workshop" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="ip-crs" id="ip-crs-consultative-selling">
+    <hr class="ip-crs-divider">
+    <div class="ip-crs-grid">
+      <div class="ip-crs-copy ip-reveal">
+        <h3 class="ip-crs-title">Consultative Selling</h3>
+        <div class="ip-crs-duration">2 days</div>
+        <p class="ip-crs-desc">Consultative selling is the ability to understand a client's world so well that you become part of how they think and solve problems. In this two-day programme, your team learn to ask the questions that matter, listen with genuine care, uncover what really needs to change, and shape solutions that land. The result is a team that clients trust, value, and turn to first, not for what they sell, but for the measurable difference they make.</p>
+        <a href="https://www.showinguplearning.com/contact-us" class="ip-pill ip-pill--dark">Book a Discovery Call</a>
+      </div>
+      <div class="ip-crs-media ip-reveal ip-d2">
+        <img class="ip-img" width="1200" height="870" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/5d597915360f35cb33540c9970a0448e.jpg" alt="Consultative Selling - immersive client engagement training" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="ip-crs" id="ip-crs-winning-rfps">
+    <hr class="ip-crs-divider">
+    <div class="ip-crs-grid ip-crs-grid--rev">
+      <div class="ip-crs-copy ip-reveal">
+        <h3 class="ip-crs-title">Winning 85%+ of Request for Proposals (RFPs)</h3>
+        <div class="ip-crs-duration">2 days</div>
+        <p class="ip-crs-desc">RFPs demand time, energy, and focused coordination, and the wrong ones can drain all three. One of the surest ways to improve your win rates is to pursue only the opportunities where you have a genuine chance of winning. This programme helps your team decide which RFPs to pursue and respond to them with care, vision, and a compelling connection to what the client actually needs and why you are the right partner to deliver.</p>
+        <a href="https://www.showinguplearning.com/contact-us" class="ip-pill ip-pill--dark">Book a Discovery Call</a>
+      </div>
+      <div class="ip-crs-media ip-reveal ip-d2">
+        <img class="ip-img" width="1200" height="871" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/3f62e56cf4c97a2cdd8468ebecd23f26.jpg" alt="Winning 85%+ of RFPs - strategic proposal writing" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="ip-crs" id="ip-crs-coaching">
+    <hr class="ip-crs-divider">
+    <div class="ip-crs-grid">
+      <div class="ip-crs-copy ip-reveal">
+        <h3 class="ip-crs-title">Coaching to Bring Out the Best in Others</h3>
+        <div class="ip-crs-duration">1 day</div>
+        <p class="ip-crs-desc">This workshop is built around practice. Your team step into a realistic coaching environment where they learn by doing, exploring what great coaching looks like and the core principles that make it work. Through repeated practice with real scenarios, they build the confidence to coach in the moment, not just in formal settings. The result is a stronger, more consistent ability to draw out the best in clients and colleagues through thoughtful, well-timed coaching.</p>
+        <a href="https://www.showinguplearning.com/contact-us" class="ip-pill ip-pill--dark">Book a Discovery Call</a>
+      </div>
+      <div class="ip-crs-media ip-reveal ip-d2">
+        <img class="ip-img" width="1200" height="872" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/aa10f32e666ea55ea6286562398d0e52.jpg" alt="Coaching to Bring Out the Best in Others - practice-based workshop" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="ip-platform ip-platform--dark">
+    <div class="ip-platform-grid">
+      <div class="ip-platform-head">
+        <h2 class="ip-h2 ip-reveal ip-d1">Keep growing with our learning <em class="ip-em su-strong">platform</em></h2>
+      </div>
+      <div class="ip-platform-body">
+        <p class="ip-body ip-body--light ip-reveal ip-d2">
+          Since launching our platform, all of our clients who have experienced our in-person training have joined our learning platform. With 24/7 access to our video-based learning, all mapped to the Nine Dimensions, your team can revisit ideas they experienced in person, strengthen learning over time, and explore new areas of development whenever they need to.
+        </p>
+        <div class="ip-reveal ip-d3">
+          <a href="https://www.showinguplearning.com/platform" class="ip-pill">Explore the Learning Platform</a>
+        </div>
+      </div>
+      <div class="ip-platform-media ip-reveal ip-d2">
+        <div class="ip-platform-img-wrap">
+          <img width="1920" height="1080" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/f36522f734a03fb6580e7913e5f0323f.png" alt="Showing Up Learning platform - Asking Thoughtful Questions course view" loading="lazy" style="width:100%;height:auto;display:block;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ip-tools">
+    <div class="ip-tools-grid">
+      <div class="ip-tools-head">
+        <h2 class="ip-h2 ip-reveal ip-d1">Practical tools and approaches to immediately <em class="ip-em su-strong">enhance</em> <em class="ip-em su-strong">impact</em></h2>
+      </div>
+      <div class="ip-tools-body">
+        <p class="ip-body ip-body--dark ip-reveal ip-d2">
+          The aim is not simply to create a memorable experience. It is to ensure people leave with practical models, tools, and strategies they can apply immediately. Participants receive a physical &amp; digital toolkit of each of the core models and concepts to embed the learning and apply it in their client work to immediately enhance impact.
+        </p>
+      </div>
+      <div class="ip-tools-media ip-reveal ip-d2">
+        
+        <div class="ip-wbm" aria-hidden="true">
+          <div class="ip-wbm-row">
+            <div class="ip-wbm-track ip-wbm-track--left">
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/942d1741e93547dc0844c182c6d375e3.png" alt="Trust Value Matrix" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/72a7af124d8fb026033d83911f02723f.png" alt="Data Story Tree" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/57c1454f0b16b64b1bf170580eb41bd2.png" alt="SUN Storytelling" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/78ac2dac01d389b95ce7fc4c1731e42d.png" alt="5S Storytelling" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/e59e1c4bbf970f86905d5391d58e9679.png" alt="Question Funnel" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/fc99c8c7005f1cfef9ce3a7e76206970.png" alt="Beyond Small Talk" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/942d1741e93547dc0844c182c6d375e3.png" alt="Trust Value Matrix" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/72a7af124d8fb026033d83911f02723f.png" alt="Data Story Tree" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/57c1454f0b16b64b1bf170580eb41bd2.png" alt="SUN Storytelling" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/78ac2dac01d389b95ce7fc4c1731e42d.png" alt="5S Storytelling" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/e59e1c4bbf970f86905d5391d58e9679.png" alt="Question Funnel" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/fc99c8c7005f1cfef9ce3a7e76206970.png" alt="Beyond Small Talk" loading="lazy" /></div>
+            </div>
+          </div>
+          <div class="ip-wbm-row">
+            <div class="ip-wbm-track ip-wbm-track--right">
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/78ac2dac01d389b95ce7fc4c1731e42d.png" alt="5S Storytelling" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/e59e1c4bbf970f86905d5391d58e9679.png" alt="Question Funnel" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/fc99c8c7005f1cfef9ce3a7e76206970.png" alt="Beyond Small Talk" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/942d1741e93547dc0844c182c6d375e3.png" alt="Trust Value Matrix" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/72a7af124d8fb026033d83911f02723f.png" alt="Data Story Tree" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/57c1454f0b16b64b1bf170580eb41bd2.png" alt="SUN Storytelling" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/78ac2dac01d389b95ce7fc4c1731e42d.png" alt="5S Storytelling" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/e59e1c4bbf970f86905d5391d58e9679.png" alt="Question Funnel" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/fc99c8c7005f1cfef9ce3a7e76206970.png" alt="Beyond Small Talk" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/942d1741e93547dc0844c182c6d375e3.png" alt="Trust Value Matrix" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/72a7af124d8fb026033d83911f02723f.png" alt="Data Story Tree" loading="lazy" /></div>
+              <div class="ip-wbm-slide"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/57c1454f0b16b64b1bf170580eb41bd2.png" alt="SUN Storytelling" loading="lazy" /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ip-team">
+    <div class="ip-team-inner">
+      <h2 class="ip-h2 ip-reveal ip-d1">Team experiences that build shared language and stronger ways of <em class="ip-em su-strong">working</em></h2>
+      <p class="ip-body ip-reveal ip-d2">
+        Our in-person sessions help teams think dynamically, solve problems together, and build a united understanding of what great consulting looks like. This creates shared language, greater consistency, and better collaboration across client work. It also helps teams support one another more effectively once the programme is complete.
+      </p>
+    </div>
+  </section>
+
+  <section class="ip-close">
+    <div class="ip-close-inner">
+      <h2 class="ip-h2 ip-reveal"><svg class="hpm-accent hpm-arrow hpm-accent--coral" viewBox="0 0 48 24" aria-hidden="true"><path d="M3 12 H42 M31 3 L43 12 L31 21" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Would you like to discuss your team's <em class="ip-em su-strong">development</em>?</h2>
+      <p class="ip-body ip-reveal ip-d2">
+        We'd love to learn more about your vision for your team and how Showing Up can support you. We can talk you through our in-person programmes and help you identify the right starting point for your people.
+      </p>
+      <div class="ip-reveal ip-d3" style="margin-top:48px;">
+        <a href="https://www.showinguplearning.com/contact-us" class="ip-pill ip-pill--dark">Book a Discovery Call</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  function suInit() {
+    var wrap = document.querySelector('.ip');
+    if (!wrap) return;
+    if (!('IntersectionObserver' in window)) {
+      wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) { el.classList.add('is-revealed'); });
+      return;
+    }
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var splitSel = '.ip-h1, .ip-flag-title, .ip-h2';
+
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.classList.add('is-revealed');
+        setTimeout(function () { el.classList.add('su-live'); }, 1600);
+        if (el.suSavedNodes) {
+          var lineCount = el.querySelectorAll('.su-line').length;
+          setTimeout(function () { suUnsplit(el); }, 800 + lineCount * 90 + 250);
+        }
+        revealObserver.unobserve(el);
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+    wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) {
+      if (reducedMotion || !el.matches(splitSel)) revealObserver.observe(el);
+    });
+
+    var splitTargets = [];
+
+    function suUnsplit(el) {
+      if (!el.suSavedNodes) return;
+      el.textContent = '';
+      el.appendChild(el.suSavedNodes);
+      el.suSavedNodes = null;
+      el.classList.remove('su-split');
+      el.removeAttribute('aria-label');
+    }
+
+    function suSplit(el) {
+      if (el.suSavedNodes || el.classList.contains('is-revealed')) return;
+      var saved = document.createDocumentFragment();
+      while (el.firstChild) { saved.appendChild(el.firstChild); }
+      try {
+        var tokens = [];
+        Array.prototype.slice.call(saved.childNodes).forEach(function (n) {
+          if (n.nodeType === 3) {
+            n.textContent.split(/\s+/).forEach(function (w) { if (w) tokens.push({ text: w, node: null, noSpace: /^[.,!?;:)\]]+$/.test(w) }); });
+          } else if (n.nodeType === 1 && n.tagName === 'BR') {
+            tokens.push({ br: true });                 // explicit line break in the headline
+          } else if (n.nodeType === 1) {
+            tokens.push({ text: (n.textContent || '').replace(/\s+/g, ' ').trim(), node: n });
+          } else { throw new Error('unsupported headline content'); }
+        });
+        if (tokens.length < 2) throw new Error('too short to split');
+        tokens.forEach(function (t, ti) {
+          var box;
+          if (t.br) { box = document.createElement('br'); t.span = box; el.appendChild(box); return; }
+          if (ti > 0 && !t.noSpace) el.appendChild(document.createTextNode(' '));  // punctuation hugs prev word
+          if (t.node) { box = t.node.cloneNode(true); }
+          else { box = document.createElement('span'); box.textContent = t.text; }
+          t.span = box; el.appendChild(box);
+        });
+        var fs = parseFloat(window.getComputedStyle(el).fontSize) || 48;
+        var lines = [];
+        var lastTop = null;
+        var lastRight = null;
+        tokens.forEach(function (t) {
+          if (t.br) { lines.push([]); lastTop = null; lastRight = null; return; }  // forced break
+          var rect = t.span.getBoundingClientRect();
+          // GUARD: an atomic token (capsule) wrapped to >1 line would mis-group the
+          // masks and shift the block on unsplit -> bail to the plain fade-up.
+          if (t.node && rect.height > fs * 1.5) throw new Error('multi-line inline token');
+          if (!t.text) {
+            if (lines.length === 0) { lines.push([]); }
+            else if (lastRight !== null && rect.left < lastRight - 1) { lines.push([]); lastTop = null; }
+            lines[lines.length - 1].push(t); lastRight = rect.right; return;
+          }
+          if (lastTop === null) { if (lines.length === 0) lines.push([]); }
+          else if (Math.abs(rect.top - lastTop) > fs * 0.5) { lines.push([]); }
+          lines[lines.length - 1].push(t); lastTop = rect.top; lastRight = rect.right;
+        });
+        if (lines.length < 2) throw new Error('single line');
+        var pad = Math.max(2, Math.round(fs * 0.2));
+        el.textContent = '';
+        lines.forEach(function (words, li) {
+          var line = document.createElement('span');
+          line.className = 'su-line';
+          if (li < lines.length - 1) { line.style.paddingBottom = pad + 'px'; line.style.marginBottom = (0 - pad) + 'px'; }
+          var inner = document.createElement('span');
+          inner.className = 'su-line-inner';
+          inner.style.setProperty('--su-line-i', String(li));
+          words.forEach(function (t, wi) {
+            if (wi > 0 && !t.noSpace) inner.appendChild(document.createTextNode(' '));
+            if (t.node) { inner.appendChild(t.node.cloneNode(true)); }
+            else { inner.appendChild(document.createTextNode(t.text)); }
+          });
+          line.appendChild(inner); el.appendChild(line);
+        });
+        el.setAttribute('aria-label', tokens.map(function (t) { return t.text; }).filter(Boolean).join(' ').replace(/\s+([.,!?;:])/g, '$1'));
+        el.suSavedNodes = saved;
+        el.classList.add('su-split');
+      } catch (err) {
+        el.textContent = ''; el.appendChild(saved);
+      }
+    }
+
+    if (!reducedMotion) {
+      splitTargets = Array.prototype.slice.call(wrap.querySelectorAll(splitSel));
+      var suSplitStarted = false;
+      var beginSplit = function () {
+        if (suSplitStarted) return;
+        suSplitStarted = true;
+        splitTargets.forEach(suSplit);
+        splitTargets.forEach(function (el) { revealObserver.observe(el); });
+      };
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(beginSplit); setTimeout(beginSplit, 1500); }
+      else { beginSplit(); }
+    }
+
+    var suResizeTimer = null;
+    window.addEventListener('resize', function () {
+      if (!splitTargets.length) return;
+      clearTimeout(suResizeTimer);
+      suResizeTimer = setTimeout(function () {
+        splitTargets.forEach(function (el) { suUnsplit(el); if (!el.classList.contains('is-revealed')) suSplit(el); });
+      }, 150);
+    });
+  }
+  if (document.readyState !== 'loading') { suInit(); }
+  else { document.addEventListener('DOMContentLoaded', suInit); }
+})();
+</script>
+
+<script>
+(function(){
+  /* -- Smooth scroll for catalogue card links -- */
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var catCards = document.querySelectorAll('.ip-cat-card');
+  catCards.forEach(function(link){
+    link.addEventListener('click', function(e){
+      var href = this.getAttribute('href') || '';
+      if(href.charAt(0) !== '#') return;
+      e.preventDefault();
+      var targetId = href.substring(1);
+      var target = document.getElementById(targetId);
+      if(target){
+        target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+        if (history.replaceState) history.replaceState(null, '', '#' + targetId);
+      }
+    });
+  });
+
+})();
+</script>
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="page-in-person-training.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] page-in-person-training.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

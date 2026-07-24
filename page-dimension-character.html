@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Character — Showing Up (preview)</title>
+</head>
+<body>
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Character \u2014 The Nine Dimensions of the Very Best Consultants",
+  "description": "The very best consultants act with integrity. They do the right thing, not the easy thing, and commit to personal and collective growth.",
+  "url": "https://www.showinguplearning.com/character",
+  "inLanguage": "en",
+  "provider": {
+    "@type": "Organization",
+    "name": "Showing Up Learning",
+    "url": "https://www.showinguplearning.com"
+  },
+  "hasPart": [
+    {
+      "@type": "LearningResource",
+      "name": "Get 1% Better Every Day",
+      "description": "A 1% daily improvement may feel insignificant, yet compounded across a year, it makes you nearly 37 times better. Drawing on the principles of Atomic Habits, this module shows how consistent, modest progress leads to meaningful, lasting results."
+    },
+    {
+      "@type": "LearningResource",
+      "name": "The 12 Traits Clients Trust Most",
+      "description": "Clients consistently trust certain qualities in the people they work with. In this module, we outline twelve core traits that build credibility and long-term relationships. Each trait includes a thoughtful self-assessment to help you reflect on how you show up today."
+    },
+    {
+      "@type": "LearningResource",
+      "name": "The Trust Value Matrix",
+      "description": "We developed this model to clarify two primary reasons clients choose to work with us: trust and value. Through a thoughtful exploration of personable styles, this module shows how strengthening both dimensions helps you build credible and lasting partnerships."
+    },
+    {
+      "@type": "LearningResource",
+      "name": "Building Trust Step by Step",
+      "description": "The Trust Staircase is our six-step model for building lasting client relationships. From dependable beginnings to enduring partnership, you will learn how small, consistent actions shape reputation, deepen trust and make winning work feel natural rather than forced."
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+<noscript><style>
+  /* If JS fails, surface all reveal-gated content rather than leaving sections blank */
+  .dh-name, .dh-tagline, .dh-body, .dh-icon-col,
+  .di-intro, .di-eyebrow, .di-type,
+  .cc-reveal, .dn-reveal { opacity: 1 !important; transform: none !important; }
+  /* The catch-all doesn't reach pseudo-elements &#8212; restore the dn- overline dash */
+  .dn-overline::before { transform: scaleX(1) !important; }
+  @media (max-width: 960px) {
+    .dh-symbol { opacity: 1 !important; transform: none !important; }
+  }
+</style></noscript>
+
+<style>
+  /* -- SCOPED RESET -- */
+  .dh-wrap *, .dh-wrap *::before, .dh-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .dh-wrap {
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: #1e1d1d;
+    color: #FFF6F1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* -- GHOST ICON &#8212; atmospheric watermark -- */
+  .dh-ghost {
+    position: absolute;
+    top: 50%;
+    right: -4%;
+    transform: translateY(-50%);
+    width: 620px;
+    height: 620px;
+    opacity: 0;
+    transition: opacity 1.6s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .dh-ghost svg { width: 100%; height: 100%; }
+  .dh-wrap.dh-revealed .dh-ghost { opacity: 0.04; }
+
+  /* -- INNER CONTAINER -- */
+  .dh-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 100px 80px 40px;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 60px;
+    align-items: center;
+    min-height: 520px;
+  }
+
+  /* -- TEXT COLUMN -- */
+  .dh-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .dh-name {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(56px, 7vw, 96px);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: #FFF6F1;
+    margin-bottom: 36px;
+    text-align: left !important;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+  }
+
+  .dh-tagline {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 400;
+    line-height: 1.25;
+    /* colour set by JS */
+    margin-bottom: 32px;
+    text-align: left !important;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .8s cubic-bezier(.16,1,.3,1) .12s, transform .8s cubic-bezier(.16,1,.3,1) .12s;
+  }
+
+  .dh-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,246,241,.92);
+    max-width: 520px;
+    text-align: left !important;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .8s cubic-bezier(.16,1,.3,1) .22s, transform .8s cubic-bezier(.16,1,.3,1) .22s;
+  }
+
+  .dh-symbol {
+    /* Desktop default &#8212; hover-revealed label below the icon column */
+    position: absolute;
+    right: 80px;
+    bottom: 24px;
+    width: 400px;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+    /* colour set by JS */
+    margin: 0;
+    text-align: center !important;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s cubic-bezier(.16,1,.3,1);
+    z-index: 2;
+  }
+
+  .dh-wrap.dh-symbol-show .dh-symbol {
+    opacity: 1;
+  }
+
+  /* -- REVEALED STATE -- */
+  .dh-wrap.dh-revealed .dh-name,
+  .dh-wrap.dh-revealed .dh-tagline,
+  .dh-wrap.dh-revealed .dh-body {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* -- ICON COLUMN &#8212; hero icon + amplification rings -- */
+  .dh-icon-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 360px;
+    cursor: help;
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 1s cubic-bezier(.16,1,.3,1) .2s, transform 1s cubic-bezier(.16,1,.3,1) .2s;
+  }
+  .dh-icon-col:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 8px;
+    border-radius: 12px;
+  }
+  .dh-wrap.dh-revealed .dh-icon-col {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Amplification rings */
+  .dh-ring {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0;
+    transition: none;
+    pointer-events: none;
+  }
+  .dh-ring-1 { width: 220px; height: 260px; }
+  .dh-ring-2 { width: 300px; height: 340px; }
+  .dh-ring-3 { width: 380px; height: 420px; }
+
+  .dh-wrap.dh-revealed .dh-ring {
+    animation: dh-expand 3.5s cubic-bezier(.16,1,.3,1) forwards;
+  }
+  .dh-wrap.dh-revealed .dh-ring-1 { animation-delay: .4s; }
+  .dh-wrap.dh-revealed .dh-ring-2 { animation-delay: .65s; }
+  .dh-wrap.dh-revealed .dh-ring-3 { animation-delay: .9s; }
+
+  @keyframes dh-expand {
+    0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+    40%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1.15); }
+  }
+
+  /* Ring breathe loop after initial expand */
+  .dh-ring.dh-ring-loop {
+    animation: dh-breathe 6s ease-in-out infinite !important;
+  }
+  .dh-ring-1.dh-ring-loop { animation-delay: 0s !important; }
+  .dh-ring-2.dh-ring-loop { animation-delay: 0.8s !important; }
+  .dh-ring-3.dh-ring-loop { animation-delay: 1.6s !important; }
+
+  @keyframes dh-breathe {
+    0%, 100% { opacity: 0.15; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: 0.35; transform: translate(-50%, -50%) scale(1.04); }
+  }
+
+  /* Hero icon */
+  .dh-hero-icon {
+    position: relative;
+    z-index: 1;
+    width: 160px;
+    height: 160px;
+  }
+  .dh-hero-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+
+  /* -- GROUP TAG &#8212; subtle identifier -- */
+
+  /* -- REDUCED MOTION -- */
+  @media (prefers-reduced-motion: reduce) {
+    .dh-name, .dh-tagline, .dh-symbol, .dh-body, .dh-icon-col, .dh-ghost {
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .dh-ring { animation: none !important; opacity: 0.2 !important; transform: translate(-50%, -50%) scale(1) !important; }
+  }
+
+  /* -- MOBILE -- */
+  @media (max-width: 960px) {
+    .dh-inner {
+      display: flex;
+      flex-direction: column;
+      padding: 80px 32px 80px;
+      gap: 0;
+      min-height: auto;
+    }
+    .dh-text { align-self: stretch !important; }
+
+    /* Hide icon column &#8212; ghost watermark carries the visual instead */
+    .dh-icon-col {
+      display: none !important;
+    }
+
+    /* Promote ghost to atmospheric backdrop behind text */
+    .dh-ghost {
+      width: 340px;
+      height: 340px;
+      right: -8%;
+      top: 18%;
+      transform: translateY(0);
+    }
+    .dh-wrap.dh-revealed .dh-ghost { opacity: 0.06; }
+
+    .dh-name { font-size: clamp(44px, 10vw, 64px); }
+    .dh-body { max-width: 100%; }
+
+    /* Symbol caption: static below body on mobile, with initial reveal animation */
+    .dh-symbol {
+      position: static;
+      width: auto;
+      text-align: left !important;
+      margin: 28px 0 0;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: auto;
+      transition: opacity .8s cubic-bezier(.16,1,.3,1) .42s,
+                  transform .8s cubic-bezier(.16,1,.3,1) .42s;
+    }
+    .dh-wrap.dh-revealed .dh-symbol {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="su-ic-curiosity" viewBox="0 0 84 78"><path d="M83.9002 7.15985C83.7698 7.18216 83.5626 7.20446 83.2711 7.20446H83.0639C82.0588 7.20446 80.555 7.26394 78.4834 7.33829L78.376 7.34572L75.66 7.44981L72.8826 7.54647L71.0642 7.61338L70.2509 9.18959L69.008 11.5836C68.9236 11.7472 68.8468 11.9033 68.7701 12.052L68.7471 12.1115L68.7241 12.1561C68.6934 12.223 68.655 12.2974 68.6167 12.3643L68.609 12.3717L68.563 12.4387L68.4555 12.5874C63.9748 18.8625 51.3536 39.1673 48.5379 45.7175L48.4918 45.829L48.4841 45.8364C47.364 48.4833 46.0903 51.0855 44.7553 53.8364L44.7246 53.8885C43.8423 55.6952 42.9753 57.4795 42.116 59.316L42.1007 59.368L42.093 59.3755L42.0853 59.3978C39.5841 64.9442 37.5893 69.7546 35.978 75.1598C35.464 76.8476 34.8348 76.8476 34.5279 76.8476C34.2364 76.8476 33.8988 76.7732 33.5842 76.6394C33.0088 76.3643 30.5306 74.9517 31.6585 71.5242C38.3642 51.9182 45.8525 35.3085 54.5607 20.7509L59.1335 13.1078L62.1181 8.11152L56.1873 8.65427L47.1108 9.49442L44.5328 9.73234L42.4766 9.92565L41.1339 10.052L40.3207 11.0929L39.0777 12.6914C29.1112 25.4796 15.0246 50.2751 9.07074 63.9257C6.46211 69.5911 5.05805 73.6431 4.38287 77.4572C4.32916 77.7026 4.27546 77.8736 4.22942 78C3.90718 77.9777 3.42381 77.8587 2.9251 77.5985C1.91234 77.0335 0.999317 76.0669 0.485262 75.0111C-0.0748269 73.8662-0.151551 72.7138 0.262761 71.487C3.87649 60.6171 15.3238 37.3011 22.1983 24.6468L25.3057 18.9145L27.3465 15.1673L23.0116 14.5874L16.3979 13.6952C14.7023 13.4647 13.0297 12.3643 12.2395 10.9517L12.2011 10.8773L12.1704 10.8253C11.7868 10.1413 11.7868 9.59108 11.8482 9.44981C11.8482 9.44981 12.063 9.13011 13.0834 8.82528C21.4311 6.3197 34.3592 3.73978 41.2951 3.19703C45.4228 2.9145 50.3179 2.37918 55.4968 1.80669L55.6272 1.79182C63.5605 0.914498 71.77 0 77.486 0C77.6702 0 77.862 0.00743494 78.0231 0.00743494C81.1842 0.0669145 83.225 3.10781 83.8235 5.13755C84.0767 5.99256 84.0153 6.78067 83.9002 7.15985Z" fill="currentColor"/></symbol>
+  <symbol id="su-ic-critical-thinking" viewBox="0 0 71 77"><path d="M70.4456 4.90006C69.87 6.18889 68.9248 7.45904 67.931 8.30581C66.9979 9.09655 66.0769 9.50125 65.1984 9.50125C65.0226 9.50125 64.8287 9.48258 64.6349 9.44522L64.5682 9.43899C59.7027 8.64826 55.6733 8.31204 51.1108 8.31204C50.2685 8.31204 49.3233 8.32449 48.2266 8.34317L41.0222 8.51751L36.3142 8.62335L39.1378 12.4961L43.458 18.4235C44.3608 19.6563 45.2152 20.6089 45.9726 21.4619L46.1301 21.6362C46.3058 21.8355 46.4755 22.0222 46.6209 22.1903L46.6936 22.2775L46.7542 22.3522L46.8269 22.4207L46.8814 22.4768C47.6449 23.2613 48.3659 23.996 48.887 24.6871L48.9658 24.7867L49.0203 24.8676L49.087 24.9486L49.1597 25.0233C49.9898 25.9884 50.6381 26.8663 51.3107 27.9496C51.9954 29.0517 51.9106 29.4003 51.2077 30.2222L51.1956 30.2409L51.1835 30.2596L51.1532 30.2907L51.1168 30.3405C50.4867 31.1126 49.6323 31.8784 48.3478 32.8248C46.9845 33.7961 45.403 34.8794 43.6337 36.0562L43.5974 36.0749L43.555 36.106C34.7328 42.1081 26.874 47.9732 21.4147 52.6367L9.09638 63.1404L1.03161 70.0204L11.211 67.4801L26.771 63.5949C36.5627 61.1542 48.2932 59.3237 58.9392 58.5765C59.0968 58.5703 59.2604 58.5641 59.4179 58.5641C62.0597 58.5641 63.8593 59.8591 64.2107 61.0733L64.2228 61.1168L64.2349 61.1542L64.241 61.1853L64.2471 61.1978C64.3622 61.5714 64.2895 61.6897 64.2592 61.7395C64.0653 62.0695 63.3018 62.6921 61.6598 62.9847C52.4559 64.3919 40.8041 67.7353 29.6673 71.0415C23.8444 72.7475 18.9183 74.1359 15.0283 75.1633C10.7687 76.284 7.75125 76.9004 6.04256 77C5.05491 76.9751 2.00108 74.827 0.558996 71.2968C-0.192343 69.4476-0.186284 68.084 0.577174 67.2372L0.643825 67.1812L0.710476 67.1003C9.55082 57.6924 28.3828 42.4692 36.4354 35.9628L36.4657 35.9379L39.5862 33.4163L41.6281 31.7663L39.8831 29.7864L37.2171 26.7604C31.8183 20.6338 24.1656 13.6604 22.3902 12.2595C22.2872 12.0914 22.1539 11.3255 22.4205 10.0554C22.778 8.36808 23.699 6.4753 24.8806 4.981C26.0742 3.48047 27.2133 2.77068 27.8132 2.62748C35.1327 0.884127 42.8642 0 50.8011 0C57.1693 0 63.7072 0.566589 70.2572 1.68731H70.2693L70.3178 1.69354C70.645 1.74958 70.8449 1.81806 70.9479 1.86165C71.0691 2.34107 71.0091 3.63613 70.4456 4.90006Z" fill="currentColor"/></symbol>
+  <symbol id="su-ic-creativity" viewBox="0 0 78 103"><path d="M77.0667 28.942C75.7904 21.5078 71.7187 16.1134 68.7354 12.3333L70.6225 10.0495L70.6381 9.97861C71.2465 9.09266 71.8542 8.2067 72.4626 7.32074C73.4468 5.88746 74.8249 4.68965 74.6816 2.78465C74.6213 1.98296 74.3003 1.20726 73.796 0.58512C72.515-0.994637 70.9263 1.00723 70.1879 2.08928C68.9414 3.91789 67.6204 5.67877 66.3786 7.51369L65.8539 8.29333C64.3271 7.29318 61.9389 5.72602 61.9389 5.72602C54.3123 2.66259 45.5035 5.20626 38.4798 8.89971C35.5357 10.4432 32.8265 12.4042 30.0233 14.1761C27.2984 15.9007 24.6988 17.8144 22.2402 19.9092C17.3229 24.0909 12.985 28.9577 9.38311 34.3286C1.92101 45.4641-4.17082 61.3089 3.64364 73.8855C3.70628 73.9879 3.76892 74.0824 3.83156 74.1848C6.29022 78.02 10.4793 80.7054 14.3161 82.9813L16.2736 84.139L16.485 84.0839C10.9413 92.9277 6.45465 100.189 4.84164 103C7.96586 99.5901 12.6796 93.0773 18.0589 85.1943L18.7714 85.6195L19.7032 85.8558C33.2125 89.2807 47.1783 87.1315 58.0003 78.0003C62.6491 74.0777 66.406 69.1644 69.5646 63.9809C72.764 58.7306 75.6471 53.14 77.0667 47.1163C78.4949 41.0611 78.1128 35.0279 77.0667 28.942ZM18.7714 80.4534C16.5328 79.6037 14.1932 78.3043 14.1908 78.3027C4.27553 72.798 3.43144 59.9874 7.50154 50.4435C11.1277 41.9407 15.9964 34.1286 22.2519 27.3166C24.5211 24.8453 26.9711 22.5419 29.5864 20.4455C34.6462 16.3882 40.3896 13.1901 46.5065 11.0622C49.9048 9.88017 53.0439 8.96035 56.6301 9.5628C59.0895 9.97625 60.7706 11.5757 62.613 13.0822L48.4484 34.0459C44.4002 40.0389 30.0398 62.5225 18.7722 80.4542L18.7714 80.4534ZM71.2019 35.7304C70.6146 39.4317 69.4088 43.07 68.0464 46.4564C66.0411 51.4405 63.324 56.1207 60.091 60.3993C55.9731 65.8481 51.0621 70.7079 45.4776 74.6289C39.7193 78.672 32.9518 82.2324 25.7504 82.1174C24.4725 82.097 23.197 81.9505 21.9497 81.6662C21.613 81.5323 21.2293 81.3906 20.83 81.233C29.0124 69.0817 36.8817 56.7177 44.8606 44.4324C48.0944 39.4632 51.3596 34.5019 54.844 29.7059C58.2971 24.9493 62.3061 20.6573 65.7435 15.8929C65.7435 16.0504 68.3431 19.4761 68.5389 19.8147C69.5098 21.4763 70.2615 23.264 70.7861 25.1225C71.7649 28.5876 71.7735 32.1866 71.2019 35.7304Z" fill="currentColor"/></symbol>
+  <symbol id="su-ic-character" viewBox="0 0 70 88"><path d="M57.7165 63.5936C58.0873 62.6048 58.4711 61.5965 58.8419 60.6273C60.6827 55.8005 62.5886 50.8111 63.6489 45.8022L63.6619 45.7242L63.6749 45.6656L63.6945 45.6006L63.714 45.5225C63.9677 44.5142 64.3059 43.3303 64.6702 42.0813C65.5288 39.1475 66.5891 35.4982 67.4282 30.9772C68.6863 24.1917 69.2119 17.3321 68.9966 10.5415C68.9322 8.51644 68.0787 6.59159 66.6041 5.20211C65.9575 4.59258 65.2329 3.95443 64.5134 3.38914L64.5199 3.37613C61.4496 1.32053 57.8395 0 55.2505 0C53.5268 0 53.3056 0.48788 53.1039 0.917215C42.3651 24.6152 14.5895 56.3795 3.32961 66.0525C0.259328 68.7066-0.436689 73.7415 0.233309 77.5535C0.890297 81.2679 6.23727 86.9403 10.0881 87.0964C21.9269 82.8876 53.8201 77.3908 66.5696 77.3908H66.7192C66.5891 77.1241 66.4135 76.8184 66.1923 76.4866C65.0865 74.8539 63.4213 73.4878 61.5023 72.6291L57.5929 70.8858L55.3553 69.8905L56.2139 67.6007L57.7165 63.5936ZM47.3348 67.5617L46.3331 70.2743L45.7606 71.829L44.1084 71.9656L41.2268 72.2063C37.8703 72.486 34.4292 72.9154 30.793 73.3772C29.6091 73.5268 28.3862 73.6764 27.1243 73.8326L15.5782 75.2377L8.9693 76.0443L13.282 70.9703L20.8146 62.1104C22.9482 59.606 24.8541 57.2121 26.4868 54.9939L26.5063 54.9679L26.5193 54.9418L26.5389 54.9223L26.5714 54.8833C29.9669 50.4859 33.447 45.6656 37.1417 40.5656C39.2168 37.6904 41.8057 34.1061 44.4206 30.5738L58.6857 11.2733L62.6342 5.92677C63.1272 5.25935 64.1856 5.67568 64.0913 6.50052L63.5325 11.3858C63.3718 12.7883 63.1077 14.1765 62.7422 15.5393L57.0725 36.6697C54.3405 46.8567 50.6067 58.6953 47.3348 67.5617Z" fill="currentColor"/></symbol>
+  <symbol id="su-ic-communication" viewBox="0 0 73 83"><path d="M72.6288 81.3189C71.4505 83.0991 67.7812 83.2455 66.1003 82.7616C63.6179 82.047 62.1436 79.8655 60.4249 78.1226C58.282 75.949 56.1688 73.7459 54.1232 71.483C50.1631 67.1012 46.5007 62.4736 43.243 57.5576L42.3705 56.696C41.4258 55.2714 40.9701 54.1261 39.9625 52.628L39.6132 52.1023C39.3842 51.7631 39.1552 51.4296 38.9262 51.0847L33.2354 42.6841L30.5932 38.1752L30.0258 42.5564L29.3216 52.6303L29.3102 52.7603L29.2987 52.9073C28.8865 58.8714 27.6172 66.7858 28.3386 72.699L28.3443 72.7159V72.7498L28.3501 72.7725C28.4588 73.5978 28.2069 74.3271 27.5497 75.0614C26.6376 76.0807 24.4707 76.9479 23.0989 76.7687C20.7046 76.4555 21.3819 72.6006 21.4002 71.0646C21.4701 65.1893 23.0279 59.461 23.4968 53.6213C24.4626 41.6055 28.0426 34.7771 20.0663 24.3923L19.906 24.1774C19.6827 23.8948 19.4651 23.6065 19.2418 23.3125C15.1374 17.8855 8.0754 6.55205 1.17711 3.03014L1.15993 3.02448L1.12558 3.00752L0.83932 2.86619C0.822717 2.85772 0.805541 2.84924 0.788938 2.84132C-0.449423 2.22682-0.168315 0.386159 1.20173 0.183211C1.96432 0.0701477 2.81165 4.8666e-05 3.73055 4.8666e-05C6.81013 4.8666e-05 12.8176-0.028217 14.163 1.27766C23.3291 10.2209 30.6041 21.9173 36.9075 32.3191C38.9858 35.7392 41.0068 39.3064 42.9648 42.7661C47.5335 50.8218 54.5411 59.1489 60.4896 66.7411C62.5621 69.3811 65.0812 72.4508 68.1156 75.1869C69.3557 76.3091 70.8448 76.875 72.0488 78.0101C72.6253 78.5539 73.0112 79.2962 72.9998 80.0831C72.9929 80.5619 72.8583 80.9718 72.6288 81.3189Z" fill="currentColor"/></symbol>
+  <symbol id="su-ic-collaboration" viewBox="0 0 78 80"><path d="M8.53258 39.3405C1.80455 53.3484-0.275527 66.4653 0.0285195 77.3747C0.0509925 78.174 0.257877 78.8649 0.72981 79.3279C3.17673 81.7309 9.12944 75.5054 9.82941 72.0858C10.2405 70.0771 9.63772 68.6279 9.18959 67.1219C6.92311 59.5006 8.91264 48.9433 14.324 37.635C17.0571 31.9234 20.6707 26.0023 25.0555 20.1632C28.5911 15.4556 33.1815 12.2533 38.0754 10.5049C48.6569 6.72597 57.658 10.3193 60.7731 15.9404C67.523 28.1207 69.1952 51.8636 48.6093 75.4479C47.0897 77.1891 46.8398 78.9375 48.1334 79.2242C60.3124 81.9258 67.6043 68.1365 70.841 58.6638C72.8934 52.6562 74.7547 46.1083 76.1242 39.9522C77.8606 32.1499 78.1758 23.5306 75.7349 15.8341C72.4584 5.50332 61.6912-5.28055 42.9355 2.86119C27.3478 9.62902 15.3822 25.0816 8.53258 39.3405Z" fill="currentColor"/></symbol>
+  <symbol id="su-ic-curation" viewBox="0 0 75 75"><path d="M71.581 9.16663C65.192-0.862917 53.4314-1.96031 43.108 2.49582C34.155 6.36094 27.0474 13.3565 21.4804 21.1869C15.7562 29.2375 11.5295 36.8745 11.1226 46.978C10.8897 52.7518 13.2691 60.8422 15.0576 67.0035C13.266 67.0203 8.14282 67.0035 7.18066 67.0035C2.47627 66.9457-3.59342 76.0284 2.69349 74.7705C5.7227 74.8165 8.62359 74.8613 11.6528 74.9074C12.1624 75.0536 12.6926 74.9074 13.2478 74.9416C24.596 75.6539 18.6001 69.8714 14.9374 56.5758C10.1817 39.3125 23.8911 14.7506 41.5587 9.30971C48.4991 7.17216 56.0887 7.79427 60.0006 14.8141C66.3933 26.2863 61.0911 48.6471 41.5943 70.86C40.1552 72.4998 39.9185 74.1465 41.1436 74.4171C44.124 75.0753 47.5852 74.8066 50.6319 74.7892C54.4743 74.7668 59.9912 75.484 62.8057 72.5434C63.8111 71.4926 67.1314 66.9189 63.5901 66.8741C61.6382 66.8493 54.0474 67.0042 53.8088 67.0042C53.7256 67.0042 53.6924 67.0546 53.6367 67.0042C56.5789 64.0741 64.7607 52.9341 66.8221 49.6525C69.2692 45.7581 71.2141 41.5496 72.5938 37.1669C73.6593 33.7826 74.3879 30.2939 74.7504 26.7647C75.3789 20.6388 74.992 14.5254 71.5797 9.16787L71.581 9.16663Z" fill="currentColor"/></symbol>
+  <symbol id="su-ic-commerciality" viewBox="0 0 102 62"><path d="M101.163 4.63127C101.127 4.4603 101.079 4.29133 101.02 4.12566C99.7443 0.552633 94.9861 0.761369 91.8816 0.962816C84.7591 1.42402 79.2447 5.14284 74.1312 9.89407C69.5781 14.1244 65.169 19.2136 60.9319 23.7217C58.3194 26.5008 56.738 26.0436 55.2309 22.8735C51.1478 14.2855 47.2088 6.11164 37.9844 2.3027C28.6199-1.56388 17.2053-0.718337 9.36443 6.03742C-5.50126 18.8452-1.4069 42.2382 12.8062 53.828C19.6279 59.391 31.2716 63.3722 39.7949 59.3387C42.9452 57.8477 45.5291 55.378 48.3647 53.4019C51.8927 50.9428 54.6779 47.4851 58.6474 50.3829C61.1132 52.1827 64.0464 54.9108 66.2492 57.0233C69.918 60.542 75.2154 61.9442 80.1921 61.1212C84.6914 60.377 91.3086 57.024 91.7176 51.8315C91.9155 49.316 88.9172 45.9981 86.3386 47.3638C85.3427 47.8913 84.6197 48.8025 83.7672 49.5387C75.9284 56.3077 61.2294 45.4918 61.7751 36.6812C62.2412 29.1601 68.1062 24.1438 73.1572 18.936C78.045 13.8965 83.5933 8.27852 91.1134 8.74502C93.1869 8.87358 95.8199 10.4229 97.7612 10.0299C100.089 9.55876 101.649 6.92935 101.163 4.63259V4.63127ZM48.8075 42.1527C45.6533 47.9231 39.4457 52.6969 33.8044 53.9248C16.5845 57.6734 3.33145 37.202 5.71955 21.8994C6.66961 15.8122 9.95864 8.9743 15.7612 6.14344C24.3689 1.94421 33.3138 7.06188 39.3262 13.2835C45.3831 19.5509 52.7552 30.1368 50.0086 39.2993C49.7118 40.2893 49.3035 41.2456 48.8075 42.1527Z" fill="currentColor"/></symbol>
+  <symbol id="su-ic-coaching" viewBox="0 0 60 76"><path d="M59.6923 8.31368C59.6472 8.12606 59.5956 7.93843 59.5441 7.75728C58.5713 4.39946 54.5704 0.161745 51.362 0C41.0474 3.66837 13.5632 8.43661 2.20489 8.52072C2.27575 8.64364 2.35951 8.77304 2.4497 8.9089C3.39033 10.3064 4.8077 11.4709 6.44412 12.202L9.83293 13.7224L12.0427 14.7123L11.1923 16.9897L9.89092 20.4769C9.60744 21.2403 9.31752 22.0167 9.02761 22.7672L8.9052 23.0842C7.30099 27.3155 5.6388 31.689 4.7175 36.0691L4.69817 36.1532L4.69173 36.1791L4.68529 36.1985L4.6724 36.2697C4.6724 36.2697 4.66596 36.2891 4.65952 36.302C4.43403 37.2142 4.15055 38.2106 3.81554 39.3557C3.06175 41.9437 2.13402 45.1527 1.41244 49.0928C0.162579 55.8667-0.262633 62.7246 0.156136 69.4856C0.185128 69.549 0.232159 69.6059 0.275324 69.6603C0.350059 69.7541 0.429947 69.844 0.511124 69.9326C0.620004 70.0517 0.730817 70.1681 0.843563 70.2833C0.978857 70.4217 1.11544 70.5583 1.25331 70.6941C1.40794 70.8462 1.56385 70.9969 1.7204 71.1464C1.88791 71.3062 2.05606 71.464 2.22615 71.6219C2.4001 71.783 2.57469 71.9428 2.75057 72.1013C2.92388 72.2579 3.09848 72.4125 3.27371 72.5665C3.43993 72.7121 3.60744 72.8563 3.77688 72.9987C3.85355 73.0634 3.92828 73.1326 4.01139 73.1876C4.14153 73.2749 4.27232 73.3597 4.40504 73.4425C4.52745 73.5188 4.6505 73.5932 4.7742 73.667C5.02095 73.8132 5.27157 73.9549 5.52412 74.0908C5.77473 74.2253 6.02857 74.3547 6.28434 74.4783C6.53625 74.5999 6.79138 74.717 7.04844 74.8277C7.2997 74.9364 7.55354 75.0392 7.80995 75.1363C8.05864 75.2307 8.30926 75.3194 8.56181 75.4022C8.80534 75.4818 9.0508 75.5555 9.2982 75.6222C9.53464 75.6862 9.77302 75.7438 10.0127 75.7943C10.2401 75.8421 10.4688 75.8829 10.6982 75.9159C10.914 75.9469 11.1311 75.9702 11.3489 75.9845C11.5003 75.9942 11.6523 76 11.8044 76C13.1444 76 13.2991 75.6636 13.4408 75.3466C18.7431 63.5974 28.1364 50.7484 35.0815 42.0336C42.8964 32.2254 51.5231 22.8054 57.0573 18.0242C59.5377 15.8827 60.5685 12.0655 59.6923 8.31304V8.31368ZM48.6625 14.1494L42.1362 21.8614C40.2807 24.0482 38.6185 26.1444 37.1882 28.0983L37.1303 28.1695L37.1174 28.1889L37.0981 28.2148C34.1409 32.0578 31.0935 36.2891 27.8658 40.7726C25.933 43.4576 23.7361 46.5049 21.4941 49.5586L9.13069 66.3477L4.17697 73.0084C4.13574 73.064 4.04747 73.0317 4.05134 72.9624L4.35156 67.8532C4.49652 65.385 4.89145 62.9381 5.52927 60.5508L9.96179 43.9687C12.3584 34.9951 15.6248 24.5917 18.4854 16.8085L19.3551 14.447L19.9221 12.9008L21.5585 12.7649L24.0582 12.5514C27.0089 12.3055 30.1465 11.9109 33.1745 11.5292L34.1667 11.4062C34.8882 11.3092 35.6291 11.2186 36.3829 11.128L46.3883 9.90525L52.934 9.103L48.6625 14.1494Z" fill="currentColor"/></symbol>
+</svg>
+
+<div class="dh-wrap" id="dh-wrap" data-dimension="character" data-colour="#C8B4E4">
+
+  
+  <div class="dh-ghost" id="dh-ghost" style="color:#C8B4E4"><svg viewBox="0 0 70 88" fill="none"><use href="#su-ic-character"/></svg></div>
+
+  <div class="dh-inner">
+
+    
+    <div class="dh-text">
+      <h1 class="dh-name" id="dh-name">Character</h1>
+      <p class="dh-tagline" id="dh-tagline" style="color:#C8B4E4">Be the person people turn to</p>
+      <p class="dh-body" id="dh-body">The very best consultants act with integrity. They do the right thing, not the easy thing. They commit to personal and collective growth, striving to make things better for clients, teams and the wider world. They read widely, explore endlessly, and care about being self-aware and taking responsibility to make things better. That is why the symbol is Delta. Delta represents change, and character is built, choice by choice, through how we respond to pressure, handle setbacks, and stand firm when it matters most.</p>
+      <p class="dh-symbol" id="dh-symbol" style="color:#C8B4E4">Represented by Delta &#8212; &#916; &#8212; the symbol for change</p>
+    </div>
+
+    
+    <div class="dh-icon-col" role="img" tabindex="0" aria-label="Character &#8212; Represented by Delta &#8212; &#916; &#8212; the symbol for change">
+      <div class="dh-ring dh-ring-1" id="dh-ring-1" style="border-color:#C8B4E4"></div>
+      <div class="dh-ring dh-ring-2" id="dh-ring-2" style="border-color:#C8B4E4"></div>
+      <div class="dh-ring dh-ring-3" id="dh-ring-3" style="border-color:#C8B4E4"></div>
+      <div class="dh-hero-icon" id="dh-hero-icon" style="color:#C8B4E4"><svg viewBox="0 0 70 88" fill="none"><use href="#su-ic-character"/></svg></div>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+(function(){
+  /* Header content is baked into the markup per page (see data-dimension on
+     .dh-wrap). This script only drives behaviour: scroll reveal, the ring
+     expand-to-breathe handoff, and the hover/focus symbol caption. */
+  var wrap = document.getElementById('dh-wrap');
+  if (!wrap) return;
+
+  /* Rings switch to the breathing loop when their expand animation finishes */
+  var rings = wrap.querySelectorAll('.dh-ring');
+  for (var i = 0; i < rings.length; i++) {
+    rings[i].addEventListener('animationend', function (e) {
+      if (e.animationName === 'dh-expand') e.target.classList.add('dh-ring-loop');
+    });
+  }
+
+  /* -- Reveal on scroll -- */
+  if (!('IntersectionObserver' in window)) {
+    wrap.classList.add('dh-revealed');
+  } else {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          wrap.classList.add('dh-revealed');
+          obs.unobserve(wrap);
+        }
+      });
+    }, { threshold: 0.15 });
+    obs.observe(wrap);
+  }
+
+  /* Hover/focus reveal for the symbol caption (desktop only &#8212; mobile shows it statically). */
+  var iconCol = wrap.querySelector('.dh-icon-col');
+  if (iconCol) {
+    var showSymbol = function () { wrap.classList.add('dh-symbol-show'); };
+    var hideSymbol = function () { wrap.classList.remove('dh-symbol-show'); };
+    iconCol.addEventListener('mouseenter', showSymbol);
+    iconCol.addEventListener('mouseleave', hideSymbol);
+    iconCol.addEventListener('focus', showSymbol);
+    iconCol.addEventListener('blur', hideSymbol);
+  }
+})();
+</script>
+
+
+
+
+<style>
+  /* -- SCOPED RESET -- */
+  .di-wrap *, .di-wrap *::before, .di-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .di-wrap {
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: #1e1d1d;
+    color: #FFF6F1;
+  }
+
+  .di-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px 80px 80px;
+  }
+
+  .di-intro {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 246, 241, 0.92);
+    max-width: 640px;
+    text-align: left !important;
+  }
+
+  .di-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #FF8269;
+    margin-top: 48px;
+    margin-bottom: 24px;
+    text-align: left !important;
+  }
+
+  .di-types {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .di-types > * { min-width: 0; flex: 1; }
+
+  .di-type {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 16px;
+    border: 1px solid rgba(255, 246, 241, 0.10);
+    border-radius: 16px;
+    background: transparent;
+  }
+
+  .di-icon {
+    width: 56px;
+    height: 56px;
+    color: #FF8269;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .di-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .di-label {
+    margin-top: 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: #FFF6F1;
+    text-align: center;
+  }
+
+  /* -- REVEAL -- */
+  .di-intro,
+  .di-eyebrow,
+  .di-type {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .di-wrap.di-revealed .di-intro   { opacity: 1; transform: none; }
+  .di-wrap.di-revealed .di-eyebrow { opacity: 1; transform: none; transition-delay: 0.18s; }
+  .di-wrap.di-revealed .di-type:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.30s; }
+  .di-wrap.di-revealed .di-type:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.42s; }
+  .di-wrap.di-revealed .di-type:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.54s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .di-intro, .di-eyebrow, .di-type {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* -- MOBILE -- */
+  @media (max-width: 960px) {
+    .di-inner {
+      padding: 28px 32px 56px;
+    }
+    .di-types {
+      flex-direction: column;
+      gap: 16px;
+    }
+    .di-types > * { align-self: stretch !important; }
+    .di-type {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 18px;
+      padding: 20px 18px;
+    }
+    .di-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+    .di-label {
+      margin-top: 0;
+      text-align: left !important;
+    }
+    .di-eyebrow {
+      margin-top: 40px;
+    }
+  }
+</style>
+
+<section class="di-wrap" id="di-wrap">
+  <div class="di-inner">
+    <p class="di-intro" id="di-intro">Begin exploring the learning content for Character below. Access it anytime, anywhere. Every learning component will grow your self-awareness and elevate how you show up with integrity every single day. New content is added to the platform every month.</p>
+    <p class="di-eyebrow" style="color:#C8B4E4">What you'll find inside</p>
+    <ul class="di-types">
+
+      <li class="di-type">
+        <div class="di-icon" style="color:#C8B4E4">
+          
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="32" cy="32" r="20"/>
+            <path d="M50 32 L26 32"/>
+            <path d="M32 26 L26 32 L32 38"/>
+          </svg>
+        </div>
+        <span class="di-label">Self-reflection</span>
+      </li>
+
+      <li class="di-type">
+        <div class="di-icon" style="color:#C8B4E4">
+          
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="10" y="16" width="44" height="6" rx="3"/>
+            <rect x="14" y="29" width="36" height="6" rx="3"/>
+            <rect x="18" y="42" width="28" height="6" rx="3"/>
+          </svg>
+        </div>
+        <span class="di-label">Modules</span>
+      </li>
+
+      <li class="di-type">
+        <div class="di-icon" style="color:#C8B4E4">
+          
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="29" y1="20" x2="21" y2="40"/>
+            <line x1="35" y1="20" x2="43" y2="40"/>
+            <line x1="25" y1="46" x2="39" y2="46"/>
+            <circle cx="32" cy="14" r="7"/>
+            <circle cx="18" cy="46" r="7"/>
+            <circle cx="46" cy="46" r="7"/>
+          </svg>
+        </div>
+        <span class="di-label">Team challenges</span>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+<script>
+(function () {
+  /* Intro copy and colour tinting are baked into the markup; this only drives the reveal. */
+  var wrap = document.getElementById('di-wrap');
+  if (!wrap) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    wrap.classList.add('di-revealed');
+    return;
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        wrap.classList.add('di-revealed');
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.15 });
+  obs.observe(wrap);
+})();
+</script>
+
+
+
+
+<style>
+  /* -- SCOPED RESET -- */
+  .cc-wrap *, .cc-wrap *::before, .cc-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .cc-wrap {
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: #FFF6F1;
+    color: #1e1d1d;
+  }
+
+  /* -- COURSE ROW -- */
+  .cc-crs {
+    padding: 80px 80px;
+    scroll-margin-top: 100px;
+  }
+  .cc-crs:first-of-type {
+    padding-top: 100px;
+    border-top: 1px solid rgba(30,29,29,.08);
+  }
+  .cc-crs + .cc-crs { padding-top: 0; }
+
+  .cc-divider {
+    max-width: 1280px;
+    margin: 0 auto 80px;
+    height: 1px;
+    background: rgba(30,29,29,.08);
+    border: none;
+  }
+
+  /* Named areas (house pattern): the mobile stack re-declares the areas,
+     so no display:contents flattening or order juggling is needed. */
+  .cc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "title media"
+      "desc  media";
+    column-gap: 64px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .cc-grid > * { min-width: 0; }
+  .cc-title { grid-area: title; align-self: end; }
+  .cc-desc  { grid-area: desc;  align-self: start; }
+  .cc-media { grid-area: media; align-self: center; }
+  .cc-grid--rev {
+    grid-template-areas:
+      "media title"
+      "media desc";
+  }
+
+  .cc-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 200; line-height: 1.15;
+    letter-spacing: -.02em;
+    color: #1e1d1d;
+    margin-bottom: 24px;
+    text-align: left !important;
+  }
+
+  .cc-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.7; font-weight: 300;
+    color: rgba(30,29,29,.65);
+    text-align: left !important;
+  }
+
+  .cc-img {
+    width: 100%; height: auto; display: block;
+    border-radius: 8px;
+  }
+
+  /* -- REVEAL -- */
+  .cc-reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+  }
+  /* Media settles from a slight scale instead of rising (house media grammar).
+     Must precede .cc-vis: same specificity, so source order decides the pre-reveal state. */
+  .cc-media.cc-reveal { transform: scale(.97); }
+  .cc-reveal.cc-vis { opacity: 1; transform: none; }
+  .cc-d2 { transition-delay: .15s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cc-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+
+  /* -- MOBILE -- */
+  @media (max-width: 960px) {
+    .cc-crs { padding: 56px 32px; }
+    .cc-crs:first-of-type { padding-top: 72px; }
+    .cc-crs + .cc-crs { padding-top: 0; }
+    .cc-divider { margin-bottom: 40px; }
+
+    .cc-grid,
+    .cc-grid--rev {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "title"
+        "media"
+        "desc";
+    }
+    .cc-title {
+      font-size: clamp(24px, 6vw, 32px);
+      margin-bottom: 12px;
+    }
+    .cc-media { margin: 28px 0 32px 0; }
+    .cc-desc { font-size: 16px; }
+  }
+</style>
+
+<section class="cc-wrap" id="cc-wrap" aria-label="Character learning content">
+
+  
+  <section class="cc-crs" id="get-1-better-every-day">
+    <div class="cc-grid">
+      <h2 class="cc-title cc-reveal">Get 1% Better Every Day</h2>
+      <p class="cc-desc cc-reveal">A 1% daily improvement may feel insignificant, yet compounded across a year, it makes you nearly 37 times better. Drawing on the principles of Atomic Habits, this module shows how consistent, modest progress leads to meaningful, lasting results.</p>
+      <div class="cc-media cc-reveal cc-d2">
+        <img class="cc-img" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/1fb43e1d00aabd1ce73836a8d00bd75d.jpg" width="1280" height="720" alt="Get 1% Better Every Day" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="cc-crs" id="the-12-traits-clients-trust-most">
+    <hr class="cc-divider">
+    <div class="cc-grid cc-grid--rev">
+      <h2 class="cc-title cc-reveal">The 12 Traits Clients Trust Most</h2>
+      <p class="cc-desc cc-reveal">Clients consistently trust certain qualities in the people they work with. In this module, we outline twelve core traits that build credibility and long-term relationships. Each trait includes a thoughtful self-assessment to help you reflect on how you show up today.</p>
+      <div class="cc-media cc-reveal cc-d2">
+        <img class="cc-img" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/1fb43e1d00aabd1ce73836a8d00bd75d.jpg" width="1280" height="720" alt="The 12 Traits Clients Trust Most" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="cc-crs" id="the-trust-value-matrix">
+    <hr class="cc-divider">
+    <div class="cc-grid">
+      <h2 class="cc-title cc-reveal">The Trust Value Matrix</h2>
+      <p class="cc-desc cc-reveal">We developed this model to clarify two primary reasons clients choose to work with us: trust and value. Through a thoughtful exploration of personable styles, this module shows how strengthening both dimensions helps you build credible and lasting partnerships.</p>
+      <div class="cc-media cc-reveal cc-d2">
+        <img class="cc-img" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/1fb43e1d00aabd1ce73836a8d00bd75d.jpg" width="1280" height="720" alt="The Trust Value Matrix" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="cc-crs" id="building-trust-step-by-step">
+    <hr class="cc-divider">
+    <div class="cc-grid cc-grid--rev">
+      <h2 class="cc-title cc-reveal">Building Trust Step by Step</h2>
+      <p class="cc-desc cc-reveal">The Trust Staircase is our six-step model for building lasting client relationships. From dependable beginnings to enduring partnership, you will learn how small, consistent actions shape reputation, deepen trust and make winning work feel natural rather than forced.</p>
+      <div class="cc-media cc-reveal cc-d2">
+        <img class="cc-img" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/1fb43e1d00aabd1ce73836a8d00bd75d.jpg" width="1280" height="720" alt="Building Trust Step by Step" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+</section>
+
+<script>
+(function () {
+  var revealEls = document.querySelectorAll('.cc-wrap .cc-reveal');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < revealEls.length; i++) revealEls[i].classList.add('cc-vis');
+    return;
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('cc-vis');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  for (var j = 0; j < revealEls.length; j++) obs.observe(revealEls[j]);
+})();
+</script>
+
+
+
+
+<style>
+  /* -- SCOPED RESET -- */
+  .dn-wrap *, .dn-wrap *::before, .dn-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .dn-wrap {
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: #1e1d1d;
+    color: #FFF6F1;
+  }
+
+  .dn-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 104px 80px 112px;
+  }
+
+  /* -- INTRO -- */
+  .dn-overline {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: #FF8269;
+    margin-bottom: 26px;
+    text-align: left !important;
+  }
+  .dn-overline::before {
+    content: ''; display: block; width: 28px; height: 1px;
+    background: #FF8269; flex: 0 0 28px;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .7s cubic-bezier(.16,1,.3,1) .15s;
+  }
+  .dn-overline.dn-vis::before { transform: scaleX(1); }
+  .dn-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 200; line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #FFF6F1;
+    margin-bottom: 20px;
+    text-align: left !important;
+  }
+  .dn-headline em {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    color: #FF8269;
+  }
+  .dn-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; font-weight: 300; line-height: 1.6;
+    color: rgba(255,246,241,.7);
+    max-width: 620px;
+    margin-bottom: 60px;
+    text-align: left !important;
+  }
+
+  /* -- GROUP COLUMNS -- */
+  .dn-groups {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .dn-groups > * { min-width: 0; }
+
+  .dn-g-thinking { --dn-gc: #FF8269; }
+  .dn-g-presence { --dn-gc: #C8B4E4; }
+  .dn-g-impact   { --dn-gc: #D8F2F8; }
+
+  .dn-group-label {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--dn-gc);
+    margin-bottom: 18px;
+    text-align: left !important;
+  }
+  .dn-group-label::before {
+    content: ''; display: block; width: 24px; height: 2px;
+    background: var(--dn-gc); border-radius: 2px; flex: 0 0 24px;
+  }
+
+  .dn-col { display: flex; flex-direction: column; gap: 12px; }
+
+  /* -- DIMENSION CARD (anchor) -- */
+  /* LearnWorlds anchor overrides &#8212; all four states. Border set
+     explicitly (not :none) so the card keeps its hairline. */
+  .dn-wrap .dn-card,
+  .dn-wrap .dn-card:link,
+  .dn-wrap .dn-card:visited,
+  .dn-wrap .dn-card:hover,
+  .dn-wrap .dn-card:active {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,246,241,.09) !important;
+    border-bottom: 1px solid rgba(255,246,241,.09) !important;
+    background: #242120;
+    text-decoration: none !important;
+    color: inherit !important;
+    transition: background .22s ease, border-color .22s ease, transform .22s ease;
+  }
+  .dn-wrap .dn-card * { text-decoration: none !important; }
+  .dn-wrap .dn-card:focus-visible {
+    outline: 2px solid var(--dn-gc);
+    outline-offset: 3px;
+  }
+  .dn-wrap .dn-card:hover {
+    background: #2c2928;
+    border-color: rgba(255,246,241,.18) !important;
+    border-bottom-color: rgba(255,246,241,.18) !important;
+    transform: translateY(-1px);
+  }
+
+  .dn-icon {
+    flex: 0 0 40px; width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .dn-icon svg {
+    width: 100%; height: 100%;
+    max-width: 40px; max-height: 40px;
+    display: block; overflow: visible;
+  }
+  .dn-g-thinking .dn-icon { color: #FF8269; }
+  .dn-g-presence .dn-icon { color: #C8B4E4; }
+  .dn-g-impact   .dn-icon { color: #D8F2F8; }
+
+  .dn-txt {
+    display: flex; flex-direction: column; gap: 3px;
+    flex: 1 1 auto; min-width: 0;
+  }
+  .dn-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; font-weight: 500; line-height: 1.2;
+    color: #FFF6F1;
+    text-align: left !important;
+  }
+  .dn-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12.5px; font-weight: 300; line-height: 1.3;
+    color: rgba(255,246,241,.55);
+    text-align: left !important;
+  }
+
+  .dn-arrow {
+    flex: 0 0 auto;
+    display: inline-flex; align-items: center;
+    color: rgba(255,246,241,.55);
+    transition: color .22s ease, transform .22s ease;
+  }
+  .dn-card:hover .dn-arrow {
+    color: var(--dn-gc);
+    transform: translateX(3px);
+  }
+
+  /* "You're here" &#8212; replaces the tagline on the current card so every
+     card keeps the same height regardless of tagline length. Hidden
+     until JS flags the current card. */
+  .dn-here {
+    display: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12.5px; font-weight: 600; line-height: 1.3;
+    letter-spacing: 0.02em;
+    color: var(--dn-gc);
+    text-align: left !important;
+  }
+
+  /* -- CURRENT DIMENSION STATE -- */
+  .dn-wrap .dn-card.dn-is-current,
+  .dn-wrap .dn-card.dn-is-current:link,
+  .dn-wrap .dn-card.dn-is-current:visited,
+  .dn-wrap .dn-card.dn-is-current:hover,
+  .dn-wrap .dn-card.dn-is-current:active {
+    background: rgba(255,246,241,.03);
+    border-color: var(--dn-gc) !important;
+    border-bottom-color: var(--dn-gc) !important;
+    transform: none;
+    cursor: default;
+  }
+  .dn-card.dn-is-current .dn-name { color: var(--dn-gc); }
+  .dn-card.dn-is-current .dn-tag { display: none; }
+  .dn-card.dn-is-current .dn-here { display: block; }
+  .dn-card.dn-is-current .dn-arrow { display: none; }
+
+  /* -- REVEAL -- */
+  .dn-reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+  }
+  .dn-reveal.dn-vis { opacity: 1; transform: none; }
+  /* gentle stagger down each column */
+  .dn-col .dn-card:nth-child(2) { transition-delay: .07s; }
+  .dn-col .dn-card:nth-child(3) { transition-delay: .14s; }
+  .dn-g-presence .dn-card { transition-delay: .06s; }
+  .dn-g-presence .dn-card:nth-child(2) { transition-delay: .13s; }
+  .dn-g-presence .dn-card:nth-child(3) { transition-delay: .20s; }
+  .dn-g-impact .dn-card { transition-delay: .12s; }
+  .dn-g-impact .dn-card:nth-child(2) { transition-delay: .19s; }
+  .dn-g-impact .dn-card:nth-child(3) { transition-delay: .26s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dn-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .dn-card { transition: background .22s ease, border-color .22s ease !important; }
+    .dn-overline::before { transition: none !important; transform: scaleX(1) !important; }
+    .dn-card:hover .dn-arrow { transform: none !important; }
+  }
+
+  /* -- MID-RANGE (small laptop) &#8212; keep 3 columns but trim padding +
+     gap so the cards don't get cramped and wrap their taglines. -- */
+  @media (min-width: 1025px) and (max-width: 1279px) {
+    .dn-inner { padding-left: 48px; padding-right: 48px; }
+    .dn-groups { gap: 20px; }
+  }
+
+  /* -- TABLET / MOBILE &#8212; stack groups into full-width rows. These
+     never wrap, so card heights stay even regardless of tagline. -- */
+  @media (max-width: 1024px) {
+    .dn-inner { padding: 72px 32px 80px; }
+    .dn-sub { margin-bottom: 44px; }
+    .dn-groups {
+      display: flex; flex-direction: column; gap: 36px;
+    }
+    .dn-groups > * { align-self: stretch !important; }
+    /* reset desktop column stagger so stacked rows don't lag */
+    .dn-g-presence .dn-card,
+    .dn-g-impact .dn-card { transition-delay: 0s; }
+    .dn-col .dn-card:nth-child(2) { transition-delay: .05s; }
+    .dn-col .dn-card:nth-child(3) { transition-delay: .10s; }
+  }
+
+  @media (max-width: 600px) {
+    .dn-inner { padding: 60px 20px 68px; }
+  }
+</style>
+
+<section class="dn-wrap" id="dn-wrap" data-current="character" aria-label="Explore the other dimensions">
+  <div class="dn-inner">
+
+    <p class="dn-overline dn-reveal">Keep exploring</p>
+    <h2 class="dn-headline dn-reveal">The <em>Nine Dimensions</em>, all in one place</h2>
+    <p class="dn-sub dn-reveal">Three groups &#8212; Thinking, Presence and Impact. Nine traits that make a consultant irreplaceable. Jump to any dimension below.</p>
+
+    <div class="dn-groups">
+
+      
+      <div class="dn-group dn-g-thinking">
+        <div class="dn-group-label dn-reveal">Thinking</div>
+        <div class="dn-col">
+
+          <a class="dn-card dn-reveal" data-dim="curiosity" href="https://www.showinguplearning.com/curiosity" aria-label="Explore the Curiosity dimension">
+            <span class="dn-icon"><svg viewBox="0 0 84 78" fill="none"><use href="#su-ic-curiosity"/></svg></span>
+            <span class="dn-txt"><span class="dn-name">Curiosity</span><span class="dn-tag">See what others are missing</span><span class="dn-here">You're here</span></span>
+            <span class="dn-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+
+          <a class="dn-card dn-reveal" data-dim="critical-thinking" href="https://www.showinguplearning.com/critical-thinking" aria-label="Explore the Critical Thinking dimension">
+            <span class="dn-icon"><svg viewBox="0 0 71 77" fill="none"><use href="#su-ic-critical-thinking"/></svg></span>
+            <span class="dn-txt"><span class="dn-name">Critical Thinking</span><span class="dn-tag">Solve complex problems</span><span class="dn-here">You're here</span></span>
+            <span class="dn-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+
+          <a class="dn-card dn-reveal" data-dim="creativity" href="https://www.showinguplearning.com/creativity" aria-label="Explore the Creativity dimension">
+            <span class="dn-icon"><svg viewBox="0 0 78 103" fill="none"><use href="#su-ic-creativity"/></svg></span>
+            <span class="dn-txt"><span class="dn-name">Creativity</span><span class="dn-tag">Create what didn&#8217;t exist before</span><span class="dn-here">You're here</span></span>
+            <span class="dn-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+
+        </div>
+      </div>
+
+      
+      <div class="dn-group dn-g-presence">
+        <div class="dn-group-label dn-reveal">Presence</div>
+        <div class="dn-col">
+
+          <a class="dn-card dn-reveal" data-dim="character" href="https://www.showinguplearning.com/character" aria-label="Explore the Character dimension">
+            <span class="dn-icon"><svg viewBox="0 0 70 88" fill="none"><use href="#su-ic-character"/></svg></span>
+            <span class="dn-txt"><span class="dn-name">Character</span><span class="dn-tag">Be the person people turn to</span><span class="dn-here">You're here</span></span>
+            <span class="dn-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+
+          <a class="dn-card dn-reveal" data-dim="communication" href="https://www.showinguplearning.com/communication" aria-label="Explore the Communication dimension">
+            <span class="dn-icon"><svg viewBox="0 0 73 83" fill="none"><use href="#su-ic-communication"/></svg></span>
+            <span class="dn-txt"><span class="dn-name">Communication</span><span class="dn-tag">Inspire people to take action</span><span class="dn-here">You're here</span></span>
+            <span class="dn-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+
+          <a class="dn-card dn-reveal" data-dim="collaboration" href="https://www.showinguplearning.com/collaboration" aria-label="Explore the Collaboration dimension">
+            <span class="dn-icon"><svg viewBox="0 0 78 80" fill="none"><use href="#su-ic-collaboration"/></svg></span>
+            <span class="dn-txt"><span class="dn-name">Collaboration</span><span class="dn-tag">Create results no one could alone</span><span class="dn-here">You're here</span></span>
+            <span class="dn-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+
+        </div>
+      </div>
+
+      
+      <div class="dn-group dn-g-impact">
+        <div class="dn-group-label dn-reveal">Impact</div>
+        <div class="dn-col">
+
+          <a class="dn-card dn-reveal" data-dim="curation" href="https://www.showinguplearning.com/curation" aria-label="Explore the Curation dimension">
+            <span class="dn-icon"><svg viewBox="0 0 75 75" fill="none"><use href="#su-ic-curation"/></svg></span>
+            <span class="dn-txt"><span class="dn-name">Curation</span><span class="dn-tag">Create moments that matter</span><span class="dn-here">You're here</span></span>
+            <span class="dn-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+
+          <a class="dn-card dn-reveal" data-dim="commerciality" href="https://www.showinguplearning.com/commerciality" aria-label="Explore the Commerciality dimension">
+            <span class="dn-icon"><svg viewBox="0 0 102 62" fill="none"><use href="#su-ic-commerciality"/></svg></span>
+            <span class="dn-txt"><span class="dn-name">Commerciality</span><span class="dn-tag">Deliver growth with integrity</span><span class="dn-here">You're here</span></span>
+            <span class="dn-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+
+          <a class="dn-card dn-reveal" data-dim="coaching" href="https://www.showinguplearning.com/coaching" aria-label="Explore the Coaching dimension">
+            <span class="dn-icon"><svg viewBox="0 0 60 76" fill="none"><use href="#su-ic-coaching"/></svg></span>
+            <span class="dn-txt"><span class="dn-name">Coaching</span><span class="dn-tag">Bring out the best in others</span><span class="dn-here">You're here</span></span>
+            <span class="dn-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var wrap = document.getElementById('dn-wrap');
+  if (!wrap) return;
+
+  /* -- Resolve current dimension --
+     Prefer the dh- header's rendered name (#dh-name); fall back to
+     a data-current="<slug>" attribute on .dn-wrap if dh- is absent. */
+  function slug(s) { return s.toLowerCase().trim().replace(/\s+/g, '-'); }
+  var nameEl = document.getElementById('dh-name');
+  var current = (nameEl && nameEl.textContent) ? slug(nameEl.textContent)
+              : (wrap.getAttribute('data-current') || '');
+
+  if (current) {
+    var card = wrap.querySelector('.dn-card[data-dim="' + current + '"]');
+    if (card) {
+      card.classList.add('dn-is-current');
+      card.setAttribute('aria-current', 'page');
+    }
+  }
+
+  /* -- Scroll reveal -- */
+  var els = wrap.querySelectorAll('.dn-reveal');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(els, function (e) { e.classList.add('dn-vis'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) {
+        en.target.classList.add('dn-vis');
+        obs.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  Array.prototype.forEach.call(els, function (e) { obs.observe(e); });
+})();
+</script>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="page-dimension-character.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] page-dimension-character.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

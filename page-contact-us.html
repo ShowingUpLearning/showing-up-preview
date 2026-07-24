@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Let&#x27;s talk about what&#x27;s next — Showing Up (preview)</title>
+</head>
+<body>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+<noscript><style>
+  /* If JS fails, surface reveal-targeted content rather than leaving the page blank */
+  .cu .cu-reveal { opacity: 1 !important; transform: none !important; }
+  .cu .cu-em { border-color: #FF8269 !important; }
+</style></noscript>
+
+<style>
+  /* -- SCOPED RESET -- */
+  .cu *, .cu *::before, .cu *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .cu {
+    font-size: 16px; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased;
+    --su-ease: cubic-bezier(.16, 1, .3, 1);
+    --su-dur: .8s; --su-quick: .25s; --su-line-step: 90ms;
+  }
+
+  /* -- Scroll reveal -- */
+  .cu-reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  .cu-reveal.is-revealed { opacity: 1; transform: none; }
+
+  /* Interaction lane (v3): hand from the slow reveal to quick hover/press fades ~1.6s
+     after reveal, and shed any stagger delay so later hovers don't lag. */
+  .cu [class*="-reveal"].su-live {
+    transition: background var(--su-quick), border-color var(--su-quick),
+                color var(--su-quick), opacity var(--su-quick),
+                transform var(--su-quick) var(--su-ease);
+  }
+
+  /* Headline line-mask reveals (v3): the script regroups an opted-in headline into
+     per-line overflow masks once fonts are ready; each line rises out of its mask with
+     a small stagger, then the original markup is restored. Bottom-only padding/negative
+     margin (set inline in px by the script) keeps split vs natural block heights equal. */
+  .cu .su-line { display: block; overflow: hidden; }
+  .cu .su-line-inner {
+    display: block; transform: translateY(135%);
+    transition: transform var(--su-dur) var(--su-ease);
+    transition-delay: calc(var(--su-line-i, 0) * var(--su-line-step));
+  }
+  .cu .su-split[class*="-reveal"] { opacity: 1; transform: none; }
+  .cu .su-split.is-revealed .su-line-inner { transform: none; }
+
+  .cu .hpm-accent { display: inline-block; vertical-align: middle; flex: none; margin-top: -1em; margin-bottom: -1em; position: relative; top: -.1em; }
+  .cu svg.hpm-chev  { width: .82em; height: .58em; }
+  .cu svg.hpm-arrow { width: 1.05em; height: .52em; }
+  .cu .hpm-accent--coral { color: #FF8269; }
+  .cu .hpm-accent--blue  { color: #9fd8e6; }
+
+
+  @media (prefers-reduced-motion: reduce) {
+    .cu .cu-reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
+    .cu .su-line-inner { transition: none !important; transform: none !important; }
+    .cu .cu-em { transition: none !important; border-color: #FF8269 !important; }
+  }
+  .cu-d1 { transition-delay: .08s; }
+  .cu-d2 { transition-delay: .16s; }
+  .cu-d3 { transition-delay: .24s; }
+  .cu-d4 { transition-delay: .32s; }
+
+  /* -- Shared -- */
+  .cu-inner { max-width: 1280px; margin: 0 auto; }
+  .cu-em {
+    display: inline-block; max-width: 100%; white-space: normal;
+    line-height: 1.1; vertical-align: baseline;
+    font-family: 'DM Sans', sans-serif; font-style: normal; font-weight: inherit; color: inherit;
+    border: 2px solid #FF8269; border-radius: 100px;
+    /* Capsule padding: DM Sans 300's line box is top-heavy (~.17em slack above the
+       ink, ~0 below descenders at line-height 1.1), so bottom-only vertical padding
+       optically centres the ink, matching the guidelines lockup vertically (~.2em
+       top / ~.09em descender ink gaps at 48px). Sides stay at the roomier .52em
+       deliberately - do not snug them to .2em. em is the own-font exception, like
+       letter-spacing. */
+    padding: 0 .52em .06em;
+  }
+
+  /* ==============================
+     SECTION &#8212; CONTACT FORM
+     ============================== */
+  .cu-section {
+    background: #FFF6F1; color: #1e1d1d;
+    padding: 64px 80px 100px;
+    position: relative; overflow: hidden;
+  }
+
+  .cu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .cu-grid > * { min-width: 0; }
+
+  /* -- LEFT COLUMN &#8212; Brand invitation -- */
+  .cu-left { padding-top: 8px; }
+
+  .cu-hl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300; line-height: 1.04; /* c4: coral-bold hero emphasis lets leading tighten toward the pre-uplift footprint */
+    letter-spacing: -0.03em;
+    margin-bottom: 28px;
+    text-align: left !important;
+  }
+  /* c4: hero emphasis is coral-bold, not a capsule, so the hero leading can
+     tighten without a pill inflating its line. line-height: inherit sheds the shared pill
+     selector's 1.1 (cu-em is hero-only, so no section pills to preserve). */
+  .cu-hl .cu-em {
+    display: inline; border: none; border-radius: 0; padding: 0;
+    max-width: none; line-height: inherit;
+    font-family: 'DM Sans', sans-serif; font-style: normal; font-weight: 600; color: #FF8269;
+  }
+
+  .cu-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.7; font-weight: 300;
+    color: rgba(53,52,52,.75);
+    max-width: 480px;
+    margin-bottom: 36px;
+    text-align: left !important;
+  }
+
+  /* Response time block */
+  .cu-response {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid rgba(30,29,29,.08);
+    border-bottom: 1px solid rgba(30,29,29,.08);
+    margin-bottom: 32px;
+  }
+  .cu-response-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(30,29,29,.12);
+    border-radius: 50%;
+  }
+  .cu-response-icon svg { width: 18px; height: 18px; }
+  .cu-response-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 400;
+    color: rgba(53,52,52,.7);
+    text-align: left !important;
+  }
+  .cu-response-text strong {
+    display: block;
+    font-size: 15px; font-weight: 500;
+    color: #1e1d1d;
+    margin-bottom: 2px;
+  }
+
+  /* Direct email link */
+  .cu-email-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 400;
+    color: rgba(53,52,52,.55);
+    text-align: left !important;
+  }
+  .cu-email-link a,
+  .cu-email-link a:link,
+  .cu-email-link a:visited {
+    color: #FF8269 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+    font-weight: 500;
+    transition: color .2s;
+  }
+  .cu-email-link a:hover,
+  .cu-email-link a:active {
+    color: #e8614a !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+  }
+
+  /* Decorative ovals &#8212; bottom-left of left column */
+  .cu-deco {
+    position: absolute;
+    bottom: -40px; left: -30px;
+    width: 260px; height: 340px;
+    pointer-events: none; opacity: .06;
+  }
+  @keyframes cu-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  .cu-deco svg { animation: cu-float 20s ease-in-out infinite; }
+
+  /* -- RIGHT COLUMN &#8212; Form card -- */
+  .cu-card {
+    background: #FFF2EB;
+    border: 1px solid rgba(30,29,29,.06);
+    border-radius: 16px;
+    padding: 48px 40px;
+  }
+
+  .cu-card-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px; font-weight: 400;
+    color: #1e1d1d;
+    margin-bottom: 32px;
+    text-align: left !important;
+  }
+
+  /* Reason-for-contact toggles */
+  .cu-reasons {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 32px;
+  }
+  .cu-reason {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    color: #353434;
+    background: transparent;
+    border: 1px solid rgba(30,29,29,.22);
+    border-radius: 100px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: border-color .2s, color .2s, background .2s;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+  }
+  .cu-reason:focus-visible {
+    outline: 2px solid #1e1d1d;
+    outline-offset: 2px;
+  }
+  .cu-reason:hover {
+    border-color: rgba(30,29,29,.35);
+    color: #1e1d1d;
+  }
+  .cu-reason.cu-reason--active {
+    border-color: #FF8269;
+    color: #FF8269;
+    background: rgba(255,130,105,.06);
+  }
+
+  /* Form labels */
+  .cu-label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #1e1d1d;
+    margin-bottom: 8px;
+    text-align: left !important;
+  }
+
+  /* Form inputs */
+  .cu-field {
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 400;
+    color: #1e1d1d;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(30,29,29,.15);
+    padding: 12px 0;
+    margin-bottom: 28px;
+    outline: none;
+    transition: border-color .3s;
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+  .cu-field::placeholder {
+    color: rgba(53,52,52,.35);
+    font-weight: 300;
+  }
+  .cu-field:focus {
+    /* 2px ink underline: the old 1px coral line failed the 3:1 non-text
+       contrast bar (WCAG 1.4.11) as the sole focus cue */
+    border-bottom: 2px solid #1e1d1d;
+    padding-bottom: 11px; /* keep total height stable (12px - 1px extra border) */
+  }
+
+  /* Textarea */
+  .cu-textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+  }
+
+  /* Fieldset groups */
+  .cu-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .cu-row > * { min-width: 0; }
+
+  .cu-group { position: relative; }
+
+  /* Submit button &#8212; dark pill on cream card */
+  .cu-submit {
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: #1e1d1d !important; color: #FFF6F1 !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    padding: 16px 36px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background .2s, color .2s, transform .15s;
+    width: fit-content;
+    margin-top: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+  }
+  .cu-submit:focus-visible {
+    outline: 2px solid #1e1d1d;
+    outline-offset: 3px;
+  }
+  .cu-submit:hover {
+    background: #FF8269 !important; color: #1e1d1d !important;
+  }
+  .cu-submit:active {
+    transform: scale(.97);
+  }
+  .cu-submit:disabled {
+    opacity: .6;
+    cursor: default;
+  }
+
+  /* -- Error state -- */
+  .cu-form-error {
+    display: none;
+    margin-top: 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; line-height: 1.6;
+    color: #b3402a;
+    text-align: left !important;
+  }
+  .cu-form-error.cu-form-error--show { display: block; }
+  .cu-form-error a,
+  .cu-form-error a:link,
+  .cu-form-error a:visited {
+    color: #b3402a !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(179,64,42,.4) !important;
+    font-weight: 500;
+  }
+  .cu-form-error a:hover,
+  .cu-form-error a:active {
+    color: #e8614a !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: 1px solid #e8614a !important;
+  }
+
+  /* -- Thank-you state -- */
+  .cu-thanks {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .cu-thanks.cu-thanks--show {
+    display: block;
+  }
+  .cu-thanks-icon {
+    width: 80px; height: 80px;
+    margin: 0 auto 28px;
+    opacity: 0;
+    transform: scale(.7);
+    transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+  }
+  .cu-thanks--show .cu-thanks-icon {
+    opacity: 1; transform: none;
+    transition-delay: .15s;
+  }
+  .cu-thanks-hl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px; font-weight: 300;
+    color: #1e1d1d;
+    margin-bottom: 12px;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+  }
+  .cu-thanks--show .cu-thanks-hl {
+    opacity: 1; transform: none;
+    transition-delay: .3s;
+  }
+  .cu-thanks-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px; line-height: 1.65;
+    color: rgba(53,52,52,.7);
+    max-width: 360px;
+    margin: 0 auto;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+  }
+  .cu-thanks--show .cu-thanks-body {
+    opacity: 1; transform: none;
+    transition-delay: .45s;
+  }
+
+  /* Hide form when thank-you is shown */
+  .cu-form--hidden { display: none; }
+
+  /* ==============================
+     MOBILE
+     ============================== */
+  @media (max-width: 960px) {
+    .cu-section { padding: 48px 32px 72px; }
+
+    .cu-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .cu-grid > * { align-self: stretch !important; }
+
+    .cu-left { padding-top: 0; }
+
+    .cu-hl { font-size: clamp(30px, 7vw, 42px); }
+
+    .cu-body { max-width: 100%; }
+
+    .cu-card { padding: 36px 24px; }
+
+    .cu-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .cu-row > * { align-self: stretch !important; }
+
+    .cu-reasons { gap: 8px; }
+    .cu-reason { font-size: 12px; padding: 8px 16px; }
+
+    .cu-deco { display: none; }
+  }
+</style>
+
+<div class="cu">
+  <section class="cu-section">
+    <div class="cu-inner">
+      <div class="cu-grid">
+
+        
+        <div class="cu-left">
+          <h1 class="cu-hl cu-reveal">
+            <svg class="hpm-accent hpm-arrow hpm-accent--coral" viewBox="0 0 48 24" aria-hidden="true"><path d="M3 12 H42 M31 3 L43 12 L31 21" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Let's talk about<br>what's <span class="cu-em">next</span>
+          </h1>
+
+          <div class="cu-body cu-reveal cu-d1">
+            Whether you're an L&amp;D leader exploring the platform, a consulting firm looking for in-person training, or you simply want to know more &#8212; this is where the conversation starts.
+          </div>
+
+          <div class="cu-response cu-reveal cu-d2">
+            <div class="cu-response-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1e1d1d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="cu-response-text">
+              <strong>We respond within 1 business day</strong>
+              A real person reads every message.
+            </div>
+          </div>
+
+          <div class="cu-email-link cu-reveal cu-d3">
+            Prefer email? Write to us directly at<br>
+            <a href="mailto:contact@showinguplearning.com">contact@showinguplearning.com</a>
+          </div>
+        </div>
+
+        
+        <div class="cu-card cu-reveal cu-d2">
+
+          
+          <form id="cu-form" class="cu-form" action="https://formsubmit.co/contact@showinguplearning.com" method="POST">
+
+            
+            <input type="hidden" name="_subject" value="New enquiry from showinguplearning.com">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+            <div class="cu-card-title">What can we help with?</div>
+
+            
+            <div class="cu-reasons" role="group" aria-label="Reason for contact">
+              <button type="button" class="cu-reason" data-reason="Platform Demo" aria-pressed="false">Platform Demo</button>
+              <button type="button" class="cu-reason" data-reason="In-Person Training" aria-pressed="false">In-Person Training</button>
+              <button type="button" class="cu-reason" data-reason="Partnership" aria-pressed="false">Partnership</button>
+              <button type="button" class="cu-reason" data-reason="Something Else" aria-pressed="false">Something Else</button>
+            </div>
+            <input type="hidden" name="reason" id="cu-reason-input" value="">
+
+            
+            <div class="cu-row">
+              <div class="cu-group">
+                <label class="cu-label" for="cu-fname">First name</label>
+                <input class="cu-field" type="text" id="cu-fname" name="first_name" required autocomplete="given-name">
+              </div>
+              <div class="cu-group">
+                <label class="cu-label" for="cu-lname">Last name</label>
+                <input class="cu-field" type="text" id="cu-lname" name="last_name" required autocomplete="family-name">
+              </div>
+            </div>
+
+            
+            <div class="cu-group">
+              <label class="cu-label" for="cu-email">Email address</label>
+              <input class="cu-field" type="email" id="cu-email" name="email" required autocomplete="email">
+            </div>
+
+            
+            <div class="cu-group">
+              <label class="cu-label" for="cu-company">Company <span style="font-weight:400; letter-spacing:.05em; text-transform:none; font-size:10px; color:rgba(53,52,52,.4);">(optional)</span></label>
+              <input class="cu-field" type="text" id="cu-company" name="company" autocomplete="organization">
+            </div>
+
+            
+            <div class="cu-group">
+              <label class="cu-label" for="cu-message">Your message</label>
+              <textarea class="cu-field cu-textarea" id="cu-message" name="message" required placeholder="Tell us what you're looking for &#8212; whether it's a platform demo, in-person training, or something else entirely."></textarea>
+            </div>
+
+            <button type="submit" class="cu-submit">Start the Conversation</button>
+
+            <div class="cu-form-error" id="cu-error" role="alert">
+              Something went wrong and your message wasn&#8217;t sent. Please try
+              again, or email us directly at
+              <a href="mailto:contact@showinguplearning.com">contact@showinguplearning.com</a>.
+            </div>
+          </form>
+
+          
+          <div class="cu-thanks" id="cu-thanks">
+            
+            <div class="cu-thanks-icon">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="28" stroke="#FF8269" stroke-width="1.5" fill="none"/>
+                <polyline points="26,40 35,50 54,30" stroke="#FF8269" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <div class="cu-thanks-hl">We've got your message</div>
+            <div class="cu-thanks-body">You'll hear from us within 1 business day. We're looking forward to the conversation.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="cu-deco" aria-hidden="true">
+      <svg viewBox="0 0 260 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="130" cy="170" rx="40" ry="110" stroke="#FF8269" stroke-width="1.5"/>
+        <ellipse cx="130" cy="170" rx="70" ry="140" stroke="#FF8269" stroke-width="1"/>
+        <ellipse cx="130" cy="170" rx="110" ry="165" stroke="#FF8269" stroke-width=".6"/>
+      </svg>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  function suInit() {
+    var wrap = document.querySelector('.cu');
+    if (!wrap) return;
+    if (!('IntersectionObserver' in window)) {
+      wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) { el.classList.add('is-revealed'); });
+      return;
+    }
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var splitSel = '.cu-hl';
+
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.classList.add('is-revealed');
+        setTimeout(function () { el.classList.add('su-live'); }, 1600);
+        if (el.suSavedNodes) {
+          var lineCount = el.querySelectorAll('.su-line').length;
+          setTimeout(function () { suUnsplit(el); }, 800 + lineCount * 90 + 250);
+        }
+        revealObserver.unobserve(el);
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+    wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) {
+      if (reducedMotion || !el.matches(splitSel)) revealObserver.observe(el);
+    });
+
+    var splitTargets = [];
+
+    function suUnsplit(el) {
+      if (!el.suSavedNodes) return;
+      el.textContent = '';
+      el.appendChild(el.suSavedNodes);
+      el.suSavedNodes = null;
+      el.classList.remove('su-split');
+      el.removeAttribute('aria-label');
+    }
+
+    function suSplit(el) {
+      if (el.suSavedNodes || el.classList.contains('is-revealed')) return;
+      var saved = document.createDocumentFragment();
+      while (el.firstChild) { saved.appendChild(el.firstChild); }
+      try {
+        var tokens = [];
+        Array.prototype.slice.call(saved.childNodes).forEach(function (n) {
+          if (n.nodeType === 3) {
+            n.textContent.split(/\s+/).forEach(function (w) { if (w) tokens.push({ text: w, node: null, noSpace: /^[.,!?;:)\]]+$/.test(w) }); });
+          } else if (n.nodeType === 1 && n.tagName === 'BR') {
+            tokens.push({ br: true });                 // explicit line break in the headline
+          } else if (n.nodeType === 1) {
+            tokens.push({ text: (n.textContent || '').replace(/\s+/g, ' ').trim(), node: n });
+          } else { throw new Error('unsupported headline content'); }
+        });
+        if (tokens.length < 2) throw new Error('too short to split');
+        tokens.forEach(function (t, ti) {
+          var box;
+          if (t.br) { box = document.createElement('br'); t.span = box; el.appendChild(box); return; }
+          if (ti > 0 && !t.noSpace) el.appendChild(document.createTextNode(' '));  // punctuation hugs prev word
+          if (t.node) { box = t.node.cloneNode(true); }
+          else { box = document.createElement('span'); box.textContent = t.text; }
+          t.span = box; el.appendChild(box);
+        });
+        var fs = parseFloat(window.getComputedStyle(el).fontSize) || 48;
+        var lines = [];
+        var lastTop = null;
+        var lastRight = null;
+        tokens.forEach(function (t) {
+          if (t.br) { lines.push([]); lastTop = null; lastRight = null; return; }  // forced break
+          var rect = t.span.getBoundingClientRect();
+          // GUARD: an atomic token (capsule) wrapped to >1 line would mis-group the
+          // masks and shift the block on unsplit -> bail to the plain fade-up.
+          if (t.node && rect.height > fs * 1.5) throw new Error('multi-line inline token');
+          if (!t.text) {
+            if (lines.length === 0) { lines.push([]); }
+            else if (lastRight !== null && rect.left < lastRight - 1) { lines.push([]); lastTop = null; }
+            lines[lines.length - 1].push(t); lastRight = rect.right; return;
+          }
+          if (lastTop === null) { if (lines.length === 0) lines.push([]); }
+          else if (Math.abs(rect.top - lastTop) > fs * 0.5) { lines.push([]); }
+          lines[lines.length - 1].push(t); lastTop = rect.top; lastRight = rect.right;
+        });
+        if (lines.length < 2) throw new Error('single line');
+        var pad = Math.max(2, Math.round(fs * 0.2));
+        el.textContent = '';
+        lines.forEach(function (words, li) {
+          var line = document.createElement('span');
+          line.className = 'su-line';
+          if (li < lines.length - 1) { line.style.paddingBottom = pad + 'px'; line.style.marginBottom = (0 - pad) + 'px'; }
+          var inner = document.createElement('span');
+          inner.className = 'su-line-inner';
+          inner.style.setProperty('--su-line-i', String(li));
+          words.forEach(function (t, wi) {
+            if (wi > 0 && !t.noSpace) inner.appendChild(document.createTextNode(' '));
+            if (t.node) { inner.appendChild(t.node.cloneNode(true)); }
+            else { inner.appendChild(document.createTextNode(t.text)); }
+          });
+          line.appendChild(inner); el.appendChild(line);
+        });
+        el.setAttribute('aria-label', tokens.map(function (t) { return t.text; }).filter(Boolean).join(' ').replace(/\s+([.,!?;:])/g, '$1'));
+        el.suSavedNodes = saved;
+        el.classList.add('su-split');
+      } catch (err) {
+        el.textContent = ''; el.appendChild(saved);
+      }
+    }
+
+    if (!reducedMotion) {
+      splitTargets = Array.prototype.slice.call(wrap.querySelectorAll(splitSel));
+      var suSplitStarted = false;
+      var beginSplit = function () {
+        if (suSplitStarted) return;
+        suSplitStarted = true;
+        splitTargets.forEach(suSplit);
+        splitTargets.forEach(function (el) { revealObserver.observe(el); });
+      };
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(beginSplit); setTimeout(beginSplit, 1500); }
+      else { beginSplit(); }
+    }
+
+    var suResizeTimer = null;
+    window.addEventListener('resize', function () {
+      if (!splitTargets.length) return;
+      clearTimeout(suResizeTimer);
+      suResizeTimer = setTimeout(function () {
+        splitTargets.forEach(function (el) { suUnsplit(el); if (!el.classList.contains('is-revealed')) suSplit(el); });
+      }, 150);
+    });
+  }
+  if (document.readyState !== 'loading') { suInit(); }
+  else { document.addEventListener('DOMContentLoaded', suInit); }
+})();
+</script>
+
+<script>
+(function() {
+  'use strict';
+
+  /* -- Reason toggles -- */
+  var cuReasons = document.querySelectorAll('.cu-reason');
+  var cuReasonInput = document.getElementById('cu-reason-input');
+
+  cuReasons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      // Deselect all
+      cuReasons.forEach(function(b) {
+        b.classList.remove('cu-reason--active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      // Select this one
+      btn.classList.add('cu-reason--active');
+      btn.setAttribute('aria-pressed', 'true');
+      cuReasonInput.value = btn.getAttribute('data-reason');
+    });
+  });
+
+  /* -- Form submission with inline thank-you / error states --
+     Posts to Formsubmit's AJAX endpoint; the form's action stays on the
+     plain endpoint so a no-JS native POST still works. */
+  var cuForm = document.getElementById('cu-form');
+  var cuThanks = document.getElementById('cu-thanks');
+  var cuError = document.getElementById('cu-error');
+  var cuSubmitBtn = cuForm.querySelector('.cu-submit');
+  var cuSubmitLabel = cuSubmitBtn.textContent;
+  var CU_AJAX_ENDPOINT = 'https://formsubmit.co/ajax/contact@showinguplearning.com';
+
+  cuForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (cuSubmitBtn.disabled) return;
+
+    cuError.classList.remove('cu-form-error--show');
+    cuSubmitBtn.disabled = true;
+    cuSubmitBtn.textContent = 'Sending&#8230;';
+
+    fetch(CU_AJAX_ENDPOINT, {
+      method: 'POST',
+      body: new FormData(cuForm),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response) {
+      if (response.ok) { cuShowThanks(); } else { cuShowError(); }
+    }).catch(cuShowError);
+  });
+
+  function cuShowThanks() {
+    cuForm.classList.add('cu-form--hidden');
+    cuThanks.classList.add('cu-thanks--show');
+    // Scroll card into view
+    cuThanks.closest('.cu-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function cuShowError() {
+    cuSubmitBtn.disabled = false;
+    cuSubmitBtn.textContent = cuSubmitLabel;
+    cuError.classList.add('cu-form-error--show');
+  }
+
+})();
+</script>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="page-contact-us.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] page-contact-us.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

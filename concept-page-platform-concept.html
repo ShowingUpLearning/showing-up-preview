@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Learning for the moments that matter — Showing Up (preview)</title>
+</head>
+<body>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+
+<noscript><style>
+  .plc-block [class*="-reveal"] { opacity: 1 !important; transform: none !important; }
+</style></noscript>
+
+<style>
+  .plc-block *, .plc-block *::before, .plc-block *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .plc-block {
+    --c-coral:  #FF8269;
+    --c-cream:  #FFF6F1;
+    --c-ink:    #1e1d1d;
+    --c-text:   #353434;
+    --c-purple: #C8B4E4;
+    --c-mint:   #A7DDC3;
+    --su-ease:  cubic-bezier(.16, 1, .3, 1);
+    --su-dur:   .8s;
+    --type-h1:  clamp(44px, 5.5vw, 76px);
+    --type-h2:  clamp(36px, 4.5vw, 64px);
+
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--c-cream);
+    color: var(--c-text);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .plc-block [class*="-reveal"] { transition: none !important; opacity: 1 !important; transform: none !important; }
+  }
+
+  .plc-block [class*="-reveal"] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--su-dur) var(--su-ease), transform var(--su-dur) var(--su-ease);
+  }
+  .plc-block [class*="-reveal"].is-revealed { opacity: 1; transform: none; }
+
+  /* -- Shared type -- */
+  .plc-block .plc-overline {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: var(--c-coral);
+    margin: 0 0 20px;
+    text-align: left !important;
+  }
+  .plc-block .plc-h1 {
+    font-size: var(--type-h1);
+    font-weight: 300; line-height: 1.06;
+    letter-spacing: -.03em;
+    color: var(--c-ink);
+    margin: 0 0 28px;
+    text-align: left !important;
+  }
+  .plc-block .plc-h2 {
+    font-size: var(--type-h2);
+    font-weight: 300; line-height: 1.18;
+    letter-spacing: -.03em;
+    color: var(--c-ink);
+    margin: 0 0 24px;
+    text-align: left !important;
+  }
+  .plc-block .plc-h2--cream { color: var(--c-cream); }
+  .plc-block .plc-h1 em, .plc-block .plc-h2 em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--c-coral);
+  }
+  .plc-block .plc-body {
+    font-size: 18px; font-weight: 400; line-height: 1.65;
+    color: var(--c-text);
+    max-width: 640px;
+    margin: 0 0 18px;
+    text-align: left !important;
+  }
+  .plc-block .plc-body:last-child { margin-bottom: 0; }
+  .plc-block .plc-body--cream { color: rgba(255,246,241,.75); }
+
+  /* -- Sections -- */
+  .plc-block .plc-section {
+    padding: 120px 80px 96px;
+    text-align: left !important;
+  }
+  .plc-block .plc-section--dark { background: var(--c-ink); }
+  .plc-block .plc-head { max-width: 860px; margin: 0 0 56px; }
+  .plc-block .plc-measure { max-width: 860px; }
+
+  /* -- Video placeholder frame (16:9) -- */
+  .plc-block .plc-video {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    background: #2c2928;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .plc-block .plc-video--on-dark { border-color: rgba(255,246,241,.12); }
+  .plc-block .plc-video-inner {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .plc-block .plc-ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255,246,241,.1);
+    border-radius: 50%;
+  }
+  .plc-block .plc-ring--1 { width: 120px; height: 120px; }
+  .plc-block .plc-ring--2 { width: 190px; height: 190px; border-color: rgba(255,246,241,.07); }
+  .plc-block .plc-ring--3 { width: 264px; height: 264px; border-color: rgba(255,246,241,.045); }
+  .plc-block .plc-play { position: relative; display: block; }
+  .plc-block .plc-play svg { display: block; }
+  .plc-block .plc-video-meta {
+    position: absolute;
+    left: 20px; bottom: 16px; right: 20px;
+    display: flex; align-items: baseline; gap: 12px;
+    text-align: left !important;
+  }
+  .plc-block .plc-video-title { font-size: 15px; font-weight: 500; color: var(--c-cream); text-align: left !important; }
+  .plc-block .plc-video-time { font-size: 12px; font-weight: 400; color: rgba(255,246,241,.6); white-space: nowrap; }
+
+  .plc-block .plc-hero-video { max-width: 860px; margin: 48px 0 0; }
+
+  /* -- CTAs -- */
+  .plc-block .plc-cta-row {
+    display: flex; align-items: center; gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 36px;
+  }
+  .plc-block .plc-pill,
+  .plc-block .plc-pill:link,
+  .plc-block .plc-pill:visited {
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: #1e1d1d !important;
+    color: #FFF6F1 !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    padding: 14px 28px;
+    border-radius: 100px;
+    transition: background .25s, color .25s;
+    width: fit-content;
+  }
+  .plc-block .plc-pill:hover,
+  .plc-block .plc-pill:active {
+    background: #FF8269 !important; color: #1e1d1d !important;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+  }
+  .plc-block .plc-link,
+  .plc-block .plc-link:link,
+  .plc-block .plc-link:visited {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    color: var(--c-ink) !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(30,29,29,.35) !important;
+    padding-bottom: 2px;
+    transition: color .25s, border-color .25s;
+  }
+  .plc-block .plc-link:hover,
+  .plc-block .plc-link:active {
+    color: #e8614a !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: 1px solid #e8614a !important;
+  }
+  .plc-block .plc-link--cream,
+  .plc-block .plc-link--cream:link,
+  .plc-block .plc-link--cream:visited {
+    color: var(--c-cream) !important;
+    border-bottom: 1px solid rgba(255,246,241,.4) !important;
+  }
+  .plc-block .plc-link--cream:hover,
+  .plc-block .plc-link--cream:active {
+    color: var(--c-coral) !important;
+    border-bottom: 1px solid var(--c-coral) !important;
+  }
+
+  /* -- Feature card grid (what's inside) -- */
+  .plc-block .plc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .plc-block .plc-grid > * { min-width: 0; }
+  .plc-block .plc-card {
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 16px;
+    padding: 32px;
+  }
+  .plc-block .plc-card-title {
+    font-size: 18px; font-weight: 500;
+    color: var(--c-ink);
+    margin: 0 0 10px;
+    text-align: left !important;
+  }
+  .plc-block .plc-card-body {
+    font-size: 15px; font-weight: 400; line-height: 1.6;
+    color: rgba(53,52,52,.75);
+    text-align: left !important;
+  }
+  .plc-block .plc-grid .plc-card:nth-child(2) { transition-delay: .06s; }
+  .plc-block .plc-grid .plc-card:nth-child(3) { transition-delay: .12s; }
+  .plc-block .plc-grid .plc-card:nth-child(4) { transition-delay: .18s; }
+  .plc-block .plc-grid .plc-card:nth-child(5) { transition-delay: .24s; }
+  .plc-block .plc-grid .plc-card:nth-child(6) { transition-delay: .30s; }
+
+  /* -- Nine Dimensions mapping rows -- */
+  .plc-block .plc-groups { max-width: 720px; margin: 36px 0 0; }
+  .plc-block .plc-group-row {
+    display: flex; align-items: baseline; gap: 14px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(0,0,0,.08);
+  }
+  .plc-block .plc-group-row:last-child { border-bottom: 1px solid rgba(0,0,0,.08); }
+  .plc-block .plc-group-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--c-coral);
+    flex: none;
+    position: relative; top: -1px;
+  }
+  .plc-block .plc-group-dot--purple { background: var(--c-purple); }
+  .plc-block .plc-group-dot--mint { background: var(--c-mint); }
+  .plc-block .plc-group-name {
+    font-size: 15px; font-weight: 600;
+    color: var(--c-ink);
+    width: 110px; flex: none;
+    text-align: left !important;
+  }
+  .plc-block .plc-group-dims {
+    font-size: 15px; font-weight: 400;
+    color: rgba(53,52,52,.7);
+    text-align: left !important;
+  }
+
+  /* -- Two-up (assess + play) -- */
+  .plc-block .plc-duo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .plc-block .plc-duo > * { min-width: 0; }
+  .plc-block .plc-duo-card {
+    background: #2c2928;
+    border: 1px solid rgba(255,246,241,.08);
+    border-radius: 16px;
+    padding: 48px;
+  }
+  .plc-block .plc-duo-card:nth-child(2) { transition-delay: .08s; }
+  .plc-block .plc-duo-title {
+    font-size: 24px; font-weight: 300;
+    letter-spacing: -.02em;
+    color: var(--c-cream);
+    margin: 0 0 14px;
+    text-align: left !important;
+  }
+  .plc-block .plc-duo-body {
+    font-size: 16px; font-weight: 400; line-height: 1.65;
+    color: rgba(255,246,241,.7);
+    margin: 0 0 22px;
+    text-align: left !important;
+  }
+
+  @media (max-width: 960px) {
+    .plc-block .plc-section { padding: 80px 32px 64px; }
+    .plc-block .plc-head { margin-bottom: 40px; }
+    .plc-block .plc-hero-video { margin-top: 36px; }
+    .plc-block .plc-grid { grid-template-columns: 1fr; }
+    .plc-block .plc-duo { grid-template-columns: 1fr; }
+    .plc-block .plc-duo-card { padding: 36px 28px; }
+    .plc-block .plc-play svg { width: 52px; height: 52px; }
+    .plc-block .plc-ring--3 { display: none; }
+    .plc-block .plc-body { font-size: 17px; }
+  }
+  @media (max-width: 540px) {
+    .plc-block .plc-section { padding: 64px 20px 56px; }
+    .plc-block .plc-group-row { flex-wrap: wrap; }
+    .plc-block .plc-group-name { width: auto; }
+  }
+</style>
+
+<div class="plc-block">
+
+  
+  <section class="plc-section" aria-label="The Showing Up platform">
+    <div class="plc-measure">
+      <div class="plc-overline plc-reveal">The Showing Up platform</div>
+      <h1 class="plc-h1 plc-reveal">Learning for the <em>moments</em> <em>that</em> <em>matter</em></h1>
+      <p class="plc-body plc-reveal">A video learning platform for consultancy and advisory teams: short lessons, self-assessments, toolkits and team challenges, all mapped to the Nine Dimensions of the Very Best Consultants.</p>
+      <div class="plc-hero-video plc-reveal">
+        
+        <div class="plc-video" role="img" aria-label="Video placeholder: What we do at Showing Up, 4 minutes">
+          <div class="plc-video-inner">
+            <span class="plc-ring plc-ring--1"></span>
+            <span class="plc-ring plc-ring--2"></span>
+            <span class="plc-ring plc-ring--3"></span>
+            <span class="plc-play" aria-hidden="true"><svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="31" fill="#FF8269"/><path d="M26 21.5v21l17-10.5-17-10.5z" fill="#1e1d1d"/></svg></span>
+          </div>
+          <div class="plc-video-meta">
+            <span class="plc-video-title">What we do at Showing Up</span>
+            <span class="plc-video-time">4 min</span>
+          </div>
+        </div>
+      </div>
+      <div class="plc-cta-row plc-reveal">
+        <a href="https://www.showinguplearning.com/contact-us" class="plc-pill">Book a Discovery Call</a>
+        <a href="https://www.showinguplearning.com/pricing" class="plc-link">See pricing &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="plc-section plc-section--dark" aria-label="Why the platform exists">
+    <div class="plc-measure">
+      <div class="plc-overline plc-reveal">Why it exists</div>
+      <h2 class="plc-h2 plc-h2--cream plc-reveal">The classroom isn't enough on its own</h2>
+      <p class="plc-body plc-body--cream plc-reveal">Most firms train their new starters intensively: a room, a great facilitator, really great material. We've delivered that kind of immersive training for years, and still do. But our clients keep telling us the same thing: the classroom isn't enough on its own.</p>
+      <p class="plc-body plc-body--cream plc-reveal">The moments that decide how someone performs don't happen in the classroom. They happen on a Tuesday afternoon, or at 6pm on a Friday: a tricky stakeholder, a pitch gone sideways, a competitive bid that needs an idea the client has never seen before. You can't always book a workshop for that.</p>
+    </div>
+  </section>
+
+  
+  <section class="plc-section" aria-label="What the platform contains">
+    <div class="plc-head">
+      <div class="plc-overline plc-reveal">Inside the platform</div>
+      <h2 class="plc-h2 plc-reveal">Everything you need, <em>nothing</em> <em>you</em> <em>don't</em></h2>
+    </div>
+    <div class="plc-grid">
+      <div class="plc-card plc-reveal">
+        <div class="plc-card-title">Short video lessons</div>
+        <div class="plc-card-body">Each built around a single idea, skill or behaviour your people can use the very same day. No theory for its own sake.</div>
+      </div>
+      <div class="plc-card plc-reveal">
+        <div class="plc-card-title">Self-assessments</div>
+        <div class="plc-card-body">Reflect on where your development sits against the Nine Dimensions, with a plan for where the next leap will come from.</div>
+      </div>
+      <div class="plc-card plc-reveal">
+        <div class="plc-card-title">Downloadable toolkits</div>
+        <div class="plc-card-body">The models from every lesson, kept to hand, so the learning gets repeated and embedded rather than forgotten.</div>
+      </div>
+      <div class="plc-card plc-reveal">
+        <div class="plc-card-title">Team challenges</div>
+        <div class="plc-card-body">Energising ways to learn together, turning individual lessons into something a whole team practises.</div>
+      </div>
+      <div class="plc-card plc-reveal">
+        <div class="plc-card-title">Manager toolkits</div>
+        <div class="plc-card-body">Ready-to-run sessions for team meetings, on things like objection handling or building a great discovery meeting.</div>
+      </div>
+      <div class="plc-card plc-reveal">
+        <div class="plc-card-title">On demand, anywhere</div>
+        <div class="plc-card-body">Before a pitch, on the train to a meeting, the night before it matters. Individually or as a team, at every career stage.</div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="plc-section plc-section--dark" aria-label="Watch a real lesson">
+    <div class="plc-head">
+      <div class="plc-overline plc-reveal">Watch a real lesson</div>
+      <h2 class="plc-h2 plc-h2--cream plc-reveal">See a lesson for yourself</h2>
+      <p class="plc-body plc-body--cream plc-reveal">This is a micro-lesson from the platform, exactly as your team would see it. One idea, a story to carry it, and something to use the same day.</p>
+    </div>
+    <div class="plc-measure plc-reveal">
+      
+      <div class="plc-video plc-video--on-dark" role="img" aria-label="Video placeholder: 99 Cents - presentation matters, 3 minutes">
+        <div class="plc-video-inner">
+          <span class="plc-ring plc-ring--1"></span>
+          <span class="plc-ring plc-ring--2"></span>
+          <span class="plc-ring plc-ring--3"></span>
+          <span class="plc-play" aria-hidden="true"><svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="31" fill="#FF8269"/><path d="M26 21.5v21l17-10.5-17-10.5z" fill="#1e1d1d"/></svg></span>
+        </div>
+        <div class="plc-video-meta">
+          <span class="plc-video-title">99 Cents: presentation matters</span>
+          <span class="plc-video-time">3 min</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="plc-section" aria-label="Mapped to the Nine Dimensions">
+    <div class="plc-measure">
+      <div class="plc-overline plc-reveal">The methodology</div>
+      <h2 class="plc-h2 plc-reveal">Mapped to the Nine Dimensions</h2>
+      <p class="plc-body plc-reveal">Every lesson, assessment and challenge is organised by the framework we've built over two decades at the frontline with more than 11,000 consultants.</p>
+      <div class="plc-groups plc-reveal">
+        <div class="plc-group-row">
+          <span class="plc-group-dot"></span>
+          <span class="plc-group-name">Thinking</span>
+          <span class="plc-group-dims">Curiosity &middot; Critical Thinking &middot; Creativity</span>
+        </div>
+        <div class="plc-group-row">
+          <span class="plc-group-dot plc-group-dot--purple"></span>
+          <span class="plc-group-name">Presence</span>
+          <span class="plc-group-dims">Character &middot; Communication &middot; Collaboration</span>
+        </div>
+        <div class="plc-group-row">
+          <span class="plc-group-dot plc-group-dot--mint"></span>
+          <span class="plc-group-name">Impact</span>
+          <span class="plc-group-dims">Curation &middot; Commerciality &middot; Coaching</span>
+        </div>
+      </div>
+      <div class="plc-cta-row plc-reveal">
+        <a href="https://www.showinguplearning.com/nine-dimensions" class="plc-link">Explore the Nine Dimensions &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="plc-section plc-section--dark" aria-label="Assessments and team challenges">
+    <div class="plc-duo">
+      <div class="plc-duo-card plc-reveal">
+        <div class="plc-duo-title">Assess where you are</div>
+        <div class="plc-duo-body">Self-assessments built against the Nine Dimensions show each person where their development sits and where the next leap will come from.</div>
+        <a href="https://www.showinguplearning.com/assessment" class="plc-link plc-link--cream">Try the curiosity self-assessment &#8594;</a>
+      </div>
+      <div class="plc-duo-card plc-reveal">
+        <div class="plc-duo-title">Learn together</div>
+        <div class="plc-duo-body">Team challenges turn the learning into something a team does side by side, and manager toolkits give you ready-to-run sessions for team meetings.</div>
+        <a href="https://www.showinguplearning.com/contact-us" class="plc-link plc-link--cream">Ask us about team challenges &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="plc-section" aria-label="Next steps">
+    <div class="plc-measure">
+      <h2 class="plc-h2 plc-reveal">See it with your team</h2>
+      <p class="plc-body plc-reveal">Book a discovery call and we'll walk you through the platform, or look at pricing for platform access and in-person training.</p>
+      <div class="plc-cta-row plc-reveal">
+        <a href="https://www.showinguplearning.com/contact-us" class="plc-pill">Book a Discovery Call</a>
+        <a href="https://www.showinguplearning.com/pricing" class="plc-link">See pricing &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  function plcInit() {
+    var wrap = document.querySelector('.plc-block');
+    if (!wrap) return;
+    if (!('IntersectionObserver' in window)) {
+      wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) { el.classList.add('is-revealed'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+    wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) { observer.observe(el); });
+  }
+  if (document.readyState !== 'loading') { plcInit(); }
+  else { document.addEventListener('DOMContentLoaded', plcInit); }
+})();
+</script>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="concept-page-platform-concept.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] concept-page-platform-concept.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

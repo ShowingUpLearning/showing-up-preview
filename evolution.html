@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Design evolution — Showing Up (preview)</title>
+</head>
+<body>
+<style>
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --coral: #FF8269;
+    --coral-dark: #e8614a;
+    --cream: #FFF6F1;
+    --ink: #1e1d1d;
+    --body: #353434;
+    --muted: rgba(30, 29, 29, 0.55);
+    --line: rgba(0, 0, 0, 0.08);
+    --line-strong: rgba(0, 0, 0, 0.15);
+  }
+  html { background: var(--cream); }
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--body);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .ev { max-width: 1440px; margin: 0 auto; padding: 0 32px 48px; }
+  button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+  select {
+    font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink);
+    background: var(--cream); border: 1px solid var(--line-strong); border-radius: 8px;
+    padding: 6px 10px; max-width: 100%;
+  }
+  .ev-mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+
+  /* ---- header ---- */
+  .ev-head { padding: 44px 0 8px; }
+  .ev-overline {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--coral);
+  }
+  .ev-title {
+    font-weight: 300; font-size: 44px; line-height: 1.18; letter-spacing: -0.03em;
+    color: var(--ink); margin-top: 10px;
+  }
+  /* Coral-bold emphasis - the archive wears the current design language, and the
+     pill capsule this used to be was retired from the heading kit in v3. Plain
+     inline, so the word keeps the title's own leading. */
+  .ev-cap {
+    display: inline; white-space: normal;
+    font-weight: 600; color: var(--coral);
+  }
+  .ev-sub { margin-top: 10px; font-size: 15px; color: var(--muted); max-width: 640px; }
+  .ev-sub em { font-family: 'EB Garamond', serif; font-style: italic; color: var(--coral); }
+
+  /* ---- timeline ---- */
+  .ev-tl-wrap { overflow-x: auto; margin: 8px 0 4px; }
+  .ev-tl { position: relative; height: 148px; min-width: 640px; }
+  .ev-tl-line { position: absolute; left: 0; right: 0; bottom: 56px; height: 2px; background: var(--ink); }
+  .ev-stop { position: absolute; transform: translateX(-50%); text-align: center; }
+  .ev-stop:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; border-radius: 8px; }
+  .ev-stop-m { bottom: 0; width: 190px; }
+  .ev-stop-m .ev-dot {
+    width: 14px; height: 14px; border-radius: 50%; background: var(--coral);
+    margin: 0 auto; position: relative; top: -6px;
+  }
+  .ev-stop-m.ev-on .ev-dot { outline: 2px solid var(--coral); outline-offset: 3px; }
+  .ev-stop-m .ev-stop-id { margin-top: 2px; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--coral); }
+  .ev-stop-m .ev-stop-label { font-size: 13px; color: var(--ink); line-height: 1.35; margin-top: 2px; }
+  .ev-stop-m .ev-stop-date { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .ev-stop-x { bottom: 96px; width: 150px; }
+  .ev-stop-x .ev-stem { width: 2px; height: 34px; background: var(--line-strong); margin: 4px auto 0; }
+  .ev-stop-x .ev-dot {
+    width: 10px; height: 10px; border-radius: 50%; background: var(--cream);
+    border: 2px solid var(--coral); margin: 0 auto;
+  }
+  .ev-stop-x.ev-on .ev-dot { outline: 2px solid var(--coral); outline-offset: 2px; }
+  .ev-stop-x .ev-stop-label { font-size: 12px; color: var(--body); line-height: 1.3; margin-bottom: 4px; }
+  .ev-stop.ev-nopage { opacity: 0.35; }
+
+  /* ---- controls ---- */
+  .ev-controls {
+    position: sticky; top: 0; z-index: 50; background: var(--cream);
+    display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center;
+    padding: 12px 0; border-bottom: 1px solid var(--line);
+  }
+  .ev-group { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .ev-group-label { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+  .ev-pill {
+    font-size: 12px; padding: 5px 13px; border-radius: 100px;
+    border: 1px solid var(--line-strong); color: var(--ink); background: transparent;
+  }
+  .ev-pill:hover { border-color: var(--ink); }
+  .ev-pill.ev-on { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .ev-seg { display: flex; border: 1px solid var(--line-strong); border-radius: 100px; overflow: hidden; }
+  .ev-seg button { font-size: 12px; padding: 5px 14px; color: var(--ink); }
+  .ev-seg button + button { border-left: 1px solid var(--line-strong); }
+  .ev-seg button.ev-on { background: var(--ink); color: var(--cream); }
+  .ev-sync { font-size: 12px; color: var(--ink); border: 1px solid var(--line-strong); border-radius: 100px; padding: 5px 13px; }
+  .ev-sync.ev-on { border-color: var(--coral); color: var(--coral-dark); }
+
+  /* ---- main ---- */
+  .ev-main { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 28px; align-items: start; padding-top: 20px; }
+  .ev-stage { min-width: 0; }
+
+  .ev-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .ev-pane { position: relative; background: #ffffff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .ev-pane-head { display: flex; gap: 8px; align-items: center; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .ev-ab {
+    flex: 0 0 auto; font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    color: var(--coral-dark); border: 1px solid var(--coral); border-radius: 100px;
+    padding: 1px 9px 2px;
+  }
+  .ev-pane-head select { flex: 1 1 auto; min-width: 0; }
+  .ev-scroll { overflow-y: auto; flex: 1 1 auto; height: max(480px, calc(100vh - 240px)); background: #ffffff; }
+  .ev-scroll img { width: 100%; display: block; }
+  .ev-scroll.ev-mobile img { max-width: 390px; margin: 0 auto; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+
+  .ev-empty { padding: 48px 28px; text-align: center; }
+  .ev-empty p { color: var(--muted); font-size: 14px; max-width: 300px; margin: 0 auto 16px; }
+  .ev-empty button { font-size: 12px; border: 1px solid var(--coral); color: var(--coral-dark); border-radius: 100px; padding: 6px 16px; }
+  .ev-empty button:hover { background: var(--coral); color: #ffffff; }
+
+  /* overlay */
+  .ev-ovl-wrap { position: relative; width: 100%; }
+  .ev-scroll.ev-mobile .ev-ovl-wrap { max-width: 390px; margin: 0 auto; }
+  .ev-ovl-wrap img { position: absolute; top: 0; left: 0; width: 100%; display: block; max-width: none; margin: 0; }
+  .ev-ovl-wrap .ev-img-b { clip-path: inset(0 0 0 var(--cut, 50%)); }
+  .ev-divider { position: absolute; top: 0; bottom: 0; left: var(--cut, 50%); width: 2px; background: var(--coral); cursor: ew-resize; touch-action: none; }
+  .ev-divider::before { content: ''; position: absolute; top: 0; bottom: 0; left: -9px; width: 20px; }
+  .ev-handle {
+    position: sticky; top: 45%; display: block; width: 30px; height: 30px; margin-left: -14px;
+    border-radius: 50%; background: var(--coral); color: #ffffff; font-size: 12px;
+    line-height: 30px; text-align: center; letter-spacing: 0.05em; user-select: none;
+  }
+  .ev-corner { position: absolute; top: 54px; z-index: 5; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; background: var(--ink); color: var(--cream); border-radius: 100px; padding: 2px 10px 3px; pointer-events: none; }
+  .ev-corner-a { left: 12px; }
+  .ev-corner-b { right: 12px; }
+
+  /* filmstrip */
+  .ev-scrub-row { display: flex; gap: 12px; align-items: center; padding: 0 2px 12px; }
+  .ev-scrub-row label { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .ev-scrub-row input { flex: 1 1 auto; accent-color: var(--coral); }
+  .ev-strip { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 10px; }
+  .ev-card { flex: 0 0 300px; background: #ffffff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; cursor: pointer; text-align: left; padding: 0; }
+  .ev-card.ev-on { outline: 2px solid var(--coral); outline-offset: -2px; }
+  .ev-card-head { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .ev-card-head .ev-card-name { font-size: 13px; color: var(--ink); line-height: 1.3; }
+  .ev-card-head .ev-card-date { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .ev-window { height: 520px; overflow: hidden; }
+  .ev-window img { width: 100%; display: block; transform: translateY(calc(-1 * var(--scrub, 0) * var(--range, 0px))); }
+  .ev-card.ev-mobilecard .ev-window img { width: 76%; margin: 0 auto; }
+
+  /* ---- narrative rail ---- */
+  .ev-rail { position: sticky; top: 72px; background: #ffffff; border: 1px solid var(--line); border-radius: 12px; padding: 22px; }
+  .ev-rail .ev-overline { display: block; }
+  .ev-rail h3 { font-weight: 300; font-size: 22px; line-height: 1.25; letter-spacing: -0.02em; color: var(--ink); margin: 8px 0 12px; }
+  .ev-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .ev-meta span { font-size: 12px; color: var(--muted); }
+  .ev-meta .ev-sha { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: var(--ink); border: 1px solid var(--line-strong); border-radius: 6px; padding: 1px 7px; }
+  .ev-rail h4 { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin: 16px 0 6px; }
+  .ev-rail p { font-size: 14px; line-height: 1.65; color: var(--body); }
+  .ev-pending { font-family: 'EB Garamond', serif; font-style: italic; color: var(--muted); font-size: 15px; margin-top: 16px; }
+  .ev-src { margin-top: 14px; font-size: 11px; color: var(--muted); word-break: break-all; }
+
+  .ev-foot { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+  .ev-foot span { font-size: 12px; color: var(--muted); }
+  .ev-err { padding: 60px 0; color: var(--body); }
+
+  @media (max-width: 960px) {
+    .ev { padding: 0 20px 40px; }
+    .ev-title { font-size: 32px; }
+    .ev-main { grid-template-columns: 1fr; }
+    .ev-duo { grid-template-columns: 1fr; }
+    .ev-scroll { height: 60vh; }
+    .ev-rail { position: static; }
+  }
+</style>
+
+<div class="ev" id="ev-app">
+  <header class="ev-head">
+    <div class="ev-overline">Showing Up Learning &mdash; design archive</div>
+    <h1 class="ev-title">The pages, <span class="ev-cap">evolving</span></h1>
+    <p class="ev-sub">Every key design motion across the core marketing pages &mdash; <em>where we come from, and where we are now.</em> Click a stop on the timeline, then compare any two versions.</p>
+  </header>
+
+  <div class="ev-tl-wrap"><div class="ev-tl" id="ev-tl"><div class="ev-tl-line"></div></div></div>
+
+  <div class="ev-controls" id="ev-controls"></div>
+
+  <main class="ev-main">
+    <section class="ev-stage" id="ev-stage"></section>
+    <aside class="ev-rail" id="ev-rail"></aside>
+  </main>
+
+  <footer class="ev-foot" id="ev-foot"></footer>
+</div>
+
+<noscript><div class="ev"><p class="ev-err">This viewer needs JavaScript. The raw captures live in the version folders next to this file.</p></div></noscript>
+
+<script id="ev-manifest" type="application/json">
+{
+ "site": "showinguplearning.com",
+ "generated": "2026-07-24T09:40:53.118Z",
+ "corePages": [
+  "page-homepage",
+  "page-pricing",
+  "page-contact-us",
+  "page-foundation",
+  "page-our-story",
+  "page-in-person-training",
+  "page-faq",
+  "page-platform-logged-out",
+  "page-platform-logged-in"
+ ],
+ "milestones": [
+  {
+   "id": "v1",
+   "label": "Pre-uplift production pages",
+   "date": "2026-07-03",
+   "sha": "844c7bd",
+   "ref": "2318674^",
+   "dir": "v1-2026-07-03",
+   "narrative": {
+    "what": "The site as it stood the day before the uplift: DM Sans 200 headlines carrying EB Garamond italic-coral emphasis, per-page shell dimensions, and the original scroll-reveal grammar \u2014 nine pages built over 73 commits since the repo was consolidated in June 2026.",
+    "why": "The baseline \u2014 captured from the last commit before pages-v2 was promoted, so everything the uplift changed can be read against it."
+   },
+   "stats": {
+    "commitRange": "..844c7bd",
+    "commits": 75,
+    "pagesShortstat": ""
+   },
+   "pages": {
+    "page-homepage": {
+     "desktop": "evolution/v1-2026-07-03/page-homepage-desktop.jpg",
+     "mobile": "evolution/v1-2026-07-03/page-homepage-mobile.jpg"
+    },
+    "page-pricing": {
+     "desktop": "evolution/v1-2026-07-03/page-pricing-desktop.jpg",
+     "mobile": "evolution/v1-2026-07-03/page-pricing-mobile.jpg"
+    },
+    "page-contact-us": {
+     "desktop": "evolution/v1-2026-07-03/page-contact-us-desktop.jpg",
+     "mobile": "evolution/v1-2026-07-03/page-contact-us-mobile.jpg"
+    },
+    "page-foundation": {
+     "desktop": "evolution/v1-2026-07-03/page-foundation-desktop.jpg",
+     "mobile": "evolution/v1-2026-07-03/page-foundation-mobile.jpg"
+    },
+    "page-our-story": {
+     "desktop": "evolution/v1-2026-07-03/page-our-story-desktop.jpg",
+     "mobile": "evolution/v1-2026-07-03/page-our-story-mobile.jpg"
+    },
+    "page-in-person-training": {
+     "desktop": "evolution/v1-2026-07-03/page-in-person-training-desktop.jpg",
+     "mobile": "evolution/v1-2026-07-03/page-in-person-training-mobile.jpg"
+    },
+    "page-faq": {
+     "desktop": "evolution/v1-2026-07-03/page-faq-desktop.jpg",
+     "mobile": "evolution/v1-2026-07-03/page-faq-mobile.jpg"
+    },
+    "page-platform-logged-out": {
+     "desktop": "evolution/v1-2026-07-03/page-platform-logged-out-desktop.jpg",
+     "mobile": "evolution/v1-2026-07-03/page-platform-logged-out-mobile.jpg"
+    },
+    "page-platform-logged-in": {
+     "desktop": "evolution/v1-2026-07-03/page-platform-logged-in-desktop.jpg",
+     "mobile": "evolution/v1-2026-07-03/page-platform-logged-in-mobile.jpg"
+    }
+   }
+  },
+  {
+   "id": "v2",
+   "label": "Brand heading uplift \u2014 pages-v2 promoted",
+   "date": "2026-07-03",
+   "sha": "d747fd2",
+   "ref": "d747fd2",
+   "dir": "v2-2026-07-03",
+   "narrative": {
+    "what": "DM Sans 300 headings on normalised design-system shells, the italics replaced by the four-asset heading kit \u2014 coral pill capsules, coral-bold words, chevron and arrow accents. The exploration motion system (line-mask reveals, the su-live interaction lane) went site-wide, output became ASCII-safe, and the framework took its canonical name: the Nine Dimensions of the Very Best Consultants.",
+    "why": "The 2025 messaging-style brand direction, proven on two homepage explorations, applied across all nine core marketing pages. Signed off by the project owner and promoted to production on 3 July 2026."
+   },
+   "stats": {
+    "commitRange": "844c7bd..d747fd2",
+    "commits": 5,
+    "pagesShortstat": "11 files changed, 2453 insertions(+), 692 deletions(-)"
+   },
+   "pages": {
+    "page-homepage": {
+     "desktop": "evolution/v2-2026-07-03/page-homepage-desktop.jpg",
+     "mobile": "evolution/v2-2026-07-03/page-homepage-mobile.jpg"
+    },
+    "page-pricing": {
+     "desktop": "evolution/v2-2026-07-03/page-pricing-desktop.jpg",
+     "mobile": "evolution/v2-2026-07-03/page-pricing-mobile.jpg"
+    },
+    "page-contact-us": {
+     "desktop": "evolution/v2-2026-07-03/page-contact-us-desktop.jpg",
+     "mobile": "evolution/v2-2026-07-03/page-contact-us-mobile.jpg"
+    },
+    "page-foundation": {
+     "desktop": "evolution/v2-2026-07-03/page-foundation-desktop.jpg",
+     "mobile": "evolution/v2-2026-07-03/page-foundation-mobile.jpg"
+    },
+    "page-our-story": {
+     "desktop": "evolution/v2-2026-07-03/page-our-story-desktop.jpg",
+     "mobile": "evolution/v2-2026-07-03/page-our-story-mobile.jpg"
+    },
+    "page-in-person-training": {
+     "desktop": "evolution/v2-2026-07-03/page-in-person-training-desktop.jpg",
+     "mobile": "evolution/v2-2026-07-03/page-in-person-training-mobile.jpg"
+    },
+    "page-faq": {
+     "desktop": "evolution/v2-2026-07-03/page-faq-desktop.jpg",
+     "mobile": "evolution/v2-2026-07-03/page-faq-mobile.jpg"
+    },
+    "page-platform-logged-out": {
+     "desktop": "evolution/v2-2026-07-03/page-platform-logged-out-desktop.jpg",
+     "mobile": "evolution/v2-2026-07-03/page-platform-logged-out-mobile.jpg"
+    },
+    "page-platform-logged-in": {
+     "desktop": "evolution/v2-2026-07-03/page-platform-logged-in-desktop.jpg",
+     "mobile": "evolution/v2-2026-07-03/page-platform-logged-in-mobile.jpg"
+    }
+   }
+  },
+  {
+   "id": "v3",
+   "label": "Coral pill capsule retired \u2014 coral-bold everywhere",
+   "date": "2026-07-24",
+   "sha": "0c01d03",
+   "ref": "HEAD",
+   "dir": "v3-2026-07-24",
+   "narrative": {
+    "what": "The coral pill capsules that defined v2's headings are gone. Emphasis is now coral-bold \u2014 DM Sans 600 in coral \u2014 which lets a highlight run across a phrase (\"the right learning\", \"10,000+ consultants\") rather than ringing a single word. With no capsule holding the line box open, hero leading tightened back toward the pre-uplift footprint, so the heroes occupy visibly less vertical space than in v2. Smaller shifts alongside it: the platform headline promoted to h1, heading chevrons and arrows optically centred on the caps, and muted text and focus rings moved to the new contrast floor.",
+    "why": "Ben's read on v2 was that pills break reading flow and single-word emphasis lands weak. Most pills became coral-bold on 4 July; the Dimensions signature word was held back as the one place the capsule still earned its keep, and the project owner retired it on 24 July \u2014 made in the shared cluster-grid block, so all six pages carrying that grid moved together. The hero compression followed directly from the same change: capsule clearance had been the only reason that leading was held open."
+   },
+   "stats": {
+    "commitRange": "d747fd2..0c01d03",
+    "commits": 64,
+    "pagesShortstat": "10 files changed, 1664 insertions(+), 1020 deletions(-)"
+   },
+   "pages": {
+    "page-homepage": {
+     "desktop": "evolution/v3-2026-07-24/page-homepage-desktop.jpg",
+     "mobile": "evolution/v3-2026-07-24/page-homepage-mobile.jpg"
+    },
+    "page-pricing": {
+     "desktop": "evolution/v3-2026-07-24/page-pricing-desktop.jpg",
+     "mobile": "evolution/v3-2026-07-24/page-pricing-mobile.jpg"
+    },
+    "page-contact-us": {
+     "desktop": "evolution/v3-2026-07-24/page-contact-us-desktop.jpg",
+     "mobile": "evolution/v3-2026-07-24/page-contact-us-mobile.jpg"
+    },
+    "page-foundation": {
+     "desktop": "evolution/v3-2026-07-24/page-foundation-desktop.jpg",
+     "mobile": "evolution/v3-2026-07-24/page-foundation-mobile.jpg"
+    },
+    "page-our-story": {
+     "desktop": "evolution/v3-2026-07-24/page-our-story-desktop.jpg",
+     "mobile": "evolution/v3-2026-07-24/page-our-story-mobile.jpg"
+    },
+    "page-in-person-training": {
+     "desktop": "evolution/v3-2026-07-24/page-in-person-training-desktop.jpg",
+     "mobile": "evolution/v3-2026-07-24/page-in-person-training-mobile.jpg"
+    },
+    "page-faq": {
+     "desktop": "evolution/v3-2026-07-24/page-faq-desktop.jpg",
+     "mobile": "evolution/v3-2026-07-24/page-faq-mobile.jpg"
+    },
+    "page-platform-logged-out": {
+     "desktop": "evolution/v3-2026-07-24/page-platform-logged-out-desktop.jpg",
+     "mobile": "evolution/v3-2026-07-24/page-platform-logged-out-mobile.jpg"
+    },
+    "page-platform-logged-in": {
+     "desktop": "evolution/v3-2026-07-24/page-platform-logged-in-desktop.jpg",
+     "mobile": "evolution/v3-2026-07-24/page-platform-logged-in-mobile.jpg"
+    }
+   }
+  }
+ ],
+ "explorations": [
+  {
+   "id": "homepage-motion",
+   "name": "Homepage \u2014 Amplification in Motion",
+   "after": "v1",
+   "date": "2026-07-02",
+   "sha": "48d7a64",
+   "source": "archive/homepage-v2-retired-2026-07-03/page-homepage-v2.html",
+   "dir": "explorations/homepage-motion-2026-07-02",
+   "narrative": {
+    "what": "A pure motion pass \u2014 same content and markup, every change in the style/script layers: unified motion tokens, headlines rising line-by-line out of masks, a re-timed hero (ring draws, then the nine icons pop radially), cards landing as surfaces, stat ticks, breathing ovals. At rest it is pixel-identical to v1 \u2014 the work only shows in motion.",
+    "why": "To find out how far entrance choreography and micro-detail alone could lift the page, before touching any visual design.",
+    "outcome": "Retired 3 July 2026 without shipping \u2014 but its motion system survived wholesale, becoming the base of the messaging exploration and then of the site-wide v2 uplift."
+   },
+   "pages": {
+    "page-homepage": {
+     "desktop": "evolution/explorations/homepage-motion-2026-07-02/page-homepage-desktop.jpg",
+     "mobile": "evolution/explorations/homepage-motion-2026-07-02/page-homepage-mobile.jpg"
+    }
+   }
+  },
+  {
+   "id": "homepage-messaging",
+   "name": "Homepage \u2014 messaging-style headings",
+   "after": "v1",
+   "date": "2026-07-02",
+   "sha": "2318674",
+   "source": "archive/homepage-v3-retired-2026-07-03/page-homepage-v3.html",
+   "dir": "explorations/homepage-messaging-2026-07-02",
+   "narrative": {
+    "what": "The 2025 brand guidelines\u2019 messaging-style headings on the motion base: coral pill capsules replacing the italics (one capsule word per headline), a light-blue chevron and coral arrow accent kit, DM Sans 300 held at production font sizes with leading bumped only as far as capsule clearance required.",
+    "why": "To bring the 2025 brand direction to the live homepage at real scale. The project owner kept the production type sizes, corrected the leading, and dropped the coral emphasis dot \u2014 it wasn\u2019t working.",
+    "outcome": "Superseded 3 July 2026 by pages-v2, which took this heading treatment across every core page. This exploration\u2019s heading kit is now the production canon."
+   },
+   "pages": {
+    "page-homepage": {
+     "desktop": "evolution/explorations/homepage-messaging-2026-07-02/page-homepage-desktop.jpg",
+     "mobile": "evolution/explorations/homepage-messaging-2026-07-02/page-homepage-mobile.jpg"
+    }
+   }
+  }
+ ]
+}
+</script>
+<script>window.SU_EVOLUTION = JSON.parse(document.getElementById("ev-manifest").textContent);</script>
+<script>
+(function () {
+  'use strict';
+  var M = window.SU_EVOLUTION;
+  var app = document.getElementById('ev-app');
+  if (!M || !M.milestones || !M.milestones.length) {
+    app.innerHTML = '<p class="ev-err">No archive data: manifest.js is missing or empty. Capture a milestone with <span class="ev-mono">node tools/evolution-snapshot.mjs</span> first.</p>';
+    return;
+  }
+
+  // Every dynamic value below is HTML-escaped via esc() before templating -
+  // see the safety invariant note in the header comment.
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  var PRETTY = {
+    'page-homepage': 'Homepage',
+    'page-pricing': 'Pricing',
+    'page-contact-us': 'Contact',
+    'page-foundation': 'Foundation',
+    'page-our-story': 'Our story',
+    'page-in-person-training': 'In-person training',
+    'page-faq': 'FAQ',
+    'page-platform-logged-out': 'Platform (logged out)',
+    'page-platform-logged-in': 'Platform (logged in)'
+  };
+  function pretty(p) {
+    return PRETTY[p] || p.replace(/^page-/, '').replace(/-/g, ' ');
+  }
+
+  // Ordered version list: each milestone followed by its explorations (array order).
+  var VERSIONS = [];
+  M.milestones.forEach(function (m) {
+    VERSIONS.push({ kind: 'm', key: m.id, data: m });
+    (M.explorations || []).forEach(function (x) {
+      if (x.after === m.id) VERSIONS.push({ kind: 'x', key: 'x:' + x.id, data: x });
+    });
+  });
+  function vByKey(key) {
+    for (var i = 0; i < VERSIONS.length; i++) if (VERSIONS[i].key === key) return VERSIONS[i];
+    return null;
+  }
+  function vName(v) {
+    return v.kind === 'm' ? v.data.id + ' — ' + v.data.label : v.data.name;
+  }
+  function hasPage(v, page) { return !!(v.data.pages && v.data.pages[page]); }
+  function imgSrc(v, page, device) {
+    var p = v.data.pages[page];
+    return p && p[device] ? encodeURI(p[device]) : null;
+  }
+
+  var state = {
+    page: 'page-homepage',
+    device: 'desktop',
+    mode: 'side',
+    a: VERSIONS[0].key,
+    b: VERSIONS[VERSIONS.length - 1].key,
+    sync: true,
+    cut: 50,
+    scrub: 0
+  };
+
+  // ---- hash state (linkable comparisons, file://-safe) ----
+  function readHash() {
+    try {
+      var h = new URLSearchParams(location.hash.replace(/^#/, ''));
+      if (h.get('page') && M.corePages.indexOf(h.get('page')) !== -1) state.page = h.get('page');
+      if (h.get('device') === 'mobile' || h.get('device') === 'desktop') state.device = h.get('device');
+      if (['side', 'overlay', 'strip'].indexOf(h.get('mode')) !== -1) state.mode = h.get('mode');
+      if (h.get('a') && vByKey(h.get('a'))) state.a = h.get('a');
+      if (h.get('b') && vByKey(h.get('b'))) state.b = h.get('b');
+    } catch (e) { /* bad hash: keep defaults */ }
+  }
+  function writeHash() {
+    var h = new URLSearchParams();
+    h.set('page', state.page); h.set('device', state.device); h.set('mode', state.mode);
+    h.set('a', state.a); h.set('b', state.b);
+    history.replaceState(null, '', '#' + h.toString());
+  }
+
+  // ---- timeline ----
+  var tl = document.getElementById('ev-tl');
+  function renderTimeline() {
+    tl.querySelectorAll('.ev-stop').forEach(function (n) { n.remove(); });
+    var n = M.milestones.length;
+    var mx = {};
+    M.milestones.forEach(function (m, i) {
+      mx[m.id] = ((i + 0.5) / n) * 100;
+    });
+    M.milestones.forEach(function (m) {
+      var stop = document.createElement('button');
+      stop.className = 'ev-stop ev-stop-m' + (state.a === m.id ? ' ev-on' : '') + (hasPage({ data: m }, state.page) ? '' : ' ev-nopage');
+      stop.style.left = mx[m.id] + '%';
+      stop.dataset.key = m.id;
+      stop.innerHTML = '<div class="ev-dot"></div><div class="ev-stop-id">' + esc(m.id) + '</div>' +
+        '<div class="ev-stop-label">' + esc(m.label) + '</div><div class="ev-stop-date">' + esc(m.date) + '</div>';
+      tl.appendChild(stop);
+    });
+    M.milestones.forEach(function (m, i) {
+      var xs = (M.explorations || []).filter(function (x) { return x.after === m.id; });
+      if (!xs.length) return;
+      var x0 = mx[m.id];
+      var x1 = (i + 1 < n) ? mx[M.milestones[i + 1].id] : 100;
+      xs.forEach(function (x, j) {
+        var stop = document.createElement('button');
+        var key = 'x:' + x.id;
+        stop.className = 'ev-stop ev-stop-x' + (state.a === key ? ' ev-on' : '') + (hasPage({ data: x }, state.page) ? '' : ' ev-nopage');
+        stop.style.left = (x0 + ((j + 1) / (xs.length + 1)) * (x1 - x0)) + '%';
+        stop.dataset.key = key;
+        stop.innerHTML = '<div class="ev-stop-label">' + esc(x.name) + '</div><div class="ev-dot"></div><div class="ev-stem"></div>';
+        tl.appendChild(stop);
+      });
+    });
+  }
+  tl.addEventListener('click', function (e) {
+    var stop = e.target.closest('.ev-stop');
+    if (!stop) return;
+    state.a = stop.dataset.key;
+    render();
+  });
+
+  // ---- controls ----
+  var controls = document.getElementById('ev-controls');
+  function renderControls() {
+    var html = '<div class="ev-group"><span class="ev-group-label">Page</span>';
+    M.corePages.forEach(function (p) {
+      html += '<button class="ev-pill' + (state.page === p ? ' ev-on' : '') + '" data-page="' + esc(p) + '">' + esc(pretty(p)) + '</button>';
+    });
+    html += '</div>';
+    html += '<div class="ev-group"><span class="ev-group-label">Device</span><div class="ev-seg">' +
+      '<button data-device="desktop" class="' + (state.device === 'desktop' ? 'ev-on' : '') + '">Desktop</button>' +
+      '<button data-device="mobile" class="' + (state.device === 'mobile' ? 'ev-on' : '') + '">Mobile</button></div></div>';
+    html += '<div class="ev-group"><span class="ev-group-label">View</span><div class="ev-seg">' +
+      '<button data-mode="side" class="' + (state.mode === 'side' ? 'ev-on' : '') + '">Side by side</button>' +
+      '<button data-mode="overlay" class="' + (state.mode === 'overlay' ? 'ev-on' : '') + '">Overlay</button>' +
+      '<button data-mode="strip" class="' + (state.mode === 'strip' ? 'ev-on' : '') + '">Filmstrip</button></div>';
+    if (state.mode === 'side') {
+      html += '<button class="ev-sync' + (state.sync ? ' ev-on' : '') + '" data-sync>Sync scroll' + (state.sync ? ' ✓' : '') + '</button>';
+    }
+    html += '</div>';
+    controls.innerHTML = html;
+  }
+  controls.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    if (b.dataset.page) state.page = b.dataset.page;
+    else if (b.dataset.device) state.device = b.dataset.device;
+    else if (b.dataset.mode) state.mode = b.dataset.mode;
+    else if ('sync' in b.dataset) state.sync = !state.sync;
+    else return;
+    render();
+  });
+
+  // ---- stage ----
+  var stage = document.getElementById('ev-stage');
+
+  function versionOptions(selectedKey) {
+    return VERSIONS.map(function (v) {
+      var dis = hasPage(v, state.page) ? '' : ' disabled';
+      var pre = v.kind === 'x' ? '↳ ' : '';
+      var suf = dis ? ' — not in this snapshot' : '';
+      return '<option value="' + esc(v.key) + '"' + (v.key === selectedKey ? ' selected' : '') + dis + '>' +
+        pre + esc(vName(v)) + suf + '</option>';
+    }).join('');
+  }
+
+  function paneBody(v) {
+    if (!hasPage(v, state.page)) {
+      return '<div class="ev-empty"><p><strong>' + esc(pretty(state.page)) + '</strong> wasn’t captured in “' +
+        esc(vName(v)) + '”.</p><button data-nearest>Go to nearest milestone</button></div>';
+    }
+    var src = imgSrc(v, state.page, state.device);
+    return '<div class="ev-scroll' + (state.device === 'mobile' ? ' ev-mobile' : '') + '">' +
+      '<img loading="lazy" decoding="async" src="' + esc(src) + '" alt="' + esc(pretty(state.page)) + ' — ' + esc(vName(v)) + ' (' + esc(state.device) + ')"></div>';
+  }
+
+  function nearestMilestone(fromKey) {
+    var idx = VERSIONS.findIndex(function (v) { return v.key === fromKey; });
+    for (var d = 1; d < VERSIONS.length; d++) {
+      var lo = VERSIONS[idx - d], hi = VERSIONS[idx + d];
+      if (lo && lo.kind === 'm' && hasPage(lo, state.page)) return lo.key;
+      if (hi && hi.kind === 'm' && hasPage(hi, state.page)) return hi.key;
+    }
+    return VERSIONS[0].key;
+  }
+
+  function renderStage() {
+    if (state.mode === 'side') {
+      var va = vByKey(state.a), vb = vByKey(state.b);
+      stage.innerHTML =
+        '<div class="ev-duo">' +
+        '<div class="ev-pane"><div class="ev-pane-head"><span class="ev-ab">A</span><select data-pane="a">' + versionOptions(state.a) + '</select></div>' + paneBody(va) + '</div>' +
+        '<div class="ev-pane"><div class="ev-pane-head"><span class="ev-ab">B</span><select data-pane="b">' + versionOptions(state.b) + '</select></div>' + paneBody(vb) + '</div>' +
+        '</div>';
+      attachSync();
+    } else if (state.mode === 'overlay') {
+      var oa = vByKey(state.a), ob = vByKey(state.b);
+      var aOk = hasPage(oa, state.page), bOk = hasPage(ob, state.page);
+      var body;
+      if (!aOk || !bOk) {
+        body = paneBody(aOk ? ob : oa);
+      } else {
+        body = '<div class="ev-scroll' + (state.device === 'mobile' ? ' ev-mobile' : '') + '">' +
+          '<div class="ev-ovl-wrap" style="--cut:' + Number(state.cut) + '%">' +
+          '<img class="ev-img-a" decoding="async" src="' + esc(imgSrc(oa, state.page, state.device)) + '" alt="A: ' + esc(vName(oa)) + '">' +
+          '<img class="ev-img-b" decoding="async" src="' + esc(imgSrc(ob, state.page, state.device)) + '" alt="B: ' + esc(vName(ob)) + '">' +
+          '<div class="ev-divider"><span class="ev-handle">↔</span></div>' +
+          '</div></div>';
+      }
+      stage.innerHTML =
+        '<div class="ev-pane">' +
+        '<div class="ev-pane-head"><span class="ev-ab">A</span><select data-pane="a">' + versionOptions(state.a) + '</select>' +
+        '<span class="ev-ab">B</span><select data-pane="b">' + versionOptions(state.b) + '</select></div>' +
+        '<span class="ev-corner ev-corner-a">A</span><span class="ev-corner ev-corner-b">B</span>' +
+        body + '</div>';
+      attachOverlay();
+    } else {
+      var cards = '';
+      VERSIONS.forEach(function (v) {
+        if (!hasPage(v, state.page)) return;
+        cards += '<button class="ev-card' + (v.key === state.a ? ' ev-on' : '') + (state.device === 'mobile' ? ' ev-mobilecard' : '') + '" data-card="' + esc(v.key) + '">' +
+          '<div class="ev-card-head"><div class="ev-card-name">' + (v.kind === 'x' ? '↳ ' : '') + esc(vName(v)) + '</div>' +
+          '<div class="ev-card-date">' + esc(v.data.date) + '</div></div>' +
+          '<div class="ev-window"><img loading="lazy" decoding="async" src="' + esc(imgSrc(v, state.page, state.device)) + '" alt="' + esc(vName(v)) + '"></div></button>';
+      });
+      stage.innerHTML =
+        '<div class="ev-scrub-row"><label>Scrub</label><input type="range" min="0" max="100" value="' + (state.scrub * 100) + '" data-scrub></div>' +
+        '<div class="ev-strip" style="--scrub:' + Number(state.scrub) + '">' + cards + '</div>';
+      attachStrip();
+    }
+  }
+
+  stage.addEventListener('change', function (e) {
+    if (e.target.dataset.pane) {
+      state[e.target.dataset.pane] = e.target.value;
+      render();
+    }
+  });
+  stage.addEventListener('click', function (e) {
+    var card = e.target.closest('[data-card]');
+    if (card) { state.a = card.dataset.card; render(); return; }
+    var near = e.target.closest('[data-nearest]');
+    if (near) {
+      var pane = near.closest('.ev-pane');
+      var sel = pane && pane.querySelector('select');
+      var which = sel && sel.dataset.pane === 'b' ? 'b' : 'a';
+      state[which] = nearestMilestone(state[which]);
+      render();
+    }
+  });
+  stage.addEventListener('input', function (e) {
+    if ('scrub' in e.target.dataset) {
+      state.scrub = e.target.value / 100;
+      var strip = stage.querySelector('.ev-strip');
+      if (strip) strip.style.setProperty('--scrub', state.scrub);
+    }
+  });
+
+  // side-by-side proportional scroll sync. Only the pane under the pointer
+  // drives the sync — the follower's own scroll events never propagate back,
+  // so the pair can't ping-pong while tall images are still decoding.
+  function attachSync() {
+    var panes = stage.querySelectorAll('.ev-scroll');
+    if (panes.length !== 2) return;
+    var driver = null;
+    function follow(src, dst) {
+      src.addEventListener('pointerenter', function () { driver = src; });
+      src.addEventListener('wheel', function () { driver = src; }, { passive: true });
+      src.addEventListener('touchstart', function () { driver = src; }, { passive: true });
+      src.addEventListener('scroll', function () {
+        if (!state.sync || driver !== src) return;
+        var max = src.scrollHeight - src.clientHeight;
+        var ratio = max > 0 ? src.scrollTop / max : 0;
+        dst.scrollTop = ratio * (dst.scrollHeight - dst.clientHeight);
+      });
+    }
+    follow(panes[0], panes[1]);
+    follow(panes[1], panes[0]);
+  }
+
+  // overlay: wrapper height + divider drag
+  function attachOverlay() {
+    var wrap = stage.querySelector('.ev-ovl-wrap');
+    if (!wrap) return;
+    var imgs = wrap.querySelectorAll('img');
+    function size() {
+      var h = Math.max(imgs[0].offsetHeight || 0, imgs[1].offsetHeight || 0);
+      if (h) wrap.style.height = h + 'px';
+    }
+    imgs.forEach(function (im) {
+      if (im.complete) size(); else im.addEventListener('load', size);
+    });
+    window.addEventListener('resize', size);
+    var divider = wrap.querySelector('.ev-divider');
+    divider.addEventListener('pointerdown', function (e) {
+      divider.setPointerCapture(e.pointerId);
+      function move(ev) {
+        var r = wrap.getBoundingClientRect();
+        state.cut = Math.min(98, Math.max(2, ((ev.clientX - r.left) / r.width) * 100));
+        wrap.style.setProperty('--cut', state.cut + '%');
+      }
+      function up() {
+        divider.removeEventListener('pointermove', move);
+        divider.removeEventListener('pointerup', up);
+      }
+      divider.addEventListener('pointermove', move);
+      divider.addEventListener('pointerup', up);
+      e.preventDefault();
+    });
+  }
+
+  // filmstrip: per-card scroll range once images load
+  function attachStrip() {
+    stage.querySelectorAll('.ev-window img').forEach(function (im) {
+      function setRange() {
+        im.style.setProperty('--range', Math.max(0, im.offsetHeight - 520) + 'px');
+      }
+      if (im.complete) setRange(); else im.addEventListener('load', setRange);
+    });
+  }
+
+  // ---- narrative rail ----
+  var rail = document.getElementById('ev-rail');
+  function renderRail() {
+    var v = vByKey(state.a) || VERSIONS[0];
+    var d = v.data, n = d.narrative || {};
+    var html = '<span class="ev-overline">' + (v.kind === 'm' ? 'Milestone ' + esc(d.id) : 'Exploration') + '</span>';
+    html += '<h3>' + esc(v.kind === 'm' ? d.label : d.name) + '</h3>';
+    html += '<div class="ev-meta"><span>' + esc(d.date) + '</span><span class="ev-sha">' + esc(d.sha) + '</span>';
+    if (v.kind === 'm' && d.stats && d.stats.commits) html += '<span>' + esc(d.stats.commits) + ' commits</span>';
+    if (v.kind === 'm' && d.stats && d.stats.pagesShortstat) html += '<span>' + esc(d.stats.pagesShortstat.trim()) + '</span>';
+    html += '</div>';
+    if (n.what || n.why || n.outcome) {
+      if (n.what) html += '<h4>What changed</h4><p>' + esc(n.what) + '</p>';
+      if (n.why) html += '<h4>Why</h4><p>' + esc(n.why) + '</p>';
+      if (n.outcome) html += '<h4>Outcome</h4><p>' + esc(n.outcome) + '</p>';
+    } else {
+      html += '<p class="ev-pending">Narrative pending — the capture is in; the story is still to be written.</p>';
+    }
+    if (v.kind === 'x' && d.source) html += '<div class="ev-src">Source: <span class="ev-mono">' + esc(d.source) + '</span></div>';
+    rail.innerHTML = html;
+  }
+
+  // ---- footer ----
+  function renderFoot() {
+    var f = document.getElementById('ev-foot');
+    f.innerHTML = '<span>' + esc(M.milestones.length) + ' milestones · ' + esc((M.explorations || []).length) +
+      ' explorations · generated ' + esc((M.generated || '').slice(0, 10)) + '</span>' +
+      '<span>←/→ version A · Shift+←/→ version B · D device · 1/2/3 views</span>';
+  }
+
+  // ---- keyboard ----
+  document.addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var t = e.target.tagName;
+    if (t === 'SELECT' || t === 'INPUT' || t === 'TEXTAREA') return;
+    var usable = VERSIONS.filter(function (v) { return hasPage(v, state.page); });
+    function step(key, dir) {
+      var i = usable.findIndex(function (v) { return v.key === state[key]; });
+      var next = usable[i + dir];
+      if (next) { state[key] = next.key; render(); }
+    }
+    if (e.key === 'ArrowLeft') { step(e.shiftKey ? 'b' : 'a', -1); e.preventDefault(); }
+    else if (e.key === 'ArrowRight') { step(e.shiftKey ? 'b' : 'a', 1); e.preventDefault(); }
+    else if (e.key === 'd' || e.key === 'D') { state.device = state.device === 'desktop' ? 'mobile' : 'desktop'; render(); }
+    else if (e.key === '1') { state.mode = 'side'; render(); }
+    else if (e.key === '2') { state.mode = 'overlay'; render(); }
+    else if (e.key === '3') { state.mode = 'strip'; render(); }
+    else if ((e.key === '[' || e.key === ']') && state.mode === 'overlay') {
+      state.cut = Math.min(98, Math.max(2, state.cut + (e.key === ']' ? 2 : -2)));
+      var w = stage.querySelector('.ev-ovl-wrap');
+      if (w) w.style.setProperty('--cut', state.cut + '%');
+    }
+  });
+
+  function render() {
+    renderControls();
+    renderTimeline();
+    renderStage();
+    renderRail();
+    renderFoot();
+    writeHash();
+  }
+
+  readHash();
+  render();
+})();
+</script>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="evolution.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] evolution.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

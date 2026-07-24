@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>See where your next leap will come from — Showing Up (preview)</title>
+</head>
+<body>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+
+<noscript><style>
+  .asc-block [class*="-reveal"] { opacity: 1 !important; transform: none !important; }
+</style></noscript>
+
+<style>
+  .asc-block *, .asc-block *::before, .asc-block *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .asc-block {
+    --c-coral:  #FF8269;
+    --c-cream:  #FFF6F1;
+    --c-ink:    #1e1d1d;
+    --c-text:   #353434;
+    --su-ease:  cubic-bezier(.16, 1, .3, 1);
+    --su-dur:   .8s;
+    --type-h1:  clamp(44px, 5.5vw, 76px);
+    --type-h2:  clamp(36px, 4.5vw, 64px);
+
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--c-cream);
+    color: var(--c-text);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .asc-block [class*="-reveal"] { transition: none !important; opacity: 1 !important; transform: none !important; }
+  }
+  .asc-block [class*="-reveal"] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--su-dur) var(--su-ease), transform var(--su-dur) var(--su-ease);
+  }
+  .asc-block [class*="-reveal"].is-revealed { opacity: 1; transform: none; }
+
+  .asc-block .asc-overline {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: var(--c-coral);
+    margin: 0 0 20px;
+    text-align: left !important;
+  }
+  .asc-block .asc-h1 {
+    font-size: var(--type-h1);
+    font-weight: 300; line-height: 1.06;
+    letter-spacing: -.03em;
+    color: var(--c-ink);
+    margin: 0 0 28px;
+    text-align: left !important;
+  }
+  .asc-block .asc-h2 {
+    font-size: var(--type-h2);
+    font-weight: 300; line-height: 1.18;
+    letter-spacing: -.03em;
+    color: var(--c-ink);
+    margin: 0 0 24px;
+    text-align: left !important;
+  }
+  .asc-block .asc-h2--cream { color: var(--c-cream); }
+  .asc-block .asc-h1 em, .asc-block .asc-h2 em { font-style: normal; font-weight: 600; color: var(--c-coral); }
+  .asc-block .asc-body {
+    font-size: 18px; font-weight: 400; line-height: 1.65;
+    color: var(--c-text);
+    max-width: 640px;
+    margin: 0 0 18px;
+    text-align: left !important;
+  }
+  .asc-block .asc-body:last-child { margin-bottom: 0; }
+  .asc-block .asc-body--cream { color: rgba(255,246,241,.75); }
+
+  .asc-block .asc-section { padding: 120px 80px 96px; text-align: left !important; }
+  .asc-block .asc-section--dark { background: var(--c-ink); }
+  .asc-block .asc-head { max-width: 860px; margin: 0 0 56px; }
+  .asc-block .asc-measure { max-width: 860px; }
+
+  /* CTAs */
+  .asc-block .asc-cta-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; margin-top: 36px; }
+  .asc-block .asc-pill,
+  .asc-block .asc-pill:link,
+  .asc-block .asc-pill:visited {
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: #1e1d1d !important; color: #FFF6F1 !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    padding: 14px 28px; border-radius: 100px;
+    transition: background .25s, color .25s;
+    width: fit-content;
+  }
+  .asc-block .asc-pill:hover, .asc-block .asc-pill:active {
+    background: #FF8269 !important; color: #1e1d1d !important;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+  }
+  /* Coral pill for the dark section (pill spec: dark bg -> coral fill) */
+  .asc-block .asc-pill--coral,
+  .asc-block .asc-pill--coral:link,
+  .asc-block .asc-pill--coral:visited {
+    background: #FF8269 !important; color: #FFF6F1 !important;
+  }
+  .asc-block .asc-pill--coral:hover, .asc-block .asc-pill--coral:active {
+    background: #FFF6F1 !important; color: #1e1d1d !important;
+  }
+  .asc-block .asc-link,
+  .asc-block .asc-link:link,
+  .asc-block .asc-link:visited {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    color: var(--c-ink) !important;
+    text-decoration: none !important; border: none !important;
+    border-bottom: 1px solid rgba(30,29,29,.35) !important;
+    padding-bottom: 2px;
+    transition: color .25s, border-color .25s;
+  }
+  .asc-block .asc-link:hover, .asc-block .asc-link:active {
+    color: #e8614a !important;
+    text-decoration: none !important; border: none !important;
+    border-bottom: 1px solid #e8614a !important;
+  }
+
+  /* Feature cards */
+  .asc-block .asc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .asc-block .asc-grid > * { min-width: 0; }
+  .asc-block .asc-card {
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 16px;
+    padding: 32px;
+  }
+  .asc-block .asc-card-title { font-size: 18px; font-weight: 500; color: var(--c-ink); margin: 0 0 10px; text-align: left !important; }
+  .asc-block .asc-card-body { font-size: 15px; font-weight: 400; line-height: 1.6; color: rgba(53,52,52,.75); text-align: left !important; }
+  .asc-block .asc-grid .asc-card:nth-child(2) { transition-delay: .06s; }
+  .asc-block .asc-grid .asc-card:nth-child(3) { transition-delay: .12s; }
+
+  @media (max-width: 960px) {
+    .asc-block .asc-section { padding: 80px 32px 64px; }
+    .asc-block .asc-head { margin-bottom: 40px; }
+    .asc-block .asc-grid { grid-template-columns: 1fr; }
+    .asc-block .asc-body { font-size: 17px; }
+  }
+  @media (max-width: 540px) {
+    .asc-block .asc-section { padding: 64px 20px 56px; }
+  }
+</style>
+
+<div class="asc-block">
+
+  
+  <section class="asc-section" aria-label="Self-assessments">
+    <div class="asc-measure">
+      <div class="asc-overline asc-reveal">Self-assessments</div>
+      <h1 class="asc-h1 asc-reveal">See where your <em>next</em> <em>leap</em> will come from</h1>
+      <p class="asc-body asc-reveal">Self-assessments built against the Nine Dimensions of the Very Best Consultants. Each one helps a person reflect honestly on where their development sits today, and points to what to grow next.</p>
+      <div class="asc-cta-row asc-reveal">
+        <a href="https://www.showinguplearning.com/contact-us" class="asc-pill">Book a Discovery Call</a>
+        <a href="https://www.showinguplearning.com/pricing" class="asc-link">See pricing &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="asc-section asc-section--dark" aria-label="Try an assessment">
+    <div class="asc-measure">
+      <div class="asc-overline asc-reveal">Try one now</div>
+      <h2 class="asc-h2 asc-h2--cream asc-reveal">The curiosity self-assessment is live</h2>
+      <p class="asc-body asc-body--cream asc-reveal">Take it exactly as your team would: sixteen short prompts about how you approach life and work, and your natural curiosity style at the end. It runs in the browser, right now.</p>
+      <div class="asc-cta-row asc-reveal">
+        <a href="https://www.showinguplearning.com/assessment" class="asc-pill asc-pill--coral">Try the curiosity self-assessment</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="asc-section" aria-label="How the assessments work">
+    <div class="asc-head">
+      <div class="asc-overline asc-reveal">How they work</div>
+      <h2 class="asc-h2 asc-reveal">Reflection, not examination</h2>
+    </div>
+    <div class="asc-grid">
+      <div class="asc-card asc-reveal">
+        <div class="asc-card-title">Honest reflection</div>
+        <div class="asc-card-body">Short prompts about how you actually work, not a test with trick questions. You see your own picture at the end.</div>
+      </div>
+      <div class="asc-card asc-reveal">
+        <div class="asc-card-title">Mapped to the framework</div>
+        <div class="asc-card-body">Each assessment belongs to one of the Nine Dimensions, so the result connects straight to the learning that grows it.</div>
+      </div>
+      <div class="asc-card asc-reveal">
+        <div class="asc-card-title">A plan for the next leap</div>
+        <div class="asc-card-body">The result points to where your development sits and what to work on next, with the lessons and toolkits to do it.</div>
+      </div>
+    </div>
+    <div class="asc-cta-row asc-reveal">
+      <a href="https://www.showinguplearning.com/contact-us" class="asc-pill">Book a Discovery Call</a>
+      <a href="https://www.showinguplearning.com/nine-dimensions" class="asc-link">Explore the Nine Dimensions &#8594;</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  function ascInit() {
+    var wrap = document.querySelector('.asc-block');
+    if (!wrap) return;
+    if (!('IntersectionObserver' in window)) {
+      wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) { el.classList.add('is-revealed'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+    wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) { observer.observe(el); });
+  }
+  if (document.readyState !== 'loading') { ascInit(); }
+  else { document.addEventListener('DOMContentLoaded', ascInit); }
+})();
+</script>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="concept-page-assessments-concept.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] concept-page-assessments-concept.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

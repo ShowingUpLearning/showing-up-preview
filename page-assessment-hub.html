@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Assessment Hub — Showing Up (preview)</title>
+</head>
+<body>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+
+<noscript><style>
+  .ah-wrap .ah-reveal { opacity: 1 !important; transform: none !important; }
+  .ah-wrap .ah-status, .ah-wrap .ah-bar, .ah-wrap [data-ah-review] { display: none !important; }
+</style></noscript>
+
+<style>
+  .ah-wrap *, .ah-wrap *::before, .ah-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .ah-wrap {
+    --c-coral: #FF8269;
+    --c-coral-dk: #e8614a;
+    --c-cream: #FFF6F1;
+    --c-ink: #1e1d1d;
+    --c-text: #353434;
+    --c-mint: #A7DDC3;
+    --c-purple: #C8B4E4;
+    --c-white: #ffffff;
+    --reveal-ease: cubic-bezier(.16, 1, .3, 1);
+
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--c-cream);
+    color: var(--c-text);
+    overflow: hidden;
+    overflow: clip;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .ah-wrap a,
+  .ah-wrap a:link,
+  .ah-wrap a:visited,
+  .ah-wrap a:hover,
+  .ah-wrap a:active {
+    color: inherit !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: none !important;
+  }
+
+  .ah-wrap button {
+    font-family: 'DM Sans', sans-serif !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ah-wrap .ah-reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
+    .ah-wrap .ah-bar span { transition: none !important; }
+  }
+
+  .ah-wrap .ah-reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .8s var(--reveal-ease), transform .8s var(--reveal-ease);
+  }
+  .ah-wrap .ah-reveal.is-revealed { opacity: 1; transform: none; }
+
+  .ah-section { position: relative; padding: 96px 80px 120px; }
+
+  .ah-inner {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ah-intro { max-width: 760px; margin: 0 0 56px; }
+
+  .ah-overline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--c-coral);
+    margin: 0 0 22px;
+    text-align: left !important;
+  }
+  .ah-overline::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--c-coral);
+    flex: 0 0 30px;
+  }
+
+  .ah-headline {
+    font-size: clamp(38px, 4.6vw, 62px);
+    font-weight: 300;
+    line-height: 1.04;
+    letter-spacing: -.03em;
+    color: var(--c-ink);
+    margin: 0 0 16px;
+    text-align: left !important;
+  }
+  .ah-headline em {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--c-coral);
+  }
+
+  .ah-lead {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.62;
+    color: rgba(53, 52, 52, .78);
+    text-align: left !important;
+  }
+  .ah-lead + .ah-lead { margin-top: 12px; }
+
+  .ah-id-note {
+    display: none;
+    margin-top: 16px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: rgba(53, 52, 52, .6);
+    border-left: 3px solid var(--c-coral);
+    padding: 4px 0 4px 14px;
+    text-align: left !important;
+  }
+  .ah-wrap.ah-anon .ah-id-note { display: block; }
+
+  /* ---- Groups ---- */
+  .ah-group { margin: 0 0 52px; }
+  .ah-group:last-of-type { margin-bottom: 0; }
+
+  .ah-group-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(30, 29, 29, .12);
+    padding: 0 0 14px;
+    margin: 0 0 22px;
+  }
+
+  .ah-group-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    color: var(--c-ink);
+    text-align: left !important;
+  }
+  .ah-group-title::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--ah-g, var(--c-coral));
+    flex: 0 0 10px;
+  }
+
+  .ah-wrap .ah-group-course,
+  .ah-wrap .ah-group-course:link,
+  .ah-wrap .ah-group-course:visited {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: rgba(53, 52, 52, .62) !important;
+    white-space: nowrap;
+    transition: color .2s;
+  }
+  .ah-wrap .ah-group-course:hover,
+  .ah-wrap .ah-group-course:active { color: var(--c-ink) !important; }
+
+  .ah-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .ah-grid > * { min-width: 0; }
+
+  /* ---- Cards ---- */
+  .ah-card {
+    position: relative;
+    background: var(--c-white);
+    border: 1px solid rgba(0, 0, 0, .08);
+    border-radius: 14px;
+    padding: 22px 22px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+    transition: border-color .2s, transform .2s;
+  }
+  .ah-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+    background: var(--ah-g, var(--c-coral));
+    opacity: .55;
+  }
+  .ah-card.is-complete::before { opacity: 1; }
+  .ah-card:hover { border-color: rgba(0, 0, 0, .2); transform: translateY(-2px); }
+
+  .ah-card-name {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -.01em;
+    color: var(--c-ink);
+    text-align: left !important;
+  }
+
+  .ah-card-meta {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: rgba(53, 52, 52, .5);
+    text-align: left !important;
+  }
+
+  .ah-bar {
+    width: 100%;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(30, 29, 29, .08);
+    overflow: hidden;
+    margin-top: 2px;
+  }
+  .ah-bar span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: 999px;
+    background: var(--ah-g, var(--c-coral));
+    transition: width .7s var(--reveal-ease);
+  }
+
+  .ah-status {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: rgba(53, 52, 52, .72);
+    min-height: 20px;
+    text-align: left !important;
+  }
+  .ah-card.is-complete .ah-status { color: var(--c-ink); font-weight: 500; }
+
+  .ah-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: auto;
+    padding-top: 6px;
+  }
+
+  .ah-wrap .ah-go,
+  .ah-wrap .ah-go:link,
+  .ah-wrap .ah-go:visited {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .03em;
+    color: var(--c-ink) !important;
+    transition: color .2s;
+  }
+  .ah-wrap .ah-go:hover,
+  .ah-wrap .ah-go:active { color: var(--c-coral-dk) !important; }
+
+  .ah-review {
+    display: none;
+    border: none !important;
+    background: transparent !important;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .03em;
+    color: var(--c-coral-dk) !important;
+    cursor: pointer;
+    transition: color .2s;
+    padding: 0;
+  }
+  .ah-review:hover, .ah-review:active { background: transparent !important; color: var(--c-ink) !important; }
+  .ah-review:focus-visible { outline: 2px solid var(--c-coral) !important; outline-offset: 3px; }
+  .ah-card.is-complete .ah-review { display: inline-flex; }
+
+  /* ---- Results panel (modal) ---- */
+  .ah-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    display: none;
+  }
+  .ah-modal.is-open { display: block; }
+
+  .ah-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 29, 29, .55);
+  }
+
+  .ah-modal-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(680px, calc(100vw - 40px));
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    background: var(--c-white);
+    border-radius: 16px;
+    padding: 40px;
+  }
+
+  .ah-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(30, 29, 29, .2) !important;
+    border-radius: 999px;
+    background: transparent !important;
+    color: var(--c-ink) !important;
+    font-size: 18px;
+    line-height: 1 !important;
+    cursor: pointer;
+    transition: border-color .2s, background .2s;
+  }
+  .ah-modal-close:hover, .ah-modal-close:active {
+    border-color: rgba(30, 29, 29, .45) !important;
+    background: rgba(30, 29, 29, .05) !important;
+  }
+  .ah-modal-close:focus-visible { outline: 2px solid var(--c-coral) !important; outline-offset: 3px; }
+
+  .ah-m-overline {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--c-coral);
+    margin: 0 0 12px;
+    text-align: left !important;
+  }
+  .ah-m-title {
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 300;
+    line-height: 1.12;
+    letter-spacing: -.02em;
+    color: var(--c-ink);
+    margin: 0 0 6px;
+    text-align: left !important;
+  }
+  .ah-m-date {
+    font-size: 13px;
+    color: rgba(53, 52, 52, .55);
+    margin: 0 0 22px;
+    text-align: left !important;
+  }
+
+  .ah-m-summary { display: grid; gap: 10px; margin: 0 0 22px; }
+
+  .ah-m-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid rgba(30, 29, 29, .1);
+    border-left-width: 3px;
+    border-radius: 10px;
+    padding: 12px 16px;
+  }
+  .ah-m-row-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--c-ink);
+    text-align: left !important;
+  }
+  .ah-m-row-meta {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(53, 52, 52, .55);
+    text-align: left !important;
+  }
+  .ah-m-row-count {
+    font-size: 26px;
+    font-weight: 200;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    text-align: right !important;
+  }
+
+  .ah-m-score {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 6px;
+  }
+  .ah-m-score strong {
+    font-size: 52px;
+    font-weight: 200;
+    line-height: 1;
+    color: var(--c-coral);
+  }
+  .ah-m-score span {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(53, 52, 52, .5);
+  }
+
+  .ah-m-body {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.62;
+    color: rgba(53, 52, 52, .82);
+    margin: 0 0 26px;
+    text-align: left !important;
+  }
+
+  .ah-m-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .ah-m-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 14px 28px;
+    border-radius: 100px;
+    border: none !important;
+    background: var(--c-ink) !important;
+    color: var(--c-cream) !important;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+  }
+  .ah-m-download:hover, .ah-m-download:active {
+    background: var(--c-coral) !important;
+    color: var(--c-ink) !important;
+  }
+  .ah-m-download:focus-visible { outline: 2px solid var(--c-coral) !important; outline-offset: 3px; }
+
+  .ah-wrap .ah-m-course,
+  .ah-wrap .ah-m-course:link,
+  .ah-wrap .ah-m-course:visited {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(53, 52, 52, .65) !important;
+    transition: color .2s;
+  }
+  .ah-wrap .ah-m-course:hover,
+  .ah-wrap .ah-m-course:active { color: var(--c-ink) !important; }
+
+  @media (max-width: 1080px) {
+    .ah-section { padding: 80px 48px 96px; }
+    .ah-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 860px) {
+    .ah-section { padding: 64px 32px 80px; }
+    .ah-headline { font-size: clamp(34px, 8vw, 50px); }
+  }
+
+  @media (max-width: 620px) {
+    .ah-section { padding: 56px 22px 64px; }
+    .ah-grid { grid-template-columns: minmax(0, 1fr); }
+    .ah-group-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .ah-modal-panel { padding: 28px 22px; }
+  }
+</style>
+
+<section class="ah-wrap" aria-label="Your self-reflection assessments">
+  <div class="ah-section">
+    <div class="ah-inner">
+      <div class="ah-intro ah-reveal">
+        <p class="ah-overline">Self-reflection assessments</p>
+        <h2 class="ah-headline">Your self-reflection <em>hub</em></h2>
+        <p class="ah-lead">Short self-reflection assessments run through every dimension of the platform. This page keeps them in one place &mdash; see where you are, pick up where you left off, and revisit or download any completed result.</p>
+        <p class="ah-id-note">We couldn&rsquo;t identify your account on this page, so saved progress from your courses may not appear here. Make sure you&rsquo;re signed in.</p>
+      </div>
+
+      <div class="ah-group ah-reveal" style="--ah-g: #FF8269;">
+        <div class="ah-group-head">
+          <h3 class="ah-group-title">Curiosity</h3>
+          <a class="ah-group-course" href="https://www.showinguplearning.com/program/curiosity">Open the course &rarr;</a>
+        </div>
+        <div class="ah-grid">
+          <article class="ah-card" data-slug="curiosity">
+            <h4 class="ah-card-name">How curious are you?</h4>
+            <p class="ah-card-meta">16 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/curiosity">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="curiosity">View results</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="ah-group ah-reveal" style="--ah-g: #A7DDC3;">
+        <div class="ah-group-head">
+          <h3 class="ah-group-title">Curation &middot; Spiral Dynamics</h3>
+          <a class="ah-group-course" href="https://www.showinguplearning.com/program/curation-dimension">Open the course &rarr;</a>
+        </div>
+        <div class="ah-grid">
+          <article class="ah-card" data-slug="curation-spiral-work">
+            <h4 class="ah-card-name">You as a consultant or advisor</h4>
+            <p class="ah-card-meta">20 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/curation-dimension">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="curation-spiral-work">View results</button>
+            </div>
+          </article>
+          <article class="ah-card" data-slug="curation-spiral-life">
+            <h4 class="ah-card-name">You in the world</h4>
+            <p class="ah-card-meta">20 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/curation-dimension">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="curation-spiral-life">View results</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="ah-group ah-reveal" style="--ah-g: #C8B4E4;">
+        <div class="ah-group-head">
+          <h3 class="ah-group-title">Character &middot; The 12 traits clients trust most</h3>
+          <a class="ah-group-course" href="https://www.showinguplearning.com/program/characterprogram">Open the course &rarr;</a>
+        </div>
+        <div class="ah-grid">
+          <article class="ah-card" data-slug="trait-dependability">
+            <h4 class="ah-card-name">Dependability</h4>
+            <p class="ah-card-meta">10 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/characterprogram">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="trait-dependability">View results</button>
+            </div>
+          </article>
+          <article class="ah-card" data-slug="trait-curiosity">
+            <h4 class="ah-card-name">Curiosity</h4>
+            <p class="ah-card-meta">10 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/characterprogram">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="trait-curiosity">View results</button>
+            </div>
+          </article>
+          <article class="ah-card" data-slug="trait-perceptiveness">
+            <h4 class="ah-card-name">Perceptiveness</h4>
+            <p class="ah-card-meta">10 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/characterprogram">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="trait-perceptiveness">View results</button>
+            </div>
+          </article>
+          <article class="ah-card" data-slug="trait-authenticity">
+            <h4 class="ah-card-name">Authenticity</h4>
+            <p class="ah-card-meta">10 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/characterprogram">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="trait-authenticity">View results</button>
+            </div>
+          </article>
+          <article class="ah-card" data-slug="trait-honesty">
+            <h4 class="ah-card-name">Honesty</h4>
+            <p class="ah-card-meta">10 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/characterprogram">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="trait-honesty">View results</button>
+            </div>
+          </article>
+          <article class="ah-card" data-slug="trait-credibility">
+            <h4 class="ah-card-name">Credibility</h4>
+            <p class="ah-card-meta">10 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/characterprogram">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="trait-credibility">View results</button>
+            </div>
+          </article>
+          <article class="ah-card" data-slug="trait-preparation-poise">
+            <h4 class="ah-card-name">Preparation &amp; poise</h4>
+            <p class="ah-card-meta">10 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/characterprogram">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="trait-preparation-poise">View results</button>
+            </div>
+          </article>
+          <article class="ah-card" data-slug="trait-adaptability">
+            <h4 class="ah-card-name">Adaptability</h4>
+            <p class="ah-card-meta">10 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/characterprogram">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="trait-adaptability">View results</button>
+            </div>
+          </article>
+          <article class="ah-card" data-slug="trait-compelling">
+            <h4 class="ah-card-name">Compelling</h4>
+            <p class="ah-card-meta">10 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/characterprogram">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="trait-compelling">View results</button>
+            </div>
+          </article>
+          <article class="ah-card" data-slug="trait-resilience">
+            <h4 class="ah-card-name">Resilience</h4>
+            <p class="ah-card-meta">10 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/characterprogram">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="trait-resilience">View results</button>
+            </div>
+          </article>
+          <article class="ah-card" data-slug="trait-positive-presence">
+            <h4 class="ah-card-name">Positive presence</h4>
+            <p class="ah-card-meta">10 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/characterprogram">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="trait-positive-presence">View results</button>
+            </div>
+          </article>
+          <article class="ah-card" data-slug="trait-generosity">
+            <h4 class="ah-card-name">Generosity</h4>
+            <p class="ah-card-meta">10 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/characterprogram">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="trait-generosity">View results</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="ah-group ah-reveal" style="--ah-g: #FF8269;">
+        <div class="ah-group-head">
+          <h3 class="ah-group-title">Critical thinking</h3>
+          <a class="ah-group-course" href="https://www.showinguplearning.com/program/critical-thinking">Open the course &rarr;</a>
+        </div>
+        <div class="ah-grid">
+          <article class="ah-card" data-slug="critical-thinking">
+            <h4 class="ah-card-name">How critically do you think?</h4>
+            <p class="ah-card-meta">12 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/critical-thinking">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="critical-thinking">View results</button>
+            </div>
+          </article>
+          <article class="ah-card" data-slug="critical-thinking-profile">
+            <h4 class="ah-card-name">The Critical Thinking Profile</h4>
+            <p class="ah-card-meta">24 prompts</p>
+            <div class="ah-bar" aria-hidden="true"><span></span></div>
+            <p class="ah-status" data-ah-status>Not started</p>
+            <div class="ah-actions">
+              <a class="ah-go" data-ah-go href="https://www.showinguplearning.com/program/critical-thinking">Start &rarr;</a>
+              <button type="button" class="ah-review" data-ah-review="critical-thinking-profile">View results</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ah-modal" data-ah-modal aria-hidden="true">
+    <div class="ah-modal-backdrop" data-ah-close></div>
+    <div class="ah-modal-panel" role="dialog" aria-modal="true" aria-labelledby="ah-m-title">
+      <button type="button" class="ah-modal-close" data-ah-close aria-label="Close results">&times;</button>
+      <p class="ah-m-overline" data-ah-m-overline>&nbsp;</p>
+      <h3 class="ah-m-title" id="ah-m-title" data-ah-m-title>&nbsp;</h3>
+      <p class="ah-m-date" data-ah-m-date>&nbsp;</p>
+      <div class="ah-m-summary" data-ah-m-summary></div>
+      <p class="ah-m-body" data-ah-m-body>&nbsp;</p>
+      <div class="ah-m-actions">
+        <button type="button" class="ah-m-download" data-ah-m-download>Download your results (PDF)</button>
+        <a class="ah-m-course" data-ah-m-course href="#">Back to the course &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    function init() {
+      var root = document.querySelector('.ah-wrap');
+      if (!root || root.getAttribute('data-ah-ready') === 'true') return;
+      root.setAttribute('data-ah-ready', 'true');
+
+      var catalog = {
+        'curiosity': {
+          mode: 'typological',
+          count: 16,
+          href: 'https://www.showinguplearning.com/program/curiosity',
+          sheetTitle: 'Curiosity self-reflection results - Showing Up Learning',
+          sheetOverline: 'Curiosity self-reflection',
+          letters: ['A', 'B', 'C'],
+          noun: 'curiosity',
+          styles: {
+            A: { short: 'Epistemic', name: 'Epistemic curiosity', meta: 'Depth, knowledge, how things work', color: '#FF8269', body: 'Your preference is Epistemic. This is the curiosity of depth. You are driven to understand why something works the way it does, to dig beneath the brief rather than just react to it, and to build knowledge you can genuinely trust. You are the one who asks \u201chow do we know that?\u201d, who stays with the detail, and who checks and triangulates before advising. It takes patience, focus, and the humility to admit what you don\u2019t yet know. Used well, it is what turns clever thinking into trusted thinking, and it is how you earn real credibility with a client.' },
+            B: { short: 'Diversive', name: 'Diversive curiosity', meta: 'Novelty, breadth, possibility', color: '#A7DDC3', body: 'Your preference is Diversive. This means you favour creativity, and it is your oxygen. You are pulled towards what is new, and your instinct is to explore something completely different to see where it leads. You spot patterns across unrelated fields, bring fresh perspectives that refresh a stuck conversation, and keep everyone\u2019s thinking alive and adaptable. The watch-out is focus: because you thrive on novelty, the art is knowing when to explore widely and when to dig deeply, rather than chasing every shiny idea.' },
+            C: { short: 'Empathetic', name: 'Empathetic curiosity', meta: 'People, feeling, perspective', color: '#C8B4E4', body: 'Your preference is Empathetic. This is the curiosity that feels with people. You are drawn to understand someone\u2019s inner world, their thoughts, pressures, hopes, and fears, and you listen with real intent rather than waiting to speak. It is the foundation of genuine relationships and trust, and it shifts your work from convincing people towards co-creating with them. The balance to hold is that feeling needs logic alongside it: too much empathy without boundaries can cloud judgement, so pair your heart with your head.' }
+          },
+          balanced: 'Your answers are balanced across more than one style. That does not mean your curiosity is unclear; it means you already flex between depth, range, and human perspective.'
+        },
+        'curation-spiral-work': {
+          mode: 'typological',
+          count: 20,
+          href: 'https://www.showinguplearning.com/program/curation-dimension',
+          sheetTitle: 'Spiral self-reflection results - Showing Up Learning',
+          sheetOverline: 'Spiral self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+          noun: 'preference',
+          styles: {
+            A: { short: 'Beige', name: 'Beige preference', meta: 'Survival, stability, the essentials', color: '#C2A878', body: 'Your strongest pull is Beige. This is the instinct for survival and stability: meeting the immediate, practical essentials before anything else.' },
+            B: { short: 'Purple', name: 'Purple preference', meta: 'Belonging, loyalty, trusted people', color: '#9B72C9', body: 'Your strongest pull is Purple. This is the world of belonging and loyalty, where trusted people and a sense of kinship come first.' },
+            C: { short: 'Red', name: 'Red preference', meta: 'Power, drive, decisive action', color: '#D94B40', body: 'Your strongest pull is Red. This is drive and decisive action: taking charge, asserting yourself, and making things happen.' },
+            D: { short: 'Blue', name: 'Blue preference', meta: 'Order, process, doing it right', color: '#3E82D6', body: 'Your strongest pull is Blue. This is order and principle: structure, process, and doing things the proper, right way.' },
+            E: { short: 'Orange', name: 'Orange preference', meta: 'Results, logic, achievement', color: '#E8862E', body: 'Your strongest pull is Orange. This is achievement and results: logic, strategy, measurable progress, and winning.' },
+            F: { short: 'Green', name: 'Green preference', meta: 'People, empathy, fairness', color: '#4FA972', body: 'Your strongest pull is Green. This is people and fairness: empathy, inclusion, and making sure everyone feels heard.' },
+            G: { short: 'Yellow', name: 'Yellow preference', meta: 'Systems, patterns, connections', color: '#CDA92F', body: 'Your strongest pull is Yellow. This is systems thinking: seeing patterns, connections, and how the whole fits together.' },
+            H: { short: 'Turquoise', name: 'Turquoise preference', meta: 'Purpose, meaning, the bigger whole', color: '#2FB0A2', body: 'Your strongest pull is Turquoise. This is purpose and the bigger picture: meaning, holism, and the good of the wider whole.' }
+          },
+          balanced: 'Your answers are spread fairly evenly across several value systems &mdash; you draw on more than one way of seeing the world.'
+        },
+        'curation-spiral-life': {
+          mode: 'typological',
+          count: 20,
+          href: 'https://www.showinguplearning.com/program/curation-dimension',
+          sheetTitle: 'Spiral self-assessment results - Showing Up Learning',
+          sheetOverline: 'Spiral self-assessment',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+          noun: 'preference',
+          styles: {
+            A: { short: 'Beige', name: 'Beige preference', meta: 'Survival, stability, the essentials', color: '#C2A878', body: 'Your strongest pull is Beige. This is the instinct for survival and stability: meeting the immediate, practical essentials before anything else.' },
+            B: { short: 'Purple', name: 'Purple preference', meta: 'Belonging, loyalty, trusted people', color: '#9B72C9', body: 'Your strongest pull is Purple. This is the world of belonging and loyalty, where trusted people and a sense of kinship come first.' },
+            C: { short: 'Red', name: 'Red preference', meta: 'Power, drive, decisive action', color: '#D94B40', body: 'Your strongest pull is Red. This is drive and decisive action: taking charge, asserting yourself, and making things happen.' },
+            D: { short: 'Blue', name: 'Blue preference', meta: 'Order, process, doing it right', color: '#3E82D6', body: 'Your strongest pull is Blue. This is order and principle: structure, process, and doing things the proper, right way.' },
+            E: { short: 'Orange', name: 'Orange preference', meta: 'Results, logic, achievement', color: '#E8862E', body: 'Your strongest pull is Orange. This is achievement and results: logic, strategy, measurable progress, and winning.' },
+            F: { short: 'Green', name: 'Green preference', meta: 'People, empathy, fairness', color: '#4FA972', body: 'Your strongest pull is Green. This is people and fairness: empathy, inclusion, and making sure everyone feels heard.' },
+            G: { short: 'Yellow', name: 'Yellow preference', meta: 'Systems, patterns, connections', color: '#CDA92F', body: 'Your strongest pull is Yellow. This is systems thinking: seeing patterns, connections, and how the whole fits together.' },
+            H: { short: 'Turquoise', name: 'Turquoise preference', meta: 'Purpose, meaning, the bigger whole', color: '#2FB0A2', body: 'Your strongest pull is Turquoise. This is purpose and the bigger picture: meaning, holism, and the good of the wider whole.' }
+          },
+          balanced: 'Your answers are spread fairly evenly across several value systems &mdash; you draw on more than one way of seeing the world.'
+        },
+        'trait-dependability': {
+          mode: 'scored',
+          count: 10,
+          href: 'https://www.showinguplearning.com/program/characterprogram',
+          sheetTitle: 'Dependability self-reflection results - Showing Up Learning',
+          sheetOverline: 'Dependability self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F'],
+          max: 50,
+          bands: [
+        { max: 17, name: 'Emerging', body: 'At the moment, dependability is more intention than habit. Following through, communicating early, and keeping your word probably happen in bursts rather than by default. That is a completely normal starting point \u2014 and a useful one, because small, repeatable habits move this trait quickly.' },
+        { max: 30, name: 'Developing', body: 'You are dependable in many moments, especially when the stakes are clear. The opportunity is consistency: closing the gap between your best days and your busiest ones, so people can rely on you without having to check.' },
+        { max: 42, name: 'Strong', body: 'Dependability is becoming part of how people experience you. You follow through, flag problems ahead of time, and rarely need chasing. From here it is about holding that standard under pressure and with every client, not only the important ones.' },
+        { max: 50, name: 'Exceptional', body: 'Dependability reads as a defining strength. People trust you to do what you say, every time, and they relax because of it. The work now is to protect that reputation and help those around you raise their own standard.' }
+      ],
+          scores: {
+        '1': { A: 0, B: 4, C: 1, D: 5, E: 3, F: 2 },
+        '2': { A: 2, B: 5, C: 1, D: 4, E: 0, F: 3 },
+        '3': { A: 3, B: 4, C: 0, D: 1, E: 5, F: 2 },
+        '4': { A: 3, B: 5, C: 2, D: 0, E: 4, F: 1 },
+        '5': { A: 4, B: 5, C: 0, D: 2, E: 1, F: 3 },
+        '6': { A: 3, B: 2, C: 1, D: 5, E: 0, F: 4 },
+        '7': { A: 2, B: 3, C: 4, D: 1, E: 5, F: 0 },
+        '8': { A: 4, B: 3, C: 0, D: 5, E: 1, F: 2 },
+        '9': { A: 0, B: 1, C: 4, D: 5, E: 2, F: 3 },
+        '10': { A: 4, B: 0, C: 1, D: 2, E: 3, F: 5 }
+      }
+        },
+        'trait-curiosity': {
+          mode: 'scored',
+          count: 10,
+          href: 'https://www.showinguplearning.com/program/characterprogram',
+          sheetTitle: 'Curiosity self-reflection results - Showing Up Learning',
+          sheetOverline: 'Curiosity self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F'],
+          max: 50,
+          bands: [
+        { max: 17, name: 'Emerging', body: 'Right now curiosity tends to take a back seat to getting your own points across. There is real upside here: asking one more genuine question, and listening to the answer, quickly changes how people respond to you.' },
+        { max: 30, name: 'Developing', body: 'You ask good questions in the right moments, but often stay close to the surface or to your own agenda. The opportunity is to go a layer deeper and to stay with the answer rather than moving on.' },
+        { max: 42, name: 'Strong', body: 'Curiosity is becoming a strength. You explore people\u2019s thinking, notice what is not said, and adapt. From here it is about doing this consistently, even when you are busy or think you already know the answer.' },
+        { max: 50, name: 'Exceptional', body: 'Curiosity reads as a signature strength. People feel genuinely understood around you, and your questions open up thinking that others miss. The work now is to keep that edge sharp and help your team ask better questions too.' }
+      ],
+          scores: {
+        '1': { A: 5, B: 1, C: 4, D: 2, E: 0, F: 3 },
+        '2': { A: 2, B: 5, C: 0, D: 3, E: 4, F: 1 },
+        '3': { A: 5, B: 1, C: 2, D: 0, E: 3, F: 4 },
+        '4': { A: 4, B: 2, C: 3, D: 1, E: 0, F: 5 },
+        '5': { A: 3, B: 5, C: 2, D: 0, E: 1, F: 4 },
+        '6': { A: 1, B: 0, C: 3, D: 2, E: 4, F: 5 },
+        '7': { A: 3, B: 0, C: 5, D: 2, E: 1, F: 4 },
+        '8': { A: 2, B: 3, C: 0, D: 5, E: 1, F: 4 },
+        '9': { A: 0, B: 4, C: 3, D: 2, E: 5, F: 1 },
+        '10': { A: 2, B: 1, C: 4, D: 5, E: 0, F: 3 }
+      }
+        },
+        'trait-perceptiveness': {
+          mode: 'scored',
+          count: 10,
+          href: 'https://www.showinguplearning.com/program/characterprogram',
+          sheetTitle: 'Perceptiveness self-reflection results - Showing Up Learning',
+          sheetOverline: 'Perceptiveness self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F'],
+          max: 50,
+          bands: [
+        { max: 17, name: 'Emerging', body: 'At the moment you tend to take things at face value and focus on the words being said. That is a fine baseline \u2014 and the quickest gains come from simply slowing down and paying attention to tone, timing, and what is left unsaid.' },
+        { max: 30, name: 'Developing', body: 'You pick up on a lot, but often notice signals without acting on them, or only after the moment has passed. The opportunity is to trust what you sense and gently bring it into the room.' },
+        { max: 42, name: 'Strong', body: 'Perceptiveness is becoming a strength. You read dynamics, spot what is unsaid, and time your responses well. From here it is about using that insight with care and consistency, not just when you happen to be tuned in.' },
+        { max: 50, name: 'Exceptional', body: 'Perceptiveness reads as a defining strength. You see beneath the surface and make people feel understood without them having to explain. The work now is to keep trusting that instinct and to help others see what you see.' }
+      ],
+          scores: {
+        '1': { A: 1, B: 2, C: 3, D: 4, E: 5, F: 0 },
+        '2': { A: 1, B: 2, C: 4, D: 0, E: 3, F: 5 },
+        '3': { A: 2, B: 4, C: 3, D: 5, E: 1, F: 0 },
+        '4': { A: 3, B: 5, C: 0, D: 2, E: 1, F: 4 },
+        '5': { A: 3, B: 1, C: 0, D: 5, E: 2, F: 4 },
+        '6': { A: 2, B: 0, C: 1, D: 5, E: 3, F: 4 },
+        '7': { A: 0, B: 2, C: 1, D: 4, E: 3, F: 5 },
+        '8': { A: 3, B: 0, C: 5, D: 4, E: 1, F: 2 },
+        '9': { A: 3, B: 1, C: 5, D: 0, E: 4, F: 2 },
+        '10': { A: 5, B: 3, C: 4, D: 1, E: 0, F: 2 }
+      }
+        },
+        'trait-authenticity': {
+          mode: 'scored',
+          count: 10,
+          href: 'https://www.showinguplearning.com/program/characterprogram',
+          sheetTitle: 'Authenticity self-reflection results - Showing Up Learning',
+          sheetOverline: 'Authenticity self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F'],
+          max: 50,
+          bands: [
+        { max: 17, name: 'Emerging', body: 'Right now there is a gap between who you are and how you present at work. Closing even part of it \u2014 admitting what you do not know, speaking in your own voice \u2014 tends to build trust faster than any amount of polish.' },
+        { max: 30, name: 'Developing', body: 'You are often genuine, but still reach for a more guarded, professional version of yourself when the stakes rise. The opportunity is to let your real voice and values show up more consistently.' },
+        { max: 42, name: 'Strong', body: 'Authenticity is becoming a strength. You are honest about what you do not know, speak in your own voice, and let people see who you are. From here it is about holding that congruence in the highest-stakes moments too.' },
+        { max: 50, name: 'Exceptional', body: 'Authenticity reads as a defining strength. People experience you as grounded and real, and it gives them permission to be the same. The work now is to protect that and to create the conditions for others to show up authentically.' }
+      ],
+          scores: {
+        '1': { A: 0, B: 2, C: 5, D: 3, E: 4, F: 1 },
+        '2': { A: 1, B: 0, C: 5, D: 3, E: 4, F: 2 },
+        '3': { A: 2, B: 4, C: 5, D: 3, E: 0, F: 1 },
+        '4': { A: 5, B: 2, C: 4, D: 3, E: 0, F: 1 },
+        '5': { A: 2, B: 4, C: 5, D: 1, E: 0, F: 3 },
+        '6': { A: 2, B: 4, C: 1, D: 0, E: 5, F: 3 },
+        '7': { A: 4, B: 5, C: 0, D: 1, E: 3, F: 2 },
+        '8': { A: 5, B: 3, C: 4, D: 2, E: 0, F: 1 },
+        '9': { A: 2, B: 4, C: 1, D: 5, E: 3, F: 0 },
+        '10': { A: 0, B: 1, C: 4, D: 2, E: 5, F: 3 }
+      }
+        },
+        'trait-honesty': {
+          mode: 'scored',
+          count: 10,
+          href: 'https://www.showinguplearning.com/program/characterprogram',
+          sheetTitle: 'Honesty self-reflection results - Showing Up Learning',
+          sheetOverline: 'Honesty self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F'],
+          max: 50,
+          bands: [
+        { max: 17, name: 'Emerging', body: 'At the moment difficult truths tend to get delayed, softened, or left unsaid. The good news is that honesty is a habit: raising the right thing a little earlier, a little more plainly, quickly changes how much people trust you.' },
+        { max: 30, name: 'Developing', body: 'You are honest in the easy moments and usually get there in the hard ones, though sometimes late or heavily softened. The opportunity is to say the thing sooner, with calm and care.' },
+        { max: 42, name: 'Strong', body: 'Honesty is becoming a strength. You raise issues early, own mistakes, and speak plainly without drama. From here it is about holding that clarity even when the room is senior or the truth is unwelcome.' },
+        { max: 50, name: 'Exceptional', body: 'Honesty reads as a defining strength. People know you will tell them the truth early, with empathy and no spin, and they trust you because of it. The work now is to protect that reputation and model it for others.' }
+      ],
+          scores: {
+        '1': { A: 4, B: 2, C: 0, D: 1, E: 3, F: 5 },
+        '2': { A: 1, B: 5, C: 4, D: 3, E: 0, F: 2 },
+        '3': { A: 2, B: 4, C: 1, D: 3, E: 0, F: 5 },
+        '4': { A: 5, B: 0, C: 4, D: 1, E: 2, F: 3 },
+        '5': { A: 4, B: 1, C: 3, D: 5, E: 2, F: 0 },
+        '6': { A: 5, B: 1, C: 3, D: 4, E: 0, F: 2 },
+        '7': { A: 5, B: 1, C: 3, D: 2, E: 4, F: 0 },
+        '8': { A: 3, B: 2, C: 4, D: 5, E: 0, F: 1 },
+        '9': { A: 2, B: 1, C: 5, D: 0, E: 4, F: 3 },
+        '10': { A: 2, B: 0, C: 4, D: 1, E: 5, F: 3 }
+      }
+        },
+        'trait-credibility': {
+          mode: 'scored',
+          count: 10,
+          href: 'https://www.showinguplearning.com/program/characterprogram',
+          sheetTitle: 'Credibility self-reflection results - Showing Up Learning',
+          sheetOverline: 'Credibility self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F'],
+          max: 50,
+          bands: [
+        { max: 17, name: 'Emerging', body: 'Right now your knowledge does not always come across as confidence, and you may lean on slides or bluff under pressure. The fastest gains come from preparation and from being comfortable saying what you do not yet know.' },
+        { max: 30, name: 'Developing', body: 'You are solid, especially when you have prepared, but can wobble when challenged or pushed off-script. The opportunity is to hold your ground calmly and to speak about your subject without props.' },
+        { max: 42, name: 'Strong', body: 'Credibility is becoming a strength. You explain clearly, handle challenge with poise, and people trust that you know your subject. From here it is about doing this consistently, including the moments you have not rehearsed.' },
+        { max: 50, name: 'Exceptional', body: 'Credibility reads as a defining strength. People feel they are in capable hands and relax because of it. The work now is to keep deepening your expertise and to make others feel more confident too.' }
+      ],
+          scores: {
+        '1': { A: 2, B: 3, C: 1, D: 4, E: 5, F: 0 },
+        '2': { A: 2, B: 5, C: 1, D: 3, E: 4, F: 0 },
+        '3': { A: 4, B: 5, C: 2, D: 3, E: 0, F: 1 },
+        '4': { A: 0, B: 4, C: 3, D: 2, E: 5, F: 1 },
+        '5': { A: 5, B: 4, C: 3, D: 1, E: 0, F: 2 },
+        '6': { A: 5, B: 0, C: 3, D: 1, E: 2, F: 4 },
+        '7': { A: 2, B: 3, C: 4, D: 0, E: 5, F: 1 },
+        '8': { A: 1, B: 3, C: 2, D: 5, E: 0, F: 4 },
+        '9': { A: 1, B: 5, C: 3, D: 2, E: 4, F: 0 },
+        '10': { A: 2, B: 5, C: 3, D: 1, E: 0, F: 4 }
+      }
+        },
+        'trait-preparation-poise': {
+          mode: 'scored',
+          count: 10,
+          href: 'https://www.showinguplearning.com/program/characterprogram',
+          sheetTitle: 'Preparation and Poise self-reflection results - Showing Up Learning',
+          sheetOverline: 'Preparation and Poise self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F'],
+          max: 50,
+          bands: [
+        { max: 17, name: 'Emerging', body: 'At the moment you tend to improvise and can feel thrown when things do not go to plan. A little structure before the room \u2014 and a breath inside it \u2014 quickly changes how steady you feel and how steady you seem.' },
+        { max: 30, name: 'Developing', body: 'You prepare for the big moments and usually stay composed, but pressure or surprise can still knock you off balance. The opportunity is to prepare in layers and to use pauses rather than rushing.' },
+        { max: 42, name: 'Strong', body: 'Preparation and poise are becoming a strength. You walk in ready, handle the unexpected calmly, and help the room settle. From here it is about holding that steadiness in your hardest, least predictable moments.' },
+        { max: 50, name: 'Exceptional', body: 'Preparation and poise read as a defining strength. People feel calmer and clearer around you because you have done the work and you do not rattle. The work now is to protect that and to bring that steadiness to others.' }
+      ],
+          scores: {
+        '1': { A: 1, B: 4, C: 2, D: 0, E: 5, F: 3 },
+        '2': { A: 5, B: 3, C: 2, D: 4, E: 1, F: 0 },
+        '3': { A: 5, B: 1, C: 4, D: 0, E: 2, F: 3 },
+        '4': { A: 3, B: 4, C: 2, D: 1, E: 5, F: 0 },
+        '5': { A: 2, B: 3, C: 0, D: 1, E: 4, F: 5 },
+        '6': { A: 1, B: 3, C: 0, D: 2, E: 4, F: 5 },
+        '7': { A: 0, B: 2, C: 3, D: 4, E: 1, F: 5 },
+        '8': { A: 2, B: 3, C: 1, D: 0, E: 4, F: 5 },
+        '9': { A: 5, B: 4, C: 0, D: 2, E: 1, F: 3 },
+        '10': { A: 3, B: 4, C: 2, D: 5, E: 0, F: 1 }
+      }
+        },
+        'trait-adaptability': {
+          mode: 'scored',
+          count: 10,
+          href: 'https://www.showinguplearning.com/program/characterprogram',
+          sheetTitle: 'Adaptability self-reflection results - Showing Up Learning',
+          sheetOverline: 'Adaptability self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F'],
+          max: 50,
+          bands: [
+        { max: 17, name: 'Emerging', body: 'Right now change tends to unsettle you, and the instinct is to cling to the original plan. The quickest gains come from letting go sooner and asking what is actually needed now.' },
+        { max: 30, name: 'Developing', body: 'You adapt when you have to, but sometimes reluctantly or after losing momentum. The opportunity is to flex earlier and more openly, using what you prepared to serve the new direction.' },
+        { max: 42, name: 'Strong', body: 'Adaptability is becoming a strength. You stay calm when things shift, reshape the plan, and keep moving. From here it is about doing this with curiosity rather than just coping, even under real pressure.' },
+        { max: 50, name: 'Exceptional', body: 'Adaptability reads as a defining strength. You stay grounded and useful through change and help others do the same. The work now is to keep flexing without losing your principles, and to lead change for the people around you.' }
+      ],
+          scores: {
+        '1': { A: 4, B: 5, C: 0, D: 1, E: 3, F: 2 },
+        '2': { A: 4, B: 5, C: 0, D: 1, E: 2, F: 3 },
+        '3': { A: 2, B: 5, C: 1, D: 3, E: 4, F: 0 },
+        '4': { A: 3, B: 1, C: 0, D: 5, E: 2, F: 4 },
+        '5': { A: 1, B: 5, C: 3, D: 4, E: 0, F: 2 },
+        '6': { A: 4, B: 3, C: 0, D: 5, E: 1, F: 2 },
+        '7': { A: 4, B: 5, C: 1, D: 2, E: 3, F: 0 },
+        '8': { A: 4, B: 1, C: 2, D: 5, E: 0, F: 3 },
+        '9': { A: 1, B: 5, C: 2, D: 3, E: 4, F: 0 },
+        '10': { A: 3, B: 4, C: 2, D: 1, E: 0, F: 5 }
+      }
+        },
+        'trait-compelling': {
+          mode: 'scored',
+          count: 10,
+          href: 'https://www.showinguplearning.com/program/characterprogram',
+          sheetTitle: 'Compelling self-reflection results - Showing Up Learning',
+          sheetOverline: 'Compelling self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F'],
+          max: 50,
+          bands: [
+        { max: 17, name: 'Emerging', body: 'At the moment your message does not always land \u2014 it may be too much detail, too much jargon, or too flat. The fastest gains come from clarity: fewer words, more relevance to what the listener actually cares about.' },
+        { max: 30, name: 'Developing', body: 'You communicate clearly in many moments, but do not always move people or stay memorable. The opportunity is to bring more conviction and to connect your point to what matters to them.' },
+        { max: 42, name: 'Strong', body: 'Being compelling is becoming a strength. People engage, understand quickly, and remember what you say. From here it is about doing this consistently and holding the room even when attention drifts.' },
+        { max: 50, name: 'Exceptional', body: 'Being compelling reads as a defining strength. People lean in, quote you later, and act on what you share. The work now is to keep choosing your words with care and to help others communicate with the same clarity.' }
+      ],
+          scores: {
+        '1': { A: 2, B: 0, C: 5, D: 1, E: 3, F: 4 },
+        '2': { A: 3, B: 1, C: 4, D: 2, E: 0, F: 5 },
+        '3': { A: 1, B: 3, C: 4, D: 2, E: 0, F: 5 },
+        '4': { A: 1, B: 5, C: 3, D: 2, E: 0, F: 4 },
+        '5': { A: 2, B: 5, C: 0, D: 1, E: 3, F: 4 },
+        '6': { A: 3, B: 0, C: 2, D: 1, E: 5, F: 4 },
+        '7': { A: 0, B: 3, C: 4, D: 5, E: 1, F: 2 },
+        '8': { A: 0, B: 3, C: 1, D: 4, E: 5, F: 2 },
+        '9': { A: 4, B: 2, C: 5, D: 3, E: 0, F: 1 },
+        '10': { A: 5, B: 1, C: 4, D: 0, E: 3, F: 2 }
+      }
+        },
+        'trait-resilience': {
+          mode: 'scored',
+          count: 10,
+          href: 'https://www.showinguplearning.com/program/characterprogram',
+          sheetTitle: 'Resilience self-reflection results - Showing Up Learning',
+          sheetOverline: 'Resilience self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F'],
+          max: 50,
+          bands: [
+        { max: 17, name: 'Emerging', body: 'Right now setbacks tend to land hard and linger, and pressure can make you reactive or withdrawn. The good news is that resilience is built: small recovery habits and asking for feedback change how quickly you bounce back.' },
+        { max: 30, name: 'Developing', body: 'You recover from most setbacks, though it can be bumpy and take a while. The opportunity is to stay curious rather than defensive, and to look after your energy under sustained pressure.' },
+        { max: 42, name: 'Strong', body: 'Resilience is becoming a strength. You stay steady under pressure, own mistakes, and turn setbacks into learning. From here it is about keeping your centre in the hardest moments and helping others keep theirs.' },
+        { max: 50, name: 'Exceptional', body: 'Resilience reads as a defining strength. You stay responsive rather than reactive and bring calm to people around you when things are hard. The work now is to protect your own reserves and to model healthy recovery for your team.' }
+      ],
+          scores: {
+        '1': { A: 3, B: 1, C: 2, D: 4, E: 0, F: 5 },
+        '2': { A: 3, B: 5, C: 4, D: 1, E: 0, F: 2 },
+        '3': { A: 0, B: 5, C: 4, D: 1, E: 3, F: 2 },
+        '4': { A: 5, B: 4, C: 2, D: 0, E: 1, F: 3 },
+        '5': { A: 1, B: 0, C: 2, D: 5, E: 3, F: 4 },
+        '6': { A: 5, B: 3, C: 4, D: 0, E: 2, F: 1 },
+        '7': { A: 5, B: 0, C: 1, D: 2, E: 4, F: 3 },
+        '8': { A: 5, B: 3, C: 2, D: 4, E: 1, F: 0 },
+        '9': { A: 1, B: 0, C: 4, D: 5, E: 2, F: 3 },
+        '10': { A: 1, B: 5, C: 4, D: 3, E: 2, F: 0 }
+      }
+        },
+        'trait-positive-presence': {
+          mode: 'scored',
+          count: 10,
+          href: 'https://www.showinguplearning.com/program/characterprogram',
+          sheetTitle: 'Being a Positive Presence self-reflection results - Showing Up Learning',
+          sheetOverline: 'Being a Positive Presence self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F'],
+          max: 50,
+          bands: [
+        { max: 17, name: 'Emerging', body: 'At the moment you tend to mirror the energy in the room rather than shape it. A small, deliberate shift \u2014 a warm question, a steadying tone \u2014 quickly changes how people feel around you.' },
+        { max: 30, name: 'Developing', body: 'You often lift the room, but not always, and sometimes hold back when it would help to step in. The opportunity is to bring your steadying energy more consistently, including the ordinary moments.' },
+        { max: 42, name: 'Strong', body: 'Being a positive presence is becoming a strength. You help people feel steadier and more focused, and you stay constructive when things get messy. From here it is about doing this reliably, not just on your good days.' },
+        { max: 50, name: 'Exceptional', body: 'Being a positive presence reads as a defining strength. People feel seen, energised, and more capable around you, especially when things are uncertain. The work now is to protect that energy and to lift others without burning yourself out.' }
+      ],
+          scores: {
+        '1': { A: 1, B: 0, C: 2, D: 5, E: 4, F: 3 },
+        '2': { A: 0, B: 2, C: 5, D: 4, E: 3, F: 1 },
+        '3': { A: 5, B: 0, C: 1, D: 2, E: 4, F: 3 },
+        '4': { A: 5, B: 1, C: 3, D: 2, E: 0, F: 4 },
+        '5': { A: 2, B: 1, C: 3, D: 4, E: 5, F: 0 },
+        '6': { A: 3, B: 1, C: 0, D: 5, E: 4, F: 2 },
+        '7': { A: 3, B: 4, C: 5, D: 0, E: 1, F: 2 },
+        '8': { A: 5, B: 2, C: 1, D: 4, E: 3, F: 0 },
+        '9': { A: 0, B: 1, C: 4, D: 2, E: 5, F: 3 },
+        '10': { A: 1, B: 0, C: 3, D: 2, E: 4, F: 5 }
+      }
+        },
+        'trait-generosity': {
+          mode: 'scored',
+          count: 10,
+          href: 'https://www.showinguplearning.com/program/characterprogram',
+          sheetTitle: 'Generosity self-reflection results - Showing Up Learning',
+          sheetOverline: 'Generosity self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F'],
+          max: 50,
+          bands: [
+        { max: 17, name: 'Emerging', body: 'Right now giving tends to be conditional or held back unless asked. The quickest gains come from small, unprompted acts: sharing an idea, offering time, helping someone think \u2014 without keeping score.' },
+        { max: 30, name: 'Developing', body: 'You are generous in many moments, but sometimes hold back ideas or help when there is no obvious return. The opportunity is to give more freely and proactively, because it might help, full stop.' },
+        { max: 42, name: 'Strong', body: 'Generosity is becoming a strength. You share thinking, make space for others, and leave people better off. From here it is about doing this consistently, including with people who cannot return the favour.' },
+        { max: 50, name: 'Exceptional', body: 'Generosity reads as a defining strength. People feel you are genuinely there to help and often give more than expected. The work now is to keep that spirit sustainable and to build a culture of generosity around you.' }
+      ],
+          scores: {
+        '1': { A: 2, B: 0, C: 4, D: 3, E: 5, F: 1 },
+        '2': { A: 0, B: 4, C: 5, D: 3, E: 1, F: 2 },
+        '3': { A: 2, B: 1, C: 3, D: 5, E: 4, F: 0 },
+        '4': { A: 1, B: 5, C: 3, D: 2, E: 0, F: 4 },
+        '5': { A: 0, B: 3, C: 2, D: 4, E: 1, F: 5 },
+        '6': { A: 4, B: 5, C: 0, D: 3, E: 2, F: 1 },
+        '7': { A: 5, B: 1, C: 2, D: 0, E: 3, F: 4 },
+        '8': { A: 1, B: 3, C: 0, D: 4, E: 2, F: 5 },
+        '9': { A: 0, B: 3, C: 1, D: 5, E: 2, F: 4 },
+        '10': { A: 0, B: 3, C: 1, D: 5, E: 4, F: 2 }
+      }
+        },
+        'critical-thinking': {
+          mode: 'scored',
+          count: 12,
+          href: 'https://www.showinguplearning.com/program/critical-thinking',
+          sheetTitle: 'Critical Thinking self-reflection results - Showing Up Learning',
+          sheetOverline: 'Critical Thinking self-reflection',
+          letters: ['A', 'B', 'C', 'D', 'E'],
+          max: 60,
+          bands: [
+        { max: 12, name: 'Resistor', body: 'At this stage, critical thinking may not yet feel like a consistent or deliberate part of how you approach situations. You may prefer to work with the information in front of you, rely on familiar patterns, or move forward without spending too much time questioning assumptions or testing alternatives. This can be a real strength in pace and execution. The opportunity here is to begin slowing your thinking just enough to examine what sits underneath decisions, so you build more confidence in how and why choices are being made. If you are early in your career, a score in this range can also simply reflect limited exposure so far, rather than limited potential.' },
+        { max: 24, name: 'Developer', body: 'A score in this range usually suggests you recognise the value of critical thinking, but it may not show up consistently yet, especially when situations feel ambiguous, pressured, or politically sensitive. You are likely to apply more structured thinking when prompted, when the stakes are clear, or when you feel confident in the environment. With a few deliberate practices, such as clarifying assumptions or comparing alternatives more explicitly, you can strengthen your judgement quickly and start bringing more rigour into both everyday decisions and client work.' },
+        { max: 36, name: 'Practitioner', body: 'A score in this range suggests critical thinking is already a reliable part of how you operate. You tend to organise information, weigh evidence, and think through options before committing, rather than reacting purely on instinct or precedent. Over time, this gives you a stronger internal logic for decisions and helps you navigate uncertainty with more confidence. In client work, this often shows up in how you structure problems, test what you are hearing, and make recommendations that others can follow and trust.' },
+        { max: 48, name: 'Exemplar', body: 'A score in this range usually means critical thinking is one of your standout strengths, particularly in complex or high-stakes situations. You are likely comfortable integrating different sources of information, surfacing assumptions, and reasoning through trade-offs in a way that brings clarity for others. Because your thinking is disciplined and transparent, people often trust your judgement and feel more confident in decisions that are made together. In consulting contexts, this frequently shows up as stronger discovery, clearer recommendations, and better-quality conversations with clients and stakeholders.' },
+        { max: 60, name: 'Pioneer', body: 'A score in this range suggests critical thinking is a defining feature of how you show up, and that it is something other people genuinely recognise in you. You are likely known for bringing structure to complexity, helping groups reason more clearly, and improving the quality of decisions by how you frame issues, test logic, and engage others in the thinking process. In consulting work, this often means you help clients move beyond surface-level conclusions, build shared confidence in difficult decisions, and raise the overall standard of judgement across the work. If modules focused on decision-making, sense-making, or structured reasoning resonate strongly, it is often a sign you are already operating at this level and can now make it even more intentional.' }
+      ],
+          scores: {
+        '1': { A: 5, B: 3, C: 4, D: 1, E: 2 },
+        '2': { A: 3, B: 5, C: 2, D: 4, E: 1 },
+        '3': { A: 5, B: 1, C: 3, D: 2, E: 4 },
+        '4': { A: 4, B: 2, C: 3, D: 5, E: 1 },
+        '5': { A: 3, B: 4, C: 1, D: 5, E: 2 },
+        '6': { A: 4, B: 1, C: 3, D: 5, E: 2 },
+        '7': { A: 3, B: 2, C: 1, D: 5, E: 4 },
+        '8': { A: 4, B: 2, C: 5, D: 3, E: 1 },
+        '9': { A: 1, B: 4, C: 5, D: 2, E: 3 },
+        '10': { A: 2, B: 4, C: 5, D: 1, E: 3 },
+        '11': { A: 3, B: 2, C: 1, D: 4, E: 5 },
+        '12': { A: 1, B: 3, C: 4, D: 5, E: 2 }
+      }
+        },
+        'critical-thinking-profile': {
+          mode: 'scored',
+          count: 24,
+          href: 'https://www.showinguplearning.com/program/critical-thinking',
+          sheetTitle: 'The Critical Thinking Profile - results - Showing Up Learning',
+          sheetOverline: 'The Critical Thinking Profile',
+          letters: ['A', 'B', 'C', 'D', 'E', 'F'],
+          max: 120,
+          bands: [
+        { max: 42, name: 'Emerging', body: 'A score in this range suggests the habits of deliberate thinking are not yet a consistent part of how you work. You are likely to move quickly from information to answer, trust the first credible explanation, and act on it. That pace has real value in delivery, and early in a career this range often reflects limited exposure rather than limited ability. The opportunity is to slow the moment between seeing a problem and deciding what it is. Your facet profile shows where that moment is currently shortest.' },
+        { max: 72, name: 'Developing', body: 'A score in this range suggests you recognise what sharp thinking asks of you, and you apply it when conditions are friendly: clear stakes, enough time, a room you trust. Under pressure the older habits return and the quick story wins. Most working consultants sit in this range. The gap between you and the strongest thinkers is not knowledge, it is consistency: doing under pressure what you already do when calm. Your facet profile shows which habit gives way first.' },
+        { max: 100, name: 'Strong', body: 'A score in this range suggests disciplined thinking is a reliable part of how you operate. You separate symptoms from causes, notice your own assumptions, and test your reading of a problem before you commit to it. Colleagues and clients are likely to experience you as considered without being slow. From here, progress comes from the edges: the situations where you feel most confident are the ones where these habits are most likely to lapse. Your lowest facet is the sharpest lever.' },
+        { max: 120, name: 'Exceptional', body: 'A score in this range is rare and worth protecting. The behaviours this profile measures appear to be settled habits: you slow down where others speed up, hold problems open past the first comfortable answer, and go looking for the evidence that would prove you wrong. Two cautions. A very high self assessment deserves its own scrutiny, so check it against how the people around you experience your thinking. And at this level, development is less about your own habits and more about building them in the people you work with.' }
+      ],
+          scores: {
+        '1': { A: 3, B: 2, C: 5, D: 4, E: 0, F: 1 },
+        '2': { A: 5, B: 4, C: 0, D: 3, E: 1, F: 2 },
+        '3': { A: 1, B: 0, C: 5, D: 2, E: 3, F: 4 },
+        '4': { A: 1, B: 2, C: 5, D: 0, E: 4, F: 3 },
+        '5': { A: 2, B: 3, C: 5, D: 1, E: 4, F: 0 },
+        '6': { A: 4, B: 1, C: 3, D: 0, E: 5, F: 2 },
+        '7': { A: 5, B: 0, C: 4, D: 2, E: 1, F: 3 },
+        '8': { A: 5, B: 0, C: 3, D: 1, E: 2, F: 4 },
+        '9': { A: 2, B: 3, C: 0, D: 4, E: 1, F: 5 },
+        '10': { A: 0, B: 1, C: 4, D: 2, E: 5, F: 3 },
+        '11': { A: 3, B: 1, C: 2, D: 4, E: 5, F: 0 },
+        '12': { A: 1, B: 2, C: 3, D: 5, E: 0, F: 4 },
+        '13': { A: 2, B: 1, C: 5, D: 4, E: 3, F: 0 },
+        '14': { A: 3, B: 4, C: 0, D: 1, E: 2, F: 5 },
+        '15': { A: 0, B: 2, C: 5, D: 3, E: 4, F: 1 },
+        '16': { A: 1, B: 0, C: 3, D: 2, E: 5, F: 4 },
+        '17': { A: 4, B: 3, C: 2, D: 1, E: 5, F: 0 },
+        '18': { A: 1, B: 4, C: 5, D: 3, E: 2, F: 0 },
+        '19': { A: 3, B: 2, C: 5, D: 1, E: 4, F: 0 },
+        '20': { A: 4, B: 3, C: 2, D: 0, E: 5, F: 1 },
+        '21': { A: 1, B: 0, C: 3, D: 4, E: 2, F: 5 },
+        '22': { A: 4, B: 3, C: 1, D: 5, E: 0, F: 2 },
+        '23': { A: 2, B: 1, C: 4, D: 0, E: 3, F: 5 },
+        '24': { A: 0, B: 5, C: 4, D: 3, E: 2, F: 1 }
+      }
+        }
+      };
+
+      var SUPA_URL = '';
+      var SUPA_KEY = '';
+
+      function readParam(name) {
+        var match = window.location.search.match(new RegExp('[?&]' + name + '=([^&]*)'));
+        if (!match) return '';
+        try { return decodeURIComponent(match[1].replace(/\+/g, ' ')); } catch (e) { return ''; }
+      }
+
+      var uid = (function () {
+        // same identity chain as the assessment blocks; the brace pair is split so
+        // LW's Liquid parser can't mangle the script (see the assessment templates)
+        var unrendered = '{' + '{';
+        var token = readParam('uid');
+        if (!token || token.indexOf(unrendered) !== -1) token = '{{USER_ID}}';
+        if (!token || token.indexOf(unrendered) !== -1) token = '{{user.id}}';
+        if (!token || token.indexOf(unrendered) !== -1) token = 'local';
+        return token;
+      })();
+      var canSync = !!(SUPA_URL && SUPA_KEY && uid !== 'local' && window.fetch);
+      root.classList.toggle('ah-anon', uid === 'local');
+
+      var canPersist = (function () {
+        try {
+          var probe = '__su_ah_probe__';
+          window.localStorage.setItem(probe, probe);
+          window.localStorage.removeItem(probe);
+          return true;
+        } catch (e) { return false; }
+      })();
+
+      // per-slug state: { answers, answered, complete, completedAt, savedAt }
+      var state = {};
+
+      function validAnswers(slug, raw) {
+        var entry = catalog[slug];
+        if (!entry || !raw || typeof raw !== 'object') return null;
+        var clean = {};
+        Object.keys(raw).forEach(function (key) {
+          var q = parseInt(key, 10);
+          if (q >= 1 && q <= entry.count && entry.letters.indexOf(raw[key]) !== -1) {
+            clean[String(q)] = raw[key];
+          }
+        });
+        return Object.keys(clean).length ? clean : null;
+      }
+
+      function setSlugState(slug, rawAnswers, completedAt, savedAt) {
+        var entry = catalog[slug];
+        var clean = validAnswers(slug, rawAnswers);
+        if (!clean) return;
+        var existing = state[slug];
+        if (existing && existing.savedAt >= (savedAt || 0)) return;
+        var answered = Object.keys(clean).length;
+        state[slug] = {
+          answers: clean,
+          answered: answered,
+          complete: answered === entry.count,
+          completedAt: completedAt || null,
+          savedAt: savedAt || 0
+        };
+      }
+
+      function readLocal() {
+        if (!canPersist) return;
+        Object.keys(catalog).forEach(function (slug) {
+          var data = null;
+          try { data = JSON.parse(window.localStorage.getItem('su-ca-' + slug + '-v1-' + uid)); } catch (e) {}
+          if (data) setSlugState(slug, data.answers, data.completedAt, data.savedAt || 0);
+        });
+      }
+
+      function formatDate(ts) {
+        try {
+          return new Date(ts).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+        } catch (e) {
+          return new Date(ts).toDateString();
+        }
+      }
+
+      function setText(el, value) {
+        if (el && el.textContent !== value) el.textContent = value;
+      }
+
+      // ---- result computation (mirrors the assessment blocks) ----
+      function tally(entry, answers) {
+        var scores = {};
+        entry.letters.forEach(function (l) { scores[l] = 0; });
+        Object.keys(answers).forEach(function (key) {
+          if (scores.hasOwnProperty(answers[key])) scores[answers[key]] += 1;
+        });
+        return scores;
+      }
+
+      function winnersOf(entry, scores) {
+        var max = 0;
+        entry.letters.forEach(function (l) { if (scores[l] > max) max = scores[l]; });
+        if (max === 0) return [];
+        return entry.letters.filter(function (l) { return scores[l] === max; });
+      }
+
+      function scoreOf(entry, answers) {
+        var total = 0;
+        Object.keys(answers).forEach(function (qid) {
+          var map = entry.scores[qid];
+          if (map && map.hasOwnProperty(answers[qid])) total += map[answers[qid]];
+        });
+        return total;
+      }
+
+      function bandOf(entry, total) {
+        for (var i = 0; i < entry.bands.length; i++) {
+          if (total <= entry.bands[i].max) return i;
+        }
+        return entry.bands.length - 1;
+      }
+
+      function resultLabel(slug) {
+        var entry = catalog[slug];
+        var st = state[slug];
+        if (entry.mode === 'scored') {
+          var total = scoreOf(entry, st.answers);
+          return entry.bands[bandOf(entry, total)].name + ' \u00b7 ' + total + ' / ' + entry.max;
+        }
+        var winners = winnersOf(entry, tally(entry, st.answers));
+        if (winners.length === 1) return entry.styles[winners[0]].short;
+        return winners.map(function (l) { return entry.styles[l].short; }).join(' + ');
+      }
+
+      // ---- card rendering ----
+      function renderCards() {
+        Object.keys(catalog).forEach(function (slug) {
+          var card = root.querySelector('.ah-card[data-slug="' + slug + '"]');
+          if (!card) return;
+          var entry = catalog[slug];
+          var st = state[slug];
+          var statusEl = card.querySelector('[data-ah-status]');
+          var fill = card.querySelector('.ah-bar span');
+          var go = card.querySelector('[data-ah-go]');
+          card.classList.toggle('is-complete', !!(st && st.complete));
+          if (!st) {
+            setText(statusEl, 'Not started');
+            if (fill) fill.style.width = '0%';
+            setText(go, 'Start \u2192');
+            return;
+          }
+          if (fill) fill.style.width = Math.round((st.answered / entry.count) * 100) + '%';
+          if (st.complete) {
+            setText(statusEl, resultLabel(slug) + (st.completedAt ? ' \u00b7 ' + formatDate(st.completedAt) : ''));
+            setText(go, 'Back to the course \u2192');
+          } else {
+            setText(statusEl, 'In progress \u00b7 ' + st.answered + ' of ' + entry.count + ' answered');
+            setText(go, 'Continue \u2192');
+          }
+        });
+      }
+
+      // ---- results panel ----
+      var modal = root.querySelector('[data-ah-modal]');
+      var mOverline = root.querySelector('[data-ah-m-overline]');
+      var mTitle = root.querySelector('[data-ah-m-title]');
+      var mDate = root.querySelector('[data-ah-m-date]');
+      var mSummary = root.querySelector('[data-ah-m-summary]');
+      var mBody = root.querySelector('[data-ah-m-body]');
+      var mDownload = root.querySelector('[data-ah-m-download]');
+      var mCourse = root.querySelector('[data-ah-m-course]');
+      var openSlug = null;
+      var lastFocus = null;
+
+      function clearNode(el) {
+        while (el.firstChild) el.removeChild(el.firstChild);
+      }
+
+      function summaryRowsTypological(entry, st) {
+        clearNode(mSummary);
+        var scores = tally(entry, st.answers);
+        var winners = winnersOf(entry, scores);
+        entry.letters.forEach(function (letter) {
+          var s = entry.styles[letter];
+          var row = document.createElement('div');
+          row.className = 'ah-m-row';
+          row.style.borderLeftColor = s.color;
+          var left = document.createElement('div');
+          var name = document.createElement('span');
+          name.className = 'ah-m-row-name';
+          name.textContent = letter + ' \u00b7 ' + s.short;
+          var meta = document.createElement('span');
+          meta.className = 'ah-m-row-meta';
+          meta.textContent = s.meta;
+          left.appendChild(name);
+          left.appendChild(meta);
+          var count = document.createElement('span');
+          count.className = 'ah-m-row-count';
+          count.style.color = s.color;
+          count.textContent = String(scores[letter]);
+          row.appendChild(left);
+          row.appendChild(count);
+          if (winners.indexOf(letter) !== -1) row.style.borderColor = s.color;
+          mSummary.appendChild(row);
+        });
+      }
+
+      function summaryScore(entry, st) {
+        clearNode(mSummary);
+        var total = scoreOf(entry, st.answers);
+        var wrap = document.createElement('div');
+        wrap.className = 'ah-m-score';
+        var num = document.createElement('strong');
+        num.textContent = String(total);
+        var max = document.createElement('span');
+        max.textContent = '/ ' + entry.max;
+        wrap.appendChild(num);
+        wrap.appendChild(max);
+        mSummary.appendChild(wrap);
+      }
+
+      function openModal(slug) {
+        var entry = catalog[slug];
+        var st = state[slug];
+        if (!entry || !st || !st.complete) return;
+        openSlug = slug;
+        lastFocus = document.activeElement;
+        setText(mOverline, entry.sheetOverline);
+        setText(mDate, st.completedAt ? 'Completed ' + formatDate(st.completedAt) : '');
+        if (mCourse) mCourse.setAttribute('href', entry.href);
+        if (entry.mode === 'scored') {
+          var total = scoreOf(entry, st.answers);
+          var band = entry.bands[bandOf(entry, total)];
+          setText(mTitle, band.name);
+          setText(mBody, band.body);
+          summaryScore(entry, st);
+        } else {
+          var winners = winnersOf(entry, tally(entry, st.answers));
+          if (winners.length === 1) {
+            setText(mTitle, entry.styles[winners[0]].name);
+            setText(mBody, entry.styles[winners[0]].body);
+          } else {
+            setText(mTitle, winners.map(function (l) { return entry.styles[l].short; }).join(' + '));
+            setText(mBody, entry.balanced);
+          }
+          summaryRowsTypological(entry, st);
+        }
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        var closeButton = modal.querySelector('.ah-modal-close');
+        if (closeButton) closeButton.focus({ preventScroll: true });
+      }
+
+      function closeModal() {
+        openSlug = null;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus({ preventScroll: true });
+      }
+
+      Array.prototype.forEach.call(root.querySelectorAll('[data-ah-close]'), function (el) {
+        el.addEventListener('click', closeModal);
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+
+      Array.prototype.forEach.call(root.querySelectorAll('[data-ah-review]'), function (button) {
+        button.addEventListener('click', function () {
+          openModal(button.getAttribute('data-ah-review'));
+        });
+      });
+
+      // ---- PDF sheet (brand A4, same chrome as the in-course blocks) ----
+      var sheetLogo = '<svg viewBox="0 0 309 431" fill="none" xmlns="http://www.w3.org/2000/svg">'
+          + '<mask id="ca-sheet-lm0" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="309" height="431">'
+          + '<path d="M309 0H0V430.176H309V0Z" fill="white"/>'
+          + '</mask>'
+          + '<g mask="url(#ca-sheet-lm0)">'
+          + '<path d="M244.985 186.584C246.198 188.221 246.806 190.479 246.806 193.33C246.806 196.435 246.114 198.863 244.732 200.599C243.433 202.32 241.697 203.619 239.538 204.494C237.464 205.354 235.164 205.877 232.667 206.047C230.154 206.217 227.727 206.3 225.399 206.3H215.535V180.486H227.219C229.378 180.486 231.622 180.614 233.964 180.868C236.292 181.136 238.41 181.743 240.315 182.689C242.219 183.549 243.771 184.848 244.985 186.584Z" fill="#FF8269"/>'
+          + '<path d="M231.154 0C197.4 0 168.657 59.3627 157.876 142.366C154.911 165.09 153.303 189.564 153.303 215.081C153.303 224.453 153.515 233.698 153.939 242.758C155.675 241.615 157.099 240.287 158.227 238.764C159.879 236.689 161.036 234.446 161.742 232.017C162.434 229.52 162.772 227.134 162.772 224.89V167.276H179.127V225.399C179.127 230.944 178.168 235.956 176.263 240.458C174.356 244.875 171.775 248.63 168.486 251.748C166.412 253.696 164.112 255.39 161.558 256.801C160.048 257.633 158.468 258.368 156.803 259.018C156.21 259.229 155.603 259.441 154.982 259.624C155.701 269.278 156.676 278.678 157.876 287.796C168.657 370.813 197.4 430.176 231.154 430.176C274.152 430.176 309.006 333.877 309.006 215.081C309.006 96.284 274.152 0 231.154 0ZM252.899 215.391C249.528 217.297 245.59 218.595 241.089 219.287C236.687 219.979 232.058 220.317 227.218 220.317H215.534V258.34H199.193V166.473H230.068C234.485 166.473 238.719 166.896 242.783 167.772C246.93 168.632 250.558 170.1 253.676 172.174C256.794 174.164 259.265 176.889 261.071 180.347C262.976 183.72 263.935 187.968 263.935 193.063C263.935 198.863 262.932 203.535 260.944 207.079C258.954 210.635 256.272 213.401 252.899 215.391Z" fill="#FF8269"/>'
+          + '<path d="M162.764 192.496V224.887C162.764 227.131 162.426 229.516 161.735 232.014C161.028 234.442 159.872 236.685 158.221 238.761C157.091 240.286 155.667 241.612 153.931 242.755C153.282 243.178 152.604 243.573 151.871 243.955C149.275 245.254 146.029 245.903 142.134 245.903C138.239 245.903 134.952 245.254 132.285 243.955C129.687 242.572 127.557 240.85 125.92 238.761C124.368 236.685 123.239 234.442 122.548 232.014C121.856 229.516 121.504 227.131 121.504 224.887V167.275H105.163V225.395C105.163 230.943 106.066 235.952 107.886 240.455C109.791 244.872 112.388 248.627 115.676 251.745C119.048 254.85 122.985 257.279 127.473 259.014C131.974 260.651 136.856 261.47 142.134 261.47C146.707 261.47 150.982 260.849 154.976 259.62C155.597 259.438 156.203 259.225 156.795 259.014C158.461 258.365 160.041 257.632 161.551 256.798C160.662 267.623 159.42 277.997 157.868 287.793C149.529 340.55 132.426 376.737 112.656 376.737C84.7016 376.737 62.0391 304.362 62.0391 215.091C62.0391 125.822 84.7016 53.4321 112.656 53.4321C132.426 53.4321 149.529 89.6056 157.868 142.363C160.309 157.818 161.989 174.698 162.764 192.496Z" fill="#FF8269"/>'
+          + '<path d="M33.9623 308.063C52.6976 308.063 67.8856 266.433 67.8856 215.082C67.8856 163.729 52.6976 122.099 33.9623 122.099C15.2269 122.099 0.0390625 163.729 0.0390625 215.082C0.0390625 266.433 15.2269 308.063 33.9623 308.063Z" fill="#FF8269"/>'
+          + '</g>'
+          + '<rect x="93.8262" y="155.667" width="179.1" height="115.495" fill="#FF8269"/>'
+          + '</svg>';
+
+      function sheetCSS() {
+        return '* { box-sizing: border-box; margin: 0; padding: 0; }'
+          + '@page { size: A4; margin: 16mm; }'
+          + 'body { font-family: "DM Sans", sans-serif; color: #353434; background: #ffffff; padding: 48px; max-width: 780px; margin: 0 auto; -webkit-print-color-adjust: exact; print-color-adjust: exact; }'
+          + '.sheet-head { display: flex; align-items: center; gap: 16px; padding: 0 0 24px; border-bottom: 1px solid rgba(30,29,29,.12); margin: 0 0 40px; }'
+          + '.sheet-logo svg { width: 34px; height: auto; display: block; }'
+          + '.sheet-brand { font-size: 16px; font-weight: 600; color: #1e1d1d; line-height: 1.3; }'
+          + '.sheet-brand span { display: block; font-size: 12px; font-weight: 400; color: rgba(53,52,52,.55); }'
+          + '.sheet-overline { font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #FF8269; margin: 0 0 14px; }'
+          + 'h1 { font-size: 44px; font-weight: 200; line-height: 1.05; letter-spacing: -.03em; color: #1e1d1d; margin: 0 0 12px; }'
+          + 'h1 em { font-family: "EB Garamond", serif; font-style: italic; font-weight: 400; color: #FF8269; }'
+          + '.sheet-date { font-size: 13px; color: rgba(53,52,52,.55); margin: 0 0 26px; }'
+          + '.sheet-body { font-size: 16px; line-height: 1.65; color: rgba(53,52,52,.85); max-width: 640px; margin: 0 0 36px; }'
+          + '.sheet-score { display: flex; align-items: baseline; gap: 12px; margin: 0 0 32px; }'
+          + '.sheet-score strong { font-size: 64px; font-weight: 200; line-height: 1; color: #FF8269; }'
+          + '.sheet-score span { font-size: 22px; font-weight: 300; color: rgba(53,52,52,.5); }'
+          + '.sheet-totals { display: flex; gap: 12px; margin: 0 0 36px; flex-wrap: wrap; }'
+          + '.sheet-total { flex: 1; min-width: 130px; border: 1px solid rgba(30,29,29,.14); border-top-width: 3px; border-radius: 8px; padding: 18px 16px 16px; }'
+          + '.sheet-total strong { display: block; font-size: 44px; font-weight: 200; line-height: 1; margin: 0 0 10px; }'
+          + '.sheet-total-name { display: block; font-size: 14px; font-weight: 600; color: #1e1d1d; margin: 0 0 2px; }'
+          + '.sheet-total-meta { display: block; font-size: 12px; color: rgba(53,52,52,.6); }'
+          + '.sheet-answers { margin: 0 0 44px; }'
+          + '.sheet-answers-label { display: block; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(53,52,52,.5); margin: 0 0 8px; }'
+          + '.sheet-a { display: inline-block; margin: 0 16px 4px 0; font-size: 13px; color: rgba(53,52,52,.7); white-space: nowrap; }'
+          + '.sheet-foot { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid rgba(30,29,29,.12); padding: 18px 0 0; font-size: 12px; color: rgba(53,52,52,.55); }';
+      }
+
+      function buildSheetHTML(slug, autoPrint) {
+        var entry = catalog[slug];
+        var st = state[slug];
+        var kicker, heading, body, scoreBlock = '', totals = '';
+        if (entry.mode === 'scored') {
+          var total = scoreOf(entry, st.answers);
+          var band = entry.bands[bandOf(entry, total)];
+          kicker = band.name;
+          heading = '<em>' + band.name + '</em>';
+          body = band.body;
+          scoreBlock = '<div class="sheet-score"><strong>' + total + '</strong><span>/ ' + entry.max + '</span></div>';
+        } else {
+          var scores = tally(entry, st.answers);
+          var winners = winnersOf(entry, scores);
+          var isTie = winners.length > 1;
+          kicker = isTie ? 'Balanced blend' : 'Primary style';
+          heading = isTie
+            ? '<em>' + winners.map(function (l) { return entry.styles[l].short; }).join(' + ') + '</em>'
+            : '<em>' + entry.styles[winners[0]].short + '</em> ' + entry.noun;
+          body = isTie ? entry.balanced : entry.styles[winners[0]].body;
+          entry.letters.forEach(function (letter) {
+            var s = entry.styles[letter];
+            var lead = winners.indexOf(letter) !== -1;
+            totals += '<div class="sheet-total" style="border-top-color:' + s.color + (lead ? ';border-color:' + s.color : '') + '">'
+              + '<strong style="color:' + s.color + '">' + scores[letter] + '</strong>'
+              + '<span class="sheet-total-name">' + letter + ' \u00b7 ' + s.short + '</span>'
+              + '<span class="sheet-total-meta">' + s.meta + '</span>'
+              + '</div>';
+          });
+          totals = '<div class="sheet-totals">' + totals + '</div>';
+        }
+        var answerBits = [];
+        for (var i = 1; i <= entry.count; i++) {
+          var a = st.answers[String(i)];
+          var shown = a;
+          if (entry.mode === 'scored') {
+            var map = entry.scores[String(i)] || {};
+            shown = map.hasOwnProperty(a) ? map[a] : '\u2013';
+          }
+          answerBits.push('<span class="sheet-a">' + (i < 10 ? '0' + i : i) + '&nbsp;' + shown + '</span>');
+        }
+        return '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+          + '<title>' + entry.sheetTitle + '</title>'
+          + '<link rel="preconnect" href="https://fonts.googleapis.com">'
+          + '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+          + '<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">'
+          + '<style>' + sheetCSS() + '</style></head><body>'
+          + '<header class="sheet-head">'
+          + '<div class="sheet-logo">' + sheetLogo + '</div>'
+          + '<div class="sheet-brand">Showing Up Learning<span>showinguplearning.com</span></div>'
+          + '</header>'
+          + '<p class="sheet-overline">' + entry.sheetOverline + ' \u00b7 ' + kicker + '</p>'
+          + '<h1>' + heading + '</h1>'
+          + '<p class="sheet-date">Completed ' + formatDate(st.completedAt || Date.now()) + '</p>'
+          + scoreBlock
+          + '<p class="sheet-body">' + body + '</p>'
+          + totals
+          + '<div class="sheet-answers"><span class="sheet-answers-label">Your answers' + (entry.mode === 'scored' ? ' (points per question)' : '') + '</span>' + answerBits.join('') + '</div>'
+          + '<footer class="sheet-foot"><span>Be irreplaceable to your clients.</span><span>Every paid trainee funds a scholarship through the Showing Up Foundation.</span></footer>'
+          + (autoPrint ? '<scr' + 'ipt>window.onload = function () { setTimeout(function () { window.print(); }, 350); };<\\/scr' + 'ipt>' : '')
+          + '</body></html>';
+      }
+
+      // The hub is a normal top-level LW page (never iframed by the course player), so
+      // its print path uses a Blob-URL popup + srcdoc-iframe fallback - no direct
+      // document writes, unlike the in-course variants which need them for the
+      // course-player sandbox.
+      function printViaHiddenIframe(html) {
+        var frame = document.createElement('iframe');
+        frame.setAttribute('aria-hidden', 'true');
+        frame.setAttribute('tabindex', '-1');
+        frame.style.cssText = 'position:fixed;right:0;bottom:0;width:1px;height:1px;border:0;visibility:hidden;';
+        frame.onload = function () {
+          setTimeout(function () {
+            try {
+              frame.contentWindow.focus();
+              frame.contentWindow.print();
+            } catch (e) {}
+            setTimeout(function () {
+              if (frame.parentNode) frame.parentNode.removeChild(frame);
+            }, 60000);
+          }, 400);
+        };
+        frame.srcdoc = html;
+        document.body.appendChild(frame);
+      }
+
+      function openSheet(html) {
+        var opened = null;
+        try {
+          var blob = new Blob([html], { type: 'text/html' });
+          var url = URL.createObjectURL(blob);
+          opened = window.open(url, '_blank');
+          setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+        } catch (e) {}
+        return !!opened;
+      }
+
+      if (mDownload) {
+        mDownload.addEventListener('click', function () {
+          if (!openSlug) return;
+          if (!openSheet(buildSheetHTML(openSlug, true))) {
+            printViaHiddenIframe(buildSheetHTML(openSlug, false));
+          }
+        });
+      }
+
+      // ---- Supabase status fetch (merged with localStorage per slug by recency) ----
+      function syncFromRemote() {
+        if (!canSync) { renderCards(); return; }
+        try {
+          window.fetch(SUPA_URL + '/rest/v1/assessment_results?uid=eq.' + encodeURIComponent(uid)
+              + '&select=slug,answers,completed_at,updated_at', {
+            headers: {
+              'apikey': SUPA_KEY,
+              'Authorization': 'Bearer ' + SUPA_KEY
+            }
+          }).then(function (res) {
+            return res.ok ? res.json() : null;
+          }).then(function (rows) {
+            (rows || []).forEach(function (row) {
+              setSlugState(row.slug, row.answers,
+                row.completed_at ? Date.parse(row.completed_at) : null,
+                Date.parse(row.updated_at || '') || 0);
+            });
+            renderCards();
+          })['catch'](function () { renderCards(); });
+        } catch (e) { renderCards(); }
+      }
+
+      function reveal() {
+        var targets = root.querySelectorAll('.ah-reveal');
+        if (!targets.length) return;
+        if (!('IntersectionObserver' in window)) {
+          Array.prototype.forEach.call(targets, function (el) { el.classList.add('is-revealed'); });
+          return;
+        }
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        Array.prototype.forEach.call(targets, function (el) { observer.observe(el); });
+      }
+
+      readLocal();
+      renderCards();
+      syncFromRemote();
+      reveal();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="page-assessment-hub.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] page-assessment-hub.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

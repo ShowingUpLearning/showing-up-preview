@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Our Story — Showing Up (preview)</title>
+</head>
+<body>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Our Story \u2014 Showing Up Learning",
+  "url": "https://www.showinguplearning.com/ourstory",
+  "description": "We have had the privilege of supporting 11,000+ consultants across the world to strengthen their impact, creating learning people remember, use and carry into their work.",
+  "about": {
+    "@type": "Organization",
+    "@id": "https://www.showinguplearning.com/#organization",
+    "name": "Showing Up Learning",
+    "url": "https://www.showinguplearning.com"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+<noscript><style>
+  /* If JS fails, surface all reveal-targeted content rather than leaving the page blank */
+  .os2 [class*="-reveal"] { opacity: 1 !important; transform: none !important; }
+  .os2 .os2-em { border-color: var(--c-coral) !important; }
+</style></noscript>
+
+<style>
+  /* -- Reset -- */
+  .os2 *, .os2 *::before, .os2 *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .os2 {
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+
+    /* Design tokens &#8212; kept in sync with the homepage (.showing-up-wrapper) */
+    --c-coral:     #FF8269;
+    --c-cream:     #FFF6F1;
+    --c-ink:       #1e1d1d;
+    --reveal-ease: cubic-bezier(.16, 1, .3, 1);
+    --type-h2:     clamp(36px, 4.5vw, 64px);
+    --su-ease: cubic-bezier(.16, 1, .3, 1);
+    --su-dur: .8s; --su-quick: .25s; --su-line-step: 90ms;
+  }
+
+  /* -- Scroll reveal --
+     Scoped to .os2: an unscoped [class*="-reveal"] would hide any LearnWorlds-native
+     element on the page whose class happens to contain "-reveal" */
+  .os2 [class*="-reveal"] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .8s var(--reveal-ease), transform .8s var(--reveal-ease);
+  }
+  .os2 [class*="-reveal"].is-revealed { opacity: 1; transform: none; }
+  .os2-d1 { transition-delay: .05s; }
+  .os2-d2 { transition-delay: .15s; }
+  .os2-d3 { transition-delay: .25s; }
+  .os2-d4 { transition-delay: .35s; }
+
+  /* Interaction lane (v3): hand from the slow reveal to quick hover/press fades ~1.6s
+     after reveal, and shed any stagger delay so later hovers don't lag. */
+  .os2 [class*="-reveal"].su-live {
+    transition: background var(--su-quick), border-color var(--su-quick),
+                color var(--su-quick), opacity var(--su-quick),
+                transform var(--su-quick) var(--su-ease);
+  }
+
+  /* Headline line-mask reveals (v3): the script regroups an opted-in headline into
+     per-line overflow masks once fonts are ready; each line rises out of its mask with
+     a small stagger, then the original markup is restored. Bottom-only padding/negative
+     margin (set inline in px by the script) keeps split vs natural block heights equal. */
+  .os2 .su-line { display: block; overflow: hidden; }
+  .os2 .su-line-inner {
+    display: block; transform: translateY(135%);
+    transition: transform var(--su-dur) var(--su-ease);
+    transition-delay: calc(var(--su-line-i, 0) * var(--su-line-step));
+  }
+  .os2 .su-split[class*="-reveal"] { opacity: 1; transform: none; }
+  .os2 .su-split.is-revealed .su-line-inner { transform: none; }
+
+  .os2 .hpm-accent { display: inline-block; vertical-align: middle; flex: none; margin-top: -1em; margin-bottom: -1em; position: relative; top: -.1em; }
+  .os2 svg.hpm-chev  { width: .82em; height: .58em; }
+  .os2 svg.hpm-arrow { width: 1.05em; height: .52em; }
+  .os2 .hpm-accent--coral { color: var(--c-coral); }
+  .os2 .hpm-accent--blue  { color: #9fd8e6; }
+
+
+
+  /* -- Shared -- */
+  .os2-inner { max-width: 1280px; margin: 0 auto; }
+  .os2-overline {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--c-coral);
+    margin-bottom: 32px;
+  }
+  .os2-overline::before { content: ''; display: block; width: 32px; height: 1px; background: var(--c-coral); }
+  .os2-em {
+    display: inline-block; max-width: 100%; white-space: normal;
+    line-height: 1.1; vertical-align: baseline;
+    font-family: 'DM Sans', sans-serif; font-style: normal; font-weight: inherit; color: inherit;
+    border: 2px solid var(--c-coral); border-radius: 100px;
+    /* Capsule padding: DM Sans 300's line box is top-heavy (~.17em slack above the
+       ink, ~0 below descenders at line-height 1.1), so bottom-only vertical padding
+       optically centres the ink, matching the guidelines lockup vertically (~.2em
+       top / ~.09em descender ink gaps at 48px). Sides stay at the roomier .52em
+       deliberately - do not snug them to .2em. em is the own-font exception, like
+       letter-spacing. */
+    padding: 0 .52em .06em;
+  }
+  .os2-em.su-strong {
+    display: inline; border: none; border-radius: 0; padding: 0;
+    max-width: none; white-space: normal;
+    font-family: 'DM Sans', sans-serif; font-style: normal; font-weight: 600; color: var(--c-coral);
+  }
+
+  /* -- Pill button (dark bg) -- */
+  .os2-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: var(--c-coral) !important; color: var(--c-cream) !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    padding: 14px 28px; border-radius: 100px;
+    transition: background .2s, color .2s;
+    width: fit-content;
+  }
+  .os2-pill:link, .os2-pill:visited {
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: var(--c-coral) !important; color: var(--c-cream) !important;
+  }
+  .os2-pill:hover, .os2-pill:active {
+    background: var(--c-cream) !important; color: var(--c-ink) !important;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+  }
+
+  /* -- Pill button (cream bg) -- */
+  .os2-pill-dark {
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: var(--c-ink) !important; color: var(--c-cream) !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    padding: 14px 28px; border-radius: 100px;
+    transition: background .2s, color .2s;
+    width: fit-content;
+  }
+  .os2-pill-dark:link, .os2-pill-dark:visited {
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: var(--c-ink) !important; color: var(--c-cream) !important;
+  }
+  .os2-pill-dark:hover, .os2-pill-dark:active {
+    background: var(--c-coral) !important; color: var(--c-ink) !important;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+  }
+
+  /* ==============================
+     SECTION 1 &#8212; HERO (dark)
+     ============================== */
+  .os2-hero {
+    background: var(--c-ink); color: var(--c-cream);
+    padding: 120px 80px;
+    position: relative; overflow: hidden;
+  }
+  .os2-hero-hl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(40px, 5vw, 68px);
+    font-weight: 300; line-height: 1.04; /* c4: coral-bold hero emphasis lets leading tighten toward the pre-uplift footprint */
+    letter-spacing: -0.03em;
+    margin-bottom: 48px;
+    max-width: 800px;
+    text-align: left !important;
+  }
+  /* c4: hero emphasis is coral-bold, not a capsule, so the hero leading can
+     tighten without a pill inflating its line. Section-heading pills (.os2-em.su-strong) are
+     unaffected; line-height: inherit sheds the shared pill selector's 1.1. */
+  .os2-hero-hl .os2-em {
+    display: inline; border: none; border-radius: 0; padding: 0;
+    max-width: none; line-height: inherit;
+    font-family: 'DM Sans', sans-serif; font-style: normal; font-weight: 600; color: var(--c-coral);
+  }
+  .os2-hero-img-wrap {
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+  .os2-hero-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    transition: transform .6s var(--reveal-ease);
+  }
+  .os2-hero-img-wrap:hover .os2-hero-img { transform: scale(1.03); }
+  .os2-hero-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px; line-height: 1.65; font-weight: 400;
+    color: rgba(255,246,241,.75);
+    max-width: 640px;
+    text-align: left !important;
+  }
+  .os2-hero-body + .os2-hero-body { margin-top: 20px; }
+
+  /* ==============================
+     SECTION 2 &#8212; DIFFERENT WORLDS (cream)
+     ============================== */
+  .os2-worlds {
+    background: var(--c-cream); color: var(--c-ink);
+    padding: 120px 80px;
+  }
+  .os2-worlds-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .os2-worlds-grid > * { min-width: 0; }
+  .os2-sect-hl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--type-h2);
+    font-weight: 300; line-height: 1.18;
+    letter-spacing: -0.03em;
+    margin-bottom: 40px;
+    text-align: left !important;
+  }
+  .os2-sect-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.7; font-weight: 300;
+    color: rgba(30,29,29,.6);
+    text-align: left !important;
+  }
+  .os2-sect-body + .os2-sect-body { margin-top: 20px; }
+
+  /* -- Photo reel -- */
+  .os2-reel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .os2-reel-row {
+    display: flex;
+    gap: 12px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .os2-reel-slot {
+    flex: 1 1 0;
+    min-width: 0;
+    aspect-ratio: 4 / 3;
+    border-radius: 6px;
+    overflow: hidden;
+    background: rgba(30,29,29,.06);
+    position: relative;
+  }
+  .os2-reel-slot img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s var(--reveal-ease);
+  }
+  .os2-reel-slot:hover img { transform: scale(1.05); }
+  /* Placeholder state &#8212; shows a subtle frame when no image loaded yet */
+  .os2-reel-slot--empty::after {
+    content: '';
+    position: absolute; inset: 0;
+    border: 1px dashed rgba(30,29,29,.12);
+    border-radius: 6px;
+    pointer-events: none;
+  }
+
+  /* Dark-background reel variant */
+  .os2-reel--dark .os2-reel-slot {
+    background: rgba(255,246,241,.06);
+  }
+  .os2-reel--dark .os2-reel-slot--empty::after {
+    border-color: rgba(255,246,241,.12);
+  }
+
+  /* ==============================
+     SECTION 3 &#8212; COMMERCIAL CHALLENGES (dark)
+     ============================== */
+  .os2-comm {
+    background: var(--c-ink); color: var(--c-cream);
+    padding: 120px 80px;
+  }
+  .os2-comm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .os2-comm-grid > * { min-width: 0; }
+  .os2-sect-hl--light {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--type-h2);
+    font-weight: 300; line-height: 1.18;
+    letter-spacing: -0.03em;
+    margin-bottom: 40px;
+    color: var(--c-cream);
+    text-align: left !important;
+  }
+  .os2-sect-body--light {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.7; font-weight: 300;
+    color: rgba(255,246,241,.7);
+    text-align: left !important;
+  }
+  .os2-sect-body--light + .os2-sect-body--light { margin-top: 20px; }
+
+  /* ==============================
+     SECTION 4 &#8212; MISSION 1: INGENUITY GAP (cream)
+     ============================== */
+  .os2-m1 {
+    background: var(--c-cream); color: var(--c-ink);
+    padding: 120px 80px;
+  }
+  .os2-m1-grid {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .os2-m1-grid > * { min-width: 0; }
+  .os2-mission-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--c-coral);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+    text-align: left !important;
+  }
+  .os2-mission-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--c-coral); }
+  .os2-mission-pull {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: clamp(24px, 3vw, 36px);
+    line-height: 1.4;
+    color: var(--c-ink);
+    border-left: 2px solid var(--c-coral);
+    padding-left: 32px;
+    text-align: left !important;
+  }
+  .os2-m1-cta { margin-top: 40px; text-align: left !important; }
+
+  /* ==============================
+     SECTION 5 &#8212; MISSION 2: FOUNDATION (dark)
+     ============================== */
+  .os2-m2 {
+    background: var(--c-ink); color: var(--c-cream);
+    padding: 120px 80px;
+  }
+  .os2-m2-grid {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .os2-m2-grid > * { min-width: 0; }
+  .os2-mission-tag--light {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--c-coral);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+    text-align: left !important;
+  }
+  .os2-mission-tag--light::before { content: ''; display: block; width: 32px; height: 1px; background: var(--c-coral); }
+  .os2-mission-pull--light {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: clamp(24px, 3vw, 36px);
+    line-height: 1.4;
+    color: var(--c-cream);
+    border-left: 2px solid var(--c-coral);
+    padding-left: 32px;
+    text-align: left !important;
+  }
+  .os2-m2-cta { margin-top: 40px; text-align: left !important; }
+
+  /* ==============================
+     MOBILE
+     ============================== */
+  @media (max-width: 960px) {
+    /* Hero */
+    .os2-hero { padding: 80px 32px; }
+    .os2-hero-img-wrap { aspect-ratio: 16 / 9; }
+
+    /* Section 2 &#8212; Different Worlds */
+    .os2-worlds { padding: 80px 32px; }
+    .os2-worlds-grid {
+      display: flex; flex-direction: column; gap: 32px;
+    }
+    .os2-worlds-grid > * { align-self: stretch !important; }
+    .os2-worlds-grid .os2-text-col { display: contents; }
+    .os2-worlds-grid .os2-sect-hl { order: 1; margin-bottom: 0; }
+    .os2-worlds-grid .os2-reel { order: 2; }
+    .os2-worlds-grid .os2-body-block { order: 3; }
+
+    /* Section 3 &#8212; Commercial */
+    .os2-comm { padding: 80px 32px; }
+    .os2-comm-grid {
+      display: flex; flex-direction: column; gap: 32px;
+    }
+    .os2-comm-grid > * { align-self: stretch !important; }
+    .os2-comm-grid .os2-text-col { display: contents; }
+    .os2-comm-grid .os2-sect-hl--light { order: 1; margin-bottom: 0; }
+    .os2-comm-grid .os2-reel { order: 2; }
+    .os2-comm-grid .os2-body-block { order: 3; }
+
+    /* Section 4 &#8212; Mission 1 */
+    .os2-m1 { padding: 80px 32px; }
+    .os2-m1-grid {
+      display: flex; flex-direction: column; gap: 48px;
+    }
+    .os2-m1-grid > * { align-self: stretch !important; }
+    .os2-mission-pull { font-size: 22px; padding-left: 20px; }
+
+    /* Section 5 &#8212; Mission 2 */
+    .os2-m2 { padding: 80px 32px; }
+    .os2-m2-grid {
+      display: flex; flex-direction: column; gap: 48px;
+    }
+    .os2-m2-grid > * { align-self: stretch !important; }
+    .os2-mission-pull--light { font-size: 22px; padding-left: 20px; }
+
+    /* Reel adjustments */
+    .os2-reel-row { flex-wrap: wrap; }
+    .os2-reel-slot { flex: 1 1 calc(50% - 6px); }
+  }
+
+  /* -- Reduced motion -- */
+  @media (prefers-reduced-motion: reduce) {
+    .os2-reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
+    .os2 .su-line-inner { transition: none !important; transform: none !important; }
+    .os2 .os2-em { transition: none !important; border-color: var(--c-coral) !important; }
+  }
+</style>
+
+<main class="os2" role="main">
+
+  
+  <section class="os2-hero" aria-label="Page hero">
+    <div class="os2-inner">
+      <h1 class="os2-hero-hl os2-reveal os2-d1">
+        <svg class="hpm-accent hpm-chev hpm-accent--blue" viewBox="0 0 40 28" aria-hidden="true"><path d="M4 5 L17 14 L4 23" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 5 L35 14 L22 23" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg> We have had the privilege of supporting
+        11,000+ <span class="os2-em">consultants</span>
+        across the world to strengthen their impact
+      </h1>
+
+      <div class="os2-hero-img-wrap os2-reveal os2-d2">
+        <img class="os2-hero-img"
+             src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/025edfc628a2583c01316c1443f3d35b.jpg"
+             alt="The Showing Up Learning team gathered for a workshop"
+             decoding="async"
+             fetchpriority="high" />
+      </div>
+
+      <p class="os2-hero-body os2-reveal os2-d3">
+        Our commitment is to create learning that people remember, use, and carry
+        into their work every day.
+      </p>
+      <p class="os2-hero-body os2-reveal os2-d3">
+        In the past two years, we have been honoured to have received 100% positive
+        feedback from our clients.
+      </p>
+    </div>
+  </section>
+
+  
+  <section class="os2-worlds" aria-label="Different worlds, same challenges">
+    <div class="os2-inner">
+      <div class="os2-worlds-grid">
+
+        <div class="os2-text-col">
+          <h2 class="os2-sect-hl os2-reveal os2-d1">
+            Different Worlds,<br>
+            Same <span class="os2-em su-strong">Challenges</span>
+          </h2>
+          <div class="os2-body-block">
+            <p class="os2-sect-body os2-reveal os2-d2">
+              Showing Up has its roots in both humanitarian and business environments.
+              Members of our founding team began leading workshops in humanitarian
+              crises across the globe, working alongside teams facing complex
+              challenges under intense pressure, often with limited time and resources.
+            </p>
+            <p class="os2-sect-body os2-reveal os2-d3">
+              In these environments, the stakes were high, and decisions carried
+              immense significance. The way people thought, communicated, and worked
+              together made a real difference. Some of this work even reached the
+              front pages of the national press.
+            </p>
+            <p class="os2-sect-body os2-reveal os2-d4">
+              These experiences shaped how we think about learning. It needs to be
+              practical, human-centred, and able to stand up in the moments that
+              matter most.
+            </p>
+          </div>
+        </div>
+
+        
+        <div class="os2-reel os2-reveal os2-d2">
+          <div class="os2-reel-row">
+            <div class="os2-reel-slot"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/51dd31042f46490888221b3ac64688b5.jpg" alt="Children in a humanitarian setting" loading="lazy" /></div>
+            <div class="os2-reel-slot"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/65d68a0b16ad624519cc09d41700434b.jpg" alt="Tented housing in a humanitarian crisis camp" loading="lazy" /></div>
+          </div>
+          <div class="os2-reel-row">
+            <div class="os2-reel-slot"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/f4fe596ad8fe5df342627e18936e29b8.jpg" alt="Wild flowers near a humanitarian field site" loading="lazy" /></div>
+            <div class="os2-reel-slot"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/0051a61e4a86c9d7a486ddb6445a846c.jpg" alt="Brick wall on a community building site" loading="lazy" /></div>
+          </div>
+          <div class="os2-reel-row">
+            <div class="os2-reel-slot"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/a441f37ccfe759eb91c4ea7cb0e88d19.jpg" alt="Coastal community where field workshops were held" loading="lazy" /></div>
+            <div class="os2-reel-slot"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/e767ec16b58d55e8bdf020476f3ff953.jpg" alt="Classroom setting from a humanitarian programme" loading="lazy" /></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="os2-comm" aria-label="Solving complex commercial challenges">
+    <div class="os2-inner">
+      <div class="os2-comm-grid">
+
+        
+        <div class="os2-reel os2-reel--dark os2-reveal os2-d1">
+          <div class="os2-reel-row">
+            <div class="os2-reel-slot"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/76203c0ec7a044a5e55213ec14ca4c13.jpg" alt="A speaker delivering a TED-style talk on consulting performance" loading="lazy" /></div>
+            <div class="os2-reel-slot"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/0a3937d1edda41266ef14c08d6c8a5be.jpg" alt="A speaker giving a keynote at an industry event" loading="lazy" /></div>
+          </div>
+          <div class="os2-reel-row">
+            <div class="os2-reel-slot"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/f3250b64d5c49115f6c4d8c673f06778.jpg" alt="Ben delivering a TED talk on consulting capability" loading="lazy" /></div>
+            <div class="os2-reel-slot"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/6602935fc86e079897e278e2ede76b02.jpg" alt="Showing Up team supporting humanitarian field work" loading="lazy" /></div>
+          </div>
+          <div class="os2-reel-row">
+            <div class="os2-reel-slot"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/2e337bea30909c74ac8d58f47061d9a6.jpg" alt="Consultant workshop in progress with delegates engaged" loading="lazy" /></div>
+            <div class="os2-reel-slot"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/cf60d71ab8ad012298fa23eb5b52e8d8.jpg" alt="Strategy session with the team mapping ideas on a whiteboard" loading="lazy" /></div>
+          </div>
+        </div>
+
+        <div class="os2-text-col">
+          <h2 class="os2-sect-hl--light os2-reveal os2-d1">
+            Solving Complex<br>
+            <span class="os2-em su-strong">Commercial</span> Challenges
+          </h2>
+          <div class="os2-body-block">
+            <p class="os2-sect-body--light os2-reveal os2-d2">
+              At the same time, our team were working with organisations across the
+              commercial world, supporting them through a wide range of complex
+              challenges.
+            </p>
+            <p class="os2-sect-body--light os2-reveal os2-d3">
+              This included declining sales performance, large-scale culture change,
+              redesigning retail experiences, scaling fast-growing businesses,
+              improving customer relationships, and navigating organisational
+              transformation.
+            </p>
+            <p class="os2-sect-body--light os2-reveal os2-d4">
+              Our role was consistent. To help people develop the traits, behaviours,
+              skills, and ways of thinking needed to become trusted partners to their
+              clients. The environments were different, but the underlying challenge
+              was the same. Helping people think clearly, act with purpose, and show
+              up well when it matters.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="os2-m1" aria-label="Mission: solve the ingenuity gap">
+    <div class="os2-inner">
+      <h2 class="os2-sect-hl os2-reveal os2-d1">
+        Solve the <span class="os2-em su-strong">Ingenuity</span> Gap
+      </h2>
+
+      <div class="os2-m1-grid">
+        <div>
+          <p class="os2-sect-body os2-reveal os2-d2">
+            Consultants are hired to make things better&#8202;&#8212;&#8202;to solve
+            problems that others cannot. To help organisations move forward when the
+            path is not obvious. But the world they are working in is becoming more
+            complex by the day.
+          </p>
+          <p class="os2-sect-body os2-reveal os2-d3">
+            The gap between the challenges organisations face and the ability to
+            solve them is growing. Not because people do not care, but because the
+            thinking, judgement, and behaviours required are becoming more demanding.
+            Our first mission is to close that gap.
+          </p>
+          <p class="os2-sect-body os2-reveal os2-d3">
+            We do this by helping consultants strengthen their thinking,
+            problem-solving, communication, collaboration and commercial capability.
+            So they can navigate complexity with confidence, ask better questions,
+            and make a more meaningful difference to their clients.
+          </p>
+
+          <div class="os2-m1-cta os2-reveal os2-d4">
+            <a href="https://www.showinguplearning.com/contact-us" class="os2-pill-dark">Book a Discovery Call</a>
+          </div>
+        </div>
+
+        <div class="os2-mission-pull os2-reveal os2-d2">
+          The gap between the challenges organisations face and the ability to
+          solve them is growing. Our mission is to close it.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="os2-m2" aria-label="Mission: open access to opportunity">
+    <div class="os2-inner">
+      <h2 class="os2-sect-hl--light os2-reveal os2-d1">
+        <svg class="hpm-accent hpm-arrow hpm-accent--coral" viewBox="0 0 48 24" aria-hidden="true"><path d="M3 12 H42 M31 3 L43 12 L31 21" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Open <span class="os2-em su-strong">Access</span> <span class="os2-em su-strong">to</span> <span class="os2-em su-strong">Opportunity</span>
+      </h2>
+
+      <div class="os2-m2-grid">
+        <div>
+          <p class="os2-sect-body--light os2-reveal os2-d2">
+            We believe access to high-quality education should not depend on
+            background, circumstance, or financial means. Too many people with
+            potential are held back, not by a lack of ability, but by a lack of
+            opportunity. Through our foundation, we work to open that access.
+          </p>
+          <p class="os2-sect-body--light os2-reveal os2-d3">
+            For every member of your team that we work with, we create opportunities
+            for young people who would not otherwise have access to meaningful
+            learning and development. This includes practical skills, real-world
+            thinking, and the confidence to step into work and contribute.
+          </p>
+          <p class="os2-sect-body--light os2-reveal os2-d3">
+            Our focus is to help people build the skills, mindset, and belief they
+            need to move into employment and create better futures for themselves.
+            And you can join us in this work.
+          </p>
+
+          <div class="os2-m2-cta os2-reveal os2-d4">
+            <a href="https://www.showinguplearning.com/foundation" class="os2-pill">Learn more</a>
+          </div>
+        </div>
+
+        <div class="os2-mission-pull--light os2-reveal os2-d2">
+          For every person we train, we create opportunity for a young person
+          who would not otherwise have access.
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function () {
+  function suInit() {
+    var wrap = document.querySelector('.os2');
+    if (!wrap) return;
+    if (!('IntersectionObserver' in window)) {
+      wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) { el.classList.add('is-revealed'); });
+      return;
+    }
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var splitSel = '.os2-hero-hl, .os2-sect-hl, .os2-sect-hl--light';
+
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.classList.add('is-revealed');
+        setTimeout(function () { el.classList.add('su-live'); }, 1600);
+        if (el.suSavedNodes) {
+          var lineCount = el.querySelectorAll('.su-line').length;
+          setTimeout(function () { suUnsplit(el); }, 800 + lineCount * 90 + 250);
+        }
+        revealObserver.unobserve(el);
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+    wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) {
+      if (reducedMotion || !el.matches(splitSel)) revealObserver.observe(el);
+    });
+
+    var splitTargets = [];
+
+    function suUnsplit(el) {
+      if (!el.suSavedNodes) return;
+      el.textContent = '';
+      el.appendChild(el.suSavedNodes);
+      el.suSavedNodes = null;
+      el.classList.remove('su-split');
+      el.removeAttribute('aria-label');
+    }
+
+    function suSplit(el) {
+      if (el.suSavedNodes || el.classList.contains('is-revealed')) return;
+      var saved = document.createDocumentFragment();
+      while (el.firstChild) { saved.appendChild(el.firstChild); }
+      try {
+        var tokens = [];
+        Array.prototype.slice.call(saved.childNodes).forEach(function (n) {
+          if (n.nodeType === 3) {
+            n.textContent.split(/\s+/).forEach(function (w) { if (w) tokens.push({ text: w, node: null, noSpace: /^[.,!?;:)\]]+$/.test(w) }); });
+          } else if (n.nodeType === 1 && n.tagName === 'BR') {
+            tokens.push({ br: true });                 // explicit line break in the headline
+          } else if (n.nodeType === 1) {
+            tokens.push({ text: (n.textContent || '').replace(/\s+/g, ' ').trim(), node: n });
+          } else { throw new Error('unsupported headline content'); }
+        });
+        if (tokens.length < 2) throw new Error('too short to split');
+        tokens.forEach(function (t, ti) {
+          var box;
+          if (t.br) { box = document.createElement('br'); t.span = box; el.appendChild(box); return; }
+          if (ti > 0 && !t.noSpace) el.appendChild(document.createTextNode(' '));  // punctuation hugs prev word
+          if (t.node) { box = t.node.cloneNode(true); }
+          else { box = document.createElement('span'); box.textContent = t.text; }
+          t.span = box; el.appendChild(box);
+        });
+        var fs = parseFloat(window.getComputedStyle(el).fontSize) || 48;
+        var lines = [];
+        var lastTop = null;
+        var lastRight = null;
+        tokens.forEach(function (t) {
+          if (t.br) { lines.push([]); lastTop = null; lastRight = null; return; }  // forced break
+          var rect = t.span.getBoundingClientRect();
+          // GUARD: an atomic token (capsule) wrapped to >1 line would mis-group the
+          // masks and shift the block on unsplit -> bail to the plain fade-up.
+          if (t.node && rect.height > fs * 1.5) throw new Error('multi-line inline token');
+          if (!t.text) {
+            if (lines.length === 0) { lines.push([]); }
+            else if (lastRight !== null && rect.left < lastRight - 1) { lines.push([]); lastTop = null; }
+            lines[lines.length - 1].push(t); lastRight = rect.right; return;
+          }
+          if (lastTop === null) { if (lines.length === 0) lines.push([]); }
+          else if (Math.abs(rect.top - lastTop) > fs * 0.5) { lines.push([]); }
+          lines[lines.length - 1].push(t); lastTop = rect.top; lastRight = rect.right;
+        });
+        if (lines.length < 2) throw new Error('single line');
+        var pad = Math.max(2, Math.round(fs * 0.2));
+        el.textContent = '';
+        lines.forEach(function (words, li) {
+          var line = document.createElement('span');
+          line.className = 'su-line';
+          if (li < lines.length - 1) { line.style.paddingBottom = pad + 'px'; line.style.marginBottom = (0 - pad) + 'px'; }
+          var inner = document.createElement('span');
+          inner.className = 'su-line-inner';
+          inner.style.setProperty('--su-line-i', String(li));
+          words.forEach(function (t, wi) {
+            if (wi > 0 && !t.noSpace) inner.appendChild(document.createTextNode(' '));
+            if (t.node) { inner.appendChild(t.node.cloneNode(true)); }
+            else { inner.appendChild(document.createTextNode(t.text)); }
+          });
+          line.appendChild(inner); el.appendChild(line);
+        });
+        el.setAttribute('aria-label', tokens.map(function (t) { return t.text; }).filter(Boolean).join(' ').replace(/\s+([.,!?;:])/g, '$1'));
+        el.suSavedNodes = saved;
+        el.classList.add('su-split');
+      } catch (err) {
+        el.textContent = ''; el.appendChild(saved);
+      }
+    }
+
+    if (!reducedMotion) {
+      splitTargets = Array.prototype.slice.call(wrap.querySelectorAll(splitSel));
+      var suSplitStarted = false;
+      var beginSplit = function () {
+        if (suSplitStarted) return;
+        suSplitStarted = true;
+        splitTargets.forEach(suSplit);
+        splitTargets.forEach(function (el) { revealObserver.observe(el); });
+      };
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(beginSplit); setTimeout(beginSplit, 1500); }
+      else { beginSplit(); }
+    }
+
+    var suResizeTimer = null;
+    window.addEventListener('resize', function () {
+      if (!splitTargets.length) return;
+      clearTimeout(suResizeTimer);
+      suResizeTimer = setTimeout(function () {
+        splitTargets.forEach(function (el) { suUnsplit(el); if (!el.classList.contains('is-revealed')) suSplit(el); });
+      }, 150);
+    });
+  }
+  if (document.readyState !== 'loading') { suInit(); }
+  else { document.addEventListener('DOMContentLoaded', suInit); }
+})();
+</script>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="page-our-story.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] page-our-story.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

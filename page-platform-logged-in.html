@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Welcome to the Platform — Showing Up (preview)</title>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+
+<noscript><style>
+  /* Surface content if JS is disabled */
+  .nd-block [class*="-reveal"] { opacity: 1 !important; transform: none !important; }
+</style></noscript>
+
+<style>
+  .nd-block *, .nd-block *::before, .nd-block *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .nd-block {
+    --c-coral:     #FF8269;
+    --c-cream:     #FFF6F1;
+    --c-ink:       #1e1d1d;
+    --c-text:      #353434;
+    --c-mint:      #A7DDC3;
+    --c-purple:    #C8B4E4;
+    --c-blue:      #D8F2F8;
+    --reveal-ease: cubic-bezier(.16, 1, .3, 1);
+    --type-h2:     clamp(36px, 4.5vw, 64px);
+    /* Motion tokens (v3): the line-mask reveals + interaction lane derive from these */
+    --su-ease:      cubic-bezier(.16, 1, .3, 1);
+    --su-dur:       .8s;
+    --su-quick:     .25s;
+    --su-line-step: 90ms;
+
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--c-cream);
+    color: var(--c-text);
+  }
+
+  /* Reduced motion: skip reveal animations entirely */
+  @media (prefers-reduced-motion: reduce) {
+    .nd-block [class*="-reveal"] {
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .nd-block .cg-go,
+    .nd-block .cg-go svg { transition: none !important; transform: none !important; }
+    /* Line-mask lines rest at their landed state */
+    .nd-block .su-line-inner { transition: none !important; transform: none !important; }
+  }
+
+  .nd-block [class*="-reveal"] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .8s var(--reveal-ease), transform .8s var(--reveal-ease);
+  }
+  .nd-block [class*="-reveal"].is-revealed { opacity: 1; transform: none; }
+
+  /* -- Interaction lane: once an entrance has settled (su-live, added by the script
+        ~1.6s after its reveal fires), transitions hand from the slow reveal pair to
+        quick hover/press fades - and shed any lingering stagger delay so later hovers
+        don't inherit the reveal lag. -- */
+  .nd-block [class*="-reveal"].su-live {
+    transition: background var(--su-quick), border-color var(--su-quick),
+                color var(--su-quick), opacity var(--su-quick),
+                transform var(--su-quick) var(--su-ease);
+  }
+
+  /* -- Headline line-mask reveals: the script regroups an opted-in headline into
+        per-line overflow masks once fonts are ready; each line rises out of its mask
+        with a small stagger, then the script restores the original markup so later
+        resizes re-wrap naturally. The .su-line bottom padding + equal negative bottom
+        margin (set inline in px by the script, ~0.2em) gives descenders clearance
+        while cancelling in layout - so split vs natural block heights match and
+        nothing shifts on unsplit. -- */
+  .nd-block .su-line { display: block; overflow: hidden; }
+  .nd-block .su-line-inner {
+    display: block;
+    transform: translateY(135%);
+    transition: transform var(--su-dur) var(--su-ease);
+    transition-delay: calc(var(--su-line-i, 0) * var(--su-line-step));
+  }
+  /* Split succeeded: disarm the block-level fade (the masks own the entrance now). */
+  .nd-block .su-split[class*="-reveal"] { opacity: 1; transform: none; }
+  .nd-block .su-split.is-revealed .su-line-inner { transform: none; }
+
+  /* hpm directional accents (2025 messaging style): light-blue amplification chevron
+     (forward momentum, dark bg). Negative block margins cancel its line-height
+     contribution so it can't shift the split-vs-natural height. */
+  .nd-block .hpm-accent { display: inline-block; vertical-align: middle; flex: none; margin-top: -1em; margin-bottom: -1em; position: relative; top: -.1em; }
+  .nd-block svg.hpm-chev  { width: .82em; height: .58em; }
+  .nd-block svg.hpm-arrow { width: 1.05em; height: .52em; }
+  .nd-block .hpm-accent--coral { color: var(--c-coral); }
+  .nd-block .hpm-accent--blue  { color: #9fd8e6; }
+
+  /* ------------------------------
+     ND-WELCOME - opener section
+     Sits above the existing methodology + cards block.
+     Plain orientation message: the platform is organised
+     by the Nine Dimensions; click one to start.
+     Cream background, centered, breaks visually from
+     the dark methodology block below.
+     ------------------------------ */
+  .nd-welcome-section {
+    background: var(--c-cream);
+    color: var(--c-text);
+    padding: 120px 80px 0;
+    text-align: left !important;
+  }
+  .nd-welcome-inner {
+    max-width: 860px;
+    margin: 0;
+  }
+  .nd-welcome-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--type-h2);
+    font-weight: 300;
+    line-height: 1.12;
+    letter-spacing: -.03em;
+    color: var(--c-ink);
+    margin: 0 0 32px;
+    text-align: left !important;
+  }
+  .nd-welcome-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--c-text);
+    max-width: 720px;
+    margin: 0 0 24px;
+    text-align: left !important;
+  }
+  .nd-welcome-em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--c-coral);
+  }
+  .nd-welcome-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(53,52,52,.72);
+    max-width: 720px;
+    margin: 0;
+    text-align: left !important;
+  }
+
+  @media (max-width: 960px) {
+    .nd-welcome-section { padding: 80px 32px 0; }
+    .nd-welcome-headline { margin-bottom: 24px; }
+    .nd-welcome-body { font-size: 17px; }
+    .nd-welcome-sub { font-size: 15px; }
+  }
+
+  /* ================= CLUSTER GRID (cg-) =================
+     Cream section: intro copy + a single 4-column grid (row label + 3 tiles, x3).
+     Solid cluster tiles, title-only, Explore rollover. Ink text passes AA on all three
+     cluster fills (coral 6.93 / purple 8.89 / mint 11.03).
+     Self-scoped to .cg-section, so this block is identical on every page carrying it -
+     no page-wrapper coupling. Reveal pre-states are NOT defined here: .cg-reveal is
+     picked up by each page's shared [class*="-reveal"] rules and observer. */
+  .cg-section {
+    font-size: 16px; font-family: 'DM Sans', sans-serif;
+    background: var(--c-cream); color: var(--c-ink);
+    padding: 120px 80px 96px;
+    border-bottom: 1px solid rgba(30,29,29,.06);
+    text-align: left !important;
+  }
+  .cg-section .cg-intro { max-width: 860px; margin: 0 0 64px; }
+  .cg-section .cg-overline {
+    display: flex; align-items: center; justify-content: flex-start; gap: 12px;
+    font-size: 11px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--c-coral); margin-bottom: 24px;
+    text-align: left !important;
+  }
+  .cg-section .cg-overline::before { content: ''; display: block; width: 32px; height: 1px; background: var(--c-coral); }
+  .cg-section .cg-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--type-h2); font-weight: 300; line-height: 1.18;
+    letter-spacing: -.025em; color: var(--c-ink); margin-bottom: 24px;
+    text-align: left !important;
+  }
+  /* Coral-bold emphasis on one key word - the non-capsule half of the heading kit,
+     replacing the pill outline this block used to carry. Plain inline, so the word wraps
+     with the rest of the headline and inherits its leading: nothing here inflates the
+     line box the way an inline-block capsule did. */
+  .cg-section .cg-headline em {
+    display: inline; white-space: normal; vertical-align: baseline;
+    font-family: 'DM Sans', sans-serif; font-style: normal;
+    font-weight: 600; color: var(--c-coral);
+  }
+  .cg-section .cg-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px; line-height: 1.65; font-weight: 400; color: var(--c-text);
+    max-width: 640px; text-align: left !important;
+  }
+
+  .cg-section .cg-grid { display: grid; grid-template-columns: 200px repeat(3, 1fr); gap: 12px; }
+  .cg-section .cg-grid > * { min-width: 0; }
+  .cg-section .cg-rowlab { display: flex; flex-direction: column; justify-content: center; }
+  .cg-section .cg-rowlab-cluster {
+    font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    color: rgba(53,52,52,.72); text-align: left !important;
+  }
+  .cg-section .cg-rowlab-name {
+    font-size: 20px; font-weight: 500; color: var(--c-ink); margin-top: 2px;
+    text-align: left !important;
+  }
+  /* LearnWorlds anchor overrides - all four link states */
+  .cg-section .cg-tile,
+  .cg-section .cg-tile:link, .cg-section .cg-tile:visited {
+    display: flex; flex-direction: column;
+    text-decoration: none !important; color: var(--c-ink) !important;
+    border: none !important; border-bottom: none !important;
+    border-radius: 8px; padding: 24px 24px 20px; min-height: 150px;
+    transition: transform var(--su-quick) var(--su-ease);
+  }
+  .cg-section .cg-tile * { text-decoration: none !important; }
+  .cg-section .cg-tile:hover, .cg-section .cg-tile:active {
+    color: var(--c-ink) !important; text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+    transform: translateY(-3px);
+  }
+  .cg-section .cg-tile:focus-visible { outline: 2px solid var(--c-ink) !important; outline-offset: 2px; }
+  .cg-section .cg-thinking { background: var(--c-coral); }
+  .cg-section .cg-presence { background: var(--c-purple); }
+  .cg-section .cg-impact   { background: var(--c-mint); }
+  .cg-section .cg-name {
+    font-size: 21px; font-weight: 500; letter-spacing: -.01em; color: var(--c-ink);
+    text-align: left !important;
+  }
+  .cg-section .cg-icon {
+    height: 34px; width: auto; max-width: 44px; margin-top: 14px; display: block;
+    color: var(--c-ink); opacity: .8; overflow: visible;
+    transition: opacity var(--su-quick);
+  }
+  .cg-section .cg-tile:hover .cg-icon { opacity: 1; }
+  .cg-section .cg-go {
+    margin-top: auto; padding-top: 16px;
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; color: var(--c-ink);
+    opacity: 0; transform: translateX(-4px);
+    transition: opacity var(--su-quick), transform var(--su-quick) var(--su-ease);
+  }
+  .cg-section .cg-tile:hover .cg-go { opacity: 1; transform: none; }
+  .cg-section .cg-go svg { transition: transform var(--su-quick) var(--su-ease); }
+  .cg-section .cg-tile:hover .cg-go svg { transform: translateX(3px); }
+
+  /* ---- Cluster tiles: pointer-tracking edge glow (cg-glow) ----
+     One layer: a conic mask aimed at the pointer (--cg-deg) over a stacked box-shadow
+     glow whose opacity rises with closeness to the tile edge (--cg-d, 0-100). Both
+     custom properties are set by the pointermove handler in suInit. The glow spans are
+     injected by JS, never shipped in the markup, so no-JS, touch and reduced-motion
+     tiles keep the plain rollover untouched. Glow colour is a deeper shade of each
+     cluster's own colour. This is a registered exception to the no-shadow rule: the
+     shadow is a coloured edge glow, never an elevation drop shadow. */
+  .cg-section .cg-tile { position: relative; }
+  .cg-section .cg-tile > * { position: relative; z-index: 1; }
+  .cg-section .cg-tile > .cg-glow {
+    position: absolute;
+    inset: -28px;
+    border-radius: 36px; /* tile 8px + 28px spill */
+    z-index: 0;
+    pointer-events: none;
+    opacity: calc((var(--cg-d, 0) - 30) / 70); /* dead zone in the tile centre, ramps to 1 at the edge */
+    transition: opacity var(--su-quick) var(--su-ease);
+    -webkit-mask-image: conic-gradient(from var(--cg-deg, 45deg) at center, #000 10%, transparent 28%, transparent 72%, #000 90%);
+    mask-image: conic-gradient(from var(--cg-deg, 45deg) at center, #000 10%, transparent 28%, transparent 72%, #000 90%);
+  }
+  .cg-section .cg-glow::before {
+    content: '';
+    position: absolute;
+    inset: 28px; /* back to the tile's own rect */
+    border-radius: 8px;
+    box-shadow:
+      inset 0 0 0 1px rgb(var(--cg-glow) / 100%),
+      inset 0 0 3px 0 rgb(var(--cg-glow) / 70%),
+      inset 0 0 8px 0 rgb(var(--cg-glow) / 55%),
+      inset 0 0 18px 0 rgb(var(--cg-glow) / 40%),
+      inset 0 0 32px 4px rgb(var(--cg-glow) / 30%),
+      0 0 4px 0 rgb(var(--cg-glow) / 65%),
+      0 0 10px 0 rgb(var(--cg-glow) / 50%),
+      0 0 20px 0 rgb(var(--cg-glow) / 40%),
+      0 0 36px 3px rgb(var(--cg-glow) / 28%);
+  }
+  /* Deeper shade of each cluster's own colour (RGB triplets for the alpha ramp) */
+  .cg-section .cg-thinking .cg-glow { --cg-glow: 232 97 74; }   /* coral dark  #e8614a */
+  .cg-section .cg-presence .cg-glow { --cg-glow: 155 122 205; } /* deep purple #9b7acd */
+  .cg-section .cg-impact   .cg-glow { --cg-glow: 95 190 146; }  /* deep mint   #5fbe92 */
+  /* At rest the glow is gone regardless of where the pointer last was */
+  .cg-section .cg-tile:not(:hover) .cg-glow {
+    opacity: 0;
+    transition: opacity .5s var(--su-ease);
+  }
+
+  @media (max-width: 960px) {
+    .cg-section { padding: 64px 32px; }
+    .cg-section .cg-intro { margin-bottom: 48px; }
+    .cg-section .cg-grid { grid-template-columns: repeat(2, 1fr); }
+    .cg-section .cg-rowlab { grid-column: 1 / -1; padding-top: 10px; }
+  }
+  @media (max-width: 540px) {
+    .cg-section { padding: 56px 20px; }
+    .cg-section .cg-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="nd-block">
+
+
+  
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="su-ic-curiosity" viewBox="0 0 84 78"><path d="M83.9002 7.15985C83.7698 7.18216 83.5626 7.20446 83.2711 7.20446H83.0639C82.0588 7.20446 80.555 7.26394 78.4834 7.33829L78.376 7.34572L75.66 7.44981L72.8826 7.54647L71.0642 7.61338L70.2509 9.18959L69.008 11.5836C68.9236 11.7472 68.8468 11.9033 68.7701 12.052L68.7471 12.1115L68.7241 12.1561C68.6934 12.223 68.655 12.2974 68.6167 12.3643L68.609 12.3717L68.563 12.4387L68.4555 12.5874C63.9748 18.8625 51.3536 39.1673 48.5379 45.7175L48.4918 45.829L48.4841 45.8364C47.364 48.4833 46.0903 51.0855 44.7553 53.8364L44.7246 53.8885C43.8423 55.6952 42.9753 57.4795 42.116 59.316L42.1007 59.368L42.093 59.3755L42.0853 59.3978C39.5841 64.9442 37.5893 69.7546 35.978 75.1598C35.464 76.8476 34.8348 76.8476 34.5279 76.8476C34.2364 76.8476 33.8988 76.7732 33.5842 76.6394C33.0088 76.3643 30.5306 74.9517 31.6585 71.5242C38.3642 51.9182 45.8525 35.3085 54.5607 20.7509L59.1335 13.1078L62.1181 8.11152L56.1873 8.65427L47.1108 9.49442L44.5328 9.73234L42.4766 9.92565L41.1339 10.052L40.3207 11.0929L39.0777 12.6914C29.1112 25.4796 15.0246 50.2751 9.07074 63.9257C6.46211 69.5911 5.05805 73.6431 4.38287 77.4572C4.32916 77.7026 4.27546 77.8736 4.22942 78C3.90718 77.9777 3.42381 77.8587 2.9251 77.5985C1.91234 77.0335 0.999317 76.0669 0.485262 75.0111C-0.0748269 73.8662 -0.151551 72.7138 0.262761 71.487C3.87649 60.6171 15.3238 37.3011 22.1983 24.6468L25.3057 18.9145L27.3465 15.1673L23.0116 14.5874L16.3979 13.6952C14.7023 13.4647 13.0297 12.3643 12.2395 10.9517L12.2011 10.8773L12.1704 10.8253C11.7868 10.1413 11.7868 9.59108 11.8482 9.44981C11.8482 9.44981 12.063 9.13011 13.0834 8.82528C21.4311 6.3197 34.3592 3.73978 41.2951 3.19703C45.4228 2.9145 50.3179 2.37918 55.4968 1.80669L55.6272 1.79182C63.5605 0.914498 71.77 0 77.486 0C77.6702 0 77.862 0.00743494 78.0231 0.00743494C81.1842 0.0669145 83.225 3.10781 83.8235 5.13755C84.0767 5.99256 84.0153 6.78067 83.9002 7.15985Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-critical-thinking" viewBox="0 0 71 77"><path d="M70.4456 4.90006C69.87 6.18889 68.9248 7.45904 67.931 8.30581C66.9979 9.09655 66.0769 9.50125 65.1984 9.50125C65.0226 9.50125 64.8287 9.48258 64.6349 9.44522L64.5682 9.43899C59.7027 8.64826 55.6733 8.31204 51.1108 8.31204C50.2685 8.31204 49.3233 8.32449 48.2266 8.34317L41.0222 8.51751L36.3142 8.62335L39.1378 12.4961L43.458 18.4235C44.3608 19.6563 45.2152 20.6089 45.9726 21.4619L46.1301 21.6362C46.3058 21.8355 46.4755 22.0222 46.6209 22.1903L46.6936 22.2775L46.7542 22.3522L46.8269 22.4207L46.8814 22.4768C47.6449 23.2613 48.3659 23.996 48.887 24.6871L48.9658 24.7867L49.0203 24.8676L49.087 24.9486L49.1597 25.0233C49.9898 25.9884 50.6381 26.8663 51.3107 27.9496C51.9954 29.0517 51.9106 29.4003 51.2077 30.2222L51.1956 30.2409L51.1835 30.2596L51.1532 30.2907L51.1168 30.3405C50.4867 31.1126 49.6323 31.8784 48.3478 32.8248C46.9845 33.7961 45.403 34.8794 43.6337 36.0562L43.5974 36.0749L43.555 36.106C34.7328 42.1081 26.874 47.9732 21.4147 52.6367L9.09638 63.1404L1.03161 70.0204L11.211 67.4801L26.771 63.5949C36.5627 61.1542 48.2932 59.3237 58.9392 58.5765C59.0968 58.5703 59.2604 58.5641 59.4179 58.5641C62.0597 58.5641 63.8593 59.8591 64.2107 61.0733L64.2228 61.1168L64.2349 61.1542L64.241 61.1853L64.2471 61.1978C64.3622 61.5714 64.2895 61.6897 64.2592 61.7395C64.0653 62.0695 63.3018 62.6921 61.6598 62.9847C52.4559 64.3919 40.8041 67.7353 29.6673 71.0415C23.8444 72.7475 18.9183 74.1359 15.0283 75.1633C10.7687 76.284 7.75125 76.9004 6.04256 77C5.05491 76.9751 2.00108 74.827 0.558996 71.2968C-0.192343 69.4476 -0.186284 68.084 0.577174 67.2372L0.643825 67.1812L0.710476 67.1003C9.55082 57.6924 28.3828 42.4692 36.4354 35.9628L36.4657 35.9379L39.5862 33.4163L41.6281 31.7663L39.8831 29.7864L37.2171 26.7604C31.8183 20.6338 24.1656 13.6604 22.3902 12.2595C22.2872 12.0914 22.1539 11.3255 22.4205 10.0554C22.778 8.36808 23.699 6.4753 24.8806 4.981C26.0742 3.48047 27.2133 2.77068 27.8132 2.62748C35.1327 0.884127 42.8642 0 50.8011 0C57.1693 0 63.7072 0.566589 70.2572 1.68731H70.2693L70.3178 1.69354C70.645 1.74958 70.8449 1.81806 70.9479 1.86165C71.0691 2.34107 71.0091 3.63613 70.4456 4.90006Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-creativity" viewBox="0 0 78 103"><path d="M77.0667 28.942C75.7904 21.5078 71.7187 16.1134 68.7354 12.3333L70.6225 10.0495L70.6381 9.97861C71.2465 9.09266 71.8542 8.2067 72.4626 7.32074C73.4468 5.88746 74.8249 4.68965 74.6816 2.78465C74.6213 1.98296 74.3003 1.20726 73.796 0.58512C72.515 -0.994637 70.9263 1.00723 70.1879 2.08928C68.9414 3.91789 67.6204 5.67877 66.3786 7.51369L65.8539 8.29333C64.3271 7.29318 61.9389 5.72602 61.9389 5.72602C54.3123 2.66259 45.5035 5.20626 38.4798 8.89971C35.5357 10.4432 32.8265 12.4042 30.0233 14.1761C27.2984 15.9007 24.6988 17.8144 22.2402 19.9092C17.3229 24.0909 12.985 28.9577 9.38311 34.3286C1.92101 45.4641 -4.17082 61.3089 3.64364 73.8855C3.70628 73.9879 3.76892 74.0824 3.83156 74.1848C6.29022 78.02 10.4793 80.7054 14.3161 82.9813L16.2736 84.139L16.485 84.0839C10.9413 92.9277 6.45465 100.189 4.84164 103C7.96586 99.5901 12.6796 93.0773 18.0589 85.1943L18.7714 85.6195L19.7032 85.8558C33.2125 89.2807 47.1783 87.1315 58.0003 78.0003C62.6491 74.0777 66.406 69.1644 69.5646 63.9809C72.764 58.7306 75.6471 53.14 77.0667 47.1163C78.4949 41.0611 78.1128 35.0279 77.0667 28.942ZM18.7714 80.4534C16.5328 79.6037 14.1932 78.3043 14.1908 78.3027C4.27553 72.798 3.43144 59.9874 7.50154 50.4435C11.1277 41.9407 15.9964 34.1286 22.2519 27.3166C24.5211 24.8453 26.9711 22.5419 29.5864 20.4455C34.6462 16.3882 40.3896 13.1901 46.5065 11.0622C49.9048 9.88017 53.0439 8.96035 56.6301 9.5628C59.0895 9.97625 60.7706 11.5757 62.613 13.0822L48.4484 34.0459C44.4002 40.0389 30.0398 62.5225 18.7722 80.4542L18.7714 80.4534ZM71.2019 35.7304C70.6146 39.4317 69.4088 43.07 68.0464 46.4564C66.0411 51.4405 63.324 56.1207 60.091 60.3993C55.9731 65.8481 51.0621 70.7079 45.4776 74.6289C39.7193 78.672 32.9518 82.2324 25.7504 82.1174C24.4725 82.097 23.197 81.9505 21.9497 81.6662C21.613 81.5323 21.2293 81.3906 20.83 81.233C29.0124 69.0817 36.8817 56.7177 44.8606 44.4324C48.0944 39.4632 51.3596 34.5019 54.844 29.7059C58.2971 24.9493 62.3061 20.6573 65.7435 15.8929C65.7435 16.0504 68.3431 19.4761 68.5389 19.8147C69.5098 21.4763 70.2615 23.264 70.7861 25.1225C71.7649 28.5876 71.7735 32.1866 71.2019 35.7304Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-character" viewBox="0 0 70 88"><path d="M57.7165 63.5936C58.0873 62.6048 58.4711 61.5965 58.8419 60.6273C60.6827 55.8005 62.5886 50.8111 63.6489 45.8022L63.6619 45.7242L63.6749 45.6656L63.6945 45.6006L63.714 45.5225C63.9677 44.5142 64.3059 43.3303 64.6702 42.0813C65.5288 39.1475 66.5891 35.4982 67.4282 30.9772C68.6863 24.1917 69.2119 17.3321 68.9966 10.5415C68.9322 8.51644 68.0787 6.59159 66.6041 5.20211C65.9575 4.59258 65.2329 3.95443 64.5134 3.38914L64.5199 3.37613C61.4496 1.32053 57.8395 0 55.2505 0C53.5268 0 53.3056 0.48788 53.1039 0.917215C42.3651 24.6152 14.5895 56.3795 3.32961 66.0525C0.259328 68.7066 -0.436689 73.7415 0.233309 77.5535C0.890297 81.2679 6.23727 86.9403 10.0881 87.0964C21.9269 82.8876 53.8201 77.3908 66.5696 77.3908H66.7192C66.5891 77.1241 66.4135 76.8184 66.1923 76.4866C65.0865 74.8539 63.4213 73.4878 61.5023 72.6291L57.5929 70.8858L55.3553 69.8905L56.2139 67.6007L57.7165 63.5936ZM47.3348 67.5617L46.3331 70.2743L45.7606 71.829L44.1084 71.9656L41.2268 72.2063C37.8703 72.486 34.4292 72.9154 30.793 73.3772C29.6091 73.5268 28.3862 73.6764 27.1243 73.8326L15.5782 75.2377L8.9693 76.0443L13.282 70.9703L20.8146 62.1104C22.9482 59.606 24.8541 57.2121 26.4868 54.9939L26.5063 54.9679L26.5193 54.9418L26.5389 54.9223L26.5714 54.8833C29.9669 50.4859 33.447 45.6656 37.1417 40.5656C39.2168 37.6904 41.8057 34.1061 44.4206 30.5738L58.6857 11.2733L62.6342 5.92677C63.1272 5.25935 64.1856 5.67568 64.0913 6.50052L63.5325 11.3858C63.3718 12.7883 63.1077 14.1765 62.7422 15.5393L57.0725 36.6697C54.3405 46.8567 50.6067 58.6953 47.3348 67.5617Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-communication" viewBox="0 0 73 83"><path d="M72.6288 81.3189C71.4505 83.0991 67.7812 83.2455 66.1003 82.7616C63.6179 82.047 62.1436 79.8655 60.4249 78.1226C58.282 75.949 56.1688 73.7459 54.1232 71.483C50.1631 67.1012 46.5007 62.4736 43.243 57.5576L42.3705 56.696C41.4258 55.2714 40.9701 54.1261 39.9625 52.628L39.6132 52.1023C39.3842 51.7631 39.1552 51.4296 38.9262 51.0847L33.2354 42.6841L30.5932 38.1752L30.0258 42.5564L29.3216 52.6303L29.3102 52.7603L29.2987 52.9073C28.8865 58.8714 27.6172 66.7858 28.3386 72.699L28.3443 72.7159V72.7498L28.3501 72.7725C28.4588 73.5978 28.2069 74.3271 27.5497 75.0614C26.6376 76.0807 24.4707 76.9479 23.0989 76.7687C20.7046 76.4555 21.3819 72.6006 21.4002 71.0646C21.4701 65.1893 23.0279 59.461 23.4968 53.6213C24.4626 41.6055 28.0426 34.7771 20.0663 24.3923L19.906 24.1774C19.6827 23.8948 19.4651 23.6065 19.2418 23.3125C15.1374 17.8855 8.0754 6.55205 1.17711 3.03014L1.15993 3.02448L1.12558 3.00752L0.83932 2.86619C0.822717 2.85772 0.805541 2.84924 0.788938 2.84132C-0.449423 2.22682 -0.168315 0.386159 1.20173 0.183211C1.96432 0.0701477 2.81165 4.8666e-05 3.73055 4.8666e-05C6.81013 4.8666e-05 12.8176 -0.028217 14.163 1.27766C23.3291 10.2209 30.6041 21.9173 36.9075 32.3191C38.9858 35.7392 41.0068 39.3064 42.9648 42.7661C47.5335 50.8218 54.5411 59.1489 60.4896 66.7411C62.5621 69.3811 65.0812 72.4508 68.1156 75.1869C69.3557 76.3091 70.8448 76.875 72.0488 78.0101C72.6253 78.5539 73.0112 79.2962 72.9998 80.0831C72.9929 80.5619 72.8583 80.9718 72.6288 81.3189Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-collaboration" viewBox="0 0 78 80"><path d="M8.53258 39.3405C1.80455 53.3484 -0.275527 66.4653 0.0285195 77.3747C0.0509925 78.174 0.257877 78.8649 0.72981 79.3279C3.17673 81.7309 9.12944 75.5054 9.82941 72.0858C10.2405 70.0771 9.63772 68.6279 9.18959 67.1219C6.92311 59.5006 8.91264 48.9433 14.324 37.635C17.0571 31.9234 20.6707 26.0023 25.0555 20.1632C28.5911 15.4556 33.1815 12.2533 38.0754 10.5049C48.6569 6.72597 57.658 10.3193 60.7731 15.9404C67.523 28.1207 69.1952 51.8636 48.6093 75.4479C47.0897 77.1891 46.8398 78.9375 48.1334 79.2242C60.3124 81.9258 67.6043 68.1365 70.841 58.6638C72.8934 52.6562 74.7547 46.1083 76.1242 39.9522C77.8606 32.1499 78.1758 23.5306 75.7349 15.8341C72.4584 5.50332 61.6912 -5.28055 42.9355 2.86119C27.3478 9.62902 15.3822 25.0816 8.53258 39.3405Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-curation" viewBox="0 0 75 75"><path d="M71.581 9.16663C65.192 -0.862917 53.4314 -1.96031 43.108 2.49582C34.155 6.36094 27.0474 13.3565 21.4804 21.1869C15.7562 29.2375 11.5295 36.8745 11.1226 46.978C10.8897 52.7518 13.2691 60.8422 15.0576 67.0035C13.266 67.0203 8.14282 67.0035 7.18066 67.0035C2.47627 66.9457 -3.59342 76.0284 2.69349 74.7705C5.7227 74.8165 8.62359 74.8613 11.6528 74.9074C12.1624 75.0536 12.6926 74.9074 13.2478 74.9416C24.596 75.6539 18.6001 69.8714 14.9374 56.5758C10.1817 39.3125 23.8911 14.7506 41.5587 9.30971C48.4991 7.17216 56.0887 7.79427 60.0006 14.8141C66.3933 26.2863 61.0911 48.6471 41.5943 70.86C40.1552 72.4998 39.9185 74.1465 41.1436 74.4171C44.124 75.0753 47.5852 74.8066 50.6319 74.7892C54.4743 74.7668 59.9912 75.484 62.8057 72.5434C63.8111 71.4926 67.1314 66.9189 63.5901 66.8741C61.6382 66.8493 54.0474 67.0042 53.8088 67.0042C53.7256 67.0042 53.6924 67.0546 53.6367 67.0042C56.5789 64.0741 64.7607 52.9341 66.8221 49.6525C69.2692 45.7581 71.2141 41.5496 72.5938 37.1669C73.6593 33.7826 74.3879 30.2939 74.7504 26.7647C75.3789 20.6388 74.992 14.5254 71.5797 9.16787L71.581 9.16663Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-commerciality" viewBox="0 0 102 62"><path d="M101.163 4.63127C101.127 4.4603 101.079 4.29133 101.02 4.12566C99.7443 0.552633 94.9861 0.761369 91.8816 0.962816C84.7591 1.42402 79.2447 5.14284 74.1312 9.89407C69.5781 14.1244 65.169 19.2136 60.9319 23.7217C58.3194 26.5008 56.738 26.0436 55.2309 22.8735C51.1478 14.2855 47.2088 6.11164 37.9844 2.3027C28.6199 -1.56388 17.2053 -0.718337 9.36443 6.03742C-5.50126 18.8452 -1.4069 42.2382 12.8062 53.828C19.6279 59.391 31.2716 63.3722 39.7949 59.3387C42.9452 57.8477 45.5291 55.378 48.3647 53.4019C51.8927 50.9428 54.6779 47.4851 58.6474 50.3829C61.1132 52.1827 64.0464 54.9108 66.2492 57.0233C69.918 60.542 75.2154 61.9442 80.1921 61.1212C84.6914 60.377 91.3086 57.024 91.7176 51.8315C91.9155 49.316 88.9172 45.9981 86.3386 47.3638C85.3427 47.8913 84.6197 48.8025 83.7672 49.5387C75.9284 56.3077 61.2294 45.4918 61.7751 36.6812C62.2412 29.1601 68.1062 24.1438 73.1572 18.936C78.045 13.8965 83.5933 8.27852 91.1134 8.74502C93.1869 8.87358 95.8199 10.4229 97.7612 10.0299C100.089 9.55876 101.649 6.92935 101.163 4.63259V4.63127ZM48.8075 42.1527C45.6533 47.9231 39.4457 52.6969 33.8044 53.9248C16.5845 57.6734 3.33145 37.202 5.71955 21.8994C6.66961 15.8122 9.95864 8.9743 15.7612 6.14344C24.3689 1.94421 33.3138 7.06188 39.3262 13.2835C45.3831 19.5509 52.7552 30.1368 50.0086 39.2993C49.7118 40.2893 49.3035 41.2456 48.8075 42.1527Z" fill="currentColor"/></symbol>
+    <symbol id="su-ic-coaching" viewBox="0 0 60 76"><path d="M59.6923 8.31368C59.6472 8.12606 59.5956 7.93843 59.5441 7.75728C58.5713 4.39946 54.5704 0.161745 51.362 0C41.0474 3.66837 13.5632 8.43661 2.20489 8.52072C2.27575 8.64364 2.35951 8.77304 2.4497 8.9089C3.39033 10.3064 4.8077 11.4709 6.44412 12.202L9.83293 13.7224L12.0427 14.7123L11.1923 16.9897L9.89092 20.4769C9.60744 21.2403 9.31752 22.0167 9.02761 22.7672L8.9052 23.0842C7.30099 27.3155 5.6388 31.689 4.7175 36.0691L4.69817 36.1532L4.69173 36.1791L4.68529 36.1985L4.6724 36.2697C4.6724 36.2697 4.66596 36.2891 4.65952 36.302C4.43403 37.2142 4.15055 38.2106 3.81554 39.3557C3.06175 41.9437 2.13402 45.1527 1.41244 49.0928C0.162579 55.8667 -0.262633 62.7246 0.156136 69.4856C0.185128 69.549 0.232159 69.6059 0.275324 69.6603C0.350059 69.7541 0.429947 69.844 0.511124 69.9326C0.620004 70.0517 0.730817 70.1681 0.843563 70.2833C0.978857 70.4217 1.11544 70.5583 1.25331 70.6941C1.40794 70.8462 1.56385 70.9969 1.7204 71.1464C1.88791 71.3062 2.05606 71.464 2.22615 71.6219C2.4001 71.783 2.57469 71.9428 2.75057 72.1013C2.92388 72.2579 3.09848 72.4125 3.27371 72.5665C3.43993 72.7121 3.60744 72.8563 3.77688 72.9987C3.85355 73.0634 3.92828 73.1326 4.01139 73.1876C4.14153 73.2749 4.27232 73.3597 4.40504 73.4425C4.52745 73.5188 4.6505 73.5932 4.7742 73.667C5.02095 73.8132 5.27157 73.9549 5.52412 74.0908C5.77473 74.2253 6.02857 74.3547 6.28434 74.4783C6.53625 74.5999 6.79138 74.717 7.04844 74.8277C7.2997 74.9364 7.55354 75.0392 7.80995 75.1363C8.05864 75.2307 8.30926 75.3194 8.56181 75.4022C8.80534 75.4818 9.0508 75.5555 9.2982 75.6222C9.53464 75.6862 9.77302 75.7438 10.0127 75.7943C10.2401 75.8421 10.4688 75.8829 10.6982 75.9159C10.914 75.9469 11.1311 75.9702 11.3489 75.9845C11.5003 75.9942 11.6523 76 11.8044 76C13.1444 76 13.2991 75.6636 13.4408 75.3466C18.7431 63.5974 28.1364 50.7484 35.0815 42.0336C42.8964 32.2254 51.5231 22.8054 57.0573 18.0242C59.5377 15.8827 60.5685 12.0655 59.6923 8.31304V8.31368ZM48.6625 14.1494L42.1362 21.8614C40.2807 24.0482 38.6185 26.1444 37.1882 28.0983L37.1303 28.1695L37.1174 28.1889L37.0981 28.2148C34.1409 32.0578 31.0935 36.2891 27.8658 40.7726C25.933 43.4576 23.7361 46.5049 21.4941 49.5586L9.13069 66.3477L4.17697 73.0084C4.13574 73.064 4.04747 73.0317 4.05134 72.9624L4.35156 67.8532C4.49652 65.385 4.89145 62.9381 5.52927 60.5508L9.96179 43.9687C12.3584 34.9951 15.6248 24.5917 18.4854 16.8085L19.3551 14.447L19.9221 12.9008L21.5585 12.7649L24.0582 12.5514C27.0089 12.3055 30.1465 11.9109 33.1745 11.5292L34.1667 11.4062C34.8882 11.3092 35.6291 11.2186 36.3829 11.128L46.3883 9.90525L52.934 9.103L48.6625 14.1494Z" fill="currentColor"/></symbol>
+  </svg>
+  
+  <section class="nd-welcome-section" aria-label="Welcome">
+    <div class="nd-welcome-inner">
+      <h1 class="nd-welcome-headline nd-reveal">Welcome to the Platform</h1>
+      <p class="nd-welcome-body nd-reveal">Everything below is organised by our <em class="nd-welcome-em">Nine Dimensions of the Very Best Consultants</em>. Click on the dimension you're most interested in exploring and you'll go straight to the content for that dimension. We add new content every month, so there's always something fresh to come back to.</p>
+      <p class="nd-welcome-sub nd-reveal">Inside each dimension you'll find learning assessments, self-reflection exercises, and team challenges.</p>
+    </div>
+  </section>
+
+  <section class="cg-section" aria-label="The Nine Dimensions">
+
+    <div class="cg-intro">
+      <h2 class="cg-headline cg-reveal"><svg class="hpm-accent hpm-chev hpm-accent--coral" viewBox="0 0 40 28" aria-hidden="true"><path d="M4 5 L17 14 L4 23" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 5 L35 14 L22 23" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg> The Nine <em>Dimensions</em> of the Very Best Consultants</h2>
+      <p class="cg-body cg-reveal">This methodology has been designed over two decades, working on the frontline with more than 11,000 consultants in complex, demanding environments. It captures the traits, behaviours, and skills of those who consistently earn trust, create value, and deliver measurable results for clients.</p>
+    </div>
+
+    <div class="cg-grid">
+          <div class="cg-rowlab cg-reveal">
+            <span class="cg-rowlab-cluster">Cluster 1</span>
+            <span class="cg-rowlab-name">Thinking</span>
+          </div>
+          <a href="https://www.showinguplearning.com/program/curiosity" class="cg-tile cg-thinking cg-reveal" aria-label="Explore the Curiosity dimension">
+            <span class="cg-name">Curiosity</span>
+            <svg class="cg-icon" viewBox="0 0 84 78" aria-hidden="true"><use href="#su-ic-curiosity"/></svg>
+            <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+          <a href="https://www.showinguplearning.com/program/critical-thinking" class="cg-tile cg-thinking cg-reveal" aria-label="Explore the Critical Thinking dimension">
+            <span class="cg-name">Critical Thinking</span>
+            <svg class="cg-icon" viewBox="0 0 71 77" aria-hidden="true"><use href="#su-ic-critical-thinking"/></svg>
+            <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+          <a href="https://www.showinguplearning.com/program/creativityprogram" class="cg-tile cg-thinking cg-reveal" aria-label="Explore the Creativity dimension">
+            <span class="cg-name">Creativity</span>
+            <svg class="cg-icon" viewBox="0 0 78 103" aria-hidden="true"><use href="#su-ic-creativity"/></svg>
+            <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+          <div class="cg-rowlab cg-reveal">
+            <span class="cg-rowlab-cluster">Cluster 2</span>
+            <span class="cg-rowlab-name">Presence</span>
+          </div>
+          <a href="https://www.showinguplearning.com/program/characterprogram" class="cg-tile cg-presence cg-reveal" aria-label="Explore the Character dimension">
+            <span class="cg-name">Character</span>
+            <svg class="cg-icon" viewBox="0 0 70 88" aria-hidden="true"><use href="#su-ic-character"/></svg>
+            <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+          <a href="https://www.showinguplearning.com/program/communication-program" class="cg-tile cg-presence cg-reveal" aria-label="Explore the Communication dimension">
+            <span class="cg-name">Communication</span>
+            <svg class="cg-icon" viewBox="0 0 73 83" aria-hidden="true"><use href="#su-ic-communication"/></svg>
+            <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+          <a href="https://www.showinguplearning.com/program/collaboration-path" class="cg-tile cg-presence cg-reveal" aria-label="Explore the Collaboration dimension">
+            <span class="cg-name">Collaboration</span>
+            <svg class="cg-icon" viewBox="0 0 78 80" aria-hidden="true"><use href="#su-ic-collaboration"/></svg>
+            <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+          <div class="cg-rowlab cg-reveal">
+            <span class="cg-rowlab-cluster">Cluster 3</span>
+            <span class="cg-rowlab-name">Impact</span>
+          </div>
+          <a href="https://www.showinguplearning.com/program/curation-dimension" class="cg-tile cg-impact cg-reveal" aria-label="Explore the Curation dimension">
+            <span class="cg-name">Curation</span>
+            <svg class="cg-icon" viewBox="0 0 75 75" aria-hidden="true"><use href="#su-ic-curation"/></svg>
+            <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+          <a href="https://www.showinguplearning.com/program/commerciality-dimension" class="cg-tile cg-impact cg-reveal" aria-label="Explore the Commerciality dimension">
+            <span class="cg-name">Commerciality</span>
+            <svg class="cg-icon" viewBox="0 0 102 62" aria-hidden="true"><use href="#su-ic-commerciality"/></svg>
+            <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+          <a href="https://www.showinguplearning.com/program/coaching-dimension" class="cg-tile cg-impact cg-reveal" aria-label="Explore the Coaching dimension">
+            <span class="cg-name">Coaching</span>
+            <svg class="cg-icon" viewBox="0 0 60 76" aria-hidden="true"><use href="#su-ic-coaching"/></svg>
+            <span class="cg-go">Explore <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  function suInit() {
+    var wrap = document.querySelector('.nd-block');
+    if (!wrap) return;
+
+    // No IntersectionObserver: surface everything, skip the motion machine.
+    if (!('IntersectionObserver' in window)) {
+      wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) {
+        el.classList.add('is-revealed');
+      });
+      return;
+    }
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // -- Reveal observer ------------------------------
+    // Adds is-revealed to any reveal-tagged element. Scoped to the wrapper so
+    // LearnWorlds-native elements are never touched.
+    var splitSel = '.nd-welcome-headline, .cg-headline';
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.classList.add('is-revealed');
+        // Hand transitions over to the quick interaction lane once the entrance has
+        // settled (covers --su-dur plus the longest card stagger, with headroom).
+        setTimeout(function () { el.classList.add('su-live'); }, 1600);
+        // Split headlines restore their original markup after the line masks have
+        // finished rising, so later resizes re-wrap naturally.
+        if (el.suSavedNodes) {
+          var lineCount = el.querySelectorAll('.su-line').length;
+          setTimeout(function () { suUnsplit(el); }, 800 + lineCount * 90 + 250);
+        }
+        revealObserver.unobserve(el);
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+    // Everything except the split-target headlines is observed immediately; the
+    // split targets are observed only AFTER they've been split (see below) - else an
+    // above-the-fold headline reveals before fonts load and the splitter skips it.
+    wrap.querySelectorAll('[class*="-reveal"]').forEach(function (el) {
+      if (reducedMotion || !el.matches(splitSel)) revealObserver.observe(el);
+    });
+
+    // Cluster tiles: pointer-tracking edge glow. The glow spans are injected here (not
+    // in the markup) so no-JS, touch and reduced-motion tiles keep the plain rollover.
+    // --cg-deg aims the conic mask at the pointer; --cg-d (0-100) is closeness to the
+    // nearest tile edge and drives the glow opacity in CSS.
+    if (!reducedMotion && window.matchMedia('(hover: hover)').matches) {
+      wrap.querySelectorAll('.cg-tile').forEach(function (tile) {
+        var glow = document.createElement('span');
+        glow.className = 'cg-glow';
+        glow.setAttribute('aria-hidden', 'true');
+        tile.appendChild(glow);
+        tile.addEventListener('pointermove', function (e) {
+          var r = tile.getBoundingClientRect();
+          var cx = r.width / 2, cy = r.height / 2;
+          var dx = (e.clientX - r.left) - cx, dy = (e.clientY - r.top) - cy;
+          var deg = 0;
+          if (dx !== 0 || dy !== 0) {
+            deg = Math.atan2(dy, dx) * 180 / Math.PI + 90;
+            if (deg < 0) deg += 360;
+          }
+          // closeness to the nearest edge: 0 at centre, 1 on the boundary
+          var kx = dx === 0 ? Infinity : cx / Math.abs(dx);
+          var ky = dy === 0 ? Infinity : cy / Math.abs(dy);
+          var d = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
+          tile.style.setProperty('--cg-deg', deg.toFixed(1) + 'deg');
+          tile.style.setProperty('--cg-d', (d * 100).toFixed(1));
+        });
+      });
+    }
+
+    // -- Headline line-mask reveals ------------------------------
+    // Regroups an opted-in headline into per-line overflow masks so the lines rise
+    // individually. Runs once fonts are ready (wrap points move as fonts land), never
+    // under reduced motion; the original nodes are restored after the entrance so
+    // responsive re-wrapping is never constrained. Any failure puts the nodes straight
+    // back and the headline keeps the standard block fade-up.
+    var splitTargets = [];
+
+    function suUnsplit(el) {
+      if (!el.suSavedNodes) return;
+      el.textContent = '';
+      el.appendChild(el.suSavedNodes);
+      el.suSavedNodes = null;
+      el.classList.remove('su-split');
+      el.removeAttribute('aria-label');
+    }
+
+    function suSplit(el) {
+      if (el.suSavedNodes || el.classList.contains('is-revealed')) return;
+      // Park the original child nodes so they can be restored verbatim.
+      var saved = document.createDocumentFragment();
+      while (el.firstChild) { saved.appendChild(el.firstChild); }
+      try {
+        // 1. Tokenise: text nodes split into words; element children (the capsule <em>)
+        //    become ATOMIC tokens (deep-cloned). The capsule is inline-block, so it can
+        //    never break across lines by design - no per-word element splitting needed.
+        var tokens = [];
+        Array.prototype.slice.call(saved.childNodes).forEach(function (n) {
+          if (n.nodeType === 3) {
+            n.textContent.split(/\s+/).forEach(function (w) {
+              if (w) tokens.push({ text: w, node: null });
+            });
+          } else if (n.nodeType === 1) {
+            tokens.push({ text: (n.textContent || '').replace(/\s+/g, ' ').trim(), node: n });
+          } else {
+            throw new Error('unsupported headline content');
+          }
+        });
+        if (tokens.length < 2) throw new Error('too short to split');
+
+        // 2. Measuring pass: lay the tokens out in place and read their tops.
+        //    The element is still at opacity 0 (un-revealed), but it is laid out.
+        tokens.forEach(function (t) {
+          var box;
+          if (t.node) {
+            box = t.node.cloneNode(true);
+          } else {
+            box = document.createElement('span');
+            box.textContent = t.text;
+          }
+          t.span = box;
+          el.appendChild(box);
+          el.appendChild(document.createTextNode(' '));
+        });
+
+        // 3. Group words into lines. Only real WORDS drive line breaks - tops are
+        //    compared with a half-font tolerance. GUARD: if an atomic element token (the
+        //    capsule) has wrapped internally to more than one line, its box grows ~a line
+        //    taller than the text row and its top sits a line above its neighbours -
+        //    grouping by top would then mis-place it, and the split block would not match
+        //    the natural height (a jump on unsplit). In that case bail out of the
+        //    line-mask entirely: the headline keeps the plain block fade-up with the
+        //    capsule fully intact. (Desktop: the 1-line pill line-masks normally.)
+        var fs = parseFloat(window.getComputedStyle(el).fontSize) || 48;
+        var lines = [];
+        var lastTop = null;
+        var lastRight = null;
+        tokens.forEach(function (t) {
+          var rect = t.span.getBoundingClientRect();
+          if (t.node && rect.height > fs * 1.5) throw new Error('multi-line inline token');
+          if (!t.text) {                          // accent token (empty text, offset low)
+            if (lines.length === 0) {
+              lines.push([]);                     // leading accent opens the first line
+            } else if (lastRight !== null && rect.left < lastRight - 1) {
+              lines.push([]);                     // accent wrapped: it starts the new line
+              lastTop = null;                     // next word joins this line, top unchecked
+            }
+            lines[lines.length - 1].push(t);
+            lastRight = rect.right;
+            return;                               // does not update lastTop
+          }
+          if (lastTop === null) {
+            if (lines.length === 0) lines.push([]);
+          } else if (Math.abs(rect.top - lastTop) > fs * 0.5) {
+            lines.push([]);
+          }
+          lines[lines.length - 1].push(t);
+          lastTop = rect.top;
+          lastRight = rect.right;
+        });
+        if (lines.length < 2) throw new Error('single line'); // fade-up reads fine as-is
+
+        // 4. Rebuild as per-line masks. Bottom padding + an equal negative bottom margin
+        //    gives descenders (and the capsule's bottom border) clearance below the text
+        //    while cancelling in layout, so split vs natural heights match (no shift on
+        //    unsplit). The capsule's TOP needs no padding - an inline-block taller than
+        //    the line grows the line box to fit it, so it is never clipped.
+        var pad = Math.max(2, Math.round(fs * 0.2));
+        el.textContent = '';
+        lines.forEach(function (words, li) {
+          var line = document.createElement('span');
+          line.className = 'su-line';
+          if (li < lines.length - 1) {
+            line.style.paddingBottom = pad + 'px';
+            line.style.marginBottom = (0 - pad) + 'px';
+          }
+          var inner = document.createElement('span');
+          inner.className = 'su-line-inner';
+          inner.style.setProperty('--su-line-i', String(li));
+          words.forEach(function (t, wi) {
+            if (wi > 0) inner.appendChild(document.createTextNode(' '));
+            if (t.node) { inner.appendChild(t.node.cloneNode(true)); }
+            else { inner.appendChild(document.createTextNode(t.text)); }
+          });
+          line.appendChild(inner);
+          el.appendChild(line);
+        });
+
+        // 5. While split, expose the unbroken text as the accessible name.
+        el.setAttribute('aria-label', tokens.map(function (t) { return t.text; }).filter(Boolean).join(' '));
+        el.suSavedNodes = saved;
+        el.classList.add('su-split');
+      } catch (err) {
+        el.textContent = '';
+        el.appendChild(saved); // fall back to the standard fade-up, markup untouched
+      }
+    }
+
+    // Split the opted-in headlines, THEN start observing them for reveal. Gated on
+    // fonts.ready (wrap points move as DM Sans / EB Garamond load); the timeout is a
+    // fallback if it never resolves.
+    if (!reducedMotion) {
+      splitTargets = Array.prototype.slice.call(wrap.querySelectorAll(splitSel));
+      var suSplitStarted = false;
+      var beginSplit = function () {
+        if (suSplitStarted) return;
+        suSplitStarted = true;
+        splitTargets.forEach(suSplit);
+        splitTargets.forEach(function (el) { revealObserver.observe(el); });
+      };
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(beginSplit);
+        setTimeout(beginSplit, 1500);
+      } else {
+        beginSplit();
+      }
+    }
+
+    // Re-split on resize while still unrevealed (wrap points move); release any
+    // still-split revealed headline straight back to natural wrapping.
+    var suResizeTimer = null;
+    window.addEventListener('resize', function () {
+      if (!splitTargets.length) return;
+      clearTimeout(suResizeTimer);
+      suResizeTimer = setTimeout(function () {
+        splitTargets.forEach(function (el) {
+          suUnsplit(el);
+          if (!el.classList.contains('is-revealed')) suSplit(el);
+        });
+      }, 150);
+    });
+  }
+
+  // LearnWorlds can inject this block after DOMContentLoaded has already fired -
+  // waiting unconditionally would mean the handler never runs and reveals never fire.
+  if (document.readyState !== 'loading') { suInit(); }
+  else { document.addEventListener('DOMContentLoaded', suInit); }
+})();
+</script>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="page-platform-logged-in.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] page-platform-logged-in.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

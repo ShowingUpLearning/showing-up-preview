@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Site showcase reel - for LinkedIn — Showing Up (preview)</title>
+</head>
+<body>
+<style>
+  /* Background set explicitly for the same reason as INDEX_CSS - dark text
+     on a dark-mode UA background is unreadable. */
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 960px;
+         margin: 0 auto; padding: 48px 24px; background: #fff; color: #1a1a1a;
+         line-height: 1.5; }
+  h1 { font-weight: 500; font-size: 1.6rem; margin: 0 0 .3em; }
+  p.note { color: #666; font-size: .9rem; margin: 0 0 1.5em; }
+  p.back { margin: 0 0 1.5em; }
+  p.back a { color: #6a6a6a; text-decoration: none; font-size: .85rem; }
+  /* Sized by BOTH axes rather than width alone, so the element box keeps the
+     video's own aspect ratio and there are no letterbox bars. Landscape cuts
+     bind on max-width and look exactly as before; a portrait social cut binds
+     on max-height instead (4:5 at the 960px body width would otherwise be
+     1200px tall, putting the controls below the fold). Do NOT reintroduce
+     width:100% here - with a clamped height it makes a landscape box and
+     pillarboxes the portrait drafts in black. */
+  /* The height budget subtracts the back link + title + note above the player
+     (~260px) plus the page's bottom padding, so the CONTROLS land on screen
+     and not just the picture - a vh fraction alone leaves the scrub bar under
+     the fold. min-height stops it collapsing on a short window. */
+  video { max-width: 100%; max-height: calc(100vh - 300px); min-height: 300px;
+          width: auto; height: auto; display: block; margin: 0 auto;
+          background: #000; border-radius: 6px; }
+</style>
+<p class="back"><a href="index.html">&larr; Back to the preview index</a></p>
+<h1>Site showcase reel - for LinkedIn</h1>
+<p class="note">32 sec, silent, 4:5 for the LinkedIn feed. Built from screenshots of the site, not filmed - there is no camera footage of anyone in it. Reviewed frame by frame 2026-07-24. Copy and the closing call-to-action are open to change.</p>
+<video controls preload="metadata" playsinline
+       src="video/showcase-reel.mp4#t=0.1"></video>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="video-showcase-reel.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] video-showcase-reel.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Privacy Policy — Showing Up (preview)</title>
+</head>
+<body>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* -- SCOPED RESET -- */
+  .pp *, .pp *::before, .pp *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .pp { font-size: 16px; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; background: #FFF6F1; color: #353434; }
+
+  /* -- Pill button (dark bg -> coral fill) -- */
+  .pp-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: #FF8269 !important; color: #FFF6F1 !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    padding: 14px 28px; border-radius: 100px;
+    transition: background .2s, color .2s;
+    width: fit-content;
+  }
+  .pp-pill:link, .pp-pill:visited {
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    background: #FF8269 !important; color: #FFF6F1 !important;
+  }
+  .pp-pill:hover, .pp-pill:active {
+    background: #FFF6F1 !important; color: #1e1d1d !important;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+  }
+
+  /* ========================================
+     HEADER - compact cream
+     ======================================== */
+  .pp-header {
+    background: #FFF6F1;
+    padding: 96px 80px 64px;
+    border-bottom: 1px solid rgba(30,29,29,.08);
+  }
+  .pp-header-inner { max-width: 780px; margin: 0 auto; }
+  .pp-overline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: #FF8269;
+    margin-bottom: 20px;
+    text-align: left !important;
+  }
+  .pp-hl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 300; line-height: 1.08;
+    letter-spacing: -.02em;
+    color: #1e1d1d;
+    margin-bottom: 18px;
+    text-align: left !important;
+  }
+  .pp-meta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 400;
+    color: rgba(53,52,52,.55);
+    margin-bottom: 28px;
+    text-align: left !important;
+  }
+  .pp-intro {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; line-height: 1.6; font-weight: 400;
+    color: #353434;
+    text-align: left !important;
+  }
+
+  /* ========================================
+     BODY - policy content
+     ======================================== */
+  .pp-body {
+    background: #FFF6F1;
+    padding: 80px 80px 140px;
+  }
+  .pp-body-inner { max-width: 780px; margin: 0 auto; }
+
+  .pp-section { margin-top: 56px; }
+  .pp-section:first-of-type { margin-top: 0; }
+
+  .pp-h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px; font-weight: 500;
+    letter-spacing: -.01em;
+    color: #1e1d1d;
+    margin-bottom: 20px;
+    text-align: left !important;
+  }
+  .pp-h2-num {
+    color: #FF8269;
+    font-weight: 500;
+    margin-right: 10px;
+  }
+
+  .pp-p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; line-height: 1.6; font-weight: 400;
+    color: #353434;
+    margin-bottom: 16px;
+    text-align: left !important;
+  }
+  .pp-p:last-child { margin-bottom: 0; }
+
+  .pp-strong {
+    font-weight: 600;
+    color: #1e1d1d;
+  }
+
+  /* Definition list (clause 1) */
+  .pp-dl { margin: 4px 0 0; padding: 0; }
+  .pp-dl-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; line-height: 1.6; font-weight: 400;
+    color: #353434;
+    margin-bottom: 18px;
+    padding-left: 20px;
+    border-left: 2px solid rgba(255,130,105,.25);
+    text-align: left !important;
+    list-style: none;
+  }
+  .pp-term {
+    font-weight: 600;
+    color: #1e1d1d;
+    letter-spacing: -.005em;
+  }
+
+  /* Numbered sub-clause lists (e.g. 2.1, 3.4.1, 6.1.1)
+     Hanging-indent approach: .pp-num is an inline-block at fixed width,
+     sharing the same baseline as the surrounding 16px text. Text-indent
+     pulls the first line back so wrapped lines indent cleanly under it. */
+  .pp-num-list { margin: 8px 0 16px; padding: 0; list-style: none; }
+  .pp-num-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; line-height: 1.6; font-weight: 400;
+    color: #353434;
+    padding-left: 56px;
+    text-indent: -56px;
+    margin-bottom: 8px;
+    text-align: left !important;
+  }
+  .pp-num {
+    display: inline-block;
+    width: 56px;
+    text-indent: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FF8269;
+    letter-spacing: .01em;
+  }
+
+  /* Nested numbered list (3.4.1 under 3.4) - reset text-indent on the
+     nested <ol> and re-apply on its items with a slightly wider column. */
+  .pp-num-item .pp-num-list { margin: 10px 0 0; text-indent: 0; }
+  .pp-num-item .pp-num-item { padding-left: 60px; text-indent: -60px; }
+  .pp-num-item .pp-num-item .pp-num { width: 60px; }
+
+  /* Inline site mention */
+  .pp-wwww {
+    font-weight: 600;
+    color: #1e1d1d;
+  }
+
+  /* Inline link (for use on cream background - body copy links) */
+  .pp-inline-link {
+    color: #FF8269 !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255,130,105,.35) !important;
+    padding-bottom: 1px;
+    transition: color .2s, border-color .2s;
+  }
+  .pp-inline-link:link, .pp-inline-link:visited {
+    color: #FF8269 !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255,130,105,.35) !important;
+  }
+  .pp-inline-link:hover, .pp-inline-link:active {
+    color: #e8614a !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(232,97,74,.7) !important;
+  }
+
+  /* ========================================
+     CLOSE CTA - dark
+     ======================================== */
+  .pp-close {
+    background: #1e1d1d; color: #FFF6F1;
+    padding: 96px 80px;
+  }
+  .pp-close-inner {
+    max-width: 780px; margin: 0 auto;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 20px;
+  }
+  .pp-close-hl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(26px, 3vw, 32px);
+    font-weight: 300;
+    letter-spacing: -.01em;
+    color: #FFF6F1;
+    text-align: left !important;
+  }
+  .pp-close-p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; line-height: 1.6; font-weight: 400;
+    color: rgba(255,246,241,.78);
+    margin-bottom: 8px;
+    text-align: left !important;
+  }
+  .pp-mail {
+    color: #FF8269 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: 1px solid rgba(255,130,105,.4) !important;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    padding-bottom: 1px;
+    transition: color .2s, border-color .2s;
+  }
+  .pp-mail:link, .pp-mail:visited {
+    color: #FF8269 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: 1px solid rgba(255,130,105,.4) !important;
+  }
+  .pp-mail:hover, .pp-mail:active {
+    color: #FFF6F1 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: 1px solid rgba(255,246,241,.6) !important;
+  }
+
+  /* ========================================
+     MOBILE
+     ======================================== */
+  @media (max-width: 860px) {
+    .pp-header { padding: 64px 24px 48px; }
+    .pp-body { padding: 56px 24px 96px; }
+    .pp-close { padding: 72px 24px; }
+
+    .pp-section { margin-top: 44px; }
+
+    .pp-dl-item { padding-left: 16px; }
+    .pp-num-item { padding-left: 44px; text-indent: -44px; }
+    .pp-num { width: 44px; }
+    .pp-num-item .pp-num-item { padding-left: 48px; text-indent: -48px; }
+    .pp-num-item .pp-num-item .pp-num { width: 48px; }
+
+    .pp-close-inner > * { align-self: stretch !important; }
+    .pp-close-inner .pp-pill { align-self: flex-start !important; }
+  }
+</style>
+
+<div class="pp">
+
+  
+  <header class="pp-header">
+    <div class="pp-header-inner">
+      <div class="pp-overline">Legal</div>
+      <h1 class="pp-hl">Privacy Policy</h1>
+      <div class="pp-meta">Last updated: 21 April 2026</div>
+      <p class="pp-intro">
+        This Policy applies as between you, the User of this Web Site, and
+        <span class="pp-strong">Showing Up Learning Limited</span>, a company registered in England and Wales under company number <span class="pp-strong">16286537</span>, with its registered office at 25 Beaconsfield Road, Clacton On Sea, Essex, CO15 6BU. Showing Up Learning Limited is the data controller and provider of this Web Site. This Policy applies to our use of any and all Data collected by us in relation to your use of the Web Site and any Services or Systems therein.
+      </p>
+    </div>
+  </header>
+
+  
+  <div class="pp-body">
+    <div class="pp-body-inner">
+
+      
+      <section class="pp-section">
+        <h2 class="pp-h2"><span class="pp-h2-num">1.</span>Definitions and Interpretation</h2>
+        <p class="pp-p">In this Policy the following terms shall have the following meanings:</p>
+        <ul class="pp-dl">
+          <li class="pp-dl-item">
+            <span class="pp-term">"Account"</span> means collectively the personal information, Payment Information and credentials used by Users to access Material and / or any communications System on the Web Site.
+          </li>
+          <li class="pp-dl-item">
+            <span class="pp-term">"Content"</span> means any text, graphics, images, audio, video, software, data compilations and any other form of information capable of being stored in a computer that appears on or forms part of this Web Site.
+          </li>
+          <li class="pp-dl-item">
+            <span class="pp-term">"Cookie"</span> means a small text file placed on your computer by <span class="pp-strong">Showing Up Learning Limited</span> when you visit certain parts of this Web Site. This allows us to identify recurring visitors and to analyse their browsing habits within the Web Site.
+          </li>
+          <li class="pp-dl-item">
+            <span class="pp-term">"Data"</span> means collectively all information that you submit to the Web Site. This includes, but is not limited to, Account details and information submitted using any of our Services or Systems.
+          </li>
+          <li class="pp-dl-item">
+            <span class="pp-term">"Showing Up Learning Limited"</span> means <span class="pp-strong">Showing Up Learning Limited</span>, a company registered in England and Wales under company number 16286537, with its registered office at 25 Beaconsfield Road, Clacton On Sea, Essex, CO15 6BU.
+          </li>
+          <li class="pp-dl-item">
+            <span class="pp-term">"Service"</span> means collectively any online facilities, tools, services or information that <span class="pp-strong">Showing Up Learning Limited</span> makes available through the Web Site either now or in the future.
+          </li>
+          <li class="pp-dl-item">
+            <span class="pp-term">"System"</span> means any online communications infrastructure that <span class="pp-strong">Showing Up Learning Limited</span> makes available through the Web Site either now or in the future. This includes, but is not limited to, web-based email, message boards, live chat facilities and email links.
+          </li>
+          <li class="pp-dl-item">
+            <span class="pp-term">"User" / "Users"</span> means any third party that accesses the Web Site and is not employed by <span class="pp-strong">Showing Up Learning Limited</span> and acting in the course of their employment.
+          </li>
+          <li class="pp-dl-item">
+            <span class="pp-term">"Website"</span> means the website that you are currently using (<span class="pp-wwww">www.showinguplearning.com</span>) and any sub-domains of this site unless expressly excluded by their own terms and conditions.
+          </li>
+        </ul>
+      </section>
+
+      
+      <section class="pp-section">
+        <h2 class="pp-h2"><span class="pp-h2-num">2.</span>Data Collected</h2>
+        <p class="pp-p">Without limitation, any of the following Data may be collected:</p>
+        <ol class="pp-num-list">
+          <li class="pp-num-item"><span class="pp-num">2.1</span>name;</li>
+          <li class="pp-num-item"><span class="pp-num">2.2</span>date of birth;</li>
+          <li class="pp-num-item"><span class="pp-num">2.3</span>job title &amp; profession;</li>
+          <li class="pp-num-item"><span class="pp-num">2.4</span>contact information such as email addresses and telephone numbers;</li>
+          <li class="pp-num-item"><span class="pp-num">2.5</span>demographic information such as post code, preferences and interests;</li>
+          <li class="pp-num-item"><span class="pp-num">2.6</span>financial information such as credit / debit card numbers;</li>
+          <li class="pp-num-item"><span class="pp-num">2.7</span>IP address (automatically collected);</li>
+          <li class="pp-num-item"><span class="pp-num">2.8</span>web browser type and version (automatically collected);</li>
+          <li class="pp-num-item"><span class="pp-num">2.9</span>operating system (automatically collected);</li>
+          <li class="pp-num-item"><span class="pp-num">2.10</span>a list of URLs starting with a referring site, your activity on this Web Site, and the site you exit to (automatically collected); and</li>
+          <li class="pp-num-item"><span class="pp-num">2.11</span>Cookie information &mdash; see our <a href="https://www.showinguplearning.com/cookies" class="pp-inline-link">Cookie Policy</a> for details.</li>
+        </ol>
+      </section>
+
+      
+      <section class="pp-section">
+        <h2 class="pp-h2"><span class="pp-h2-num">3.</span>Our Use of Data</h2>
+        <ol class="pp-num-list">
+          <li class="pp-num-item">
+            <span class="pp-num">3.1</span>Any personal Data you submit will be retained by <span class="pp-strong">Showing Up Learning Limited</span> for as long as you use the Services and Systems provided on the Web Site. Data submitted through any communications System we provide may be retained for a longer period of up to one year. Financial records (including invoices and payment information) are retained for six years from the end of the relevant accounting period, in line with HMRC and UK tax law requirements. When Data is no longer required, it is securely deleted.
+          </li>
+          <li class="pp-num-item">
+            <span class="pp-num">3.2</span>Unless we are obliged or permitted by law to do so, and subject to Clause 4, your Data will not be disclosed to third parties. This includes our affiliates and / or other companies within our group.
+          </li>
+          <li class="pp-num-item">
+            <span class="pp-num">3.3</span>All personal Data is stored securely in accordance with the UK GDPR and the Data Protection Act 2018. For more details on security, see Clause 9 below.
+          </li>
+          <li class="pp-num-item">
+            <span class="pp-num">3.4</span>Any or all of the above Data may be required by us from time to time in order to provide you with the best possible service and experience when using our Web Site. Specifically, Data may be used by us for the following reasons:
+            <ol class="pp-num-list">
+              <li class="pp-num-item"><span class="pp-num">3.4.1</span>internal record keeping;</li>
+              <li class="pp-num-item"><span class="pp-num">3.4.2</span>improvement of our products / services;</li>
+              <li class="pp-num-item"><span class="pp-num">3.4.3</span>transmission by email of promotional materials that may be of interest to you;</li>
+              <li class="pp-num-item"><span class="pp-num">3.4.4</span>contact for market research purposes which may be done using email, telephone, fax or mail. Such information may be used to customise or update the Web Site.</li>
+            </ol>
+          </li>
+          <li class="pp-num-item">
+            <span class="pp-num">3.5</span>We rely on the following lawful bases under Article 6 of the UK GDPR when processing your personal Data:
+            <ol class="pp-num-list">
+              <li class="pp-num-item"><span class="pp-num">3.5.1</span><span class="pp-strong">Contract</span> &mdash; to provide the Services and Systems you have signed up for, manage your Account, process payments and respond to your requests;</li>
+              <li class="pp-num-item"><span class="pp-num">3.5.2</span><span class="pp-strong">Legitimate interests</span> &mdash; to secure the Web Site, prevent fraud, understand how our Services are used and improve them, and communicate with Users about their Accounts. We balance these interests against your rights and freedoms;</li>
+              <li class="pp-num-item"><span class="pp-num">3.5.3</span><span class="pp-strong">Consent</span> &mdash; for marketing emails, non-essential Cookies and any other processing that requires your express consent. You may withdraw your consent at any time (see Clause 8);</li>
+              <li class="pp-num-item"><span class="pp-num">3.5.4</span><span class="pp-strong">Legal obligation</span> &mdash; to comply with tax, accounting, regulatory and other legal requirements that apply to us.</li>
+            </ol>
+          </li>
+          <li class="pp-num-item">
+            <span class="pp-num">3.6</span>Your personal Data is stored and processed within the United Kingdom. We do not transfer your personal Data outside the UK. If this ever changes, we will update this Policy and ensure that appropriate safeguards are in place as required by the UK GDPR.
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="pp-section">
+        <h2 class="pp-h2"><span class="pp-h2-num">4.</span>Third Party Web Sites and Services</h2>
+        <p class="pp-p">
+          <span class="pp-strong">Showing Up Learning Limited</span> may, from time to time, employ the services of other parties for dealing with matters that may include, but are not limited to, payment handling, delivery of purchased items, search engine facilities, advertising and marketing. The providers of such services do not have access to certain personal Data provided by Users of this Web Site. Any Data used by such parties is used only to the extent required by them to perform the services that <span class="pp-strong">Showing Up Learning Limited</span> requests. Any use for other purposes is strictly prohibited. Furthermore, any Data that is processed by third parties must be processed within the terms of this Policy and in accordance with the UK GDPR and the Data Protection Act 2018.
+        </p>
+      </section>
+
+      
+      <section class="pp-section">
+        <h2 class="pp-h2"><span class="pp-h2-num">5.</span>Changes of Business Ownership and Control</h2>
+        <ol class="pp-num-list">
+          <li class="pp-num-item">
+            <span class="pp-num">5.1</span><span class="pp-strong">Showing Up Learning Limited</span> may, from time to time, expand or reduce its business and this may involve the sale of certain divisions or the transfer of control of certain divisions to other parties. Data provided by Users will, where it is relevant to any division so transferred, be transferred along with that division and the new owner or newly controlling party will, under the terms of this Policy, be permitted to use the Data for the purposes for which it was supplied by you.
+          </li>
+          <li class="pp-num-item">
+            <span class="pp-num">5.2</span>In the event that any Data submitted by Users will be transferred in such a manner, you will be contacted in advance and informed of the changes. When contacted you will be given the choice to have your Data deleted or withheld from the new owner or controller.
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="pp-section">
+        <h2 class="pp-h2"><span class="pp-h2-num">6.</span>Controlling Access to your Data</h2>
+        <ol class="pp-num-list">
+          <li class="pp-num-item">
+            <span class="pp-num">6.1</span>Wherever you are required to submit Data, you will be given options to restrict our use of that Data. This may include the following:
+            <ol class="pp-num-list">
+              <li class="pp-num-item"><span class="pp-num">6.1.1</span>use of Data for direct marketing purposes; and</li>
+              <li class="pp-num-item"><span class="pp-num">6.1.2</span>sharing Data with third parties.</li>
+            </ol>
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="pp-section">
+        <h2 class="pp-h2"><span class="pp-h2-num">7.</span>Your Right to Withhold Information</h2>
+        <ol class="pp-num-list">
+          <li class="pp-num-item">
+            <span class="pp-num">7.1</span>You may access certain areas of the Web Site without providing any Data at all. However, to use all Services and Systems available on the Web Site you may be required to submit Account information or other Data.
+          </li>
+          <li class="pp-num-item">
+            <span class="pp-num">7.2</span>You may restrict your internet browser's use of Cookies. For more information see our <a href="https://www.showinguplearning.com/cookies" class="pp-inline-link">Cookie Policy</a>.
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="pp-section">
+        <h2 class="pp-h2"><span class="pp-h2-num">8.</span>Your Rights</h2>
+        <ol class="pp-num-list">
+          <li class="pp-num-item">
+            <span class="pp-num">8.1</span>You may access your Account at any time to view or amend the Data. You may need to modify or update your Data if your circumstances change. Additional Data as to your marketing preferences may also be stored and you may change this at any time.
+          </li>
+          <li class="pp-num-item">
+            <span class="pp-num">8.2</span>Under the UK GDPR and the Data Protection Act 2018, you have the following rights in relation to your personal Data:
+            <ol class="pp-num-list">
+              <li class="pp-num-item"><span class="pp-num">8.2.1</span><span class="pp-strong">The right to be informed</span> about how we collect and use your Data &mdash; provided through this Policy;</li>
+              <li class="pp-num-item"><span class="pp-num">8.2.2</span><span class="pp-strong">The right of access</span> &mdash; to request a copy of your personal Data (a subject access request), which we will provide free of charge;</li>
+              <li class="pp-num-item"><span class="pp-num">8.2.3</span><span class="pp-strong">The right to rectification</span> &mdash; to have inaccurate or incomplete Data corrected;</li>
+              <li class="pp-num-item"><span class="pp-num">8.2.4</span><span class="pp-strong">The right to erasure</span> (the &ldquo;right to be forgotten&rdquo;) &mdash; to have your Data deleted where there is no compelling reason for us to continue processing it;</li>
+              <li class="pp-num-item"><span class="pp-num">8.2.5</span><span class="pp-strong">The right to restrict processing</span> &mdash; to limit how we use your Data in certain circumstances;</li>
+              <li class="pp-num-item"><span class="pp-num">8.2.6</span><span class="pp-strong">The right to data portability</span> &mdash; to receive your Data in a structured, commonly used format or have it transferred to another controller;</li>
+              <li class="pp-num-item"><span class="pp-num">8.2.7</span><span class="pp-strong">The right to object</span> &mdash; to processing based on legitimate interests or for direct marketing purposes;</li>
+              <li class="pp-num-item"><span class="pp-num">8.2.8</span><span class="pp-strong">The right to withdraw consent</span> &mdash; where our processing relies on your consent, you may withdraw that consent at any time without affecting the lawfulness of processing carried out before withdrawal.</li>
+            </ol>
+          </li>
+          <li class="pp-num-item">
+            <span class="pp-num">8.3</span>To exercise any of these rights, please contact us at <a href="mailto:contact@showinguplearning.com" class="pp-inline-link">contact@showinguplearning.com</a>. We will respond within one month of receiving your request, as required by the UK GDPR.
+          </li>
+          <li class="pp-num-item">
+            <span class="pp-num">8.4</span>If you are unhappy with how we have handled your personal Data, you have the right to lodge a complaint with the Information Commissioner's Office (ICO), the UK supervisory authority for data protection. You can contact the ICO at <a href="https://ico.org.uk/make-a-complaint/" class="pp-inline-link">ico.org.uk/make-a-complaint</a>. We would, however, appreciate the chance to address your concerns before you approach the ICO, so please consider contacting us first.
+          </li>
+        </ol>
+      </section>
+
+      
+      <section class="pp-section">
+        <h2 class="pp-h2"><span class="pp-h2-num">9.</span>Security</h2>
+        <p class="pp-p">
+          Data security is of great importance to <span class="pp-strong">Showing Up Learning Limited</span> and to protect your Data we have put in place suitable physical, electronic and managerial procedures to safeguard and secure Data collected online.
+        </p>
+      </section>
+
+      
+      <section class="pp-section">
+        <h2 class="pp-h2"><span class="pp-h2-num">10.</span>Changes to this Policy</h2>
+        <p class="pp-p">
+          <span class="pp-strong">Showing Up Learning Limited</span> reserves the right to change this Privacy Policy as we may deem necessary from time to time or as may be required by law. Any changes will be immediately posted on the Web Site and you are deemed to have accepted the terms of the Policy on your first use of the Web Site following the alterations.
+        </p>
+      </section>
+
+      
+      <section class="pp-section">
+        <h2 class="pp-h2"><span class="pp-h2-num">11.</span>Contacting Us</h2>
+        <p class="pp-p">
+          If there are any questions regarding this privacy policy, or to exercise any of your rights under Clause 8, you may contact <span class="pp-strong">Showing Up Learning Limited</span> at <a href="mailto:contact@showinguplearning.com" class="pp-inline-link">contact@showinguplearning.com</a> or by post to our registered office: 25 Beaconsfield Road, Clacton On Sea, Essex, CO15 6BU.
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+
+</div>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="page-privacy.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] page-privacy.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>
