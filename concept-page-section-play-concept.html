@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Team games — Showing Up (preview)</title>
+</head>
+<body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+
+<div class="sx-wrap sx-pg-play">
+<style>
+  .sx-wrap *, .sx-wrap *::before, .sx-wrap *::after {
+    box-sizing: border-box; margin: 0; padding: 0;
+  }
+  .sx-wrap {
+    font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
+    background: #FFF6F1; color: #353434;
+    -webkit-font-smoothing: antialiased;
+  }
+  .sx-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+
+  /* ---- hero (dark) ---- */
+  .sx-hero { background: #1e1d1d; padding: 96px 0 88px; }
+  .sx-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em; color: #FF8269;
+    text-align: left !important; margin-bottom: 26px;
+  }
+  .sx-chip {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 999px;
+    background: #FF8269; color: #1e1d1d;
+    font-size: 14px; font-weight: 600; letter-spacing: 0;
+  }
+  .sx-h1 {
+    font-size: clamp(40px, 5.2vw, 68px); font-weight: 300; line-height: 1.14;
+    letter-spacing: -0.03em; color: #FFF6F1;
+    text-align: left !important; max-width: 900px;
+  }
+  .sx-h1 .sx-em { color: #FF8269; font-weight: 500; font-style: normal; }
+  .sx-lead {
+    margin-top: 28px; max-width: 720px;
+    font-size: 17px; line-height: 1.7; color: rgba(255,246,241,.78);
+    text-align: left !important;
+  }
+
+  /* ---- body ---- */
+  .sx-body { padding: 84px 0 20px; }
+  .sx-block { max-width: 820px; margin-bottom: 56px; }
+  .sx-h2 {
+    font-size: clamp(26px, 2.6vw, 34px); font-weight: 300; line-height: 1.24;
+    letter-spacing: -0.02em; color: #1e1d1d;
+    text-align: left !important; margin-bottom: 16px;
+  }
+  .sx-h2 .sx-em { color: #FF8269; font-weight: 500; font-style: normal; }
+  .sx-p {
+    font-size: 17px; line-height: 1.7; color: #353434;
+    text-align: left !important;
+  }
+  .sx-p + .sx-p { margin-top: 14px; }
+
+  /* ---- slot: a piece of the page that has no content yet ---- */
+  .sx-slot {
+    border: 1px dashed rgba(255,130,105,.75); border-radius: 18px;
+    padding: 28px 30px; background: rgba(255,130,105,.05);
+    max-width: 820px; margin-bottom: 56px;
+  }
+  .sx-slot-label {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em; color: #FF8269;
+    text-align: left !important; margin-bottom: 12px;
+  }
+  .sx-slot-title {
+    font-size: 20px; font-weight: 500; color: #1e1d1d; line-height: 1.35;
+    text-align: left !important; margin-bottom: 8px;
+  }
+  .sx-slot-note {
+    font-size: 15px; line-height: 1.65; color: #6f6764;
+    text-align: left !important;
+  }
+  .sx-slot ul { list-style: none; margin-top: 14px; }
+  .sx-slot li {
+    position: relative; padding-left: 20px; margin-top: 9px;
+    font-size: 15px; line-height: 1.6; color: #353434;
+    text-align: left !important;
+  }
+  .sx-slot li::before {
+    content: ''; position: absolute; left: 0; top: 9px;
+    width: 7px; height: 7px; border-radius: 999px; background: #FF8269;
+  }
+  /* an open question is a different kind of gap - nobody has decided yet */
+  .sx-slot--open {
+    border-color: rgba(200,180,228,.9); background: rgba(200,180,228,.10);
+  }
+  .sx-slot--open .sx-slot-label { color: #7d5fae; }
+  .sx-slot--open li::before { background: #C8B4E4; }
+
+  /* ---- pill ---- */
+  .sx-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none !important; border: none !important;
+    border-bottom: none !important;
+    background: #1e1d1d !important; color: #FFF6F1 !important;
+    font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500;
+    padding: 14px 28px; border-radius: 100px; width: fit-content;
+    transition: background .2s, color .2s; margin-top: 26px;
+  }
+  .sx-pill:link, .sx-pill:visited {
+    text-decoration: none !important; border: none !important;
+    border-bottom: none !important;
+    background: #1e1d1d !important; color: #FFF6F1 !important;
+  }
+  .sx-pill:hover, .sx-pill:active {
+    background: #FF8269 !important; color: #1e1d1d !important;
+    text-decoration: none !important; border: none !important;
+    border-bottom: none !important;
+  }
+  .sx-hero .sx-pill,
+  .sx-hero .sx-pill:link, .sx-hero .sx-pill:visited {
+    background: #FF8269 !important; color: #1e1d1d !important;
+  }
+  .sx-hero .sx-pill:hover, .sx-hero .sx-pill:active {
+    background: #FFF6F1 !important; color: #1e1d1d !important;
+  }
+
+  /* ---- cross-nav across the six parts ---- */
+  .sx-nav { padding: 40px 0 96px; }
+  .sx-nav-head {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em; color: #FF8269;
+    text-align: left !important; margin-bottom: 22px;
+  }
+  .sx-nav-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .sx-nav-grid > * { min-width: 0; }
+  .sx-card {
+    display: block; text-decoration: none !important;
+    border: 1px solid rgba(0,0,0,.08) !important;
+    border-bottom: 1px solid rgba(0,0,0,.08) !important;
+    border-radius: 18px; padding: 22px 24px; background: #fff;
+    transition: background .2s, border-color .2s;
+  }
+  .sx-card:link, .sx-card:visited {
+    text-decoration: none !important; color: #1e1d1d !important;
+  }
+  .sx-card:hover, .sx-card:active {
+    background: #FF8269 !important;
+    border-color: #FF8269 !important;
+    text-decoration: none !important; color: #1e1d1d !important;
+  }
+  .sx-card-n {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.16em;
+    color: #9a908a; text-align: left !important; margin-bottom: 8px;
+  }
+  .sx-card:hover .sx-card-n { color: rgba(30,29,29,.7); }
+  .sx-card-name {
+    font-size: 19px; font-weight: 500; color: #1e1d1d;
+    text-align: left !important;
+  }
+  .sx-card-say {
+    font-size: 14px; line-height: 1.55; color: #6f6764;
+    text-align: left !important; margin-top: 6px;
+  }
+  .sx-card:hover .sx-card-say { color: rgba(30,29,29,.75); }
+  .sx-card[aria-current="page"] {
+    background: #1e1d1d !important; border-color: #1e1d1d !important;
+  }
+  .sx-card[aria-current="page"] .sx-card-name { color: #FFF6F1; }
+  .sx-card[aria-current="page"] .sx-card-n { color: #FF8269; }
+  .sx-card[aria-current="page"] .sx-card-say { color: rgba(255,246,241,.7); }
+
+  /* ---- close ---- */
+  .sx-close { background: #1e1d1d; padding: 76px 0; }
+  .sx-close-h {
+    font-size: clamp(28px, 3.2vw, 42px); font-weight: 300; line-height: 1.2;
+    letter-spacing: -0.02em; color: #FFF6F1;
+    text-align: left !important; max-width: 760px;
+  }
+  .sx-close-h .sx-em { color: #FF8269; font-weight: 500; font-style: normal; }
+
+  /* ---- reveal ---- */
+  .sx-reveal { opacity: 0; transform: translateY(16px);
+              transition: opacity .6s ease, transform .6s ease; }
+  .sx-reveal.sx-in { opacity: 1; transform: none; }
+  .sx-d1 { transition-delay: .08s; }
+  .sx-d2 { transition-delay: .16s; }
+  @media (prefers-reduced-motion: reduce) {
+    .sx-reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  @media (max-width: 960px) {
+    .sx-inner { padding: 0 32px; }
+    .sx-hero { padding: 72px 0 64px; }
+    .sx-body { padding: 60px 0 12px; }
+    .sx-nav-grid { display: flex; flex-direction: column; }
+    .sx-nav-grid > * { align-self: stretch !important; }
+  }
+  @media (max-width: 540px) {
+    .sx-inner { padding: 0 22px; }
+    .sx-slot { padding: 22px 20px; }
+  }
+</style>
+
+<section class="sx-hero">
+  <div class="sx-inner">
+    <div class="sx-eyebrow sx-reveal">
+      <span class="sx-chip">5</span><span>Part five of six</span>
+    </div>
+    <h1 class="sx-h1 sx-reveal sx-d1">Team <em class="sx-em">games</em></h1>
+    <p class="sx-lead sx-reveal sx-d2">Short, sharp challenges a team plays together.</p>
+    <a class="sx-pill sx-reveal sx-d2" href="concept-page-team-challenges-concept.html">Try a team game</a>
+  </div>
+</section>
+
+<section class="sx-body">
+  <div class="sx-inner">
+    <div class="sx-block">
+      <h2 class="sx-h2 sx-reveal">The part that gets a team <em class="sx-em">talking</em></h2>
+      <p class="sx-p sx-reveal sx-d1">Team games are the piece managers reach for when they want the dimension discussed out loud rather than watched alone.</p>
+    </div>
+
+    <div class="sx-slot sx-reveal">
+      <div class="sx-slot-label">Still to come</div>
+      <div class="sx-slot-title">What this page shows</div>
+      <div class="sx-slot-note">The team challenges concept page already exists and can carry the demo.</div>
+      <ul>
+        <li>Confirm the current count of team games live on the platform</li>
+        <li>Whether this page demonstrates a game in-page or links through to the team challenges page</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section class="sx-nav">
+  <div class="sx-inner">
+    <div class="sx-nav-head sx-reveal">The six parts</div>
+    <div class="sx-nav-grid">
+      <a class="sx-card" href="concept-page-section-define-concept.html">
+        <div class="sx-card-n">Part 1</div>
+        <div class="sx-card-name">Define</div>
+        <div class="sx-card-say">The framework everything else is built against.</div>
+      </a>
+      <a class="sx-card" href="concept-page-section-assess-concept.html">
+        <div class="sx-card-n">Part 2</div>
+        <div class="sx-card-name">Assess</div>
+        <div class="sx-card-say">Where you are today, against every trait.</div>
+      </a>
+      <a class="sx-card" href="concept-page-section-learn-concept.html">
+        <div class="sx-card-n">Part 3</div>
+        <div class="sx-card-name">Learn</div>
+        <div class="sx-card-say">One behaviour and skill at a time.</div>
+      </a>
+      <a class="sx-card" href="concept-page-section-toolkits-concept.html">
+        <div class="sx-card-n">Part 4</div>
+        <div class="sx-card-name">Toolkits</div>
+        <div class="sx-card-say">Tools that go into the client meeting.</div>
+      </a>
+      <a class="sx-card" href="concept-page-section-play-concept.html" aria-current="page">
+        <div class="sx-card-n">Part 5</div>
+        <div class="sx-card-name">Play</div>
+        <div class="sx-card-say">Short challenges a team plays together.</div>
+      </a>
+      <a class="sx-card" href="concept-page-section-manage-concept.html">
+        <div class="sx-card-n">Part 6</div>
+        <div class="sx-card-name">Lead</div>
+        <div class="sx-card-say">Helping managers coach it in the field.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+(function() {
+  var els = document.querySelectorAll('.sx-wrap .sx-reveal');
+  if (!('IntersectionObserver' in window)) {
+    for (var i = 0; i < els.length; i++) els[i].classList.add('sx-in');
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(en) {
+      if (en.isIntersecting) {
+        en.target.classList.add('sx-in');
+        obs.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  for (var j = 0; j < els.length; j++) obs.observe(els[j]);
+})();
+</script>
+</div>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+  .fb-saved { font-size: 12px; color: #9a908a; margin-top: 8px;
+              opacity: 0; transition: opacity .2s; }
+  .fb-saved.fb-show { opacity: 1; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="concept-page-section-play-concept.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] concept-page-section-play-concept.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead. Your text is still here.</div>
+      <div class="fb-saved" id="fb-saved">Draft saved in this browser.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  var saved = document.getElementById('fb-saved');
+  var box = form.querySelector('textarea[name=message]');
+  var who = form.querySelector('input[name=name]');
+
+  // Draft persistence. A long comment typed into this box used to exist
+  // nowhere else - closing the panel, a stray reload or a dead endpoint
+  // lost the lot, so the standing advice was "keep a copy in Notes".
+  // Keyed per page so comments on different pages don't overwrite
+  // each other. localStorage throws in some privacy modes; a failure
+  // here must never stop the form working, hence the silent try/catch.
+  var key = 'su-fb-draft-' + form.querySelector('input[name=page]').value;
+  function store(k, v) {
+    try { window.localStorage.setItem(k, v); } catch (e) {}
+  }
+  function recall(k) {
+    try { return window.localStorage.getItem(k) || ''; }
+    catch (e) { return ''; }
+  }
+  function forget() {
+    try {
+      window.localStorage.removeItem(key);
+      window.localStorage.removeItem(key + '-name');
+    } catch (e) {}
+  }
+  var draft = recall(key);
+  if (draft) {
+    box.value = draft;
+    saved.classList.add('fb-show');
+  }
+  var priorName = recall(key + '-name');
+  if (priorName && !who.value) who.value = priorName;
+
+  var pending;
+  function keep() {
+    clearTimeout(pending);
+    pending = setTimeout(function() {
+      if (box.value) {
+        store(key, box.value);
+        store(key + '-name', who.value);
+        saved.classList.add('fb-show');
+      } else {
+        forget();
+        saved.classList.remove('fb-show');
+      }
+    }, 400);
+  }
+  box.addEventListener('input', keep);
+  who.addEventListener('input', keep);
+  // A tab close can beat the debounce - flush synchronously on the way out.
+  window.addEventListener('pagehide', function() {
+    if (box.value) { store(key, box.value); store(key + '-name', who.value); }
+  });
+
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        // Only a confirmed 2xx clears the draft. Anything else keeps it,
+        // so a failed send never destroys the text.
+        forget();
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

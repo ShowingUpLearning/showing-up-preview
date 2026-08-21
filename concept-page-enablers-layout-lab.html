@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Enablers Layout Lab — Showing Up (preview)</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Six learning enablers &#8212; layout lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+
+
+<style>
+  /* ---------------------------------------------------------------------
+     LAB CHROME (elb-) - discarded on lift
+     --------------------------------------------------------------------- */
+  .elb-page, .elb-page *, .elb-page *::before, .elb-page *::after {
+    box-sizing: border-box; margin: 0; padding: 0;
+  }
+  html, body { background: #121111; }
+  .elb-page {
+    font-family: 'DM Sans', sans-serif;
+    background: #121111;
+    min-height: 100vh;
+  }
+
+  .elb-bar {
+    position: sticky; top: 0; z-index: 50;
+    background: #121111;
+    border-bottom: 1px solid rgba(255,246,241,.14);
+    padding: 14px 24px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px 26px;
+  }
+  .elb-title {
+    font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    color: #FF8269; margin-right: 4px;
+  }
+  /* flex-wrap on the GROUP as well as the bar: the bar wrapping between groups
+     is not enough, because a five-button group is wider than a phone and would
+     overflow the page horizontally on its own. */
+  .elb-group { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .elb-label {
+    font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    color: rgba(255,246,241,.45);
+  }
+  .elb-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 500; letter-spacing: .02em;
+    color: rgba(255,246,241,.72);
+    background: transparent;
+    border: 1px solid rgba(255,246,241,.2);
+    border-radius: 100px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: background .18s, color .18s, border-color .18s;
+  }
+  .elb-btn:hover { border-color: rgba(255,130,105,.6); color: #FFF6F1; }
+  .elb-btn[aria-pressed="true"] {
+    background: #FF8269; border-color: #FF8269; color: #1e1d1d; font-weight: 600;
+  }
+  .elb-btn:focus-visible { outline: 2px solid #FFF6F1; outline-offset: 2px; }
+  .elb-btn[disabled] { opacity: .3; cursor: not-allowed; }
+
+  .elb-readouts {
+    display: flex; flex-wrap: wrap; gap: 6px 22px;
+    padding: 10px 24px 12px;
+    background: #191818;
+    border-bottom: 1px solid rgba(255,246,241,.1);
+    font-size: 12px; color: rgba(255,246,241,.6);
+  }
+  .elb-readout strong {
+    color: #FFF6F1; font-weight: 600;
+  }
+  .elb-readout em { font-style: normal; color: rgba(255,246,241,.4); }
+  .elb-pass { color: #A7DDC3; font-weight: 600; }
+  .elb-fail { color: #FF8269; font-weight: 600; }
+
+  .elb-notes {
+    padding: 0 24px; background: #191818;
+    border-bottom: 1px solid rgba(255,246,241,.1);
+  }
+  .elb-notes:empty { display: none; }
+  .elb-note {
+    font-size: 12px; line-height: 1.6; color: rgba(255,246,241,.62);
+    padding: 8px 0 8px 16px; border-left: 2px solid #FF8269;
+    margin: 8px 0;
+  }
+  .elb-note--warn { border-left-color: #FFD8CE; }
+
+  .elb-stage { position: relative; }
+  /* Inactive directions stay in flow-width but offscreen, so the height readout
+     measures a real rendered height rather than zero. visibility: hidden also
+     takes their 6 links out of the tab order. */
+  /* Scoped with .showing-up-wrapper purely for SPECIFICITY: the shape wash
+     gave .wyg-section a position: relative of equal weight and later source
+     order, which quietly put every parked direction back in flow and pushed
+     the live one off the bottom of the page. */
+  .showing-up-wrapper .elb-dir.is-parked {
+    position: absolute; left: -20000px; top: 0; width: 100%;
+    visibility: hidden; pointer-events: none;
+  }
+  .elb-dirtag {
+    font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    color: #FF8269; padding: 26px 80px 0;
+  }
+  .elb-foot {
+    padding: 40px 80px 80px; background: #121111;
+    font-size: 13px; line-height: 1.7; color: rgba(255,246,241,.5); max-width: 900px;
+  }
+  .elb-foot a, .elb-foot a:link, .elb-foot a:visited { color: #FF8269 !important; }
+
+  @media (max-width: 859px) {
+    /* Seven wrapped control groups stack to ~354px on a phone - 44% of the
+       viewport - so a sticky bar would leave a letterbox to judge a layout
+       through. It scrolls away here and you scroll back up to switch. */
+    .elb-bar { position: static; padding: 12px 20px; }
+    .elb-readouts, .elb-notes { padding-left: 20px; padding-right: 20px; }
+    .elb-dirtag { padding: 20px 20px 0; }
+    .elb-foot { padding: 32px 20px 60px; }
+  }
+
+  /* ---------------------------------------------------------------------
+     PRODUCTION TOKENS - lifted verbatim from page-homepage-r26-08.html
+     --------------------------------------------------------------------- */
+  .showing-up-wrapper {
+    --c-coral:     #FF8269;
+    --c-coral-dk:  #e8614a;
+    --c-cream:     #FFF6F1;
+    --c-ink:       #1e1d1d;
+    --c-text:      #353434;
+    --su-ease:  cubic-bezier(.16, 1, .3, 1);
+    --su-dur:   .8s;
+    --su-quick: .25s;
+    --su-rise:  24px;
+    --su-step:  70ms;
+    --type-h2:  clamp(26px, 3vw, 40px);
+  }
+  .showing-up-wrapper, .showing-up-wrapper *, .showing-up-wrapper *::before, .showing-up-wrapper *::after {
+    box-sizing: border-box; margin: 0; padding: 0;
+  }
+  .showing-up-wrapper .hp-coral-strong { font-weight: 600; color: var(--c-coral); font-style: normal; }
+
+  /* Reveal - the lab's own simplified version of the homepage observer */
+  .showing-up-wrapper .wyg-reveal {
+    opacity: 0; transform: translateY(var(--su-rise));
+    transition: opacity var(--su-dur) var(--su-ease), transform var(--su-dur) var(--su-ease);
+  }
+  .showing-up-wrapper .wyg-reveal.is-in { opacity: 1; transform: none; }
+
+  /* ---------------------------------------------------------------------
+     THE BAND (wyg-) - production CSS, lifted
+     --------------------------------------------------------------------- */
+  /* position + overflow are NOT in the production rule - they are added here
+     for the shape wash, and must travel with it on lift. */
+  .showing-up-wrapper .wyg-section {
+    position: relative; overflow: hidden;
+    padding: 120px 80px 96px;
+  }
+  .showing-up-wrapper .wyg-section--dark  { background: var(--c-ink); }
+  .showing-up-wrapper .wyg-section--cream { background: var(--c-cream); }
+
+  /* ---------------------------------------------------------------------
+     SECTION SHAPE WASH
+     One kit shape behind the WHOLE band rather than a watermark per card.
+     That is the more compliant reading of the shape budget in
+     DESIGN-SYSTEM.md 5.1 ("one shape moment per surface, roughly one per
+     viewport"): six card watermarks would be six moments in one viewport,
+     and would also compete with the coral tint ramp on the chips, which is
+     already doing the per-item differentiating.
+
+     Sits at z-index 0 with the content lifted above it. aria-hidden and
+     pointer-events: none - it is ground, never an object. It carries no
+     motion: the band already spends its motion budget on the pointer-tracked
+     row glow, and a drifting background under six links would be noise.
+     --------------------------------------------------------------------- */
+  .showing-up-wrapper .wyg-shape {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  /* Colour is set on the SVG, not on a descendant path. <use> clones the
+     symbol into a shadow tree, which a descendant selector cannot reach -
+     .wyg-shape-svg path { fill: ... } silently does nothing and the shape
+     renders in the UA default black. fill is an inherited SVG property, so
+     setting it on the host is what actually crosses the boundary. */
+  .showing-up-wrapper .wyg-shape-svg {
+    display: none; position: absolute; height: auto;
+    fill: var(--c-cream);
+  }
+  .showing-up-wrapper .wyg-section--cream .wyg-shape-svg { fill: var(--c-coral); }
+  .showing-up-wrapper .wyg-split { position: relative; z-index: 1; }
+
+  /* Which shape. Off is the default and the control. */
+  .showing-up-wrapper .wyg-section.is-shape-v10  .wyg-shape-svg[data-shape="v10"],
+  .showing-up-wrapper .wyg-section.is-shape-g271 .wyg-shape-svg[data-shape="g271"],
+  .showing-up-wrapper .wyg-section.is-shape-v5   .wyg-shape-svg[data-shape="v5"],
+  .showing-up-wrapper .wyg-section.is-shape-v9   .wyg-shape-svg[data-shape="v9"] { display: block; }
+
+  /* Where it sits. Right bleeds behind the six; left bleeds behind the claim
+     and fills the very void the band is being redesigned to close; wide is a
+     single wash spanning the band and overflowing top and bottom. */
+  .showing-up-wrapper .wyg-shape { --wyg-shape-op: .05; }
+  .showing-up-wrapper .wyg-section--cream .wyg-shape { --wyg-shape-op: .09; }
+  .showing-up-wrapper .wyg-section.is-shape-strong .wyg-shape { --wyg-shape-op: .085; }
+  .showing-up-wrapper .wyg-section--cream.is-shape-strong .wyg-shape { --wyg-shape-op: .14; }
+  .showing-up-wrapper .wyg-shape-svg { opacity: var(--wyg-shape-op); }
+
+  .showing-up-wrapper .is-shape-pos-right .wyg-shape-svg {
+    right: -7%; top: 50%; transform: translateY(-50%); width: 48%;
+  }
+  .showing-up-wrapper .is-shape-pos-left .wyg-shape-svg {
+    left: -9%; top: 50%; transform: translateY(-50%); width: 44%;
+  }
+  .showing-up-wrapper .is-shape-pos-wide .wyg-shape-svg {
+    left: 50%; top: 50%; transform: translate(-50%, -50%); width: 116%;
+  }
+
+  .showing-up-wrapper .wyg-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--type-h2); font-weight: 300; line-height: 1.18;
+    letter-spacing: -.025em; color: var(--c-cream);
+    text-align: left !important;
+  }
+  .showing-up-wrapper .wyg-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px; line-height: 1.7; color: rgba(255,246,241,.78);
+    text-align: left !important;
+  }
+  /* Cream-ground colours. The production band only ever existed on ink, so the
+     cream values are new here: rgba(255,246,241,.78) inverts to nothing usable.
+     Checked live by the contrast readout rather than assumed. */
+  .showing-up-wrapper .wyg-section--cream .wyg-headline { color: var(--c-ink); }
+  .showing-up-wrapper .wyg-section--cream .wyg-body { color: var(--c-text); }
+
+  /* .wyg-lead groups the headline and Ben's supporting paragraph. In production
+     today the paragraph lives in the RIGHT column, above the six. Every direction
+     in this lab pairs it with the headline instead - that single markup move is
+     most of what direction D is. */
+  .showing-up-wrapper .wyg-lead { display: flex; flex-direction: column; gap: 22px; }
+  .showing-up-wrapper .wyg-lead > * { min-width: 0; }
+
+  /* ---------------------------------------------------------------------
+     COPY VARIANT
+     Both versions of Ben's headline and paragraph are in the markup and one
+     is hidden, rather than swapped in by JS - so the page still reads
+     correctly with JS off, and so the shorter copy is measured by the height
+     readout exactly as the layout is.
+
+     The DEFAULT is Ben's copy. The tightened version is display: none until a
+     class turns it on, which means no-JS visitors and anyone who never touches
+     the toggle see what he actually wrote. His words are the baseline; the
+     trim is the proposal.
+
+     display: none rather than visibility, because in directions B and C the
+     lead is a two-column grid - the hidden pair has to leave the flow
+     entirely or it would claim grid cells and push the visible pair out.
+     --------------------------------------------------------------------- */
+  .showing-up-wrapper [data-copy="tight"] { display: none; }
+  .showing-up-wrapper .is-copy-tight [data-copy="current"] { display: none; }
+  .showing-up-wrapper .is-copy-tight [data-copy="tight"] { display: block; }
+
+  .showing-up-wrapper .wyg-jumplabel {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--c-coral); text-align: left !important;
+    margin-bottom: 14px;
+  }
+  .showing-up-wrapper .wyg-jumplabel { display: none; }
+  .showing-up-wrapper .wyg-section.is-label .wyg-jumplabel { display: block; }
+
+  .showing-up-wrapper .wyg-enablers { list-style: none; }
+  .showing-up-wrapper .wyg-enabler {
+    border-top: 1px solid rgba(255,246,241,.12);
+    transition: border-color var(--su-quick);
+  }
+  .showing-up-wrapper .wyg-enabler:hover { border-top-color: rgba(255,246,241,.3); }
+  .showing-up-wrapper .wyg-section--cream .wyg-enabler { border-top-color: rgba(30,29,29,.14); }
+  .showing-up-wrapper .wyg-section--cream .wyg-enabler:hover { border-top-color: rgba(30,29,29,.36); }
+
+  .showing-up-wrapper .wyg-enabler-link,
+  .showing-up-wrapper .wyg-enabler-link:link,
+  .showing-up-wrapper .wyg-enabler-link:visited,
+  .showing-up-wrapper .wyg-enabler-link:hover,
+  .showing-up-wrapper .wyg-enabler-link:active {
+    position: relative;
+    display: grid; grid-template-columns: 40px 1fr;
+    gap: 2px 14px; align-items: center; padding: 12px 0;
+    color: var(--c-cream) !important;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+  }
+  .showing-up-wrapper .wyg-section--cream .wyg-enabler-link,
+  .showing-up-wrapper .wyg-section--cream .wyg-enabler-link:link,
+  .showing-up-wrapper .wyg-section--cream .wyg-enabler-link:visited,
+  .showing-up-wrapper .wyg-section--cream .wyg-enabler-link:hover,
+  .showing-up-wrapper .wyg-section--cream .wyg-enabler-link:active { color: var(--c-ink) !important; }
+
+  .showing-up-wrapper .wyg-enabler-link > * { min-width: 0; position: relative; z-index: 1; }
+  .showing-up-wrapper .wyg-enabler-link:focus-visible { outline: 2px solid var(--c-cream); outline-offset: 3px; }
+  .showing-up-wrapper .wyg-section--cream .wyg-enabler-link:focus-visible { outline-color: var(--c-ink); }
+  .showing-up-wrapper .wyg-enabler-link:hover .wyg-enabler-desc,
+  .showing-up-wrapper .wyg-enabler-link:focus-visible .wyg-enabler-desc { color: rgba(255,246,241,.92); }
+  .showing-up-wrapper .wyg-section--cream .wyg-enabler-link:hover .wyg-enabler-desc,
+  .showing-up-wrapper .wyg-section--cream .wyg-enabler-link:focus-visible .wyg-enabler-desc { color: var(--c-ink); }
+
+  /* Mobile-first: chip spans both text rows. The desktop three-column row is
+     opted into at 860px, so the tile directions never have to undo it. */
+  .showing-up-wrapper .wyg-enabler-link .wyg-chip { grid-row: 1 / span 2; align-self: center; }
+  .showing-up-wrapper .wyg-enabler-link .wyg-enabler-name { grid-column: 2; }
+  .showing-up-wrapper .wyg-enabler-link .wyg-enabler-desc { grid-column: 2; }
+
+  .showing-up-wrapper .wyg-enabler-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 600; letter-spacing: .06em; line-height: 1.5;
+    color: var(--c-cream); text-align: left !important;
+  }
+  .showing-up-wrapper .wyg-section--cream .wyg-enabler-name { color: var(--c-ink); }
+  .showing-up-wrapper .wyg-enabler-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; font-weight: 300; line-height: 1.5;
+    color: rgba(255,246,241,.78); text-align: left !important;
+    transition: color var(--su-quick);
+  }
+  .showing-up-wrapper .wyg-section--cream .wyg-enabler-desc { color: var(--c-text); }
+
+  .showing-up-wrapper .wyg-chip {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    color: var(--c-ink); font-size: 15px; font-weight: 600; flex: 0 0 auto;
+    font-family: 'DM Sans', sans-serif;
+    transition: box-shadow var(--su-quick), transform var(--su-quick) var(--su-ease);
+  }
+  .showing-up-wrapper .wyg-enabler-link:hover .wyg-chip,
+  .showing-up-wrapper .wyg-enabler-link:focus-visible .wyg-chip {
+    box-shadow: 0 0 0 1px rgba(255,130,105,.55), 0 0 14px 0 rgba(255,130,105,.45);
+    transform: scale(1.06);
+  }
+  /* The six modality shades (coral ramp from modality-shade-lab) */
+  .showing-up-wrapper .wyg-chip--1 { background: #FFEDE6; }
+  .showing-up-wrapper .wyg-chip--2 { background: #FFE3DB; }
+  .showing-up-wrapper .wyg-chip--3 { background: #FFD8CE; }
+  .showing-up-wrapper .wyg-chip--4 { background: #FFCABD; }
+  .showing-up-wrapper .wyg-chip--5 { background: #FFBAAA; }
+  .showing-up-wrapper .wyg-chip--6 { background: #FFA795; }
+  .showing-up-wrapper .wyg-chip-num { transition: opacity var(--su-quick); }
+
+  
+  .showing-up-wrapper .wyg-arrow {
+    position: absolute;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--c-cream);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--su-quick) var(--su-ease), transform var(--su-quick) var(--su-ease);
+  }
+  .showing-up-wrapper .wyg-section--cream .wyg-arrow { color: var(--c-ink); }
+  .showing-up-wrapper .wyg-arrow svg { display: block; width: 16px; height: 16px; }
+
+  .showing-up-wrapper .wyg-section.is-arrow-none .wyg-arrow { display: none; }
+
+  /* Resting vs hover-only */
+  .showing-up-wrapper .wyg-section.is-arrow-rest .wyg-arrow { opacity: .35; }
+  .showing-up-wrapper .wyg-section.is-arrow-rest .wyg-enabler-link:hover .wyg-arrow,
+  .showing-up-wrapper .wyg-section.is-arrow-rest .wyg-enabler-link:focus-visible .wyg-arrow,
+  .showing-up-wrapper .wyg-section.is-arrow-hover .wyg-enabler-link:hover .wyg-arrow,
+  .showing-up-wrapper .wyg-section.is-arrow-hover .wyg-enabler-link:focus-visible .wyg-arrow {
+    opacity: 1; transform: translate(3px, 3px);
+  }
+
+  /* --- Treatment: the chip becomes the arrow -------------------------------
+     No new real estate, so it sidesteps the trailing slot that was tried and
+     pulled once already. Cost, and it is a real one: the number is gone at
+     the moment someone is deciding to click, and the treatment is hover-only
+     by construction - there is no resting state, because the resting state is
+     the numeral. That makes it the one treatment with no touch affordance. */
+  .showing-up-wrapper .wyg-section.is-arrow-chip .wyg-arrow {
+    left: 0; top: 50%; margin-top: -20px;
+    width: 40px; height: 40px;
+    color: var(--c-ink); opacity: 0;
+  }
+  .showing-up-wrapper .wyg-section.is-arrow-chip .wyg-arrow svg { width: 18px; height: 18px; }
+  .showing-up-wrapper .wyg-section.is-arrow-chip .wyg-enabler-link:hover .wyg-chip-num,
+  .showing-up-wrapper .wyg-section.is-arrow-chip .wyg-enabler-link:focus-visible .wyg-chip-num { opacity: 0; }
+  .showing-up-wrapper .wyg-section.is-arrow-chip .wyg-enabler-link:hover .wyg-arrow,
+  .showing-up-wrapper .wyg-section.is-arrow-chip .wyg-enabler-link:focus-visible .wyg-arrow {
+    opacity: 1; transform: none;
+  }
+
+  /* --- Treatment: trailing ------------------------------------------------- */
+  .showing-up-wrapper .wyg-section.is-arrow-trail .wyg-arrow {
+    right: 0; top: 50%; margin-top: -8px;
+  }
+  .showing-up-wrapper .wyg-section.is-arrow-trail .wyg-enabler-link { padding-right: 40px; }
+
+  /* --- Treatment: rule-end -------------------------------------------------
+     The arrow occupies a BREAK in the hairline rather than sitting on top of
+     it: the swatch is painted in the ground colour, so the rule appears to
+     stop, make way, and resume. Ties the affordance to a line that is already
+     part of the design instead of adding a separate moving part.
+     Rows only - a tile has no rule to break. */
+  .showing-up-wrapper .wyg-section.is-arrow-rule .wyg-arrow {
+    right: 0; bottom: -9px; padding: 0 8px;
+  }
+  .showing-up-wrapper .wyg-section--dark.is-arrow-rule .wyg-arrow { background: var(--c-ink); }
+  .showing-up-wrapper .wyg-section--cream.is-arrow-rule .wyg-arrow { background: var(--c-cream); }
+  /* The last row has no rule beneath it, so the list closes one. */
+  .showing-up-wrapper .wyg-section.is-arrow-rule .wyg-enablers { border-bottom: 1px solid rgba(255,246,241,.12); }
+  .showing-up-wrapper .wyg-section--cream.is-arrow-rule .wyg-enablers { border-bottom-color: rgba(30,29,29,.14); }
+
+  /* ---------------------------------------------------------------------
+     ROW GLOW (wyg-glow) - production, tuned to a 592x72 row
+     The wedge is 130deg where the cluster tiles use 72deg, and --wyg-dim
+     softens it toward an even all-round halo near the row's centre. Both
+     changes exist because a narrow directional wedge geometrically cannot
+     reach the long edges of a wide short rectangle: it lit the two ends and
+     left the middle dark. A registered exception to the no-shadows rule -
+     a coloured edge glow, never an elevation shadow.
+     --------------------------------------------------------------------- */
+  .showing-up-wrapper .wyg-enabler-link > .wyg-glow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 30px; /* row 10px + 20px spill */
+    z-index: 0;
+    pointer-events: none;
+    --wyg-glow: 255 130 105; /* coral #FF8269 */
+    --wyg-dim: calc((100 - var(--wyg-d, 0)) / 100 * 0.72);
+    opacity: 1;
+    transition: opacity var(--su-quick) var(--su-ease);
+    -webkit-mask-image: conic-gradient(from var(--wyg-deg, 45deg) at center, rgb(0,0,0) 18%, rgba(0,0,0,var(--wyg-dim)) 34%, rgba(0,0,0,var(--wyg-dim)) 66%, rgb(0,0,0) 82%);
+    mask-image: conic-gradient(from var(--wyg-deg, 45deg) at center, rgb(0,0,0) 18%, rgba(0,0,0,var(--wyg-dim)) 34%, rgba(0,0,0,var(--wyg-dim)) 66%, rgb(0,0,0) 82%);
+  }
+  .showing-up-wrapper .wyg-glow::before {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border-radius: 10px;
+    box-shadow:
+      inset 0 0 0 1px rgb(var(--wyg-glow) / 100%),
+      inset 0 0 3px 0 rgb(var(--wyg-glow) / 70%),
+      inset 0 0 8px 0 rgb(var(--wyg-glow) / 55%),
+      inset 0 0 18px 0 rgb(var(--wyg-glow) / 40%),
+      inset 0 0 32px 4px rgb(var(--wyg-glow) / 30%),
+      0 0 4px 0 rgb(var(--wyg-glow) / 65%),
+      0 0 10px 0 rgb(var(--wyg-glow) / 50%),
+      0 0 20px 0 rgb(var(--wyg-glow) / 40%),
+      0 0 36px 3px rgb(var(--wyg-glow) / 28%);
+  }
+  .showing-up-wrapper .wyg-enabler-link:not(:hover) .wyg-glow {
+    opacity: 0;
+    transition: opacity .5s var(--su-ease);
+  }
+
+  /* TILE GLOW - the .cg-glow geometry brought back for the tile directions.
+     A tile is roughly square, so the narrow wedge and the centre dead zone
+     that were wrong for a row are exactly right again here. */
+  .showing-up-wrapper .wyg-enabler-link > .wyg-glow--tile {
+    inset: -28px;
+    border-radius: 36px; /* tile 8px + 28px spill */
+    opacity: calc((var(--wyg-d, 0) - 30) / 70);
+    -webkit-mask-image: conic-gradient(from var(--wyg-deg, 45deg) at center, #000 10%, transparent 28%, transparent 72%, #000 90%);
+    mask-image: conic-gradient(from var(--wyg-deg, 45deg) at center, #000 10%, transparent 28%, transparent 72%, #000 90%);
+  }
+  .showing-up-wrapper .wyg-glow--tile::before { inset: 28px; border-radius: 8px; }
+
+  /* ---------------------------------------------------------------------
+     BASE LAYOUT (mobile-first)
+     Every direction collapses to this: one column, production row layout.
+     Six narrow tiles stacked would be six times the scrolling for the same
+     content, and the existing mobile rule is already good.
+     --------------------------------------------------------------------- */
+  .showing-up-wrapper .wyg-split {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 36px;
+  }
+  .showing-up-wrapper .wyg-split > * { min-width: 0; align-self: stretch !important; }
+  .showing-up-wrapper .wyg-enablers { margin-top: 0; }
+
+  /* ---------------------------------------------------------------------
+     DESKTOP (>= 860px)
+     --------------------------------------------------------------------- */
+  @media (min-width: 860px) {
+    .showing-up-wrapper .wyg-enabler-link,
+    .showing-up-wrapper .wyg-enabler-link:link,
+    .showing-up-wrapper .wyg-enabler-link:visited,
+    .showing-up-wrapper .wyg-enabler-link:hover,
+    .showing-up-wrapper .wyg-enabler-link:active {
+      grid-template-columns: 40px 116px 1fr; gap: 16px; align-items: center;
+    }
+    .showing-up-wrapper .wyg-enabler-link .wyg-chip { grid-row: auto; }
+    .showing-up-wrapper .wyg-enabler-link .wyg-enabler-name { grid-column: auto; }
+    .showing-up-wrapper .wyg-enabler-link .wyg-enabler-desc { grid-column: auto; }
+
+    /* --- TILES, for directions A and B ---------------------------------
+       Opted into rather than undone at mobile. Hairline + radius, no shadow,
+       per the card-elevation rule. 16px gap is the 3-card value. */
+    .showing-up-wrapper .wyg-split--a .wyg-enabler,
+    .showing-up-wrapper .wyg-split--b .wyg-enabler {
+      border-top: none;
+      border: 1px solid rgba(255,246,241,.13);
+      border-radius: 8px;
+      transition: border-color var(--su-quick);
+    }
+    .showing-up-wrapper .wyg-section--cream .wyg-split--a .wyg-enabler,
+    .showing-up-wrapper .wyg-section--cream .wyg-split--b .wyg-enabler { border-color: rgba(30,29,29,.12); }
+    .showing-up-wrapper .wyg-split--a .wyg-enabler:hover,
+    .showing-up-wrapper .wyg-split--b .wyg-enabler:hover { border-color: rgba(255,130,105,.45); }
+
+    .showing-up-wrapper .wyg-split--a .wyg-enabler-link,
+    .showing-up-wrapper .wyg-split--a .wyg-enabler-link:link,
+    .showing-up-wrapper .wyg-split--a .wyg-enabler-link:visited,
+    .showing-up-wrapper .wyg-split--a .wyg-enabler-link:hover,
+    .showing-up-wrapper .wyg-split--a .wyg-enabler-link:active,
+    .showing-up-wrapper .wyg-split--b .wyg-enabler-link,
+    .showing-up-wrapper .wyg-split--b .wyg-enabler-link:link,
+    .showing-up-wrapper .wyg-split--b .wyg-enabler-link:visited,
+    .showing-up-wrapper .wyg-split--b .wyg-enabler-link:hover,
+    .showing-up-wrapper .wyg-split--b .wyg-enabler-link:active {
+      display: flex; flex-direction: column; align-items: flex-start;
+      gap: 14px; padding: 24px; height: 100%;
+    }
+    .showing-up-wrapper .wyg-split--a .wyg-enabler-name,
+    .showing-up-wrapper .wyg-split--b .wyg-enabler-name { margin-bottom: -6px; }
+
+    /* The chip carries align-self: center for the mobile grid, where it spans
+       both text rows. Left unreset, that same declaration becomes CROSS-AXIS
+       alignment the moment the tile turns the link into a flex column - and
+       centres the chip over left-aligned text. Constraint 11 in CLAUDE.md,
+       running grid-to-flex rather than desktop-to-mobile, but the identical
+       trap: always reset align-self when a grid child becomes a flex child. */
+    .showing-up-wrapper .wyg-split--a .wyg-enabler-link .wyg-chip,
+    .showing-up-wrapper .wyg-split--b .wyg-enabler-link .wyg-chip { align-self: flex-start !important; }
+
+    /* Chip treatment inside a tile: the chip sits at the top-left of the
+       padding box rather than vertically centred on a row. */
+    .showing-up-wrapper .is-arrow-chip .wyg-split--a .wyg-arrow,
+    .showing-up-wrapper .is-arrow-chip .wyg-split--b .wyg-arrow {
+      left: 24px; top: 24px; margin-top: 0;
+    }
+
+    /* Trailing arrow inside a tile sits bottom-right, so the tile reserves
+       room for it rather than letting it land on the description. */
+    .showing-up-wrapper .is-arrow-trail .wyg-split--a .wyg-enabler-link,
+    .showing-up-wrapper .is-arrow-trail .wyg-split--b .wyg-enabler-link { padding-bottom: 52px; }
+    .showing-up-wrapper .is-arrow-trail .wyg-split--a .wyg-arrow,
+    .showing-up-wrapper .is-arrow-trail .wyg-split--b .wyg-arrow {
+      right: 22px; bottom: 22px; top: auto; margin-top: 0;
+    }
+
+    /* --- DIRECTION D: today's split, rebalanced ------------------------
+       The paragraph has crossed to the left column. Two lines of CSS and one
+       markup move; nothing Ben has signed off is disturbed. */
+    .showing-up-wrapper .wyg-split--d {
+      display: grid; grid-template-columns: 1.05fr .95fr; gap: 72px; align-items: start;
+    }
+    .showing-up-wrapper .wyg-split--d .wyg-lead { max-width: 560px; }
+    .showing-up-wrapper .wyg-split--d .wyg-enablers { margin-top: 4px; }
+    /* Sticky variant. FLAGGED: position: sticky is known to fail silently
+       inside LearnWorlds' scroll container - it is why the nav uses fixed.
+       This may be a lab-only pleasure. */
+    .showing-up-wrapper .is-sticky .wyg-split--d .wyg-lead { position: sticky; top: 40px; }
+
+    /* --- DIRECTION C: two columns of three ----------------------------
+       The six stay ROWS, not tiles: only the container changes from one
+       column to two. Descriptions keep roughly a 560px measure, which is
+       where they stop setting ragged. */
+    .showing-up-wrapper .wyg-split--c .wyg-enablers {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 64px;
+      grid-template-rows: repeat(3, auto);
+      grid-auto-flow: column;
+      margin-top: 12px;
+    }
+    .showing-up-wrapper .wyg-split--c .wyg-enablers > * { min-width: 0; }
+    /* Row-major toggle: 1,2 across / 3,4 / 5,6. Column-major (the default)
+       keeps the coral tint ramp as one unbroken vertical run per column;
+       row-major matches how most readers scan a two-column block. */
+    .showing-up-wrapper .is-order-row .wyg-split--c .wyg-enablers { grid-auto-flow: row; }
+    .showing-up-wrapper .wyg-split--c .wyg-enabler-link,
+    .showing-up-wrapper .wyg-split--c .wyg-enabler-link:link,
+    .showing-up-wrapper .wyg-split--c .wyg-enabler-link:visited,
+    .showing-up-wrapper .wyg-split--c .wyg-enabler-link:hover,
+    .showing-up-wrapper .wyg-split--c .wyg-enabler-link:active {
+      grid-template-columns: 40px 100px 1fr; gap: 14px;
+    }
+
+    /* --- Lead block for the full-width directions (B and C) ------------ */
+    .showing-up-wrapper .wyg-split--b .wyg-lead,
+    .showing-up-wrapper .wyg-split--c .wyg-lead {
+      display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px 64px; align-items: start;
+    }
+    .showing-up-wrapper .wyg-split--b .wyg-lead > *,
+    .showing-up-wrapper .wyg-split--c .wyg-lead > * { min-width: 0; }
+    .showing-up-wrapper .wyg-split--b .wyg-headline,
+    .showing-up-wrapper .wyg-split--c .wyg-headline { max-width: 900px; }
+  }
+
+  /* ---------------------------------------------------------------------
+     >= 1120px: A and B reach three across
+     --------------------------------------------------------------------- */
+  @media (min-width: 1120px) {
+    /* --- DIRECTION A: 3x3, the headline as the first cell ---------------
+       Nine cells, and they fill exactly: the lead is column 1 spanning all
+       three rows, the six enablers are columns 2 and 3.
+
+       The first build put the lead across the top-left TWO cells with the
+       tiles filling the remaining seven. It fails twice - a grid row is as
+       tall as its tallest cell, so tile 1 stretched to the lead's ~450px and
+       stranded its content at the top; and 1 lead (2 cells) + 6 tiles is 8 of
+       9, so the bottom-right cell was left empty. Two voids to replace one.
+
+       Making the lead a FULL-HEIGHT cell removes both. The headline column
+       now stretches to the six by definition, which is the most literal
+       possible answer to "less blank space on the left": the left column can
+       no longer be shorter than the right, because it is the same cell.
+       Column 1 takes 1.25fr so the headline is not set in a 416px measure. */
+    .showing-up-wrapper .wyg-split--a {
+      display: grid; grid-template-columns: 1.25fr 1fr 1fr;
+      grid-template-rows: repeat(3, auto); gap: 16px;
+    }
+    .showing-up-wrapper .wyg-split--a .wyg-lead {
+      grid-column: 1; grid-row: 1 / span 3;
+      padding: 4px 32px 0 0; justify-content: center;
+    }
+    /* display: contents promotes the six <li> to grid children. role="list"
+       is on the <ul> in the markup because contents drops the list role in
+       some engines. */
+    .showing-up-wrapper .wyg-split--a .wyg-enablers { display: contents; }
+
+    /* --- DIRECTION B: 3x2 under a full-width lead ----------------------
+       The most compact of the four. Headline capped at 900px inside the lead
+       so it does not run the whole 1280 at the h2 ramp. */
+    .showing-up-wrapper .wyg-split--b .wyg-enablers {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 44px;
+    }
+    .showing-up-wrapper .wyg-split--b .wyg-enablers > * { min-width: 0; }
+  }
+
+  /* 860 - 1119: A and B fall to two across rather than crushing three. */
+  @media (min-width: 860px) and (max-width: 1119px) {
+    /* At the tablet band A cannot keep a full-height lead beside only two tile
+       columns without the lead becoming a narrow ribbon, so it drops to the
+       lead across the top and the six as 2x3 beneath. */
+    .showing-up-wrapper .wyg-split--a {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    }
+    .showing-up-wrapper .wyg-split--a .wyg-lead {
+      grid-column: 1 / span 2; grid-row: auto; padding-bottom: 12px;
+    }
+    .showing-up-wrapper .wyg-split--a .wyg-enablers { display: contents; }
+    .showing-up-wrapper .wyg-split--b .wyg-enablers {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px;
+    }
+    .showing-up-wrapper .wyg-split--b .wyg-enablers > * { min-width: 0; }
+    .showing-up-wrapper .wyg-split--c .wyg-enablers { gap: 0 40px; }
+    .showing-up-wrapper .wyg-split--b .wyg-lead,
+    .showing-up-wrapper .wyg-split--c .wyg-lead { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 959px) {
+    .showing-up-wrapper .wyg-section { padding: 80px 40px 64px; }
+  }
+  @media (max-width: 859px) {
+    .showing-up-wrapper .wyg-section { padding: 64px 20px 56px; }
+    .showing-up-wrapper .wyg-split { gap: 28px; }
+    /* Every grid child resets its cross-axis alignment when the grid becomes
+       a flex column - align-self: end/center from a desktop grid otherwise
+       carries over and breaks the stack. */
+    .showing-up-wrapper .wyg-split > *,
+    .showing-up-wrapper .wyg-lead > * { align-self: stretch !important; }
+    .showing-up-wrapper .is-arrow-trail .wyg-enabler-link { padding-right: 34px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .showing-up-wrapper .wyg-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .showing-up-wrapper .wyg-arrow { transition: opacity .01ms !important; }
+    .showing-up-wrapper .wyg-enabler-link:hover .wyg-arrow,
+    .showing-up-wrapper .wyg-enabler-link:focus-visible .wyg-arrow { transform: none !important; }
+    .showing-up-wrapper .wyg-enabler-link .wyg-chip { transition: none !important; transform: none !important; }
+  }
+
+  /* ---------------------------------------------------------------------
+     STUB TARGET BANDS (elb-) - so the jump actually jumps and the arrow's
+     promise can be felt. Not part of any direction.
+     --------------------------------------------------------------------- */
+  .showing-up-wrapper .elb-target {
+    scroll-margin-top: 24px;
+    background: var(--c-cream);
+    border-top: 1px solid rgba(30,29,29,.08);
+    padding: 56px 80px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .showing-up-wrapper .elb-target h3 {
+    font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 28px;
+    letter-spacing: -.02em; color: var(--c-ink);
+  }
+  .showing-up-wrapper .elb-target p {
+    font-size: 13px; color: rgba(53,52,52,.6); margin-top: 4px;
+  }
+  @media (max-width: 859px) {
+    .showing-up-wrapper .elb-target { padding: 36px 20px; }
+  }
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="elb-ic-arrow" viewBox="0 0 16 16">
+    <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4.6 4.6 L11.4 11.4"/>
+      <path d="M11.4 6.4 L11.4 11.4 L6.4 11.4"/>
+    </g>
+  </symbol>
+
+  
+
+  
+  <symbol id="elb-shp-v10" viewBox="0 0 219 201">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M103.17 2.74194C94.3098 10.2019 88.1297 27.3869 83.8397 56.4919C82.7797 63.6419 81.8397 72.4169 81.7397 75.9919L81.5697 82.4919L80.5298 76.9919C79.9698 73.9669 78.6198 65.8489 77.5498 58.9529C73.0798 30.2409 63.9897 14.0519 54.5697 18.0309C50.4697 19.7649 44.5798 29.3879 41.4298 39.4919C38.8698 47.7269 35.0997 68.24 34.9497 74.793C34.8197 80.527 33.0397 76.0779 31.3397 65.7659C28.8597 50.6709 22.9398 38.9919 17.7898 38.9919C11.8798 38.9919 6.02976 50.1849 2.63976 67.9919C-0.0602446 82.1379 -0.0402153 118.651 2.66978 132.492C6.12978 150.177 10.2897 159.332 15.7497 161.3C18.4797 162.281 19.2397 162.08 21.8597 159.672C25.6497 156.195 29.4198 146.295 31.7798 133.633C33.7798 122.917 35.0398 120.281 35.0398 126.791C35.0398 132.978 38.6397 152.413 41.4697 161.492C44.7997 172.158 50.2198 181.13 54.3998 182.887C65.7298 187.65 74.3197 168.548 80.2097 125.492L81.1698 118.492L82.1398 129.492C86.9298 183.514 103.78 213.805 118.71 195.215C127.25 184.593 133.34 161.853 137 127.009C137.92 118.267 138.89 116.522 138.89 123.605C138.89 137.39 145.86 167.158 150.95 175.121C153.68 179.393 159.09 183.992 161.38 183.992C164.6 183.992 170.1 178.547 173.02 172.48C177.16 163.864 181.82 145.137 182.77 133.242C183.23 127.605 184.01 122.992 184.51 122.992C185.01 122.992 185.81 126.254 186.29 130.242C187.43 139.583 191.55 152.463 194.94 157.231C207.44 174.835 220.26 138.369 218.23 90.9919C216.15 42.4519 200 22.5719 189.56 55.6899C188.2 60.0289 186.7 66.8209 186.23 70.7849C185.21 79.3939 183.21 80.3579 183.2 72.2419C183.19 59.3759 177.45 36.3579 171.77 26.3329C165.49 15.2609 158.85 14.4989 152.23 24.0939C146.13 32.9559 138.89 61.858 138.89 77.379C138.89 85.789 137.83 82.0359 136.38 68.4659C131.91 26.8089 121.36 -0.00805664 109.42 -0.00805664C107.77 -0.00805664 104.96 1.22894 103.17 2.74194Z"/>
+  </symbol>
+
+  
+  <symbol id="elb-shp-g271" viewBox="0 0 293 241">
+    <path d="M18.5577 220.096C28.5694 231.396 52.4655 220.254 71.9313 195.209C91.3971 170.164 99.0612 140.7 89.0495 129.399C79.0379 118.099 55.1418 129.241 35.676 154.286C16.2102 179.331 8.54612 208.795 18.5577 220.096Z"/>
+    <path d="M81.915 199.299C91.9266 210.6 119.178 195.141 142.782 164.771C166.386 134.401 177.405 100.621 167.394 89.3201C157.382 78.0197 130.131 93.4786 106.527 123.849C82.9224 154.219 71.9033 187.999 81.915 199.299Z"/>
+    <path d="M150.401 180.53C160.412 191.83 196.234 165.344 230.411 121.371C264.588 77.3978 284.178 32.5898 274.167 21.2893C264.155 9.98893 228.333 36.4754 194.156 80.4485C159.979 124.422 140.389 169.23 150.401 180.53Z"/>
+  </symbol>
+
+  
+  <symbol id="elb-shp-v5" viewBox="0 0 247 218">
+    <path d="M213.164 187.513C231.458 187.185 246.372 193.74 246.475 202.152C246.578 210.565 231.83 217.65 213.536 217.978C195.241 218.305 180.328 211.751 180.224 203.339C180.121 194.926 194.869 187.84 213.164 187.513ZM0.734911 202.103C0.837911 193.69 15.7519 187.135 34.0459 187.463C52.3409 187.791 67.0879 194.876 66.9849 203.289C66.8819 211.702 51.9679 218.256 33.6729 217.929C15.3789 217.601 0.631911 210.515 0.734911 202.103ZM197.834 135.584C214.221 124.699 231.686 125.094 236.843 136.465C242 147.836 232.897 165.879 216.509 176.764C200.122 187.648 182.656 187.254 177.499 175.883C172.341 164.511 181.446 146.469 197.834 135.584ZM10.3659 136.419C15.5229 125.048 32.9889 124.653 49.3769 135.538C65.7639 146.423 74.8679 164.465 69.7099 175.836C64.5529 187.207 47.0879 187.602 30.7009 176.717C14.3129 165.832 5.20892 147.79 10.3659 136.419ZM157.57 79.221C166.668 54.399 185.207 40.271 198.978 47.663C212.749 55.056 216.538 81.171 207.44 105.992C198.342 130.813 179.803 144.942 166.032 137.55C152.261 130.157 148.472 104.042 157.57 79.221ZM48.2319 47.617C62.0029 40.225 80.5419 54.353 89.6399 79.175C98.7379 103.996 94.9489 130.11 81.1779 137.503C67.4069 144.896 48.8679 130.767 39.7699 105.945C30.6719 81.124 34.4609 55.01 48.2319 47.617ZM123.604 0.625C141.261 0.625 155.576 26.425 155.576 58.251C155.576 90.077 141.261 115.876 123.604 115.876C105.947 115.876 91.6319 90.077 91.6319 58.251C91.6319 26.425 105.947 0.625 123.604 0.625Z"/>
+  </symbol>
+
+  
+  <symbol id="elb-shp-v9" viewBox="0 0 232 165">
+    <path d="M116 79.0089C160.65 79.0679 196.85 85.562 196.85 93.5129C196.85 98.646 181.76 103.131 159.04 105.65C201.79 110.181 231.99 121.261 231.99 134.212C231.99 151.195 180.06 164.962 115.99 164.962C51.9302 164.962 -0.00976562 151.195 -0.00976562 134.212C-0.00976562 121.208 30.4402 110.089 73.4702 105.592C50.4602 103.023 35.1403 98.4699 35.1403 93.2969C35.1403 85.3469 71.3402 78.9499 116 79.0089ZM116 52.8469C151.72 52.8939 180.68 58.09 180.68 64.45C180.68 70.811 151.72 75.9279 116 75.88C80.2702 75.832 51.3103 70.638 51.3103 64.278C51.3103 57.917 80.2702 52.7989 116 52.8469ZM116 25.0109C144.58 25.0489 167.74 29.2049 167.74 34.2929C167.74 39.3819 144.58 43.4759 116 43.4379C87.4202 43.3999 64.2502 39.2439 64.2502 34.1549C64.2502 29.0669 87.4202 24.9729 116 25.0109ZM116 0.855931C138.86 0.885931 157.4 4.21095 157.4 8.28095C157.4 12.3519 138.86 15.6269 116 15.5969C93.1402 15.5659 74.6002 12.2419 74.6002 8.17093C74.6002 4.10093 93.1402 0.824931 116 0.855931Z"/>
+  </symbol>
+</svg>
+
+<div class="elb-page" id="elb-page">
+
+  <div class="elb-bar">
+    <span class="elb-title">Enablers layout lab</span>
+
+    <span class="elb-group" data-elb-group="dir">
+      <span class="elb-label">Direction</span>
+      <button class="elb-btn" type="button" data-set="dir" data-val="a">A &#183; 3&#215;3</button>
+      <button class="elb-btn" type="button" data-set="dir" data-val="b">B &#183; 3&#215;2</button>
+      <button class="elb-btn" type="button" data-set="dir" data-val="c">C &#183; 2&#215;3</button>
+      <button class="elb-btn" type="button" data-set="dir" data-val="d">D &#183; split</button>
+      <button class="elb-btn" type="button" data-set="dir" data-val="all">All</button>
+    </span>
+
+    <span class="elb-group">
+      <span class="elb-label">Arrow</span>
+      <button class="elb-btn" type="button" data-set="arrow" data-val="chip">Chip</button>
+      <button class="elb-btn" type="button" data-set="arrow" data-val="trail">Trailing</button>
+      <button class="elb-btn" type="button" data-set="arrow" data-val="rule">Rule-end</button>
+      <button class="elb-btn" type="button" data-set="arrow" data-val="none">None</button>
+    </span>
+
+    <span class="elb-group">
+      <span class="elb-label">At rest</span>
+      <button class="elb-btn" type="button" data-set="rest" data-val="rest" id="elb-btn-rest">Visible</button>
+      <button class="elb-btn" type="button" data-set="rest" data-val="hover" id="elb-btn-hover">Hover only</button>
+    </span>
+
+    <span class="elb-group">
+      <span class="elb-label">Ground</span>
+      <button class="elb-btn" type="button" data-set="ground" data-val="dark">Dark</button>
+      <button class="elb-btn" type="button" data-set="ground" data-val="cream">Cream</button>
+    </span>
+
+    <span class="elb-group">
+      <span class="elb-label">C order</span>
+      <button class="elb-btn" type="button" data-set="order" data-val="col">Column</button>
+      <button class="elb-btn" type="button" data-set="order" data-val="row">Row</button>
+    </span>
+
+    <span class="elb-group">
+      <span class="elb-label">Copy</span>
+      <button class="elb-btn" type="button" data-set="copy" data-val="current">Ben's</button>
+      <button class="elb-btn" type="button" data-set="copy" data-val="tight">Tightened</button>
+    </span>
+
+    <span class="elb-group">
+      <span class="elb-label">Shape</span>
+      <button class="elb-btn" type="button" data-set="shape" data-val="off">Off</button>
+      <button class="elb-btn" type="button" data-set="shape" data-val="v10">Crescendo</button>
+      <button class="elb-btn" type="button" data-set="shape" data-val="g271">Climb</button>
+      <button class="elb-btn" type="button" data-set="shape" data-val="v5">Fan</button>
+      <button class="elb-btn" type="button" data-set="shape" data-val="v9">Cairn</button>
+    </span>
+
+    <span class="elb-group">
+      <span class="elb-label">Shape sits</span>
+      <button class="elb-btn" type="button" data-set="shapepos" data-val="right">Right</button>
+      <button class="elb-btn" type="button" data-set="shapepos" data-val="left">Left</button>
+      <button class="elb-btn" type="button" data-set="shapepos" data-val="wide">Wide</button>
+    </span>
+
+    <span class="elb-group">
+      <span class="elb-label">Also</span>
+      <button class="elb-btn" type="button" data-toggle="shapestrong">Shape louder</button>
+      <button class="elb-btn" type="button" data-toggle="sticky">D sticky</button>
+      <button class="elb-btn" type="button" data-toggle="label">Jump label</button>
+    </span>
+  </div>
+
+  <div class="elb-readouts">
+    <span class="elb-readout" id="elb-heights">Section height <em>measuring&#8230;</em></span>
+    <span class="elb-readout" id="elb-contrast">Contrast <em>measuring&#8230;</em></span>
+    <span class="elb-readout" id="elb-words"></span>
+    <span class="elb-readout" id="elb-viewport"></span>
+  </div>
+
+  <div class="elb-notes" id="elb-notes"></div>
+
+  <main class="showing-up-wrapper elb-stage" id="elb-stage">
+
+    
+
+    
+    <section class="wyg-section wyg-section--dark elb-dir" data-dir="a" aria-label="Direction A, three by three with the headline as the first cell">
+      <p class="elb-dirtag">Direction A &#8212; 3&#215;3, headline as the first cell</p>
+      <div class="wyg-shape" aria-hidden="true">
+        <svg class="wyg-shape-svg" data-shape="v10"  viewBox="0 0 219 201"><use href="#elb-shp-v10"></use></svg>
+        <svg class="wyg-shape-svg" data-shape="g271" viewBox="0 0 293 241"><use href="#elb-shp-g271"></use></svg>
+        <svg class="wyg-shape-svg" data-shape="v5"   viewBox="0 0 247 218"><use href="#elb-shp-v5"></use></svg>
+        <svg class="wyg-shape-svg" data-shape="v9"   viewBox="0 0 232 165"><use href="#elb-shp-v9"></use></svg>
+      </div>
+      <div class="wyg-split wyg-split--a">
+        <div class="wyg-lead wyg-reveal">
+          <h2 class="wyg-headline" data-copy="current">The platform provides <em class="hp-coral-strong">six learning enablers</em>. They are designed to either elevate your current learning offer, or become your entire learning ecosystem.</h2>
+          <h2 class="wyg-headline" data-copy="tight">The platform provides <em class="hp-coral-strong">six learning enablers</em>. They can strengthen the learning you already run, or become your entire learning ecosystem.</h2>
+          <p class="wyg-body" data-copy="current">The learning is designed to be easy to use and immediately useful: you'll notice the difference in your team's very next client interaction. And because everything is available 24/7, the learning fits around the demands of client work, rather than asking client work to fit around it.</p>
+          <p class="wyg-body" data-copy="tight">Easy to use and useful straight away: you'll notice the difference in your team's very next client interaction. Everything is there 24/7, so the learning fits around client work rather than asking client work to fit around it.</p>
+        </div>
+        <ul class="wyg-enablers wyg-reveal" role="list">
+          <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-1"><span class="wyg-chip wyg-chip--1"><span class="wyg-chip-num">1</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">DEFINE</span><span class="wyg-enabler-desc">A career development map that defines what great really looks like.</span></a></li>
+          <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-2"><span class="wyg-chip wyg-chip--2"><span class="wyg-chip-num">2</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">ASSESS</span><span class="wyg-enabler-desc">360 assessments to pinpoint your strengths and development areas.</span></a></li>
+          <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-3"><span class="wyg-chip wyg-chip--3"><span class="wyg-chip-num">3</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">LEARN</span><span class="wyg-enabler-desc">Bite-size, engaging video lessons to develop and grow, on demand.</span></a></li>
+          <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-4"><span class="wyg-chip wyg-chip--4"><span class="wyg-chip-num">4</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">TOOLKITS</span><span class="wyg-enabler-desc">Downloadable toolkits to make learning stick and work improve.</span></a></li>
+          <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-5"><span class="wyg-chip wyg-chip--5"><span class="wyg-chip-num">5</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">PLAY</span><span class="wyg-enabler-desc">Team games and challenges that sharpen your team's thinking together.</span></a></li>
+          <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-6"><span class="wyg-chip wyg-chip--6"><span class="wyg-chip-num">6</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">LEAD</span><span class="wyg-enabler-desc">Investing in your people-leaders to be the one their team relies on.</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    
+    <section class="wyg-section wyg-section--dark elb-dir" data-dir="b" aria-label="Direction B, three by two under a full width lead">
+      <p class="elb-dirtag">Direction B &#8212; 3&#215;2 under a full-width lead</p>
+      <div class="wyg-shape" aria-hidden="true">
+        <svg class="wyg-shape-svg" data-shape="v10"  viewBox="0 0 219 201"><use href="#elb-shp-v10"></use></svg>
+        <svg class="wyg-shape-svg" data-shape="g271" viewBox="0 0 293 241"><use href="#elb-shp-g271"></use></svg>
+        <svg class="wyg-shape-svg" data-shape="v5"   viewBox="0 0 247 218"><use href="#elb-shp-v5"></use></svg>
+        <svg class="wyg-shape-svg" data-shape="v9"   viewBox="0 0 232 165"><use href="#elb-shp-v9"></use></svg>
+      </div>
+      <div class="wyg-split wyg-split--b">
+        <div class="wyg-lead wyg-reveal">
+          <h2 class="wyg-headline" data-copy="current">The platform provides <em class="hp-coral-strong">six learning enablers</em>. They are designed to either elevate your current learning offer, or become your entire learning ecosystem.</h2>
+          <h2 class="wyg-headline" data-copy="tight">The platform provides <em class="hp-coral-strong">six learning enablers</em>. They can strengthen the learning you already run, or become your entire learning ecosystem.</h2>
+          <p class="wyg-body" data-copy="current">The learning is designed to be easy to use and immediately useful: you'll notice the difference in your team's very next client interaction. And because everything is available 24/7, the learning fits around the demands of client work, rather than asking client work to fit around it.</p>
+          <p class="wyg-body" data-copy="tight">Easy to use and useful straight away: you'll notice the difference in your team's very next client interaction. Everything is there 24/7, so the learning fits around client work rather than asking client work to fit around it.</p>
+        </div>
+        <div class="wyg-reveal">
+          <p class="wyg-jumplabel">Jump to any of the six</p>
+          <ul class="wyg-enablers" role="list">
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-1"><span class="wyg-chip wyg-chip--1"><span class="wyg-chip-num">1</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">DEFINE</span><span class="wyg-enabler-desc">A career development map that defines what great really looks like.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-2"><span class="wyg-chip wyg-chip--2"><span class="wyg-chip-num">2</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">ASSESS</span><span class="wyg-enabler-desc">360 assessments to pinpoint your strengths and development areas.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-3"><span class="wyg-chip wyg-chip--3"><span class="wyg-chip-num">3</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">LEARN</span><span class="wyg-enabler-desc">Bite-size, engaging video lessons to develop and grow, on demand.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-4"><span class="wyg-chip wyg-chip--4"><span class="wyg-chip-num">4</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">TOOLKITS</span><span class="wyg-enabler-desc">Downloadable toolkits to make learning stick and work improve.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-5"><span class="wyg-chip wyg-chip--5"><span class="wyg-chip-num">5</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">PLAY</span><span class="wyg-enabler-desc">Team games and challenges that sharpen your team's thinking together.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-6"><span class="wyg-chip wyg-chip--6"><span class="wyg-chip-num">6</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">LEAD</span><span class="wyg-enabler-desc">Investing in your people-leaders to be the one their team relies on.</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="wyg-section wyg-section--dark elb-dir" data-dir="c" aria-label="Direction C, two columns of three">
+      <p class="elb-dirtag">Direction C &#8212; two columns of three</p>
+      <div class="wyg-shape" aria-hidden="true">
+        <svg class="wyg-shape-svg" data-shape="v10"  viewBox="0 0 219 201"><use href="#elb-shp-v10"></use></svg>
+        <svg class="wyg-shape-svg" data-shape="g271" viewBox="0 0 293 241"><use href="#elb-shp-g271"></use></svg>
+        <svg class="wyg-shape-svg" data-shape="v5"   viewBox="0 0 247 218"><use href="#elb-shp-v5"></use></svg>
+        <svg class="wyg-shape-svg" data-shape="v9"   viewBox="0 0 232 165"><use href="#elb-shp-v9"></use></svg>
+      </div>
+      <div class="wyg-split wyg-split--c">
+        <div class="wyg-lead wyg-reveal">
+          <h2 class="wyg-headline" data-copy="current">The platform provides <em class="hp-coral-strong">six learning enablers</em>. They are designed to either elevate your current learning offer, or become your entire learning ecosystem.</h2>
+          <h2 class="wyg-headline" data-copy="tight">The platform provides <em class="hp-coral-strong">six learning enablers</em>. They can strengthen the learning you already run, or become your entire learning ecosystem.</h2>
+          <p class="wyg-body" data-copy="current">The learning is designed to be easy to use and immediately useful: you'll notice the difference in your team's very next client interaction. And because everything is available 24/7, the learning fits around the demands of client work, rather than asking client work to fit around it.</p>
+          <p class="wyg-body" data-copy="tight">Easy to use and useful straight away: you'll notice the difference in your team's very next client interaction. Everything is there 24/7, so the learning fits around client work rather than asking client work to fit around it.</p>
+        </div>
+        <div class="wyg-reveal">
+          <p class="wyg-jumplabel">Jump to any of the six</p>
+          <ul class="wyg-enablers" role="list">
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-1"><span class="wyg-chip wyg-chip--1"><span class="wyg-chip-num">1</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">DEFINE</span><span class="wyg-enabler-desc">A career development map that defines what great really looks like.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-2"><span class="wyg-chip wyg-chip--2"><span class="wyg-chip-num">2</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">ASSESS</span><span class="wyg-enabler-desc">360 assessments to pinpoint your strengths and development areas.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-3"><span class="wyg-chip wyg-chip--3"><span class="wyg-chip-num">3</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">LEARN</span><span class="wyg-enabler-desc">Bite-size, engaging video lessons to develop and grow, on demand.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-4"><span class="wyg-chip wyg-chip--4"><span class="wyg-chip-num">4</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">TOOLKITS</span><span class="wyg-enabler-desc">Downloadable toolkits to make learning stick and work improve.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-5"><span class="wyg-chip wyg-chip--5"><span class="wyg-chip-num">5</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">PLAY</span><span class="wyg-enabler-desc">Team games and challenges that sharpen your team's thinking together.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-6"><span class="wyg-chip wyg-chip--6"><span class="wyg-chip-num">6</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">LEAD</span><span class="wyg-enabler-desc">Investing in your people-leaders to be the one their team relies on.</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="wyg-section wyg-section--dark elb-dir" data-dir="d" aria-label="Direction D, the split rebalanced">
+      <p class="elb-dirtag">Direction D &#8212; balanced split (body copy moved left)</p>
+      <div class="wyg-shape" aria-hidden="true">
+        <svg class="wyg-shape-svg" data-shape="v10"  viewBox="0 0 219 201"><use href="#elb-shp-v10"></use></svg>
+        <svg class="wyg-shape-svg" data-shape="g271" viewBox="0 0 293 241"><use href="#elb-shp-g271"></use></svg>
+        <svg class="wyg-shape-svg" data-shape="v5"   viewBox="0 0 247 218"><use href="#elb-shp-v5"></use></svg>
+        <svg class="wyg-shape-svg" data-shape="v9"   viewBox="0 0 232 165"><use href="#elb-shp-v9"></use></svg>
+      </div>
+      <div class="wyg-split wyg-split--d">
+        <div class="wyg-lead wyg-reveal">
+          <h2 class="wyg-headline" data-copy="current">The platform provides <em class="hp-coral-strong">six learning enablers</em>. They are designed to either elevate your current learning offer, or become your entire learning ecosystem.</h2>
+          <h2 class="wyg-headline" data-copy="tight">The platform provides <em class="hp-coral-strong">six learning enablers</em>. They can strengthen the learning you already run, or become your entire learning ecosystem.</h2>
+          <p class="wyg-body" data-copy="current">The learning is designed to be easy to use and immediately useful: you'll notice the difference in your team's very next client interaction. And because everything is available 24/7, the learning fits around the demands of client work, rather than asking client work to fit around it.</p>
+          <p class="wyg-body" data-copy="tight">Easy to use and useful straight away: you'll notice the difference in your team's very next client interaction. Everything is there 24/7, so the learning fits around client work rather than asking client work to fit around it.</p>
+        </div>
+        <div class="wyg-reveal">
+          <p class="wyg-jumplabel">Jump to any of the six</p>
+          <ul class="wyg-enablers" role="list">
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-1"><span class="wyg-chip wyg-chip--1"><span class="wyg-chip-num">1</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">DEFINE</span><span class="wyg-enabler-desc">A career development map that defines what great really looks like.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-2"><span class="wyg-chip wyg-chip--2"><span class="wyg-chip-num">2</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">ASSESS</span><span class="wyg-enabler-desc">360 assessments to pinpoint your strengths and development areas.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-3"><span class="wyg-chip wyg-chip--3"><span class="wyg-chip-num">3</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">LEARN</span><span class="wyg-enabler-desc">Bite-size, engaging video lessons to develop and grow, on demand.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-4"><span class="wyg-chip wyg-chip--4"><span class="wyg-chip-num">4</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">TOOLKITS</span><span class="wyg-enabler-desc">Downloadable toolkits to make learning stick and work improve.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-5"><span class="wyg-chip wyg-chip--5"><span class="wyg-chip-num">5</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">PLAY</span><span class="wyg-enabler-desc">Team games and challenges that sharpen your team's thinking together.</span></a></li>
+            <li class="wyg-enabler"><a class="wyg-enabler-link" href="#wyg-6"><span class="wyg-chip wyg-chip--6"><span class="wyg-chip-num">6</span></span><span class="wyg-arrow"><svg aria-hidden="true" focusable="false"><use href="#elb-ic-arrow"></use></svg></span><span class="wyg-enabler-name">LEAD</span><span class="wyg-enabler-desc">Investing in your people-leaders to be the one their team relies on.</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="elb-target" id="wyg-1"><span class="wyg-chip wyg-chip--1"><span class="wyg-chip-num">1</span></span><div><h3>Defining what great looks like</h3><p>Stub landing band &#8212; on the homepage this is the real DEFINE feature.</p></div></section>
+    <section class="elb-target" id="wyg-2"><span class="wyg-chip wyg-chip--2"><span class="wyg-chip-num">2</span></span><div><h3>360 assessments</h3><p>Stub landing band &#8212; on the homepage this is the real ASSESS feature.</p></div></section>
+    <section class="elb-target" id="wyg-3"><span class="wyg-chip wyg-chip--3"><span class="wyg-chip-num">3</span></span><div><h3>Video lessons, on demand</h3><p>Stub landing band &#8212; on the homepage this is the real LEARN feature.</p></div></section>
+    <section class="elb-target" id="wyg-4"><span class="wyg-chip wyg-chip--4"><span class="wyg-chip-num">4</span></span><div><h3>Toolkits that make it stick</h3><p>Stub landing band &#8212; on the homepage this is the real TOOLKITS feature.</p></div></section>
+    <section class="elb-target" id="wyg-5"><span class="wyg-chip wyg-chip--5"><span class="wyg-chip-num">5</span></span><div><h3>Team games and challenges</h3><p>Stub landing band &#8212; on the homepage this is the real PLAY feature.</p></div></section>
+    <section class="elb-target" id="wyg-6"><span class="wyg-chip wyg-chip--6"><span class="wyg-chip-num">6</span></span><div><h3>Investing in your people-leaders</h3><p>Stub landing band &#8212; on the homepage this is the real LEAD feature.</p></div></section>
+
+  </main>
+
+  <div class="elb-foot">
+    <p><strong>How to read this.</strong> Every direction carries identical markup &#8212; only the modifier on <code>.wyg-split</code> changes. The height readout is the number that settles compact-versus-statement; the contrast readout checks the cream ground as you look at it, rather than after. Spec: <code>docs/superpowers/specs/2026-08-09-enablers-layout-lab-design.md</code>. State lives in the URL, so a particular combination can be sent as a link.</p>
+  </div>
+
+</div>
+
+<noscript>
+  <style>
+    .elb-bar, .elb-readouts, .elb-notes { display: none !important; }
+    .showing-up-wrapper .wyg-reveal { opacity: 1 !important; transform: none !important; }
+    .showing-up-wrapper .wyg-arrow { display: none !important; }
+  </style>
+</noscript>
+
+<script>
+(function () {
+  'use strict';
+
+  var page    = document.getElementById('elb-page');
+  var stage   = document.getElementById('elb-stage');
+  var notesEl = document.getElementById('elb-notes');
+  var hEl     = document.getElementById('elb-heights');
+  var cEl     = document.getElementById('elb-contrast');
+  var vEl     = document.getElementById('elb-viewport');
+  var wEl     = document.getElementById('elb-words');
+  var sections = Array.prototype.slice.call(stage.querySelectorAll('.elb-dir'));
+  var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var state = {
+    dir: 'all', arrow: 'trail', rest: 'rest', ground: 'dark',
+    order: 'col', sticky: 'off', label: 'off',
+    shape: 'off', shapepos: 'right', shapestrong: 'off',
+    copy: 'current'
+  };
+
+  /* ---- state in the URL, so a combination is shareable ---- */
+  function readHash() {
+    var h = window.location.hash.replace(/^#/, '');
+    if (!h || h.indexOf('=') === -1) return;
+    h.split('&').forEach(function (pair) {
+      var kv = pair.split('=');
+      if (state.hasOwnProperty(kv[0])) state[kv[0]] = kv[1];
+    });
+  }
+  function writeHash() {
+    var parts = Object.keys(state).map(function (k) { return k + '=' + state[k]; });
+    if (history.replaceState) history.replaceState(null, '', '#' + parts.join('&'));
+  }
+
+  /* ---- contrast maths. Composites the alpha colour over the ground first,
+          because rgba(255,246,241,.78) on ink is not a 14:1 cream - it is the
+          composite that has to pass. ---- */
+  function parseColour(s) {
+    var m = String(s).match(/[\d.]+/g);
+    if (!m) return null;
+    return { r: +m[0], g: +m[1], b: +m[2], a: m[3] === undefined ? 1 : +m[3] };
+  }
+  function composite(fg, bg) {
+    return {
+      r: fg.a * fg.r + (1 - fg.a) * bg.r,
+      g: fg.a * fg.g + (1 - fg.a) * bg.g,
+      b: fg.a * fg.b + (1 - fg.a) * bg.b,
+      a: 1
+    };
+  }
+  function luminance(c) {
+    var ch = [c.r, c.g, c.b].map(function (v) {
+      v = v / 255;
+      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * ch[0] + 0.7152 * ch[1] + 0.0722 * ch[2];
+  }
+  function ratio(fg, bg) {
+    var l1 = luminance(fg), l2 = luminance(bg);
+    var hi = Math.max(l1, l2), lo = Math.min(l1, l2);
+    return (hi + 0.05) / (lo + 0.05);
+  }
+
+  /* ---- apply ---- */
+  var ARROWS = ['chip', 'trail', 'rule', 'none'];
+  var SHAPES = ['v10', 'g271', 'v5', 'v9'];
+  var POSNS  = ['right', 'left', 'wide'];
+  var SHAPE_NAMES = { v10: 'Crescendo (Vector-10)', g271: 'Climb (Group 40271)',
+                      v5: 'Fan (Vector-5)', v9: 'Cairn (Vector-9)' };
+
+  function apply() {
+    // Chip is a swap, so it has no resting state - the resting state IS the
+    // numeral. Force hover and disable the toggle rather than pretending.
+    var restBtn  = document.getElementById('elb-btn-rest');
+    var hoverBtn = document.getElementById('elb-btn-hover');
+    var chipLocked = (state.arrow === 'chip');
+    restBtn.disabled = chipLocked;
+    hoverBtn.disabled = chipLocked;
+
+    // Placement and strength mean nothing with no shape on.
+    var shapeOff = (state.shape === 'off');
+    document.querySelectorAll('.elb-btn[data-set="shapepos"], .elb-btn[data-toggle="shapestrong"]')
+      .forEach(function (b) { b.disabled = shapeOff; });
+
+    sections.forEach(function (s) {
+      var d = s.getAttribute('data-dir');
+
+      ARROWS.forEach(function (a) { s.classList.remove('is-arrow-' + a); });
+      SHAPES.forEach(function (k) { s.classList.remove('is-shape-' + k); });
+      POSNS.forEach(function (k) { s.classList.remove('is-shape-pos-' + k); });
+      s.classList.remove('is-arrow-rest', 'is-arrow-hover', 'is-order-row',
+                         'is-sticky', 'is-label', 'is-parked', 'is-shape-strong',
+                         'is-copy-tight',
+                         'wyg-section--dark', 'wyg-section--cream');
+
+      // Rule-end needs a hairline. A and B are tiles, so they take trailing
+      // instead - said out loud in the notes, never silently substituted.
+      var arrow = state.arrow;
+      if ((d === 'a' || d === 'b') && arrow === 'rule') arrow = 'trail';
+      s.classList.add('is-arrow-' + arrow);
+      s.classList.add(chipLocked ? 'is-arrow-hover' : 'is-arrow-' + state.rest);
+
+      s.classList.add(state.ground === 'cream' ? 'wyg-section--cream' : 'wyg-section--dark');
+      if (state.copy === 'tight') s.classList.add('is-copy-tight');
+      if (state.order === 'row')  s.classList.add('is-order-row');
+      if (state.sticky === 'on')  s.classList.add('is-sticky');
+      if (state.label === 'on')   s.classList.add('is-label');
+      if (state.shape !== 'off') {
+        s.classList.add('is-shape-' + state.shape);
+        s.classList.add('is-shape-pos-' + state.shapepos);
+        if (state.shapestrong === 'on') s.classList.add('is-shape-strong');
+      }
+
+      var active = (state.dir === 'all' || state.dir === d);
+      if (!active) s.classList.add('is-parked');
+      s.setAttribute('aria-hidden', active ? 'false' : 'true');
+
+      if (active) {
+        s.querySelectorAll('.wyg-reveal').forEach(function (r) { r.classList.add('is-in'); });
+      }
+    });
+
+    // Button pressed states
+    document.querySelectorAll('.elb-btn[data-set]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(state[b.getAttribute('data-set')] === b.getAttribute('data-val')));
+    });
+    document.querySelectorAll('.elb-btn[data-toggle]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(state[b.getAttribute('data-toggle')] === 'on'));
+    });
+
+    renderNotes(chipLocked);
+    writeHash();
+    // rAF for a measurement taken after layout, and a short timeout as a
+    // backstop: rAF is paused in a background or hidden tab, and a stale
+    // contrast figure on a page whose whole job is trustworthy numbers is
+    // worse than measuring twice.
+    requestAnimationFrame(measure);
+    setTimeout(measure, 120);
+  }
+
+  function note(text, warn) {
+    var p = document.createElement('p');
+    p.className = 'elb-note' + (warn ? ' elb-note--warn' : '');
+    p.textContent = text;
+    notesEl.appendChild(p);
+  }
+
+  function renderNotes(chipLocked) {
+    notesEl.innerHTML = '';
+    var showsAB = (state.dir === 'all' || state.dir === 'a' || state.dir === 'b');
+
+    if (state.arrow === 'rule' && showsAB) {
+      note('Rule-end needs a hairline to break. A and B are tiles, so they are showing the trailing arrow instead. C and D are showing the real rule-end treatment.');
+    }
+    if (chipLocked) {
+      note('Chip swap is hover-only by construction: the resting state is the numeral, so there is nothing for a touch visitor to see. That is the argument against it, not a bug.');
+    }
+    if (state.sticky === 'on') {
+      note('position: sticky is known to fail silently inside the LearnWorlds scroll container, which is why the nav uses fixed. Judge how it reads here, but do not assume it ships.', true);
+    }
+    if (state.label === 'on') {
+      note('"Jump to any of the six" is NEW COPY and is not signed off. Off by default. Research says a label of this kind signals an in-page link more reliably than an arrow alone.', true);
+    }
+    if (state.copy === 'tight') {
+      note('Tightened copy is a DRAFT and is not signed off. Ben wrote the current version on 6 August and it is the default here. This trim keeps his structure, his either/or and his "fits around client work rather than asking client work to fit around it" reversal, and drops 11 words. It also loses "elevate", which is on the house banned list and is the only banned word in the live copy.', true);
+    }
+    if (state.shape !== 'off') {
+      note('Shape: ' + SHAPE_NAMES[state.shape] + ', path verbatim from the 2025 agency kit, recoloured (cream on ink, coral on cream) because the band is not a cluster-coded surface. One wash for the whole band rather than a watermark per card, which keeps it inside the one-shape-per-viewport budget and leaves the coral chip ramp to do the per-item work.');
+      note('On the homepage this band shares a page with the s5- and sf- card watermarks. The shape budget is roughly one moment per VIEWPORT, so this is legal only if the bands stay a scroll apart. Worth checking in situ before it ships, not just here.', true);
+    }
+  }
+
+  /* ---- readouts ---- */
+  function measure() {
+    var parts = sections.map(function (s) {
+      return s.getAttribute('data-dir').toUpperCase() + ' <strong>' + Math.round(s.offsetHeight) + '</strong>';
+    });
+    hEl.innerHTML = 'Section height ' + parts.join(' &#183; ') + ' <em>px</em>';
+    vEl.innerHTML = 'Viewport <strong>' + window.innerWidth + '</strong><em>px</em>';
+
+    // Word count of whichever copy is showing, read off the DOM rather than
+    // hardcoded, so it cannot drift from the text on the page.
+    var liveSec = sections.filter(function (s) { return !s.classList.contains('is-parked'); })[0];
+    if (liveSec) {
+      var wc = function (el) {
+        return el ? el.textContent.trim().split(/\s+/).filter(Boolean).length : 0;
+      };
+      var key = state.copy === 'tight' ? 'tight' : 'current';
+      var h = wc(liveSec.querySelector('.wyg-headline[data-copy="' + key + '"]'));
+      var b = wc(liveSec.querySelector('.wyg-body[data-copy="' + key + '"]'));
+      wEl.innerHTML = 'Copy <strong>' + (h + b) + '</strong> words <em>(' + h +
+        ' headline + ' + b + ' body)</em>';
+    }
+
+    var live = sections.filter(function (s) { return !s.classList.contains('is-parked'); })[0];
+    if (!live) { cEl.innerHTML = 'Contrast <em>none active</em>'; return; }
+    var bg = parseColour(getComputedStyle(live).backgroundColor);
+    var nameEl = live.querySelector('.wyg-enabler-name');
+    var descEl = live.querySelector('.wyg-enabler-desc');
+    if (!bg || !nameEl || !descEl) { cEl.innerHTML = 'Contrast <em>unavailable</em>'; return; }
+
+    // A shape wash behind the text changes what the text is contrasting
+    // against: under the shape the effective ground is the shape's fill
+    // composited over the section colour at the wash opacity. That is the
+    // case that has to pass, not the bare section colour - so when a shape is
+    // on, the readout reports the WORST of the two grounds and says which.
+    var ground = bg, over = null;
+    // Select the ACTIVE shape by data-shape, never the first .wyg-shape-svg in
+    // the layer. All four are always in the DOM and three are display: none, so
+    // a bare querySelector returns Vector-10 whatever is switched on - and the
+    // display check then fails silently and the readout falls back to bare
+    // ground. It happened to be right for Vector-10 and quietly wrong for the
+    // other three, which is the worst way for a contrast check to be broken.
+    var shapeSvg = live.querySelector('.wyg-shape-svg[data-shape="' + state.shape + '"]');
+    if (state.shape !== 'off' && shapeSvg && getComputedStyle(shapeSvg).display !== 'none') {
+      // Read fill off the svg host, not off a path: the rendered path lives in
+      // the <use> shadow tree and the symbol's own path carries no fill.
+      var fill = parseColour(getComputedStyle(shapeSvg).fill);
+      var op = parseFloat(getComputedStyle(shapeSvg).opacity) || 0;
+      if (fill) { fill.a = op; over = composite(fill, bg); }
+    }
+
+    var pairs = [
+      ['Name', parseColour(getComputedStyle(nameEl).color)],
+      ['Desc', parseColour(getComputedStyle(descEl).color)]
+    ];
+    var out = pairs.map(function (p) {
+      var rg = ratio(composite(p[1], ground), ground);
+      var r  = rg;
+      if (over) { r = Math.min(rg, ratio(composite(p[1], over), over)); }
+      var ok = r >= 4.5;
+      return p[0] + ' <span class="' + (ok ? 'elb-pass' : 'elb-fail') + '">' +
+             r.toFixed(2) + ':1' + (ok ? ' AA' : ' FAIL') + '</span>';
+    }).join(' &#183; ');
+    cEl.innerHTML = 'Contrast ' + out +
+      (over ? ' <em>worst of ground / over shape</em>' : '');
+  }
+
+  /* ---- controls ---- */
+  document.querySelectorAll('.elb-btn[data-set]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      state[b.getAttribute('data-set')] = b.getAttribute('data-val');
+      apply();
+    });
+  });
+  document.querySelectorAll('.elb-btn[data-toggle]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var k = b.getAttribute('data-toggle');
+      state[k] = state[k] === 'on' ? 'off' : 'on';
+      apply();
+    });
+  });
+
+  /* ---- the six jump to their band. Smooth by default, instant under reduced
+          motion, replaceState so the hash stays shareable without stacking a
+          history entry per click. Identical to the production handler except
+          it preserves the lab's own state hash. ---- */
+  stage.querySelectorAll('.wyg-enabler-link').forEach(function (link) {
+    link.addEventListener('click', function (ev) {
+      var href = link.getAttribute('href');
+      if (!href || href.charAt(0) !== '#') return;
+      var target = document.querySelector(href);
+      if (!target) return;
+      ev.preventDefault();
+      target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+
+  /* ---- pointer-tracked edge glow. Injected here, never shipped in markup,
+          so no-JS, touch and reduced-motion visitors keep the plain
+          rule-and-text hover underneath. Tile geometry for A and B, row
+          geometry for C and D. ---- */
+  if (!reduced && window.matchMedia('(hover: hover)').matches) {
+    sections.forEach(function (s) {
+      var d = s.getAttribute('data-dir');
+      var isTile = (d === 'a' || d === 'b');
+      s.querySelectorAll('.wyg-enabler-link').forEach(function (row) {
+        var glow = document.createElement('span');
+        glow.className = 'wyg-glow' + (isTile ? ' wyg-glow--tile' : '');
+        glow.setAttribute('aria-hidden', 'true');
+        row.appendChild(glow);
+        row.addEventListener('pointermove', function (e) {
+          var r = row.getBoundingClientRect();
+          var cx = r.width / 2, cy = r.height / 2;
+          var dx = (e.clientX - r.left) - cx, dy = (e.clientY - r.top) - cy;
+          var deg = 0;
+          if (dx !== 0 || dy !== 0) {
+            deg = Math.atan2(dy, dx) * 180 / Math.PI + 90;
+            if (deg < 0) deg += 360;
+          }
+          var kx = dx === 0 ? Infinity : cx / Math.abs(dx);
+          var ky = dy === 0 ? Infinity : cy / Math.abs(dy);
+          var dd = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
+          row.style.setProperty('--wyg-deg', deg.toFixed(1) + 'deg');
+          row.style.setProperty('--wyg-d', (dd * 100).toFixed(1));
+        });
+      });
+    });
+  }
+
+  /* ---- reveal ---- */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    stage.querySelectorAll('.wyg-reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    stage.querySelectorAll('.wyg-reveal').forEach(function (el) { el.classList.add('is-in'); });
+  }
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(measure, 160);
+  });
+
+  readHash();
+  apply();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+})();
+</script>
+</body>
+</html>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+  .fb-saved { font-size: 12px; color: #9a908a; margin-top: 8px;
+              opacity: 0; transition: opacity .2s; }
+  .fb-saved.fb-show { opacity: 1; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="concept-page-enablers-layout-lab.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] concept-page-enablers-layout-lab.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead. Your text is still here.</div>
+      <div class="fb-saved" id="fb-saved">Draft saved in this browser.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  var saved = document.getElementById('fb-saved');
+  var box = form.querySelector('textarea[name=message]');
+  var who = form.querySelector('input[name=name]');
+
+  // Draft persistence. A long comment typed into this box used to exist
+  // nowhere else - closing the panel, a stray reload or a dead endpoint
+  // lost the lot, so the standing advice was "keep a copy in Notes".
+  // Keyed per page so comments on different pages don't overwrite
+  // each other. localStorage throws in some privacy modes; a failure
+  // here must never stop the form working, hence the silent try/catch.
+  var key = 'su-fb-draft-' + form.querySelector('input[name=page]').value;
+  function store(k, v) {
+    try { window.localStorage.setItem(k, v); } catch (e) {}
+  }
+  function recall(k) {
+    try { return window.localStorage.getItem(k) || ''; }
+    catch (e) { return ''; }
+  }
+  function forget() {
+    try {
+      window.localStorage.removeItem(key);
+      window.localStorage.removeItem(key + '-name');
+    } catch (e) {}
+  }
+  var draft = recall(key);
+  if (draft) {
+    box.value = draft;
+    saved.classList.add('fb-show');
+  }
+  var priorName = recall(key + '-name');
+  if (priorName && !who.value) who.value = priorName;
+
+  var pending;
+  function keep() {
+    clearTimeout(pending);
+    pending = setTimeout(function() {
+      if (box.value) {
+        store(key, box.value);
+        store(key + '-name', who.value);
+        saved.classList.add('fb-show');
+      } else {
+        forget();
+        saved.classList.remove('fb-show');
+      }
+    }, 400);
+  }
+  box.addEventListener('input', keep);
+  who.addEventListener('input', keep);
+  // A tab close can beat the debounce - flush synchronously on the way out.
+  window.addEventListener('pagehide', function() {
+    if (box.value) { store(key, box.value); store(key + '-name', who.value); }
+  });
+
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        // Only a confirmed 2xx clears the draft. Anything else keeps it,
+        // so a failed send never destroys the text.
+        forget();
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

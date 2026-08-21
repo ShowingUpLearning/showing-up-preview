@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>An Explore button on every band — Showing Up (preview)</title>
+</head>
+<body>
+
+<title>Band CTA options</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  .bcl *, .bcl *::before, .bcl *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .bcl {
+    --c-coral: #FF8269; --c-cream: #FFF6F1; --c-ink: #1e1d1d; --c-text: #353434;
+    --c-mint: #A7DDC3;
+    font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
+    background: var(--c-cream); color: var(--c-text);
+    padding: 56px 32px 90px;
+  }
+  .bcl-shell { max-width: 1180px; margin: 0 auto; }
+
+  .bcl-over {
+    font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--c-coral); margin-bottom: 12px;
+  }
+  .bcl h1 {
+    font-size: clamp(30px, 3.4vw, 46px); font-weight: 300; line-height: 1.16;
+    letter-spacing: -.03em; color: var(--c-ink); margin-bottom: 18px;
+  }
+  .bcl h1 em { font-style: normal; color: var(--c-coral); font-weight: 500; }
+  .bcl .bcl-lede { font-size: 17px; line-height: 1.7; max-width: 760px; }
+  .bcl .bcl-lede + .bcl-lede { margin-top: 12px; }
+
+  .bcl h2 {
+    font-size: 26px; font-weight: 300; letter-spacing: -.02em; color: var(--c-ink);
+    margin: 54px 0 6px; padding-top: 30px; border-top: 1px solid rgba(0,0,0,.1);
+  }
+  .bcl h2:first-of-type { margin-top: 46px; }
+  .bcl .bcl-sub { font-size: 15px; line-height: 1.65; max-width: 780px; margin-bottom: 24px; color: #6f6764; }
+
+  /* ---- the "where each band stands today" table ---- */
+  .bcl-scroll { overflow-x: auto; }
+  .bcl-tbl { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 760px; }
+  .bcl-tbl th, .bcl-tbl td { text-align: left; padding: 11px 14px; border-bottom: 1px solid rgba(0,0,0,.08); vertical-align: top; }
+  .bcl-tbl th { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: #6f6764; }
+  .bcl-tbl td code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #6f6764; }
+  .bcl-flag { color: #b3402a; font-weight: 500; }
+  .bcl-ok { color: #2f7d5b; font-weight: 500; }
+
+  /* ---- band mock: the real thing, at the real sizes ---- */
+  .bcl-band {
+    background: var(--c-cream); border: 1px solid rgba(0,0,0,.1); border-radius: 16px;
+    padding: 26px 28px 28px;
+  }
+  .bcl-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .bcl-chip {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%; color: var(--c-ink);
+    font-size: 15px; font-weight: 600; flex: 0 0 auto;
+  }
+  .bcl-chip--1 { background: #FFEDE6; } .bcl-chip--2 { background: #FFE3DB; }
+  .bcl-chip--3 { background: #FFD8CE; } .bcl-chip--4 { background: #FFCABD; }
+  .bcl-chip--5 { background: #FFBAAA; } .bcl-chip--6 { background: #FFA795; }
+  .bcl-label {
+    font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--c-ink);
+  }
+  .bcl-h3 {
+    font-size: 27px; font-weight: 300; line-height: 1.18; letter-spacing: -.02em;
+    color: var(--c-ink); margin-bottom: 18px;
+  }
+  .bcl-h3 em { font-style: normal; color: var(--c-coral); font-weight: 500; }
+
+  /* Pill, lifted from the homepage. All four link states carry !important because
+     LearnWorlds' global anchor rules win otherwise - the same reason the real one does. */
+  .bcl-cta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .bcl .bcl-pill, .bcl .bcl-pill:link, .bcl .bcl-pill:visited {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--c-ink) !important; color: var(--c-cream) !important;
+    font-size: 15px; font-weight: 500; padding: 14px 28px; border-radius: 100px;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    width: fit-content; transition: background .2s, color .2s;
+  }
+  .bcl .bcl-pill:hover, .bcl .bcl-pill:active {
+    background: var(--c-coral) !important; color: var(--c-ink) !important;
+  }
+  /* The secondary action, demoted to a ghost so the band reads as one primary
+     route plus one optional extra rather than two equal choices. */
+  .bcl .bcl-pill--ghost, .bcl .bcl-pill--ghost:link, .bcl .bcl-pill--ghost:visited {
+    background: transparent !important; color: var(--c-ink) !important;
+    border: 1px solid rgba(30,29,29,.34) !important;
+  }
+  .bcl .bcl-pill--ghost:hover, .bcl .bcl-pill--ghost:active {
+    background: var(--c-ink) !important; color: var(--c-cream) !important;
+    border-color: var(--c-ink) !important;
+  }
+
+  /* SECONDARY, arrow-link treatment. CLAUDE.md reserves pills for primary CTAs and
+     says explicitly not to use them for secondary navigation, so an undecorated
+     link is the more on-brand answer for the second action in a band - a ghost
+     pill is still a pill, and two pill shapes side by side still read as two
+     buttons. The arrow and its motion are the house pattern, lifted from the cg-
+     cluster tile's "Explore ->": same 14px chevron, same 3px slide.
+     No underline in the resting state, so it does not compete with the pill; the
+     rollover carries the affordance instead - label to coral, arrow forward.
+     Vertical padding matches the pill's so the two sit on one optical centre in
+     the flex row. focus-visible is an ink ring, not coral: coral fails the 3:1
+     non-text contrast bar on cream, the same reason the nav rings are ink. */
+  .bcl .bcl-alink, .bcl .bcl-alink:link, .bcl .bcl-alink:visited {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent !important; color: var(--c-ink) !important;
+    font-size: 15px; font-weight: 500; padding: 14px 2px;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    transition: color .2s;
+  }
+  .bcl .bcl-alink:hover, .bcl .bcl-alink:active { color: var(--c-coral) !important; }
+  .bcl-alink svg { transition: transform .2s cubic-bezier(.4,0,.2,1); flex: 0 0 auto; }
+  .bcl-alink:hover svg, .bcl-alink:focus-visible svg { transform: translateX(3px); }
+  .bcl .bcl-alink:focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    .bcl-alink svg, .bcl-headlink .bcl-arrow { transition: none !important; }
+    .bcl-alink:hover svg, .bcl-headlink:hover .bcl-arrow { transform: none !important; }
+  }
+  .bcl-note { font-size: 12.5px; color: #6f6764; margin-top: 14px; line-height: 1.6; }
+  .bcl-note b { color: var(--c-ink); font-weight: 500; }
+
+  /* ---- scheme columns ---- */
+  .bcl-schemes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+  .bcl-schemes > * { min-width: 0; }
+  .bcl-scheme { border: 1px solid rgba(0,0,0,.1); border-radius: 16px; padding: 22px; background: #fff; }
+  .bcl-scheme h3 {
+    font-size: 18px; font-weight: 500; color: var(--c-ink); margin-bottom: 4px;
+  }
+  .bcl-scheme .bcl-why { font-size: 13px; line-height: 1.6; color: #6f6764; margin-bottom: 18px; }
+  .bcl-list { list-style: none; }
+  .bcl-list li { padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,.06); font-size: 14px; }
+  .bcl-list li:last-child { border-bottom: none; }
+  .bcl-list .bcl-el {
+    font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: #9a908a; display: block; margin-bottom: 3px;
+  }
+  .bcl-list .bcl-copy { color: var(--c-ink); font-weight: 500; }
+  .bcl-pick {
+    display: inline-block; margin-top: 16px; font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; font-weight: 600; color: var(--c-ink);
+    background: var(--c-mint); padding: 5px 12px; border-radius: 100px;
+  }
+
+  /* A settled decision still shows its alternative, but the alternative is visibly
+     the road not taken - faded back rather than deleted, so the reasoning survives
+     for whoever reads this after the fact. */
+  .bcl-settled {
+    display: inline-block; margin-left: 10px; font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; font-weight: 600; color: var(--c-ink);
+    background: var(--c-mint); padding: 5px 12px; border-radius: 100px;
+    vertical-align: middle;
+  }
+  .bcl-was {
+    display: inline-block; margin-left: 8px; font-size: 10.5px; letter-spacing: .12em;
+    text-transform: uppercase; font-weight: 600; color: #6f6764;
+    border: 1px solid rgba(0,0,0,.18); padding: 4px 10px; border-radius: 100px;
+    vertical-align: middle;
+  }
+  .bcl-opt--was { opacity: .62; }
+  .bcl-opt--was:hover { opacity: 1; }
+
+  .bcl-two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+  .bcl-two > * { min-width: 0; }
+  .bcl-opt { border: 1px solid rgba(0,0,0,.1); border-radius: 16px; padding: 22px; background: #fff; }
+  .bcl-opt h3 { font-size: 17px; font-weight: 500; color: var(--c-ink); margin-bottom: 10px; }
+
+  /* Option: the band head becomes the link. Underline only on hover, and the chip
+     stays outside the anchor so it does not become a second link to the same page. */
+  .bcl .bcl-headlink, .bcl .bcl-headlink:link, .bcl .bcl-headlink:visited {
+    color: var(--c-ink) !important; text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+  }
+  .bcl .bcl-headlink:hover .bcl-h3, .bcl .bcl-headlink:focus-visible .bcl-h3 { color: var(--c-coral) !important; }
+  .bcl-headlink .bcl-h3 { transition: color .2s; }
+  .bcl-arrow { display: inline-block; margin-left: 8px; transition: transform .2s; }
+  .bcl-headlink:hover .bcl-arrow { transform: translateX(4px); }
+
+  .bcl-q { background: #fff; border: 1px solid rgba(0,0,0,.1); border-left: 3px solid var(--c-coral);
+           border-radius: 12px; padding: 18px 22px; margin-top: 14px; }
+  .bcl-q h3 { font-size: 16px; font-weight: 500; color: var(--c-ink); margin-bottom: 6px; }
+  .bcl-q p { font-size: 14px; line-height: 1.65; }
+
+  @media (max-width: 980px) {
+    .bcl-schemes, .bcl-two { grid-template-columns: 1fr; }
+    .bcl { padding: 40px 20px 70px; }
+  }
+</style>
+
+<div class="bcl">
+<div class="bcl-shell">
+
+  <p class="bcl-over">Homepage &middot; element bands &middot; 14 August 2026</p>
+  <h1>An <em>Explore</em> button on every band</h1>
+  <p class="bcl-lede">Ben, on the homepage: <b>"we need to reintroduce an explore button here to take you to Assess"</b>, and the same for Toolkits and Play. He was right, and it was worse than it looked: two of the six bands had no route to their section page at all.</p>
+  <p class="bcl-lede"><b>Scheme A is now live on the homepage</b>, with the arrow-link secondary - go and look at the real thing, this page is the reasoning behind it. Kept here so the options Ben did not see are still on the record, and because two questions are still open for him: whether Play gets a real game behind a second action, and whether the band title becomes a link. If he prefers scheme B or C, the labels are one edit each.</p>
+
+  <h2>Where the six bands stood before this round</h2>
+  <p class="bcl-sub">Taken from page-homepage-ultra.html as it stood on 14 August, not from memory. The pattern that went wrong: a band whose only button performs an action has quietly lost its way to the page behind it.</p>
+  <div class="bcl-scroll">
+  <table class="bcl-tbl">
+    <tr><th>Band</th><th>Only button before</th><th>Where it went</th><th>Route to the section page?</th></tr>
+    <tr><td><b>1 Define</b></td><td>Explore the career map</td><td><code>page-section-define</code></td><td class="bcl-ok">Yes</td></tr>
+    <tr><td><b>2 Assess</b></td><td>Try the curiosity self-assessment</td><td><code>/assessment</code> (live)</td><td class="bcl-flag">None</td></tr>
+    <tr><td><b>3 Learn</b></td><td>Explore the video library</td><td><code>page-section-learn</code></td><td class="bcl-ok">Yes</td></tr>
+    <tr><td><b>4 Toolkits</b></td><td>Download an example toolkit</td><td>PDF on the CDN</td><td class="bcl-flag">None</td></tr>
+    <tr><td><b>5 Play</b></td><td>Try a team challenge</td><td><code>page-section-play</code></td><td class="bcl-flag">Mislabelled</td></tr>
+    <tr><td><b>6 Lead</b></td><td>Explore the coaching tools</td><td><code>page-section-lead</code></td><td class="bcl-ok">Yes</td></tr>
+  </table>
+  </div>
+  <p class="bcl-note"><b>Band 5 is the one to look at twice.</b> Its button already opens the Play page - but it promises a game and delivers a page. That is the same mismatch settled on Toolkits on 28 July, when a button promising a download opened a section page instead. Renaming it to an Explore pill fixes the promise; giving it a real game to point at is a separate question for Ben.</p>
+
+  <h2>Decision 1 &middot; the button copy, as a set</h2>
+  <p class="bcl-sub">Three schemes. The point of seeing all six at once is that the set has to read as a set - one odd phrasing shows up immediately when they are stacked.</p>
+
+  <div class="bcl-schemes">
+    <div class="bcl-scheme">
+      <h3>A &middot; Explore the thing</h3>
+      <p class="bcl-why">Extends the phrasing already live on Define, Learn and Lead, so three of the six bands do not change at all. Names what is behind the click rather than the section.</p>
+      <ul class="bcl-list">
+        <li><span class="bcl-el">1 Define</span><span class="bcl-copy">Explore the career map</span></li>
+        <li><span class="bcl-el">2 Assess</span><span class="bcl-copy">Explore the assessments</span></li>
+        <li><span class="bcl-el">3 Learn</span><span class="bcl-copy">Explore the video library</span></li>
+        <li><span class="bcl-el">4 Toolkits</span><span class="bcl-copy">Explore the toolkits</span></li>
+        <li><span class="bcl-el">5 Play</span><span class="bcl-copy">Explore the team games</span></li>
+        <li><span class="bcl-el">6 Lead</span><span class="bcl-copy">Explore the manager curriculum</span></li>
+      </ul>
+      <span class="bcl-pick">Recommended</span>
+    </div>
+
+    <div class="bcl-scheme">
+      <h3>B &middot; See the thing</h3>
+      <p class="bcl-why">Shorter, and "see" promises less work than "explore". Costs the consistency with the three pills already live, and "see" sits oddly next to a band whose secondary action is also a look.</p>
+      <ul class="bcl-list">
+        <li><span class="bcl-el">1 Define</span><span class="bcl-copy">See the career map</span></li>
+        <li><span class="bcl-el">2 Assess</span><span class="bcl-copy">See how assessment works</span></li>
+        <li><span class="bcl-el">3 Learn</span><span class="bcl-copy">See the video library</span></li>
+        <li><span class="bcl-el">4 Toolkits</span><span class="bcl-copy">See the toolkit library</span></li>
+        <li><span class="bcl-el">5 Play</span><span class="bcl-copy">See the team games</span></li>
+        <li><span class="bcl-el">6 Lead</span><span class="bcl-copy">See the manager curriculum</span></li>
+      </ul>
+    </div>
+
+    <div class="bcl-scheme">
+      <h3>C &middot; Explore the element</h3>
+      <p class="bcl-why">Maximum consistency: the button says exactly what the numbered badge says. Teaches the six element names by repetition, which is the thing the homepage is trying to land. Reads flatter, and says nothing about what you get.</p>
+      <ul class="bcl-list">
+        <li><span class="bcl-el">1 Define</span><span class="bcl-copy">Explore Define</span></li>
+        <li><span class="bcl-el">2 Assess</span><span class="bcl-copy">Explore Assess</span></li>
+        <li><span class="bcl-el">3 Learn</span><span class="bcl-copy">Explore Learn</span></li>
+        <li><span class="bcl-el">4 Toolkits</span><span class="bcl-copy">Explore Toolkits</span></li>
+        <li><span class="bcl-el">5 Play</span><span class="bcl-copy">Explore Play</span></li>
+        <li><span class="bcl-el">6 Lead</span><span class="bcl-copy">Explore Lead</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Decision 2 &middot; do the secondary actions stay?</h2>
+  <p class="bcl-sub">They should. The secondary actions are the only things on this page that do something real - a live assessment, a real PDF, a playable game - and they are what makes the homepage more than a contents list. What changes is the hierarchy: the Explore pill becomes the filled primary, and the action sits beside it as the quieter of the two.</p>
+
+  <div class="bcl-two">
+    <div class="bcl-opt">
+      <h3>Assess, before</h3>
+      <div class="bcl-band">
+        <div class="bcl-head"><span class="bcl-chip bcl-chip--2">2</span><span class="bcl-label">Assess</span></div>
+        <p class="bcl-h3">See where you <em>shine</em>, and where you'll grow</p>
+        <div class="bcl-cta">
+          <a class="bcl-pill" href="#">Try the curiosity self-assessment</a>
+        </div>
+      </div>
+      <p class="bcl-note">One button, and it leaves the site. Nothing here reaches the Assess page.</p>
+    </div>
+
+    <div class="bcl-opt">
+      <h3>Assess, now live</h3>
+      <div class="bcl-band">
+        <div class="bcl-head"><span class="bcl-chip bcl-chip--2">2</span><span class="bcl-label">Assess</span></div>
+        <p class="bcl-h3">See where you <em>shine</em>, and where you'll grow</p>
+        <div class="bcl-cta">
+          <a class="bcl-pill" href="#">Explore the assessments</a>
+          <a class="bcl-alink" href="#">Try the curiosity self-assessment <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+      <p class="bcl-note">Primary route to the page, secondary action kept and quietened. Same shape on Toolkits and Play.</p>
+    </div>
+  </div>
+
+  <h2>Decision 2b &middot; what the secondary action looks like <span class="bcl-settled">Settled</span></h2>
+  <p class="bcl-sub">The second action is an <b>arrow link</b>, not a second pill. Decided 14 August; shown here against the ghost pill it replaces so the reasoning is on the record. Hover either - the difference is mostly in the rollover.</p>
+
+  <div class="bcl-two">
+    <div class="bcl-opt bcl-opt--was">
+      <h3>Ghost pill <span class="bcl-was">Not taken</span></h3>
+      <div class="bcl-band">
+        <div class="bcl-head"><span class="bcl-chip bcl-chip--4">4</span><span class="bcl-label">Toolkits</span></div>
+        <p class="bcl-h3">Downloadable <em>toolkits</em></p>
+        <div class="bcl-cta">
+          <a class="bcl-pill" href="#">Explore the toolkits</a>
+          <a class="bcl-pill bcl-pill--ghost" href="#">Download an example toolkit</a>
+        </div>
+      </div>
+      <div class="bcl-band" style="margin-top:14px">
+        <div class="bcl-head"><span class="bcl-chip bcl-chip--5">5</span><span class="bcl-label">Play</span></div>
+        <p class="bcl-h3">Team games &amp; <em>challenges</em></p>
+        <div class="bcl-cta">
+          <a class="bcl-pill" href="#">Explore the team games</a>
+          <a class="bcl-pill bcl-pill--ghost" href="#">Try a team challenge</a>
+        </div>
+      </div>
+      <p class="bcl-note">An outlined capsule. Still a pill, so the band reads as two buttons and the eye has to work out which one matters. It also gives the row two rounded shapes of near-identical width, which is the part that looks busy at desktop.</p>
+    </div>
+
+    <div class="bcl-opt">
+      <h3>Arrow link <span class="bcl-pick" style="margin:0 0 0 6px; vertical-align:middle">Chosen</span></h3>
+      <div class="bcl-band">
+        <div class="bcl-head"><span class="bcl-chip bcl-chip--4">4</span><span class="bcl-label">Toolkits</span></div>
+        <p class="bcl-h3">Downloadable <em>toolkits</em></p>
+        <div class="bcl-cta">
+          <a class="bcl-pill" href="#">Explore the toolkits</a>
+          <a class="bcl-alink" href="#">Download an example toolkit <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+      <div class="bcl-band" style="margin-top:14px">
+        <div class="bcl-head"><span class="bcl-chip bcl-chip--5">5</span><span class="bcl-label">Play</span></div>
+        <p class="bcl-h3">Team games &amp; <em>challenges</em></p>
+        <div class="bcl-cta">
+          <a class="bcl-pill" href="#">Explore the team games</a>
+          <a class="bcl-alink" href="#">Try a team challenge <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+      <p class="bcl-note">No fill, no border, no underline at rest. <b>Rollover:</b> the label turns coral and the arrow slides 3px forward, which is the cluster tiles' "Explore" behaviour and the same motion as the title link in decision 3, so the page has one idea of what a forward move looks like rather than three.</p>
+    </div>
+  </div>
+
+  <p class="bcl-note" style="margin-top:18px"><b>Why this one.</b> The brand rules already say it: pills are a deliberate choice for primary calls to action and are not to be used for secondary navigation. A ghost pill is still a pill. Dropping the capsule gives the band one button, so there is no question which route is primary, and it buys back horizontal room on the two bands whose secondary label is long.</p>
+  <p class="bcl-note"><b>Worth telling Ben, since this one is already decided:</b> on 28 July he asked for exactly this kind of link to be taken off the Manage band and replaced with a button. The case was different - it was the only control in that band, so a quiet link was the wrong weight for the one thing you could click. Here it sits beside a filled pill, which is the situation the treatment is for. Flagged rather than quietly reversed; if he feels strongly, the ghost pill above is the fallback and nothing else in the proposal changes.</p>
+  <p class="bcl-note"><b>Also handled:</b> the arrow holds still for anyone who has asked their system to reduce motion, and the keyboard focus ring is ink rather than coral, since coral fails the 3:1 non-text contrast bar on cream.</p>
+
+  <h2>Decision 3 &middot; should the number and title be a link too?</h2>
+  <p class="bcl-sub">Ben's suggestion. It gives a much bigger target than a pill, and it is the pattern most people already expect from a card. Two ways to take it.</p>
+
+  <div class="bcl-two">
+    <div class="bcl-opt">
+      <h3>Title links, chip stays decorative</h3>
+      <div class="bcl-band">
+        <div class="bcl-head"><span class="bcl-chip bcl-chip--3">3</span><span class="bcl-label">Learn</span></div>
+        <a class="bcl-headlink" href="#">
+          <p class="bcl-h3">Bite-size, engaging video <em>learning</em><span class="bcl-arrow" aria-hidden="true">&#8594;</span></p>
+        </a>
+        <div class="bcl-cta">
+          <a class="bcl-pill" href="#">Explore the video library</a>
+        </div>
+      </div>
+      <p class="bcl-note"><b>Recommended.</b> The headline carries the link and the number stays decoration. Hover moves the arrow and turns the title coral, so it reads as clickable without an underline. Two links to one page in a band is fine; three would be noise for anyone using a screen reader.</p>
+    </div>
+
+    <div class="bcl-opt">
+      <h3>Leave the head alone</h3>
+      <div class="bcl-band">
+        <div class="bcl-head"><span class="bcl-chip bcl-chip--3">3</span><span class="bcl-label">Learn</span></div>
+        <p class="bcl-h3">Bite-size, engaging video <em>learning</em></p>
+        <div class="bcl-cta">
+          <a class="bcl-pill" href="#">Explore the video library</a>
+        </div>
+      </div>
+      <p class="bcl-note">One route in, one obvious control. Nothing to learn, nothing to mis-hit on a phone, and the band keeps a single call to action. The safe answer if the pills land well on their own.</p>
+    </div>
+  </div>
+
+  <h2>What we need back from Ben</h2>
+  <div class="bcl-q">
+    <h3>1. Which copy scheme - A, B or C?</h3>
+    <p>A is the recommendation: three of the six bands already read that way, so it is the smallest change that makes the set consistent.</p>
+  </div>
+  <div class="bcl-q">
+    <h3>2. Does Play get a real game to point at?</h3>
+    <p>If there is a playable challenge we can link, "Try a team challenge" becomes a genuine second action. If not, the honest move is to drop it and let the Explore pill stand alone on that band.</p>
+  </div>
+  <div class="bcl-q">
+    <h3>3. Title as a link, yes or no?</h3>
+    <p>Worth a yes - it is free reach on mobile, where the pill is a small target and the headline is the biggest thing on the band.</p>
+  </div>
+
+</div>
+</div>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+  .fb-saved { font-size: 12px; color: #9a908a; margin-top: 8px;
+              opacity: 0; transition: opacity .2s; }
+  .fb-saved.fb-show { opacity: 1; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="concept-page-band-cta-lab.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] concept-page-band-cta-lab.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead. Your text is still here.</div>
+      <div class="fb-saved" id="fb-saved">Draft saved in this browser.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  var saved = document.getElementById('fb-saved');
+  var box = form.querySelector('textarea[name=message]');
+  var who = form.querySelector('input[name=name]');
+
+  // Draft persistence. A long comment typed into this box used to exist
+  // nowhere else - closing the panel, a stray reload or a dead endpoint
+  // lost the lot, so the standing advice was "keep a copy in Notes".
+  // Keyed per page so comments on different pages don't overwrite
+  // each other. localStorage throws in some privacy modes; a failure
+  // here must never stop the form working, hence the silent try/catch.
+  var key = 'su-fb-draft-' + form.querySelector('input[name=page]').value;
+  function store(k, v) {
+    try { window.localStorage.setItem(k, v); } catch (e) {}
+  }
+  function recall(k) {
+    try { return window.localStorage.getItem(k) || ''; }
+    catch (e) { return ''; }
+  }
+  function forget() {
+    try {
+      window.localStorage.removeItem(key);
+      window.localStorage.removeItem(key + '-name');
+    } catch (e) {}
+  }
+  var draft = recall(key);
+  if (draft) {
+    box.value = draft;
+    saved.classList.add('fb-show');
+  }
+  var priorName = recall(key + '-name');
+  if (priorName && !who.value) who.value = priorName;
+
+  var pending;
+  function keep() {
+    clearTimeout(pending);
+    pending = setTimeout(function() {
+      if (box.value) {
+        store(key, box.value);
+        store(key + '-name', who.value);
+        saved.classList.add('fb-show');
+      } else {
+        forget();
+        saved.classList.remove('fb-show');
+      }
+    }, 400);
+  }
+  box.addEventListener('input', keep);
+  who.addEventListener('input', keep);
+  // A tab close can beat the debounce - flush synchronously on the way out.
+  window.addEventListener('pagehide', function() {
+    if (box.value) { store(key, box.value); store(key + '-name', who.value); }
+  });
+
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        // Only a confirmed 2xx clears the draft. Anything else keeps it,
+        // so a failed send never destroys the text.
+        forget();
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

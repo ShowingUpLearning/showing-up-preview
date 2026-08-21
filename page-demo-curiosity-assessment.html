@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Demo Curiosity Assessment — Showing Up (preview)</title>
+</head>
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>/* Carried over from the live paste - the LW page background behind the dark block */ html, body { background: #1e1d1d; margin: 0; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+
+<noscript><style>
+  .ca3-wrap .ca3-scene { display: block !important; animation: none !important; }
+  .ca3-wrap .ca3-head, .ca3-wrap .ca3-hint { display: none !important; }
+  .ca3-wrap .ca3-scenes { min-height: 0 !important; }
+</style></noscript>
+
+<style>
+  .ca3-wrap *, .ca3-wrap *::before, .ca3-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .ca3-wrap {
+    --c-coral: #FF8269;
+    --c-coral-dk: #e8614a;
+    --c-cream: #FFF6F1;
+    --c-ink: #1e1d1d;
+    --c-mint: #A7DDC3;
+    --c-purple: #C8B4E4;
+    --reveal-ease: cubic-bezier(.16, 1, .3, 1);
+
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--c-ink);
+    color: var(--c-cream);
+    overflow: hidden;
+    overflow: clip;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .ca3-wrap a, .ca3-wrap a:link, .ca3-wrap a:visited, .ca3-wrap a:hover, .ca3-wrap a:active {
+    color: inherit !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: none !important;
+  }
+
+  .ca3-wrap button {
+    font-family: 'DM Sans', sans-serif !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ca3-wrap .ca3-scene.is-active { animation: none !important; }
+    .ca3-wrap .ca3-bar-fill { transition: none !important; }
+    .ca3-wrap .ca3-primary, .ca3-wrap .ca3-cta-box { animation: none !important; }
+    .ca3-wrap .ca3-ring { animation: none !important; }
+    .ca3-wrap .ca3-seg.is-current { animation: none !important; }
+  }
+
+  .ca3-section { position: relative; padding: 56px 80px 96px; }
+
+  .ca3-inner {
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---- Header rail: back + segments + count ---- */
+  .ca3-head {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 0 0 40px;
+    min-height: 40px;
+    opacity: 0;
+    transition: opacity .4s ease;
+  }
+  .ca3-wrap.ca3-started .ca3-head { opacity: 1; }
+
+  .ca3-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    border: 1px solid rgba(255, 246, 241, .34) !important;
+    border-radius: 999px;
+    background: rgba(255, 246, 241, .07) !important;
+    color: rgba(255, 246, 241, .78) !important;
+    font-size: 16px;
+    line-height: 1 !important;
+    cursor: pointer;
+    transition: border-color .2s, background .2s, color .2s, opacity .2s;
+  }
+  .ca3-back:hover, .ca3-back:active {
+    border-color: rgba(255, 246, 241, .55) !important;
+    background: rgba(255, 246, 241, .14) !important;
+    color: var(--c-cream) !important;
+  }
+  .ca3-back:focus-visible { outline: 2px solid var(--c-coral) !important; outline-offset: 3px; }
+  .ca3-back:disabled { opacity: .25; cursor: default; }
+  .ca3-back:disabled:hover { border-color: rgba(255, 246, 241, .34) !important; background: rgba(255, 246, 241, .07) !important; color: rgba(255, 246, 241, .78) !important; }
+
+  .ca3-segs {
+    flex: 1 1 auto;
+    display: flex;
+    gap: 5px;
+    min-width: 0;
+  }
+  .ca3-seg {
+    flex: 1 1 auto;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255, 246, 241, .14);
+    transition: background-color .3s;
+  }
+  .ca3-seg.is-done { background: var(--c-coral); }
+  .ca3-seg.is-current {
+    background: rgba(255, 130, 105, .45);
+    animation: ca3-seg-pulse 1.6s ease-in-out infinite alternate;
+  }
+  @keyframes ca3-seg-pulse {
+    from { background-color: rgba(255, 130, 105, .3); }
+    to { background-color: rgba(255, 130, 105, .62); }
+  }
+
+  .ca3-count {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: rgba(255, 246, 241, .66);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    text-align: right !important;
+  }
+
+  /* ---- The stage ---- */
+  .ca3-scenes {
+    position: relative;
+    min-height: 460px;
+  }
+
+  .ca3-scene { display: none; }
+  .ca3-scene.is-active {
+    display: block;
+    animation: ca3-scene-in .5s var(--reveal-ease) both;
+  }
+  /* scenes receive programmatic focus for keyboard flow - never show a ring on them */
+  .ca3-scene:focus, .ca3-scene:focus-visible { outline: none !important; }
+  @keyframes ca3-scene-in {
+    from { opacity: 0; transform: translateY(26px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Intro scene */
+  .ca3-overline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--c-coral);
+    margin: 0 0 24px;
+    text-align: left !important;
+  }
+  .ca3-overline::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--c-coral);
+    flex: 0 0 30px;
+  }
+
+  .ca3-headline {
+    font-size: clamp(40px, 5.4vw, 68px);
+    font-weight: 200;
+    line-height: 1.03;
+    letter-spacing: -.03em;
+    color: var(--c-cream);
+    margin: 0 0 14px;
+    text-align: left !important;
+  }
+  .ca3-headline em {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--c-coral);
+  }
+
+  .ca3-subhead {
+    font-size: clamp(19px, 2.4vw, 26px);
+    font-weight: 300;
+    line-height: 1.22;
+    letter-spacing: -.02em;
+    color: rgba(255, 246, 241, .82);
+    margin: 0 0 22px;
+    text-align: left !important;
+  }
+
+  .ca3-lead {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.62;
+    color: rgba(255, 246, 241, .72);
+    max-width: 640px;
+    text-align: left !important;
+  }
+  .ca3-lead + .ca3-lead { margin-top: 12px; }
+
+  .ca3-begin-row {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: 34px;
+  }
+
+  .ca3-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 14px 28px;
+    border-radius: 100px;
+    border: none !important;
+    background: var(--c-coral) !important;
+    color: var(--c-ink) !important;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+  }
+  .ca3-pill:hover, .ca3-pill:active {
+    background: var(--c-cream) !important;
+    color: var(--c-ink) !important;
+  }
+  .ca3-pill:focus-visible { outline: 2px solid var(--c-cream) !important; outline-offset: 3px; }
+
+  /* Part interstitials */
+  .ca3-scene-part { padding: 44px 0; }
+  .ca3-part-kicker {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(255, 246, 241, .5);
+    margin: 0 0 18px;
+    text-align: left !important;
+  }
+  .ca3-part-title {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.05;
+    color: var(--c-coral);
+    margin: 0 0 18px;
+    text-align: left !important;
+  }
+  .ca3-part-note {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 246, 241, .7);
+    max-width: 520px;
+    margin: 0 0 30px;
+    text-align: left !important;
+  }
+
+  /* Question scenes */
+  .ca3-q-kicker {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--c-coral);
+    margin: 0 0 18px;
+    text-align: left !important;
+  }
+  .ca3-q-kicker span { color: rgba(255, 246, 241, .45); }
+
+  .ca3-q-title {
+    font-size: clamp(24px, 3.2vw, 32px);
+    font-weight: 300;
+    line-height: 1.3;
+    letter-spacing: -.015em;
+    color: var(--c-cream);
+    margin: 0 0 30px;
+    max-width: 720px;
+    text-align: left !important;
+  }
+
+  .ca3-opts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 720px;
+  }
+
+  .ca3-opt {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    border: 1px solid rgba(255, 246, 241, .2) !important;
+    border-radius: 12px;
+    background: rgba(255, 246, 241, .05) !important;
+    color: rgba(255, 246, 241, .9) !important;
+    cursor: pointer;
+    transition: background .2s, border-color .2s, color .2s, transform .2s;
+    text-align: left !important;
+  }
+  .ca3-opt:hover, .ca3-opt:active {
+    border-color: rgba(255, 246, 241, .42) !important;
+    background: rgba(255, 246, 241, .12) !important;
+    color: var(--c-cream) !important;
+    transform: translateY(-2px);
+  }
+  .ca3-opt:focus-visible {
+    outline: 2px solid var(--c-coral) !important;
+    outline-offset: 3px;
+  }
+
+  .ca3-opt[aria-pressed="true"][data-a="A"] { background: var(--c-coral) !important; border-color: var(--c-coral) !important; color: var(--c-ink) !important; transform: none; }
+  .ca3-opt[aria-pressed="true"][data-a="B"] { background: var(--c-mint) !important; border-color: var(--c-mint) !important; color: var(--c-ink) !important; transform: none; }
+  .ca3-opt[aria-pressed="true"][data-a="C"] { background: var(--c-purple) !important; border-color: var(--c-purple) !important; color: var(--c-ink) !important; transform: none; }
+
+  .ca3-opt-letter {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    border: 1px solid rgba(255, 246, 241, .26);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--c-cream);
+    background: rgba(255, 246, 241, .08);
+    text-align: center !important;
+    line-height: 1 !important;
+  }
+  .ca3-opt[aria-pressed="true"] .ca3-opt-letter {
+    border-color: rgba(30, 29, 29, .4);
+    background: rgba(30, 29, 29, .14);
+    color: var(--c-ink);
+  }
+
+  .ca3-opt-text {
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left !important;
+  }
+
+  .ca3-next-row {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 720px;
+    margin-top: 18px;
+    min-height: 22px;
+  }
+  .ca3-next {
+    display: none;
+    border: none !important;
+    background: transparent !important;
+    color: rgba(255, 246, 241, .6) !important;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    cursor: pointer;
+    transition: color .2s;
+  }
+  .ca3-next:hover, .ca3-next:active { background: transparent !important; color: var(--c-cream) !important; }
+  .ca3-next:focus-visible { outline: 2px solid var(--c-coral) !important; outline-offset: 3px; }
+  .ca3-scene.is-answered .ca3-next { display: inline-flex; }
+
+  /* Keyboard hint */
+  .ca3-hint {
+    margin-top: 44px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .05em;
+    color: rgba(255, 246, 241, .38);
+    text-align: left !important;
+    opacity: 0;
+    transition: opacity .4s ease;
+  }
+  .ca3-wrap.ca3-started .ca3-hint { opacity: 1; }
+  .ca3-hint kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    margin: 0 2px;
+    border: 1px solid rgba(255, 246, 241, .25);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 246, 241, .6);
+  }
+
+  /* ---- Results scene (shares the staged tally system with direction A) ---- */
+  .ca3-results-title {
+    font-size: clamp(28px, 3.4vw, 38px);
+    font-weight: 200;
+    letter-spacing: -.025em;
+    line-height: 1.1;
+    color: var(--c-cream);
+    margin: 0 0 30px;
+    text-align: left !important;
+  }
+  .ca3-results-title em {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--c-coral);
+  }
+
+  .ca3-bars {
+    display: grid;
+    gap: 18px;
+    margin: 0 0 30px;
+  }
+  .ca3-bar-row {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr) 52px;
+    gap: 16px;
+    align-items: center;
+  }
+  .ca3-bar-row > * { min-width: 0; }
+  .ca3-bar-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--c-cream);
+    text-align: left !important;
+  }
+  .ca3-bar-meta {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255, 246, 241, .5);
+    margin-top: 2px;
+    text-align: left !important;
+  }
+  .ca3-bar-track {
+    height: 12px;
+    border-radius: 999px;
+    background: rgba(255, 246, 241, .1);
+    overflow: hidden;
+  }
+  .ca3-bar-fill {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: 999px;
+    transition: width 1s var(--reveal-ease);
+  }
+  .ca3-bar-row[data-style="A"] .ca3-bar-fill { background: var(--c-coral); }
+  .ca3-bar-row[data-style="B"] .ca3-bar-fill { background: var(--c-mint); }
+  .ca3-bar-row[data-style="C"] .ca3-bar-fill { background: var(--c-purple); }
+  .ca3-bar-count {
+    font-size: 34px;
+    font-weight: 200;
+    line-height: 1;
+    color: var(--c-coral);
+    font-variant-numeric: tabular-nums;
+    text-align: right !important;
+  }
+  .ca3-bar-row[data-style="B"] .ca3-bar-count { color: var(--c-mint); }
+  .ca3-bar-row[data-style="C"] .ca3-bar-count { color: var(--c-purple); }
+
+  .ca3-primary {
+    position: relative;
+    border: 1px solid rgba(255, 246, 241, .16);
+    border-radius: 14px;
+    padding: 30px;
+    margin: 0 0 24px;
+    overflow: hidden;
+    opacity: 0;
+  }
+  .ca3-scene-results.is-active .ca3-primary { animation: ca3-fade-in .7s 1.35s ease both; }
+
+  .ca3-rings {
+    position: absolute;
+    top: 50%;
+    right: -110px;
+    width: 320px;
+    height: 320px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .ca3-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(255, 130, 105, .28);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ca3-breathe 6s ease-in-out infinite alternate;
+  }
+  .ca3-ring:nth-child(1) { width: 130px; height: 190px; }
+  .ca3-ring:nth-child(2) { width: 200px; height: 260px; animation-delay: .6s; opacity: .7; }
+  .ca3-ring:nth-child(3) { width: 270px; height: 330px; animation-delay: 1.2s; opacity: .45; }
+  @keyframes ca3-breathe {
+    from { transform: translate(-50%, -50%) scale(.96); }
+    to { transform: translate(-50%, -50%) scale(1.05); }
+  }
+
+  .ca3-primary-kicker {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255, 246, 241, .54);
+    margin: 0 0 10px;
+    text-align: left !important;
+    position: relative;
+    z-index: 1;
+  }
+  .ca3-primary-title {
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    color: var(--c-cream);
+    margin: 0 0 12px;
+    text-align: left !important;
+    position: relative;
+    z-index: 1;
+  }
+  .ca3-primary-body {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 246, 241, .74);
+    max-width: 560px;
+    text-align: left !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ca3-results-intro {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 246, 241, .62);
+    border-top: 1px solid rgba(255, 246, 241, .12);
+    padding: 18px 0 0;
+    margin: 0 0 18px;
+    text-align: left !important;
+  }
+
+  .ca3-whatnext {
+    border-top: 1px solid rgba(255, 246, 241, .12);
+    padding: 18px 0 0;
+    margin: 0 0 18px;
+  }
+  .ca3-whatnext-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--c-coral);
+    margin: 0 0 10px;
+    text-align: left !important;
+  }
+  .ca3-whatnext-body {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.58;
+    color: rgba(255, 246, 241, .72);
+    text-align: left !important;
+  }
+
+  .ca3-reset {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 40px;
+    border: none !important;
+    background: transparent !important;
+    color: rgba(255, 246, 241, .62) !important;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    cursor: pointer;
+    transition: color .2s;
+  }
+  .ca3-reset:hover, .ca3-reset:active { background: transparent !important; color: var(--c-cream) !important; }
+  .ca3-reset:focus-visible { outline: 2px solid var(--c-coral) !important; outline-offset: 3px; }
+
+  .ca3-cta-box {
+    margin: 28px 0 0;
+    background: rgba(255, 246, 241, .05);
+    border: 1px solid rgba(255, 246, 241, .18);
+    border-radius: 14px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ca3-cta-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+    background: var(--c-coral);
+  }
+  .ca3-scene-results.is-active .ca3-cta-box { animation: ca3-fade-in .6s 1.9s ease both; }
+
+  .ca3-cta-box-heading {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    color: var(--c-cream);
+    margin: 0 0 14px;
+    text-align: left !important;
+  }
+  .ca3-cta-box-body {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 246, 241, .74);
+    max-width: 640px;
+    margin: 0 0 26px;
+    text-align: left !important;
+  }
+  .ca3-cta-box-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background .2s, color .2s;
+  }
+  .ca3-wrap .ca3-cta-box-link,
+  .ca3-wrap .ca3-cta-box-link:link,
+  .ca3-wrap .ca3-cta-box-link:visited {
+    background: var(--c-coral) !important;
+    color: var(--c-ink) !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: none !important;
+  }
+  .ca3-wrap .ca3-cta-box-link:hover,
+  .ca3-wrap .ca3-cta-box-link:active {
+    background: var(--c-cream) !important;
+    color: var(--c-ink) !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: none !important;
+  }
+  .ca3-wrap .ca3-cta-box-link:focus-visible { outline: 2px solid var(--c-cream) !important; outline-offset: 3px; }
+
+  @keyframes ca3-fade-in {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 1080px) {
+    .ca3-section { padding: 48px 48px 80px; }
+  }
+
+  @media (max-width: 860px) {
+    .ca3-section { padding: 40px 32px 72px; }
+    .ca3-scenes { min-height: 420px; }
+    .ca3-bar-row { grid-template-columns: minmax(0, 1fr) 52px; }
+    .ca3-bar-track { grid-column: 1 / -1; grid-row: 2; }
+    .ca3-rings { right: -160px; opacity: .6; }
+    .ca3-hint { display: none; }
+  }
+
+  @media (max-width: 540px) {
+    .ca3-section { padding: 32px 22px 56px; }
+    .ca3-head { margin-bottom: 28px; }
+    .ca3-scenes { min-height: 400px; }
+    .ca3-q-title { font-size: 22px; margin-bottom: 22px; }
+    .ca3-opt { padding: 15px 16px; }
+    .ca3-cta-box { padding: 28px; }
+    .ca3-segs { gap: 3px; }
+    .ca3-begin-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+  }
+</style>
+
+<section class="ca3-wrap" aria-label="Curiosity self-reflection assessment (v2 stage mockup)">
+  <div class="ca3-section">
+    <div class="ca3-inner">
+      <div class="ca3-head">
+        <button type="button" class="ca3-back" data-ca3-back disabled aria-label="Previous question">&larr;</button>
+        <div class="ca3-segs" data-ca3-segs aria-hidden="true"></div>
+        <span class="ca3-count" data-ca3-count aria-live="polite">0 / 16</span>
+      </div>
+
+      <div class="ca3-scenes" data-ca3-scenes>
+        <div class="ca3-scene ca3-scene-intro is-active" data-scene="intro">
+          <p class="ca3-overline">Self-reflection assessment</p>
+          <h2 class="ca3-headline">How <em>Curious</em> Are You?</h2>
+          <p class="ca3-subhead">Discover your natural curiosity style.</p>
+          <p class="ca3-lead">Curiosity is one of the greatest gifts we have: the instinct to look just beyond the obvious and find something new. But we don&rsquo;t all express our curiosity and explore the world in the same way. Some of us seek knowledge and understanding of how things work. Some of us thrive on novelty, energy, and ideas. And some lead with people, emotion, and connection.</p>
+          <p class="ca3-lead">This short reflection helps you notice which form of curiosity you naturally gravitate towards, at work and in the rest of your life. There are no right answers, only accurate ones. So answer as you actually are, rather than as you&rsquo;d like to be. Most people lean heavily towards one style, and knowing which one is where the useful work starts.</p>
+          <div class="ca3-begin-row">
+            <button type="button" class="ca3-pill" data-ca3-begin>Begin</button>
+          </div>
+        </div>
+
+        <div class="ca3-scene ca3-scene-part" data-scene="part1">
+          <p class="ca3-part-kicker">Part 1 &middot; Questions 1&ndash;8</p>
+          <h3 class="ca3-part-title">You in life</h3>
+          <p class="ca3-part-note">Eight prompts about how curiosity shows up in your everyday life. Answer with your instinct. There are no right answers.</p>
+          <button type="button" class="ca3-pill" data-ca3-continue>Continue</button>
+        </div>
+        <div class="ca3-scene" data-scene="q1" data-kind="q" data-qid="1">
+          <p class="ca3-q-kicker">Question 1 <span>&middot; You in life</span></p>
+          <h3 class="ca3-q-title">When something tricky comes up in my own life, I tend to:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="1" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Analyse it and make sense of it logically</span></button>
+            <button type="button" class="ca3-opt" data-q="1" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Look for creative ways to solve what&rsquo;s going on</span></button>
+            <button type="button" class="ca3-opt" data-q="1" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Talk to others to get their perspectives and advice</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q2" data-kind="q" data-qid="2">
+          <p class="ca3-q-kicker">Question 2 <span>&middot; You in life</span></p>
+          <h3 class="ca3-q-title">On a free weekend, I&rsquo;m most drawn to:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="2" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Getting stuck into something I want to learn more about</span></button>
+            <button type="button" class="ca3-opt" data-q="2" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Doing something new, or going somewhere I&rsquo;ve never been</span></button>
+            <button type="button" class="ca3-opt" data-q="2" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">A proper catch-up with the people I care about</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q3" data-kind="q" data-qid="3">
+          <p class="ca3-q-kicker">Question 3 <span>&middot; You in life</span></p>
+          <h3 class="ca3-q-title">When I watch a documentary, I:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="3" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Keep pausing to look things up, or carry on reading about it afterwards</span></button>
+            <button type="button" class="ca3-opt" data-q="3" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Get caught up in how it&rsquo;s made, the directing, the craft, and the energy of it</span></button>
+            <button type="button" class="ca3-opt" data-q="3" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Get drawn into the people in it and what they went through</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q4" data-kind="q" data-qid="4">
+          <p class="ca3-q-kicker">Question 4 <span>&middot; You in life</span></p>
+          <h3 class="ca3-q-title">When I visit somewhere new, I:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="4" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Like to learn its history and how it came to be</span></button>
+            <button type="button" class="ca3-opt" data-q="4" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Just wander about with no particular plan and see what I find</span></button>
+            <button type="button" class="ca3-opt" data-q="4" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Get chatting to locals to find out what life&rsquo;s really like there</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q5" data-kind="q" data-qid="5">
+          <p class="ca3-q-kicker">Question 5 <span>&middot; You in life</span></p>
+          <h3 class="ca3-q-title">When I read or watch the news, I:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="5" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Want to understand what&rsquo;s behind it, the causes and the patterns</span></button>
+            <button type="button" class="ca3-opt" data-q="5" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Skim across loads of different stories to see what grabs me</span></button>
+            <button type="button" class="ca3-opt" data-q="5" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Focus on the people in the stories and how they&rsquo;re affected</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q6" data-kind="q" data-qid="6">
+          <p class="ca3-q-kicker">Question 6 <span>&middot; You in life</span></p>
+          <h3 class="ca3-q-title">When someone disagrees with me, my first instinct is to:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="6" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Go back to the facts and check whether I&rsquo;ve got it right</span></button>
+            <button type="button" class="ca3-opt" data-q="6" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Throw a few other ideas around and explore it together</span></button>
+            <button type="button" class="ca3-opt" data-q="6" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Ask them questions to understand where they&rsquo;re coming from</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q7" data-kind="q" data-qid="7">
+          <p class="ca3-q-kicker">Question 7 <span>&middot; You in life</span></p>
+          <h3 class="ca3-q-title">When I pick something to read or watch, it&rsquo;s usually:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="7" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Something that lets me really get into a subject</span></button>
+            <button type="button" class="ca3-opt" data-q="7" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Something new or unexpected that catches my interest</span></button>
+            <button type="button" class="ca3-opt" data-q="7" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Something that helps me understand what people go through</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q8" data-kind="q" data-qid="8">
+          <p class="ca3-q-kicker">Question 8 <span>&middot; You in life</span></p>
+          <h3 class="ca3-q-title">What drives me most, day to day, is:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="8" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Properly understanding things and knowing my stuff</span></button>
+            <button type="button" class="ca3-opt" data-q="8" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Finding new ideas and possibilities</span></button>
+            <button type="button" class="ca3-opt" data-q="8" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Connecting with people and helping them do well</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene ca3-scene-part" data-scene="part2">
+          <p class="ca3-part-kicker">Part 2 &middot; Questions 9&ndash;16</p>
+          <h3 class="ca3-part-title">You at work</h3>
+          <p class="ca3-part-note">Eight prompts about how curiosity shows up in your work. Same rule: go with your instinct.</p>
+          <button type="button" class="ca3-pill" data-ca3-continue>Continue</button>
+        </div>
+        <div class="ca3-scene" data-scene="q9" data-kind="q" data-qid="9">
+          <p class="ca3-q-kicker">Question 9 <span>&middot; You at work</span></p>
+          <h3 class="ca3-q-title">When I pick up a new piece of work, the first thing I do is:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="9" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Dig under the surface to work out what&rsquo;s really going on</span></button>
+            <button type="button" class="ca3-opt" data-q="9" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Look for a fresh angle, or ideas from somewhere completely different</span></button>
+            <button type="button" class="ca3-opt" data-q="9" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Get to know the people involved and what matters to them</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q10" data-kind="q" data-qid="10">
+          <p class="ca3-q-kicker">Question 10 <span>&middot; You at work</span></p>
+          <h3 class="ca3-q-title">The questions I find myself asking in a meeting are:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="10" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">&ldquo;How do we actually know that&rsquo;s true?&rdquo;</span></button>
+            <button type="button" class="ca3-opt" data-q="10" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">&ldquo;What if we looked at this completely differently?&rdquo;</span></button>
+            <button type="button" class="ca3-opt" data-q="10" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">&ldquo;What would a good outcome feel like for the people impacted?&rdquo;</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q11" data-kind="q" data-qid="11">
+          <p class="ca3-q-kicker">Question 11 <span>&middot; You at work</span></p>
+          <h3 class="ca3-q-title">When a piece of work gets stuck, I&rsquo;m usually the one who:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="11" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Goes back over the detail and data to spot what we&rsquo;ve missed</span></button>
+            <button type="button" class="ca3-opt" data-q="11" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Generates new ideas and fresh thinking to find a new way forward</span></button>
+            <button type="button" class="ca3-opt" data-q="11" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Focuses on how it is impacting people and what they&rsquo;re feeling</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q12" data-kind="q" data-qid="12">
+          <p class="ca3-q-kicker">Question 12 <span>&middot; You at work</span></p>
+          <h3 class="ca3-q-title">When I&rsquo;m putting a recommendation together, I focus most on:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="12" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">The thinking and the logic, making sure it stacks up</span></button>
+            <button type="button" class="ca3-opt" data-q="12" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Finding a fresh or creative way to frame it</span></button>
+            <button type="button" class="ca3-opt" data-q="12" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Making sure it&rsquo;ll actually work for the people it affects</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q13" data-kind="q" data-qid="13">
+          <p class="ca3-q-kicker">Question 13 <span>&middot; You at work</span></p>
+          <h3 class="ca3-q-title">In fast-moving meetings, I tend to:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="13" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Slow us down a bit so we&rsquo;ve properly thought it through</span></button>
+            <button type="button" class="ca3-opt" data-q="13" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Keep the energy up and bounce quickly between ideas</span></button>
+            <button type="button" class="ca3-opt" data-q="13" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Keep an eye on how people are reacting and ensure everyone is included</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q14" data-kind="q" data-qid="14">
+          <p class="ca3-q-kicker">Question 14 <span>&middot; You at work</span></p>
+          <h3 class="ca3-q-title">When I learn something really useful for work, it&rsquo;s usually because I:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="14" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Dug deep into the detail and ensured I did the required reading and/or research</span></button>
+            <button type="button" class="ca3-opt" data-q="14" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Followed a random or unexpected tangent into something unrelated</span></button>
+            <button type="button" class="ca3-opt" data-q="14" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Really listened to someone and what they&rsquo;d been through</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q15" data-kind="q" data-qid="15">
+          <p class="ca3-q-kicker">Question 15 <span>&middot; You at work</span></p>
+          <h3 class="ca3-q-title">The feedback I tend to get from colleagues is that I:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="15" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Bring depth and really think things through</span></button>
+            <button type="button" class="ca3-opt" data-q="15" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Bring fresh ideas and new ways of looking at things</span></button>
+            <button type="button" class="ca3-opt" data-q="15" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Build strong relationships and read people well</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+        <div class="ca3-scene" data-scene="q16" data-kind="q" data-qid="16">
+          <p class="ca3-q-kicker">Question 16 <span>&middot; You at work</span></p>
+          <h3 class="ca3-q-title">When a decision has to be made as a team, I add most by:</h3>
+          <div class="ca3-opts">
+            <button type="button" class="ca3-opt" data-q="16" data-a="A" aria-pressed="false"><span class="ca3-opt-letter">A</span><span class="ca3-opt-text">Making sure it&rsquo;s backed up by validated data, information and insights</span></button>
+            <button type="button" class="ca3-opt" data-q="16" data-a="B" aria-pressed="false"><span class="ca3-opt-letter">B</span><span class="ca3-opt-text">Making sure we&rsquo;ve thought of options we&rsquo;d otherwise miss</span></button>
+            <button type="button" class="ca3-opt" data-q="16" data-a="C" aria-pressed="false"><span class="ca3-opt-letter">C</span><span class="ca3-opt-text">Making sure we&rsquo;ve thought about how it lands for people</span></button>
+          </div>
+          <div class="ca3-next-row"><button type="button" class="ca3-next">Next &rarr;</button></div>
+        </div>
+
+        <div class="ca3-scene ca3-scene-results" data-scene="results">
+          <p class="ca3-overline">Your results</p>
+          <h3 class="ca3-results-title">Your curiosity <em>tally</em></h3>
+
+          <div class="ca3-bars" aria-label="Answer totals">
+            <div class="ca3-bar-row" data-style="A">
+              <div><span class="ca3-bar-name">Epistemic</span><span class="ca3-bar-meta">Depth, knowledge, how things work</span></div>
+              <div class="ca3-bar-track"><span class="ca3-bar-fill" data-ca3-fill="A"></span></div>
+              <span class="ca3-bar-count" data-ca3-count-letter="A">&ndash;</span>
+            </div>
+            <div class="ca3-bar-row" data-style="B">
+              <div><span class="ca3-bar-name">Diversive</span><span class="ca3-bar-meta">Novelty, breadth, possibility</span></div>
+              <div class="ca3-bar-track"><span class="ca3-bar-fill" data-ca3-fill="B"></span></div>
+              <span class="ca3-bar-count" data-ca3-count-letter="B">&ndash;</span>
+            </div>
+            <div class="ca3-bar-row" data-style="C">
+              <div><span class="ca3-bar-name">Empathetic</span><span class="ca3-bar-meta">People, feeling, perspective</span></div>
+              <div class="ca3-bar-track"><span class="ca3-bar-fill" data-ca3-fill="C"></span></div>
+              <span class="ca3-bar-count" data-ca3-count-letter="C">&ndash;</span>
+            </div>
+          </div>
+
+          <div class="ca3-primary" aria-live="polite" aria-atomic="true">
+            <div class="ca3-rings" aria-hidden="true"><span class="ca3-ring"></span><span class="ca3-ring"></span><span class="ca3-ring"></span></div>
+            <p class="ca3-primary-kicker" data-ca3-result-kicker>Primary style</p>
+            <h3 class="ca3-primary-title" data-ca3-result-title>&nbsp;</h3>
+            <p class="ca3-primary-body" data-ca3-result-body>&nbsp;</p>
+          </div>
+
+          <p class="ca3-results-intro">Whichever letter you have most of is your natural preference: mostly A&rsquo;s is epistemic, mostly B&rsquo;s is diversive, mostly C&rsquo;s is empathetic. If you have a spike in one form, that is a great strength. You just need to be aware that you sit lower on the other two, and that could be a gap in how you approach your work and your ideas. Every team needs to ensure that between you, you have a balance, and always seek to develop the forms that are less of a natural preference for you.</p>
+
+          <div class="ca3-whatnext">
+            <p class="ca3-whatnext-title">What to do next</p>
+            <p class="ca3-whatnext-body">Think of the three forms as a tripod. If one leg is short, the whole thing wobbles and you can&rsquo;t get a clear picture. Your natural spike is your edge, so never diminish it. The Curiosity dimension on our platform shows you how to nurture all three, in your work and in your life. Enjoy the self-discovery.</p>
+          </div>
+
+          <button type="button" class="ca3-reset" data-ca3-reset>Retake the assessment</button>
+
+          
+          <aside class="ca3-cta-box" aria-label="Keep exploring the demo">
+            <h3 class="ca3-cta-box-heading">That is one piece of the platform</h3>
+            <p class="ca3-cta-box-body">Every dimension opens with a self-reflection like this one, and each one sits alongside the video learning, team challenges and downloadable toolkits that go with it. There is plenty more to look at in the demo.</p>
+            <a class="ca3-cta-box-link" href="https://www.showinguplearning.com/demo">Back to the demo</a>
+          </aside>
+        </div>
+      </div>
+
+      <p class="ca3-hint">Answer with <kbd>A</kbd><kbd>B</kbd><kbd>C</kbd> &middot; move with <kbd>&larr;</kbd><kbd>&rarr;</kbd></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    function init() {
+      var root = document.querySelector('.ca3-wrap');
+      if (!root || root.getAttribute('data-ca3-ready') === 'true') return;
+      root.setAttribute('data-ca3-ready', 'true');
+
+      var answers = {};
+      var letters = ['A', 'B', 'C'];
+      var scenes = Array.prototype.slice.call(root.querySelectorAll('.ca3-scene'));
+      var order = scenes.map(function (s) { return s.getAttribute('data-scene'); });
+      var current = 0;
+      var resultsShown = false;
+      var totalQuestions = root.querySelectorAll('.ca3-scene[data-kind="q"]').length;
+      var backButton = root.querySelector('[data-ca3-back]');
+      var countEl = root.querySelector('[data-ca3-count]');
+      var segsWrap = root.querySelector('[data-ca3-segs]');
+      var resultKicker = root.querySelector('[data-ca3-result-kicker]');
+      var resultTitle = root.querySelector('[data-ca3-result-title]');
+      var resultBody = root.querySelector('[data-ca3-result-body]');
+
+      var styleCopy = {
+        A: { name: 'Epistemic curiosity', shortName: 'Epistemic', body: 'Your preference is Epistemic. This is the curiosity of depth. You are driven to understand why something works the way it does, to dig beneath the brief rather than just react to it, and to build knowledge you can genuinely trust. You are the one who asks \u201chow do we know that?\u201d, who stays with the detail, and who checks and triangulates before advising. It takes patience, focus, and the humility to admit what you don\u2019t yet know. Used well, it is what turns clever thinking into trusted thinking, and it is how you earn real credibility with a client.' },
+        B: { name: 'Diversive curiosity', shortName: 'Diversive', body: 'Your preference is Diversive. This means you favour creativity, and it is your oxygen. You are pulled towards what is new, and your instinct is to explore something completely different to see where it leads. You spot patterns across unrelated fields, bring fresh perspectives that refresh a stuck conversation, and keep everyone\u2019s thinking alive and adaptable. The watch-out is focus: because you thrive on novelty, the art is knowing when to explore widely and when to dig deeply, rather than chasing every shiny idea.' },
+        C: { name: 'Empathetic curiosity', shortName: 'Empathetic', body: 'Your preference is Empathetic. This is the curiosity that feels with people. You are drawn to understand someone\u2019s inner world, their thoughts, pressures, hopes, and fears, and you listen with real intent rather than waiting to speak. It is the foundation of genuine relationships and trust, and it shifts your work from convincing people towards co-creating with them. The balance to hold is that feeling needs logic alongside it: too much empathy without boundaries can cloud judgement, so pair your heart with your head.' }
+      };
+      var balancedBody = 'Your answers are balanced across more than one style. That does not mean your curiosity is unclear; it means you already flex between depth, range, and human perspective. The Curiosity dimension shows you how to use that range deliberately.';
+
+      var segs = [];
+      for (var s = 0; s < totalQuestions; s++) {
+        var seg = document.createElement('span');
+        seg.className = 'ca3-seg';
+        segsWrap.appendChild(seg);
+        segs.push(seg);
+      }
+
+      function prefersReducedMotion() {
+        return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      }
+
+      function setText(el, value) {
+        if (el && el.textContent !== value) el.textContent = value;
+      }
+
+      function sceneAt(index) { return scenes[index]; }
+
+      function questionIdOf(scene) {
+        return scene && scene.getAttribute('data-kind') === 'q'
+          ? scene.getAttribute('data-qid') : null;
+      }
+
+      function firstUnansweredIndex() {
+        for (var i = 0; i < scenes.length; i++) {
+          var qid = questionIdOf(scenes[i]);
+          if (qid && !answers[qid]) return i;
+        }
+        return null;
+      }
+
+      function getScores() {
+        var scores = { A: 0, B: 0, C: 0 };
+        Object.keys(answers).forEach(function (key) {
+          if (scores.hasOwnProperty(answers[key])) scores[answers[key]] += 1;
+        });
+        return scores;
+      }
+
+      function getWinners(scores) {
+        var max = 0;
+        letters.forEach(function (l) { if (scores[l] > max) max = scores[l]; });
+        if (max === 0) return [];
+        return letters.filter(function (l) { return scores[l] === max; });
+      }
+
+      function updateHead() {
+        var answered = Object.keys(answers).length;
+        var activeQid = questionIdOf(sceneAt(current));
+        for (var i = 0; i < totalQuestions; i++) {
+          var qid = String(i + 1);
+          segs[i].className = 'ca3-seg'
+            + (answers[qid] ? ' is-done' : '')
+            + (activeQid === qid ? ' is-current' : '');
+        }
+        /* show position while on a question, answered count elsewhere */
+        setText(countEl, (activeQid ? activeQid : String(answered)) + ' / ' + totalQuestions);
+        backButton.disabled = current === 0;
+        root.classList.toggle('ca3-started', order[current] !== 'intro');
+      }
+
+      function animateCounts(scores) {
+        letters.forEach(function (letter, idx) {
+          var el = root.querySelector('[data-ca3-count-letter="' + letter + '"]');
+          var fill = root.querySelector('[data-ca3-fill="' + letter + '"]');
+          var target = scores[letter];
+          var pct = totalQuestions ? Math.round((target / totalQuestions) * 100) : 0;
+          var delay = idx * 350;
+          if (prefersReducedMotion() || !window.requestAnimationFrame) {
+            if (el) el.textContent = String(target);
+            if (fill) fill.style.width = pct + '%';
+            return;
+          }
+          setTimeout(function () {
+            if (fill) fill.style.width = pct + '%';
+            var start = null;
+            var duration = 800;
+            var settled = false;
+            function step(now) {
+              if (start === null) start = now;
+              var progress = Math.min((now - start) / duration, 1);
+              var eased = 1 - Math.pow(1 - progress, 3);
+              if (el) el.textContent = String(Math.round(eased * target));
+              if (progress < 1) window.requestAnimationFrame(step);
+              else settled = true;
+            }
+            window.requestAnimationFrame(step);
+            setTimeout(function () { if (!settled && el) el.textContent = String(target); }, duration + 150);
+          }, delay);
+        });
+      }
+
+      function joinStyleNames(winners) {
+        return winners.map(function (letter) { return styleCopy[letter].shortName; }).join(' + ');
+      }
+
+      function showResultsContent() {
+        var scores = getScores();
+        var winners = getWinners(scores);
+        if (winners.length === 1) {
+          setText(resultKicker, 'Primary style');
+          setText(resultTitle, styleCopy[winners[0]].name);
+          setText(resultBody, styleCopy[winners[0]].body);
+        } else {
+          setText(resultKicker, 'Balanced blend');
+          setText(resultTitle, joinStyleNames(winners) + ' curiosity');
+          setText(resultBody, balancedBody);
+        }
+        animateCounts(scores);
+        resultsShown = true;
+      }
+
+      function show(index) {
+        if (index < 0 || index >= scenes.length) return;
+        /* the results scene only opens once every prompt is answered */
+        if (order[index] === 'results' && Object.keys(answers).length < totalQuestions) {
+          var open = firstUnansweredIndex();
+          if (open !== null) index = open;
+          else return;
+        }
+        scenes[current].classList.remove('is-active');
+        current = index;
+        var scene = scenes[current];
+        scene.classList.add('is-active');
+        updateHead();
+        if (order[current] === 'results' && !resultsShown) showResultsContent();
+        /* keep the stage in view and hand focus to the scene for keyboard flow */
+        try {
+          root.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
+        } catch (e) { root.scrollIntoView(); }
+        scene.setAttribute('tabindex', '-1');
+        if (typeof scene.focus === 'function') scene.focus({ preventScroll: true });
+      }
+
+      function advance() { show(current + 1); }
+      function goBack() { show(current - 1); }
+
+      function selectAnswer(button) {
+        var questionId = button.getAttribute('data-q');
+        var answer = button.getAttribute('data-a');
+        var scene = sceneAt(current);
+        var siblings = root.querySelectorAll('.ca3-opt[data-q="' + questionId + '"]');
+        answers[questionId] = answer;
+        Array.prototype.forEach.call(siblings, function (sibling) {
+          sibling.setAttribute('aria-pressed', sibling === button ? 'true' : 'false');
+        });
+        if (scene) scene.classList.add('is-answered');
+        updateHead();
+        /* hold a beat so the colour fill registers, then move on */
+        var beat = prefersReducedMotion() ? 80 : 450;
+        setTimeout(function () {
+          /* only auto-advance if the learner hasn't already navigated away */
+          if (sceneAt(current) === scene) advance();
+        }, beat);
+      }
+
+      Array.prototype.forEach.call(root.querySelectorAll('.ca3-opt'), function (button) {
+        button.addEventListener('click', function () { selectAnswer(button); });
+      });
+
+      Array.prototype.forEach.call(root.querySelectorAll('[data-ca3-continue]'), function (button) {
+        button.addEventListener('click', advance);
+      });
+      var beginButton = root.querySelector('[data-ca3-begin]');
+      if (beginButton) beginButton.addEventListener('click', advance);
+
+      Array.prototype.forEach.call(root.querySelectorAll('.ca3-next'), function (button) {
+        button.addEventListener('click', advance);
+      });
+
+      backButton.addEventListener('click', goBack);
+
+      root.querySelector('[data-ca3-reset]').addEventListener('click', function () {
+        answers = {};
+        resultsShown = false;
+        Array.prototype.forEach.call(root.querySelectorAll('.ca3-opt'), function (button) {
+          button.setAttribute('aria-pressed', 'false');
+        });
+        Array.prototype.forEach.call(scenes, function (scene) {
+          scene.classList.remove('is-answered');
+        });
+        letters.forEach(function (letter) {
+          var el = root.querySelector('[data-ca3-count-letter="' + letter + '"]');
+          var fill = root.querySelector('[data-ca3-fill="' + letter + '"]');
+          if (el) el.textContent = '-';
+          if (fill) fill.style.width = '0%';
+        });
+        show(0);
+      });
+
+      /* keyboard: A/B/C or 1/2/3 answer, arrows navigate, Enter begins */
+      document.addEventListener('keydown', function (event) {
+        if (event.altKey || event.ctrlKey || event.metaKey) return;
+        var kind = sceneAt(current).getAttribute('data-kind');
+        var key = event.key;
+        if (order[current] === 'intro' && key === 'Enter') { advance(); return; }
+        if (key === 'ArrowLeft' && current > 0 && order[current] !== 'intro') { goBack(); return; }
+        if (key === 'ArrowRight') {
+          var qid = questionIdOf(sceneAt(current));
+          if (!qid || answers[qid]) advance();
+          return;
+        }
+        if (kind !== 'q') return;
+        var map = { a: 'A', b: 'B', c: 'C', '1': 'A', '2': 'B', '3': 'C' };
+        var letter = map[String(key).toLowerCase()];
+        if (!letter) return;
+        var qid2 = questionIdOf(sceneAt(current));
+        var button = root.querySelector('.ca3-opt[data-q="' + qid2 + '"][data-a="' + letter + '"]');
+        if (button) selectAnswer(button);
+      });
+
+      updateHead();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+  .fb-saved { font-size: 12px; color: #9a908a; margin-top: 8px;
+              opacity: 0; transition: opacity .2s; }
+  .fb-saved.fb-show { opacity: 1; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="page-demo-curiosity-assessment.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] page-demo-curiosity-assessment.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead. Your text is still here.</div>
+      <div class="fb-saved" id="fb-saved">Draft saved in this browser.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  var saved = document.getElementById('fb-saved');
+  var box = form.querySelector('textarea[name=message]');
+  var who = form.querySelector('input[name=name]');
+
+  // Draft persistence. A long comment typed into this box used to exist
+  // nowhere else - closing the panel, a stray reload or a dead endpoint
+  // lost the lot, so the standing advice was "keep a copy in Notes".
+  // Keyed per page so comments on different pages don't overwrite
+  // each other. localStorage throws in some privacy modes; a failure
+  // here must never stop the form working, hence the silent try/catch.
+  var key = 'su-fb-draft-' + form.querySelector('input[name=page]').value;
+  function store(k, v) {
+    try { window.localStorage.setItem(k, v); } catch (e) {}
+  }
+  function recall(k) {
+    try { return window.localStorage.getItem(k) || ''; }
+    catch (e) { return ''; }
+  }
+  function forget() {
+    try {
+      window.localStorage.removeItem(key);
+      window.localStorage.removeItem(key + '-name');
+    } catch (e) {}
+  }
+  var draft = recall(key);
+  if (draft) {
+    box.value = draft;
+    saved.classList.add('fb-show');
+  }
+  var priorName = recall(key + '-name');
+  if (priorName && !who.value) who.value = priorName;
+
+  var pending;
+  function keep() {
+    clearTimeout(pending);
+    pending = setTimeout(function() {
+      if (box.value) {
+        store(key, box.value);
+        store(key + '-name', who.value);
+        saved.classList.add('fb-show');
+      } else {
+        forget();
+        saved.classList.remove('fb-show');
+      }
+    }, 400);
+  }
+  box.addEventListener('input', keep);
+  who.addEventListener('input', keep);
+  // A tab close can beat the debounce - flush synchronously on the way out.
+  window.addEventListener('pagehide', function() {
+    if (box.value) { store(key, box.value); store(key + '-name', who.value); }
+  });
+
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        // Only a confirmed 2xx clears the draft. Anything else keeps it,
+        // so a failed send never destroys the text.
+        forget();
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

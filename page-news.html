@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>The latest from Showing Up — Showing Up (preview)</title>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  .nw-page, .nw-page *, .nw-page *::before, .nw-page *::after {
+    box-sizing: border-box; margin: 0; padding: 0;
+  }
+  /* LearnWorlds sections can underline SPANS INSIDE ANCHORS, not just the anchor,
+     so the mandatory anchor override on its own still leaves button and tile
+     labels underlined. CLAUDE.md constraint 4. Scoped to descendants of a, so a
+     deliberate underline on an in-paragraph text link (which wraps no span)
+     survives. */
+  .nw-page a * { text-decoration: none !important; }
+  .nw-page {
+    --nw-coral: #FF8269;
+    --nw-coral-dark: #e8614a;
+    --nw-ink: #1e1d1d;
+    --nw-cream: #FFF6F1;
+    --nw-text: #353434;
+    --nw-ease: cubic-bezier(.16,1,.3,1);
+    font-family: 'DM Sans', sans-serif;
+    background: var(--nw-cream);
+    color: var(--nw-text);
+  }
+  .nw-inner {
+    max-width: 1280px; margin: 0 auto; padding: 0 80px;
+  }
+
+  /* ---- hero band ---- */
+  .nw-hero { background: var(--nw-ink); padding: 96px 0 84px; }
+  .nw-eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--nw-coral);
+    text-align: left !important;
+  }
+  .nw-headline {
+    margin-top: 18px;
+    font-size: clamp(38px, 4.6vw, 62px); font-weight: 300;
+    letter-spacing: -0.03em; line-height: 1.18;
+    color: var(--nw-cream); text-align: left !important;
+  }
+  .nw-headline em {
+    font-style: normal; font-weight: 600; color: var(--nw-coral);
+  }
+  .nw-standfirst {
+    margin-top: 20px; max-width: 560px;
+    font-size: 17px; font-weight: 300; line-height: 1.65;
+    color: rgba(255,246,241,.78); text-align: left !important;
+  }
+  .nw-page .nw-hero-link,
+  .nw-page .nw-hero-link:link, .nw-page .nw-hero-link:visited {
+    display: inline-block; margin-top: 26px;
+    font-size: 15px; font-weight: 500;
+    color: var(--nw-coral) !important;
+    text-decoration: none !important; border: none !important;
+    border-bottom: none !important;
+  }
+  .nw-page .nw-hero-link:hover, .nw-page .nw-hero-link:active {
+    color: var(--nw-cream) !important;
+    text-decoration: none !important; border: none !important;
+    border-bottom: none !important;
+  }
+
+  /* ---- feed ---- */
+  .nw-feed { padding: 72px 0 96px; }
+  .nw-item {
+    max-width: 760px; padding: 44px 0;
+    border-bottom: 1px solid rgba(0,0,0,.08);
+  }
+  .nw-item:first-child { padding-top: 0; }
+  .nw-date {
+    font-size: 11px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--nw-coral);
+    text-align: left !important;
+  }
+  .nw-title {
+    margin-top: 12px;
+    font-size: 27px; font-weight: 300; letter-spacing: -0.02em;
+    line-height: 1.28; color: var(--nw-ink);
+    text-align: left !important;
+  }
+  .nw-body { margin-top: 16px; }
+  .nw-body p {
+    font-size: 16px; font-weight: 300; line-height: 1.65;
+    color: var(--nw-text); text-align: left !important;
+    white-space: pre-line;
+  }
+  .nw-body p + p { margin-top: 12px; }
+  .nw-img {
+    display: block; margin-top: 22px;
+    max-width: 100%; width: 560px; height: auto;
+    border: 1px solid rgba(0,0,0,.08); border-radius: 14px;
+  }
+  .nw-page .nw-out,
+  .nw-page .nw-out:link, .nw-page .nw-out:visited {
+    display: inline-block; margin-top: 20px;
+    font-size: 14px; font-weight: 500;
+    color: var(--nw-ink) !important;
+    text-decoration: none !important; border: none !important;
+    border-bottom: none !important;
+  }
+  .nw-page .nw-out:hover, .nw-page .nw-out:active {
+    color: var(--nw-coral-dark) !important;
+    text-decoration: none !important; border: none !important;
+    border-bottom: none !important;
+  }
+  .nw-out .nw-arrow { display: inline-block; transition: transform .25s var(--nw-ease); }
+  .nw-out:hover .nw-arrow { transform: translateX(4px); }
+
+  /* ---- reveal ---- */
+  .nw-reveal { opacity: 0; transform: translateY(18px);
+    transition: opacity .8s var(--nw-ease), transform .8s var(--nw-ease); }
+  .nw-reveal.nw-in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .nw-reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ---- responsive ---- */
+  @media (max-width: 960px) {
+    .nw-inner { padding: 0 32px; }
+    .nw-hero { padding: 72px 0 60px; }
+    .nw-feed { padding: 52px 0 72px; }
+    .nw-item { padding: 34px 0; }
+  }
+  @media (max-width: 540px) {
+    .nw-inner { padding: 0 24px; }
+    .nw-headline { font-size: 34px; }
+    .nw-title { font-size: 22px; }
+  }
+</style>
+<div class="nw-page">
+  <section class="nw-hero">
+    <div class="nw-inner">
+      <p class="nw-eyebrow nw-reveal">News</p>
+      <h1 class="nw-headline nw-reveal">The latest from <em>Showing Up</em></h1>
+      <p class="nw-standfirst nw-reveal">Announcements, ideas and milestones from the team - as we post them.</p>
+      <a class="nw-hero-link nw-reveal" href="https://www.linkedin.com/company/showinguplearning" target="_blank" rel="noopener">Follow us on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+    </div>
+  </section>
+  <section class="nw-feed">
+    <div class="nw-inner">
+      <div class="nw-list" id="nw-list">
+<article class="nw-item nw-reveal">
+  <p class="nw-date">7 August 2026</p>
+  <h2 class="nw-title">Olivia Gribaudo joins as Partner</h2>
+  <div class="nw-body">
+    <p>We&#x27;ve had the privilege of Olivia Gribaudo contributing to our client work in the past years, which is why it&#x27;s beyond exciting to share the official joining of our team as a Partner.</p>
+    <p>Olivia has spent her career on the human side of change, in the belief that organisations transform when their people do. Over fifteen years at Diageo, and since then as a consultant to global organisations across financial services, technology, energy and retail, she has led everything from organisational redesign to full-scale culture change. Her gift is bringing clarity to the complex and the ambiguous. At Showing Up, Olivia leads our Character and Collaboration dimensions and our client transformation work. She speaks five European languages and loves theatre, dance, and travel. Welcome, Olivia. We are beyond lucky to have you as part of the team.</p>
+    <p>Welcome to Showing Up | Developing brilliant consulting teams.</p>
+  </div>
+  <img class="nw-img" src="assets/2026-08-07-we-ve-had-the-privilege-of.jpg" alt="" loading="lazy" onerror="this.dataset.r=(this.dataset.r||0)*1+1;if(this.dataset.r==1){this.src='../news/assets/2026-08-07-we-ve-had-the-privilege-of.jpg';}else if(this.dataset.r==2){this.src='https://showinguplearning.github.io/showing-up-preview/assets/2026-08-07-we-ve-had-the-privilege-of.jpg';}else{this.style.display='none';}">
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7491428712740069377" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">4 August 2026</p>
+  <h2 class="nw-title">The learning academy at Bind Media</h2>
+  <div class="nw-body">
+    <p>Words will always fail to describe how great it is working with Bind Media | B-Corp. The third-best place to work in the UK (though we&#x27;d argue the first!), the team are always so welcoming, engaged, and absolutely locked in to being the very best performance marketing agency.</p>
+    <p>This was the third part of the learning academy we have developed for Bind, focused on Curiosity, Critical Thinking &amp; Creativity.</p>
+    <p>P.S. We did more than just play with spaghetti and marshmallows, promise!</p>
+  </div>
+  <img class="nw-img" src="assets/2026-08-04-words-will-always-fail-to-describe.jpg" alt="" loading="lazy" onerror="this.dataset.r=(this.dataset.r||0)*1+1;if(this.dataset.r==1){this.src='../news/assets/2026-08-04-words-will-always-fail-to-describe.jpg';}else if(this.dataset.r==2){this.src='https://showinguplearning.github.io/showing-up-preview/assets/2026-08-04-words-will-always-fail-to-describe.jpg';}else{this.style.display='none';}">
+  <img class="nw-img" src="assets/2026-08-04-words-will-always-fail-to-describe-2.jpg" alt="" loading="lazy" onerror="this.dataset.r=(this.dataset.r||0)*1+1;if(this.dataset.r==1){this.src='../news/assets/2026-08-04-words-will-always-fail-to-describe-2.jpg';}else if(this.dataset.r==2){this.src='https://showinguplearning.github.io/showing-up-preview/assets/2026-08-04-words-will-always-fail-to-describe-2.jpg';}else{this.style.display='none';}">
+  <img class="nw-img" src="assets/2026-08-04-words-will-always-fail-to-describe-3.jpg" alt="" loading="lazy" onerror="this.dataset.r=(this.dataset.r||0)*1+1;if(this.dataset.r==1){this.src='../news/assets/2026-08-04-words-will-always-fail-to-describe-3.jpg';}else if(this.dataset.r==2){this.src='https://showinguplearning.github.io/showing-up-preview/assets/2026-08-04-words-will-always-fail-to-describe-3.jpg';}else{this.style.display='none';}">
+  <img class="nw-img" src="assets/2026-08-04-words-will-always-fail-to-describe-4.jpg" alt="" loading="lazy" onerror="this.dataset.r=(this.dataset.r||0)*1+1;if(this.dataset.r==1){this.src='../news/assets/2026-08-04-words-will-always-fail-to-describe-4.jpg';}else if(this.dataset.r==2){this.src='https://showinguplearning.github.io/showing-up-preview/assets/2026-08-04-words-will-always-fail-to-describe-4.jpg';}else{this.style.display='none';}">
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7490304274258874368" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">19 May 2026</p>
+  <h2 class="nw-title">Free platform access for solo founders</h2>
+  <div class="nw-body">
+    <p>For solo founders out there building and running consultancies, we&#x27;d love to give you free access to our newly launched video-learning platform. The platform will elevate how you build trusted relationships with net-new and existing clients, and of course, deliver great work to build the brightest possible future. Please simply send me a message or email our team at the listed email.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7462395098195066880" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">12 May 2026</p>
+  <h2 class="nw-title">A booklet on the Competitive Exclusion Principle</h2>
+  <div class="nw-body">
+    <p>&#128680; Critical Thinking for Consultants &#128680; When we walk into a new client situation, the Competitive Exclusion Principle is one of the most valuable dynamics we can look for as consultants ... a principle that began in 1930s ecology.</p>
+    <p>This level of thinking comes from the second of our Nine Dimensions at Showing Up, Critical Thinking. Spotting this dynamic is one of the things that sets great consulting apart.</p>
+    <p>We&#x27;ve put together a short booklet that unpacks it. We hope you enjoy reading it.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7459863323400900609" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">11 May 2026</p>
+  <h2 class="nw-title">The seagull, the cream bun, and the system</h2>
+  <div class="nw-body">
+    <p>A seagull stole my cream bun in Clacton last week. Flew over my shoulder, executed a heist I genuinely had to admire, and was gone before I&#x27;d registered the thud on the back of my head.</p>
+    <p>A short piece on why your sales numbers, your delivery quality, and your team&#x27;s behaviour are almost never really about the people you&#x27;re tempted to blame, and what to do instead. &#128071;</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7459526201129209856" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">23 January 2026</p>
+  <h2 class="nw-title">Free access for people between roles</h2>
+  <div class="nw-body">
+    <p>Learning shouldn&#8217;t feel out of reach to anyone. Especially those seeking work.
+If you&#8217;re between roles right now, or money is tight, please don&#8217;t let that stop you from investing in your growth. We&#8217;d love to offer free access to the Showing Up learning platform.
+Just message our team at contact@showinguplearning.com, and we&#8217;ll take care of the rest.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7420399881414049792" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">19 January 2026</p>
+  <h2 class="nw-title">New modules filmed for the platform</h2>
+  <div class="nw-body">
+    <p>Yesterday, we filmed several new modules for our Management Consultant Learning Platform. The learning is organised by team challenges, models, and stories. Below is what we filmed - and click the link in the comments to try the platform for free.</p>
+    <p>TEAM CHALLENGES:
+How to Diagnose an Injured Ankle
+Connecting the 9 Dots</p>
+    <p>MODELS:
+Understanding Coupling &amp; Complexity
+Wicked Environments
+The Pre-Mortem Method
+SCAMPER Your Ideas
+What Makes Someone Creative?
+Your Idea Quota
+Coaching with Openness, Honesty &amp; Care</p>
+    <p>STORIES:
+Creativity Begins with Dots
+SCAMPER in the Real World
+Coaching at Google and Apple</p>
+  </div>
+  <img class="nw-img" src="assets/2026-01-19-yesterday-we-filmed-several-new-modules.jpg" alt="" loading="lazy" onerror="this.dataset.r=(this.dataset.r||0)*1+1;if(this.dataset.r==1){this.src='../news/assets/2026-01-19-yesterday-we-filmed-several-new-modules.jpg';}else if(this.dataset.r==2){this.src='https://showinguplearning.github.io/showing-up-preview/assets/2026-01-19-yesterday-we-filmed-several-new-modules.jpg';}else{this.style.display='none';}">
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7418951350836727809" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">12 December 2025</p>
+  <h2 class="nw-title">Michael Jordan&#x27;s expectation of showing up</h2>
+  <div class="nw-body">
+    <p>If you&#8217;ve ever watched the incredible series The Last Dance, which documents the Chicago Bulls&#8217; final season under Phil Jackson, one thing stands out more than anything else: the drive of Michael Jordan.
+What really defines Jordan isn&#8217;t just his talent. It&#8217;s his expectation of how people should show up. It&#x27;s the same expectation that all of the very best teams share.</p>
+    <p>This is what we explore in the third part of our series on Great Learning and Development.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7405166738809442305" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">5 December 2025</p>
+  <h2 class="nw-title">The meme consultant problem</h2>
+  <div class="nw-body">
+    <p>Good Consultant, Meme Consultant</p>
+    <p>There are whole Instagram pages dedicated to mocking consultants (my apologies, I don&#8217;t have an Instagram to share these pages!)</p>
+    <p>There are entire books about the industry&#x27;s failures, including Mariana Mazzucato&#8217;s excellent book, The Big Con.</p>
+    <p>And every week, another headline appears about management consultancies doing inadequate, and sometimes indefensible, work.</p>
+    <p>Are these criticisms fair? Most of the time, yes.</p>
+    <p>But for every bad story, there are hundreds of positive ones. The very best consultants see the world differently. They solve complex problems. They design human-centred solutions. They bring people together in ways that move things forward. They make progress possible.</p>
+    <p>What these consultants share is a value: Integrity. Doing the right thing rather than the easy thing.</p>
+    <p>Every decision you make, every piece of work you submit, and every billable hour offers a moment to do the right thing. These moments shape who you become as a consultant.</p>
+    <p>As consultants, it really is a privilege to do work that influences people&#8217;s lives, and sometimes, how entire societies operate. If we do this work with integrity, even if we still fall short, at least we did our best to do the right thing.</p>
+    <p>Reflection question
+When was the last time you chose the harder path because it was the right one, not the convenient one?</p>
+    <p>Thanks for reading, take care of yourselves, and good luck in your work.
+_____</p>
+    <p>Welcome to our new followers. We hope you enjoyed the article, which focused on Character, which is the fourth dimension of our Nine Dimensions of the Very Best Consultants.</p>
+    <p>Visit www.showinguplearning. com to more about our classroom and video-learning that develops consultants who become irreplaceable to their clients.</p>
+    <p>Photo credit: https://lnkd.in/eM8kSTz3</p>
+  </div>
+  <img class="nw-img" src="assets/2025-12-05-good-consultant-meme-consultant-there-are.jpg" alt="" loading="lazy" onerror="this.dataset.r=(this.dataset.r||0)*1+1;if(this.dataset.r==1){this.src='../news/assets/2025-12-05-good-consultant-meme-consultant-there-are.jpg';}else if(this.dataset.r==2){this.src='https://showinguplearning.github.io/showing-up-preview/assets/2025-12-05-good-consultant-meme-consultant-there-are.jpg';}else{this.style.display='none';}">
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7402625507944452096" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">4 December 2025</p>
+  <h2 class="nw-title">What separated the imaginative editors</h2>
+  <div class="nw-body">
+    <p>The CEO of a major publishing house faced a problem. About half of his team produced imaginative ideas. The other half struggled. He wanted to know why.</p>
+    <p>He asked a team of psychologists to study his staff. Half of his editors and marketers. After a year of observation, interviews, and tests, the psychologists found only one difference.</p>
+    <p>The creative people believed they were creative. The others believed they were not.</p>
+    <p>It is almost comically simple. To create, you first have to believe you can.
+Consultancy is not often seen as a creative practice, yet it is one of the most creative in the world. You take scattered information, conflicting needs, hidden constraints, and half-formed plans, and you turn them into something clear and useful.</p>
+    <p>Our research with more than a thousand consultants showed that creative thinking is one of the nine strongest differentiators of success.</p>
+    <p>Creators look at what can be. They see the possibility beneath the obvious. They notice the gap in the conversation. They imagine the better version of the thing in front of them.</p>
+    <p>To become an ideas person, you have to believe you&#8217;re one.</p>
+    <p>Idea for the day: Write down ten creative ideas for a problem that frustrates you.</p>
+    <p>Thank you for reading, and welcome to our new followers. This article focused on Creativity, which is the third dimension of our Nine Dimensions of the Very Best Consultants.</p>
+    <p>We design, train and develop consultants who become irreplaceable to their clients because they do the best work, build trust, and deliver incredible value.</p>
+    <p>Please visit www.showinguplearning .com to learn about our classroom training and our video learning platform.</p>
+    <p>Take care of yourselves, and good luck with your work.</p>
+    <p>P.S. The photo today is of our daughter. The most creative person I know!</p>
+  </div>
+  <img class="nw-img" src="assets/2025-12-04-the-ceo-of-a-major-publishing.jpg" alt="" loading="lazy" onerror="this.dataset.r=(this.dataset.r||0)*1+1;if(this.dataset.r==1){this.src='../news/assets/2025-12-04-the-ceo-of-a-major-publishing.jpg';}else if(this.dataset.r==2){this.src='https://showinguplearning.github.io/showing-up-preview/assets/2025-12-04-the-ceo-of-a-major-publishing.jpg';}else{this.style.display='none';}">
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7402270380523933696" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">3 December 2025</p>
+  <h2 class="nw-title">Kahneman, Tversky and the joy of being wrong</h2>
+  <div class="nw-body">
+    <p>The Joy of Being Proved Wrong</p>
+    <p>Daniel Kahneman said that meeting Amos Tversky changed the course of his life. Amos was already a rising star ... the most intelligent man any person knew. He was sharp, charismatic, funny, and unnervingly clear in his thinking.</p>
+    <p>Yet what Kahneman admired most was his curiosity. His refusal to settle. His ability to listen without defence and to keep on searching deeper and deeper for answers. To challenge his own biases. And, most of all, his desire to prove himself wrong.</p>
+    <p>One of their famous working patterns would offer an intuitive answer, and the other would pull it apart ... not to win but to get to the truth of what was really going on. They treated every question as a small experiment. They wanted to know why their first impressions so often misled them.</p>
+    <p>That curiosity led them to discover that even experts are poor intuitive statisticians. We jump to conclusions. We cling to familiar patterns. And we trust the wrong things with confidence.</p>
+    <p>One of the problems they uncovered was resemblance prediction, which we will explore in the next article.</p>
+    <p>Reflection question
+When was the last time you enjoyed discovering that your first answer was not the right one?</p>
+    <p>This article focused on Curiosity, which is the first dimension of our Nine Dimensions of the Very Best Consultants.</p>
+    <p>We design, train, and develop consultants who become irreplaceable to their clients by delivering the best work, building trust, and delivering incredible value.</p>
+    <p>Please visit www.showinguplearning.com to learn about our classroom training and our video learning platform.</p>
+    <p>Thanks for reading, take care of yourselves, and good luck in your work.</p>
+    <p>Photo credit: https://lnkd.in/euWi3sYU</p>
+  </div>
+  <img class="nw-img" src="assets/2025-12-03-the-joy-of-being-proved-wrong.jpg" alt="" loading="lazy" onerror="this.dataset.r=(this.dataset.r||0)*1+1;if(this.dataset.r==1){this.src='../news/assets/2025-12-03-the-joy-of-being-proved-wrong.jpg';}else if(this.dataset.r==2){this.src='https://showinguplearning.github.io/showing-up-preview/assets/2025-12-03-the-joy-of-being-proved-wrong.jpg';}else{this.style.display='none';}">
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7401955738149027841" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">2 December 2025</p>
+  <h2 class="nw-title">Is Steve a librarian or a farmer?</h2>
+  <div class="nw-body">
+    <p>Resemblance Prediction. Is Steve a Librarian or a Farmer</p>
+    <p>Have you ever heard of resemblance prediction</p>
+    <p>Legendary behavioural scientists Tversky and Kahneman once ran a simple experiment. Here is one. Is Steve a librarian or a farmer.</p>
+    <p>&#8220;Steve is very shy and withdrawn, invariably helpful but with little interest in people or in the world of reality. A meek and tidy soul, he has a need for order and structure, and a passion for detail.&#8221;
+Is Steve more likely to be a librarian or a farmer.</p>
+    <p>Kahneman later wrote: &#8220;The resemblance of Steve&#8217;s personality to that of a stereotypical librarian strikes everyone immediately, but equally relevant statistical considerations are almost always ignored. Did it occur to you that there are more than 20 male farmers for each male librarian in the United States.&#8221;</p>
+    <p>The mind does not reach for this. It reaches for the resemblance. It chooses the thing that looks most like the thing.
+And there is the problem. So much human judgement rests on instinct. We trust familiarity. We trust resemblance. When what we should do is reach first for data and evidence.</p>
+    <p>For consultants this matters. Our work begins with data and evidence, both qualitative and quantitative. Do not jump to what feels familiar. Notice your biases. Set them aside. Look again.</p>
+    <p>That is the real discipline behind good judgement.</p>
+    <p>Reflection question
+How quickly do you rely on instinct rather than sit with the evidence before giving advice.</p>
+    <p>To learn more, visit us to learn about Critical Thinking, the second of our Nine Dimensions of the Very Best Consultants.</p>
+    <p>Have a great day and good luck with your work.</p>
+    <p>P.S. The photo of the librarian is also a trick anchoring technique that may have further influenced your thinking.</p>
+  </div>
+  <img class="nw-img" src="assets/2025-12-02-resemblance-prediction-is-steve-a-librarian.jpg" alt="" loading="lazy" onerror="this.dataset.r=(this.dataset.r||0)*1+1;if(this.dataset.r==1){this.src='../news/assets/2025-12-02-resemblance-prediction-is-steve-a-librarian.jpg';}else if(this.dataset.r==2){this.src='https://showinguplearning.github.io/showing-up-preview/assets/2025-12-02-resemblance-prediction-is-steve-a-librarian.jpg';}else{this.style.display='none';}">
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7401577893958684673" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">25 November 2025</p>
+  <h2 class="nw-title">2.5 days in a classroom, 147% more sales</h2>
+  <div class="nw-body">
+    <p>Here&#x27;s a story of how a &quot;Gen Z team&quot; were considered lazy. But with just 2.5 days in the classroom, the team increased sales by 147% and delighted their customers. And at the heart of this was diagnosing the problem before designing the solution. Part 2 of our series on Great Learning &amp; Development.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7399001801011671040" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">20 November 2025</p>
+  <h2 class="nw-title">The CEO who thought L&amp;D was pointless</h2>
+  <div class="nw-body">
+    <p>I once worked with a very intense CEO who, upon meeting me, said, &#8220;It&#8217;s nice to meet you, but you should know, I think learning and development is mostly pointless.&#8221; This is the moment I knew we would get along.</p>
+    <p>Here is the first part in our series on making learning and development great.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7397191044154417152" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">19 November 2025</p>
+  <h2 class="nw-title">Benjamin Western on the superpower of curiosity</h2>
+  <div class="nw-body">
+    <p>In this short-talk, Benjamin Western, co-founder of Showing Up, introduces the three forms of curiosity - the superpower of all great thinkers, creators, and organisations.</p>
+    <p>Learn how nurturing these forms will transform your ability to solve problems, create innovative solutions, and build the right team for success.</p>
+    <p>Whether you&#x27;re an aspiring entrepreneur, business leader, or just curious about how curiosity, this video will inspire you to rethink how you approach challenges and questions in your work and life.</p>
+    <p>&#8987; Highlights:
+The three forms of curiosity explained with relatable stories from childhood to business.
+How curiosity influences problem-solving and team dynamics.
+Practical advice on asking better questions and experimenting fearlessly.
+The concept of &quot;Curiosity Pi&quot; and how to balance your curiosity for maximum impact.</p>
+    <p>&#128161; Start cultivating curiosity today by writing down three thoughtful questions daily.</p>
+    <p>Explore more: Visit https://lnkd.in/eDNhS5cn for free resources, courses, and student discounts to help you develop skills for solving complex problems and designing innovative solutions.</p>
+    <p>Recorded at Birkbeck, University of London. Birkbeck is a world-class research and teaching institution located in the heart of London, known for its flexible evening and online learning, and its mission to provide education to people from all backgrounds.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7396789357270953984" target="_blank" rel="noopener">Watch this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">11 November 2025</p>
+  <h2 class="nw-title">Honesty, the trait that simplifies everything</h2>
+  <div class="nw-body">
+    <p>&#129309; Honesty is so important.</p>
+    <p>&#127909; In our free video-learning series, The 12 Traits Clients Trust Most, we explore how consultants who place honesty first connect more deeply, handle difficult moments with integrity, and make decision-making simpler for everyone.</p>
+    <p>&#128187; Learn more at https://lnkd.in/eYDJpNp3</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7394134932094357504" target="_blank" rel="noopener">Watch this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">11 November 2025</p>
+  <h2 class="nw-title">Honesty, the trait that simplifies everything</h2>
+  <div class="nw-body">
+    <p>&#129309; Honesty is so important.</p>
+    <p>&#127909; In our free video-learning series, The 12 Traits Clients Trust Most, we explore how consultants who place honesty first connect more deeply, handle difficult moments with integrity, and make decision-making simpler for everyone.</p>
+    <p>&#128187; Learn more at https://lnkd.in/eYDJpNp3</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7393890262177120256" target="_blank" rel="noopener">Watch this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">3 November 2025</p>
+  <h2 class="nw-title">Genuine beats flawless</h2>
+  <div class="nw-body">
+    <p>&#10024; Why being authentic builds more trust than being perfect</p>
+    <p>&#129309; Authenticity is about honesty, it isn&#x27;t about being perfectly polished. Clients value realness - the kind that comes from speaking openly about what you know and what you don&#8217;t. They don&#8217;t expect flawless. They expect genuine.</p>
+    <p>&#128273; When you are true to yourself, you create space where people feel understood and ready to trust you. Over time, that consistency builds relationships that last well beyond the deal.</p>
+    <p>&#127909; In our free video-learning series, The 12 Traits Clients Trust Most, we explore how authenticity transforms conversations, deepens trust, and helps you create real value for your clients.</p>
+    <p>&#127793; Be real. Stay grounded. That&#8217;s what earns trust.</p>
+    <p>&#128187; Learn more at https://lnkd.in/eYDJpNp3</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7390991136544223232" target="_blank" rel="noopener">Watch this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">27 October 2025</p>
+  <h2 class="nw-title">Perceptiveness: hearing what goes unsaid</h2>
+  <div class="nw-body">
+    <p>The Power of Noticing What Others Don&#8217;t &#128064;</p>
+    <p>That&#8217;s perceptiveness &#8211; the quiet art of noticing what others miss. In every client conversation, what&#8217;s unspoken often matters more than what&#8217;s said. &#128172;</p>
+    <p>Being perceptive means tuning in to the small signals &#8211; the pauses, the tone shifts, the moments of silence that reveal what truly matters. It&#8217;s about reading the room, not just the words. &#129504;&#10024;</p>
+    <p>In our free video-learning series, The 12 Traits Clients Trust Most, we explore how perceptive consultants and advisors create value by listening deeply and responding with empathy and precision. &#127911;&#129309;</p>
+    <p>Look closer. Listen better. That&#8217;s how real trust begins. &#128269;&#10084;&#65039;</p>
+    <p>Learn more at: https://lnkd.in/eZaUtEBa</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7388482998930808832" target="_blank" rel="noopener">Watch this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">20 October 2025</p>
+  <h2 class="nw-title">The three forms of curiosity</h2>
+  <div class="nw-body">
+    <p>&#128161; Did you know there are three forms of curiosity?
+And together, they&#8217;re a superpower for consultants and advisors.</p>
+    <p>&#129504; Curiosity is about understanding what really matters to your clients, spotting opportunities others miss, and creating genuine value through insight and empathy.</p>
+    <p>It&#8217;s about seeing the world differently.</p>
+    <p>&#127909; In our free video-learning series, The 12 Traits Clients Trust Most, we explore why curiosity is one of the core behaviours that builds trust and shapes stronger client partnerships.</p>
+    <p>&#10024; Curiosity opens conversations no one else is having, and that&#8217;s where trust begins.</p>
+    <p>&#128279; Learn more at www.showinguplearning.com</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7385902614150021121" target="_blank" rel="noopener">Watch this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">16 October 2025</p>
+  <h2 class="nw-title">When the stated problem is not the real one</h2>
+  <div class="nw-body">
+    <p>Your client says the problem is X. But what if the real drama is Y?</p>
+    <p>I worked with a company whose manager blamed their flatlining sales on a &quot;lazy Gen Z&quot; team. The real drama? A broken sales process that was killing morale.</p>
+    <p>Once we diagnosed and solved the actual problem, sales jumped 147%.</p>
+    <p>Great salespeople don&#x27;t just solve the drama, they find the right one to solve. They act like detectives to uncover the root cause of a client&#x27;s pain.</p>
+    <p>In our new article, we share the full story and a simple exercise to help you become a &quot;drama detective&quot; for your clients.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7384437946042646528" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">14 October 2025</p>
+  <h2 class="nw-title">Dependability, the quiet trust-builder</h2>
+  <div class="nw-body">
+    <p>Dependability is the backbone of building trust with clients.</p>
+    <p>&#9989; It quietly earns trust, one action and promise at a time.
+&#9989; It&#8217;s doing what you said you would, every time, without fuss or fanfare.</p>
+    <p>In our free video-learning course, The 12 Traits Clients Trust Most, we explore how the most dependable consultants and advisors create lasting value by:</p>
+    <p>&#9989; Showing up consistently
+&#9989; Following through
+&#9989; Making reliability their superpower</p>
+    <p>Trust is the result of small, consistent acts of reliability.</p>
+    <p>Access the full course at no cost by creating a free account.
+&#128073; Learn more at: https://lnkd.in/eYDJpNp3</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7383735900142354432" target="_blank" rel="noopener">Watch this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">13 October 2025</p>
+  <h2 class="nw-title">Diagnosing the problem behind the problem</h2>
+  <div class="nw-body">
+    <p>We had a client whose sales were flatlining. They blamed &quot;lazy Gen Z.&quot;</p>
+    <p>We helped them spot the actual problem, and sales soared 147%. &#128200;</p>
+    <p>Our greatest value isn&#x27;t just in providing a solution, but in having the clarity to identify the right problem in the first place.</p>
+    <p>https://lnkd.in/e6_M4KHx</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7383414053433483264" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">13 October 2025</p>
+  <h2 class="nw-title">Diagnosing the problem behind the problem</h2>
+  <div class="nw-body">
+    <p>We had a client whose sales were flatlining. They blamed &quot;lazy Gen Z.&quot;</p>
+    <p>We helped them spot the actual problem, and sales soared 147%. &#128200;</p>
+    <p>Our greatest value isn&#x27;t just in providing a solution, but in having the clarity to identify the right problem in the first place.</p>
+    <p>https://lnkd.in/e6_M4KHx</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7383384968330395648" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">9 October 2025</p>
+  <h2 class="nw-title">The most important sales skill: walking away</h2>
+  <div class="nw-body">
+    <p>&#128221; Know the Sales You Won&#8217;t Win.
+This might be the most important sales skill you can learn.</p>
+    <p>Sales doesn&#8217;t need to be a 60-hour, high-stress, &#8220;always chasing&#8221; job. The secret to a calmer, more effective career is knowing which opportunities to pursue and which to walk away from.</p>
+    <p>When you try to be everything to everyone, you end up being nothing to anyone.</p>
+    <p>In our new article, we share a lesson from Starbucks&#x27; identity crisis and a 5-step exercise to help you gain crystal clarity on your ideal customer. It&#x27;s time to stop wasting energy on the deals you&#x27;ll never win.</p>
+    <p>Ready to find your focus? Read the full article here &#128071;</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7381901227355316224" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">7 October 2025</p>
+  <h2 class="nw-title">What cheese toasties cost Starbucks</h2>
+  <div class="nw-body">
+    <p>What can Starbucks&#x27; cheese toasties teach us about sales?</p>
+    <p>When they lost focus, their brand suffered. The same happens when we chase every lead.</p>
+    <p>Our new episode is about the power of knowing which sales to walk away from. It&#x27;s the secret to less stress, more time, and better results. &#127919;
+Stop chasing. Start winning the right deals.</p>
+    <p>https://lnkd.in/eXP4Mcfa</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7381222767179878400" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">30 September 2025</p>
+  <h2 class="nw-title">The best brands know their lane</h2>
+  <div class="nw-body">
+    <p>Being part of a FOMO brand is brutally hard (demoralising) for sales teams and confusing for customers. The very best brands know their lane and they make themselves the very best at what they do in that lane. Enjoy our latest podcast episode!</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7378721735795286016" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">29 September 2025</p>
+  <h2 class="nw-title">Podcast: saying no and the 92% win rate</h2>
+  <div class="nw-body">
+    <p>New Podcast! &#127911; FOMO is the enemy of sales.</p>
+    <p>Trying to be everything to everyone burns out your team and wastes time.</p>
+    <p>In our new episode, we share why saying &quot;no&quot; is a superpower that led to a 92% proposal win rate. &#127942;</p>
+    <p>Stop chasing and start winning the right opportunities.</p>
+    <p>Listen now to learn how.</p>
+    <p>https://lnkd.in/eeKb4kiZ</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7378311318413484032" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">25 September 2025</p>
+  <h2 class="nw-title">What Coco Chanel knew about trust</h2>
+  <div class="nw-body">
+    <p>Coco Chanel built an empire by refusing to be anyone but herself. In sales, the same rule applies.</p>
+    <p>Your clients don&#x27;t buy from a &quot;salesperson&quot;, they buy from you. When you drop the act and embrace who you are, you build the trust that truly closes deals.</p>
+    <p>Read more about why pretending fails in sales and how to find your authentic selling style in our latest blog post.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7376842900191514624" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">24 September 2025</p>
+  <h2 class="nw-title">Podcast: why pretending fails in sales</h2>
+  <div class="nw-body">
+    <p>New Podcast! &#127911; What can Coco Chanel teach us about sales?</p>
+    <p>She was a rebel who built an empire by being herself. It&#x27;s a powerful lesson for sales, where authenticity builds trust. &#129309;</p>
+    <p>Stop pretending. Start connecting.</p>
+    <p>In our new episode, we explore why your real personality is your greatest asset.
+Listen now: &quot;Why Pretending Fails in Sales.&quot;
+https://lnkd.in/eAqsHbNA</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7376577574115753984" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">23 September 2025</p>
+  <h2 class="nw-title">Podcast: why pretending fails in sales</h2>
+  <div class="nw-body">
+    <p>New Podcast! &#127911; What can Coco Chanel teach us about sales?</p>
+    <p>She was a rebel who built an empire by being herself. It&#x27;s a powerful lesson for sales, where authenticity builds trust. &#129309;</p>
+    <p>Stop pretending. Start connecting.</p>
+    <p>In our new episode, we explore why your real personality is your greatest asset.
+Listen now: &quot;Why Pretending Fails in Sales.&quot;
+https://lnkd.in/eAqsHbNA</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7376118153116037120" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">22 September 2025</p>
+  <h2 class="nw-title">A 12-step course on presentations that connect</h2>
+  <div class="nw-body">
+    <p>What if you could learn a structure for writing presentations that always connects with clients? Our 12-step video course will feel like having a coach by your side, guiding you step by step to writing great presentations.</p>
+    <p>It&#8217;s the same framework I&#8217;ve used to train over 3,000 learners to be more confident and compelling in front of clients.</p>
+    <p>&#9989; It&#8217;s story-driven and science-backed
+&#9989; Every purchase funds a free scholarship through the Showing Up Foundation</p>
+    <p>You can sample it for free here: https://lnkd.in/eq6EsD4p</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7375755790592221184" target="_blank" rel="noopener">Watch this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">17 September 2025</p>
+  <h2 class="nw-title">Selling to the pain clients cannot see</h2>
+  <div class="nw-body">
+    <p>&#128270; The best salespeople don&#8217;t just sell features. They speak to the invisible pain their clients feel. This week&#8217;s article shares the story of Madam C.J. Walker, who became America&#8217;s first self-made female millionaire by naming and solving a hidden problem her customers faced.</p>
+    <p>&#128073; Read the micro-lesson below.
+Practical, relevant, and something you can try today with your own sales pitch.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7374026879403741185" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">15 September 2025</p>
+  <h2 class="nw-title">Podcast: Madam C.J. Walker and the hidden problem</h2>
+  <div class="nw-body">
+    <p>&#128161; What do Madam C.J. Walker and selling card-payment machines in London have in common? She became America&#8217;s first self-made female millionaire by solving a hidden problem, not by selling features.</p>
+    <p>In this episode, Benjamin shares how her story teaches us to:
+* Spot customers&#8217; invisible pain
+* Sell solutions, not products
+* Build trust through honesty</p>
+    <p>&#127911; Listen now on:
+Apple Podcasts https://lnkd.in/eKCHV4jD</p>
+    <p>Spotify https://lnkd.in/eipgNXqF</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7373252996400599040" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">8 September 2025</p>
+  <h2 class="nw-title">The pricing lesson in 99p</h2>
+  <div class="nw-body">
+    <p>What can we learn from 99p? On the surface, it&#8217;s just one penny less than a pound. But in practice, it changed the way the world priced things. Not because it tricked anyone, but because it presented value in a way that felt lighter, more...</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7370858572441653248" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">7 September 2025</p>
+  <h2 class="nw-title">Handling objections, the Eminem way</h2>
+  <div class="nw-body">
+    <p>If there&#8217;s one guarantee in sales and client work, it&#8217;s this: you will face objections. They might be about price. They might be about speed. They might be about your product not doing everything a client wants. But they will come.</p>
+    <p>So how do you handle them? By borrowing a page from Eminem&#8217;s playbook.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7370546407574900736" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">1 September 2025</p>
+  <h2 class="nw-title">Handling objections, the Eminem way</h2>
+  <div class="nw-body">
+    <p>If there&#8217;s one guarantee in sales and client work, it&#8217;s this: you will face objections. They might be about price. They might be about speed. They might be about your product not doing everything a client wants. But they will come. So how do you handle...</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7368318387803934720" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">28 August 2025</p>
+  <h2 class="nw-title">A second free video, and the 12 traits self-assessment</h2>
+  <div class="nw-body">
+    <p>The response to our first Showing Up video has been incredible. Thank you!
+Here is our next free video, along with a free self-assessment &#129395; from our series, &#x27;The 12 Traits Clients Trust Most.&#x27;</p>
+    <p>I&#8217;ve spent over 30 years in sales, starting with a car washing business with my brother when we were kids.</p>
+    <p>And I fully believe that whether you&#8217;re selling, consulting, or advising, the best people live by a set of traits that put people first.</p>
+    <p>To hold your clients in the highest regard.</p>
+    <p>To act with integrity.</p>
+    <p>And being dependable is key to that.</p>
+    <p>This series explores 12 of the traits that clients trust most, and a complementary assessment accompanies each.</p>
+    <p>Links below if you&#8217;d like to dive in &#128578; And please get in touch with me if you&#x27;d like to invest in your client-facing team&#x27;s development.</p>
+    <p>Thanks again for the kind words about our first video, and take care.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7366733815853064192" target="_blank" rel="noopener">Watch this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">26 August 2025</p>
+  <h2 class="nw-title">Podcast: how Smirnoff invented white whisky</h2>
+  <div class="nw-body">
+    <p>In this episode, we explore how Smirnoff turned vodka - an unknown spirit in 1930s America - into a global phenomenon by rebranding it as &#8220;white whisky.&#8221; It&#8217;s a story of revolution, resilience, and clever positioning, with a powerful lesson for anyone...</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7366145592047083520" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">26 August 2025</p>
+  <h2 class="nw-title">A weekly micro-lesson newsletter</h2>
+  <div class="nw-body">
+    <p>Welcome to our new newsletter. Sharing one micro-lesson every week.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7366083449566154752" target="_blank" rel="noopener">View this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+<article class="nw-item nw-reveal">
+  <p class="nw-date">26 August 2025</p>
+  <h2 class="nw-title">First micro-lesson: what is your white whisky?</h2>
+  <div class="nw-body">
+    <p>We&#8217;re excited to share our very first micro-lesson: What is your White Whisky? &#129347; This is the start of a weekly series of short, practical lessons designed for people in client-facing roles. Each one is available as both a podcast and a video, so you can learn wherever and whenever works best. To get all of this learning content, click the link in the comments, good people &#128588;</p>
+    <p>This story is very much inspired by my time at Diageo and the brilliant story of Vladimir Smirnoff.</p>
+  </div>
+  <a class="nw-out" href="https://www.linkedin.com/feed/update/urn:li:activity:7366049789978759171" target="_blank" rel="noopener">Watch this post on LinkedIn <span class="nw-arrow">&#8594;</span></a>
+</article>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+(function () {
+  var FEED_URL = "https://showinguplearning.github.io/showing-up-preview/news-feed.json";
+  var ASSET_BASE = "https://showinguplearning.github.io/showing-up-preview/assets/";
+  var BAKED_STAMP = "2026-08-07";
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  }
+
+  function renderItem(post) {
+    var item = el('article', 'nw-item');
+    item.appendChild(el('p', 'nw-date', post.date_display));
+    item.appendChild(el('h2', 'nw-title', post.title));
+    var body = el('div', 'nw-body');
+    for (var i = 0; i < post.paras.length; i++) {
+      body.appendChild(el('p', null, post.paras[i]));
+    }
+    item.appendChild(body);
+    var images = post.images || [];
+    for (var j = 0; j < images.length; j++) {
+      var img = el('img', 'nw-img');
+      img.src = ASSET_BASE + images[j].file;
+      img.alt = images[j].alt || '';
+      img.loading = 'lazy';
+      img.onerror = function () { this.style.display = 'none'; };
+      item.appendChild(img);
+    }
+    var out = el('a', 'nw-out');
+    out.href = post.url;
+    out.target = '_blank';
+    out.rel = 'noopener';
+    out.appendChild(document.createTextNode(
+      (post.video ? 'Watch this post on LinkedIn ' : 'View this post on LinkedIn ')));
+    var arrow = el('span', 'nw-arrow', '\u2192');
+    out.appendChild(arrow);
+    item.appendChild(out);
+    return item;
+  }
+
+  function applyFeed(feed) {
+    if (!feed || !feed.posts || !feed.posts.length) return;
+    if (feed.generated && BAKED_STAMP && feed.generated < BAKED_STAMP) return;
+    var list = document.getElementById('nw-list');
+    if (!list) return;
+    list.innerHTML = '';
+    for (var i = 0; i < feed.posts.length; i++) {
+      var item = renderItem(feed.posts[i]);
+      item.classList.add('nw-reveal');
+      list.appendChild(item);
+    }
+    observeAll();
+  }
+
+  if (FEED_URL && window.fetch) {
+    fetch(FEED_URL, { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(applyFeed)
+      .catch(function () { /* baked content stands */ });
+  }
+
+  var io = null;
+  function observeAll() {
+    var nodes = document.querySelectorAll('.nw-page .nw-reveal:not(.nw-in)');
+    if (!('IntersectionObserver' in window)) {
+      for (var i = 0; i < nodes.length; i++) nodes[i].classList.add('nw-in');
+      return;
+    }
+    if (!io) {
+      io = new IntersectionObserver(function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) {
+            entries[i].target.classList.add('nw-in');
+            io.unobserve(entries[i].target);
+          }
+        }
+      }, { threshold: 0.12 });
+    }
+    for (var j = 0; j < nodes.length; j++) io.observe(nodes[j]);
+  }
+  observeAll();
+})();
+</script>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+  .fb-saved { font-size: 12px; color: #9a908a; margin-top: 8px;
+              opacity: 0; transition: opacity .2s; }
+  .fb-saved.fb-show { opacity: 1; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="page-news.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] page-news.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead. Your text is still here.</div>
+      <div class="fb-saved" id="fb-saved">Draft saved in this browser.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  var saved = document.getElementById('fb-saved');
+  var box = form.querySelector('textarea[name=message]');
+  var who = form.querySelector('input[name=name]');
+
+  // Draft persistence. A long comment typed into this box used to exist
+  // nowhere else - closing the panel, a stray reload or a dead endpoint
+  // lost the lot, so the standing advice was "keep a copy in Notes".
+  // Keyed per page so comments on different pages don't overwrite
+  // each other. localStorage throws in some privacy modes; a failure
+  // here must never stop the form working, hence the silent try/catch.
+  var key = 'su-fb-draft-' + form.querySelector('input[name=page]').value;
+  function store(k, v) {
+    try { window.localStorage.setItem(k, v); } catch (e) {}
+  }
+  function recall(k) {
+    try { return window.localStorage.getItem(k) || ''; }
+    catch (e) { return ''; }
+  }
+  function forget() {
+    try {
+      window.localStorage.removeItem(key);
+      window.localStorage.removeItem(key + '-name');
+    } catch (e) {}
+  }
+  var draft = recall(key);
+  if (draft) {
+    box.value = draft;
+    saved.classList.add('fb-show');
+  }
+  var priorName = recall(key + '-name');
+  if (priorName && !who.value) who.value = priorName;
+
+  var pending;
+  function keep() {
+    clearTimeout(pending);
+    pending = setTimeout(function() {
+      if (box.value) {
+        store(key, box.value);
+        store(key + '-name', who.value);
+        saved.classList.add('fb-show');
+      } else {
+        forget();
+        saved.classList.remove('fb-show');
+      }
+    }, 400);
+  }
+  box.addEventListener('input', keep);
+  who.addEventListener('input', keep);
+  // A tab close can beat the debounce - flush synchronously on the way out.
+  window.addEventListener('pagehide', function() {
+    if (box.value) { store(key, box.value); store(key + '-name', who.value); }
+  });
+
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        // Only a confirmed 2xx clears the draft. Anything else keeps it,
+        // so a failed send never destroys the text.
+        forget();
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

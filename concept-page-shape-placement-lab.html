@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Shape Placement Lab — Showing Up (preview)</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Shape placement lab &#8212; where else on the homepage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+
+
+<style>
+  .shl, .shl *, .shl *::before, .shl *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #121111; }
+  .shl { font-family: 'DM Sans', sans-serif; background: #121111; min-height: 100vh;
+    --c-coral:#FF8269; --c-cream:#FFF6F1; --c-ink:#1e1d1d;
+    --su-quick:.25s; --type-h2: clamp(26px,3vw,40px); }
+
+  .shl-bar { position: sticky; top: 0; z-index: 50; background:#121111;
+    border-bottom:1px solid rgba(255,246,241,.14); padding:14px 24px;
+    display:flex; flex-wrap:wrap; align-items:center; gap:10px 26px; }
+  .shl-title { font-size:13px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#FF8269; }
+  .shl-group { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+  .shl-label { font-size:10px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,246,241,.45); }
+  .shl-btn { font-family:inherit; font-size:12px; font-weight:500; color:rgba(255,246,241,.72);
+    background:transparent; border:1px solid rgba(255,246,241,.2); border-radius:100px;
+    padding:6px 14px; cursor:pointer; transition:background .18s,color .18s,border-color .18s; }
+  .shl-btn:hover { border-color:rgba(255,130,105,.6); color:#FFF6F1; }
+  .shl-btn[aria-pressed="true"] { background:#FF8269; border-color:#FF8269; color:#1e1d1d; font-weight:600; }
+  .shl-btn:focus-visible { outline:2px solid #FFF6F1; outline-offset:2px; }
+
+  .shl-verdict { padding:20px 24px; background:#191818; border-bottom:1px solid rgba(255,246,241,.1); }
+  .shl-verdict h2 { font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+    color:#FF8269; margin-bottom:12px; }
+  .shl-verdict p { font-size:13px; line-height:1.75; color:rgba(255,246,241,.66); max-width:1080px; margin-bottom:10px; }
+  .shl-verdict strong { color:#FFF6F1; font-weight:600; }
+  .shl-yes { color:#A7DDC3; font-weight:600; }
+  .shl-no  { color:#FFD8CE; font-weight:600; }
+
+  .shl-case { border-top:1px solid rgba(255,246,241,.12); }
+  .shl-caption { padding:26px 80px 0; }
+  .shl-caption h3 { font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:#FF8269; }
+  .shl-caption p { font-size:13px; line-height:1.7; color:rgba(255,246,241,.6); max-width:900px; margin-top:8px; }
+  .shl-foot { padding:40px 80px 80px; font-size:13px; line-height:1.75; color:rgba(255,246,241,.5); max-width:1000px; }
+  .shl-evidence { padding:0 80px 60px; }
+  .shl-evidence img { width:100%; max-width:920px; border-radius:12px; display:block; }
+
+  .shl-shape { position:absolute; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  .shl-shape-svg { display:none; position:absolute; height:auto; }
+  .shl-shape-svg.is-on { display:block; }
+
+  /* ============ A. the discovery-call CTA (sc-) ============ */
+  .sc-section { position:relative; overflow:hidden; padding:120px 80px; text-align:center; background:var(--c-ink); }
+  /* The decoration this block ALREADY has: a breathing radial-gradient halo.
+     A kit shape replaces it - never sits on top of it, or the block carries
+     two treatments in one viewport. */
+  .sc-section::before { content:''; position:absolute; left:50%; top:50%;
+    transform:translate(-50%,-50%); width:600px; height:600px;
+    background:radial-gradient(ellipse at center, rgba(255,130,105,.05) 0%, transparent 65%);
+    border-radius:50%; pointer-events:none; }
+  .sc-section.is-shaped::before { display:none; }
+  .sc-section > *:not(.shl-shape) { position:relative; z-index:1; }
+  .sc-headline { font-size:var(--type-h2); font-weight:300; line-height:1.18; letter-spacing:-.03em;
+    color:var(--c-cream); max-width:900px; margin:0 auto 24px; }
+  .sc-body { font-size:18px; line-height:1.65; font-weight:300; color:rgba(255,246,241,.75);
+    max-width:640px; margin:0 auto 48px; }
+  .hp-coral-strong { font-weight:600; color:var(--c-coral); font-style:normal; }
+  .sc-cta { display:inline-flex; align-items:center; gap:14px; background:var(--c-cream);
+    color:var(--c-ink); border-radius:100px; padding:11px 11px 11px 34px; text-decoration:none;
+    font-size:16px; font-weight:500; }
+  .sc-cta-icon { width:52px; height:52px; border-radius:50%; background:var(--c-ink);
+    display:inline-flex; align-items:center; justify-content:center; color:var(--c-cream); }
+  .sc-section .shl-shape-svg { right:-6%; top:50%; transform:translateY(-50%); width:44%;
+    fill:var(--c-cream); opacity:.055; }
+  /* Telling the two apart: the closer mirrors the shape and sits a touch
+     stronger, so it reads as the page's last word rather than a repeat. */
+  .sc-section.is-closer.is-distinct .shl-shape-svg { right:auto; left:-6%; opacity:.075; }
+
+  /* ============ B. the testimonial card (s7-) ============ */
+  .s7 { background:var(--c-cream); padding:80px; }
+  .s7-testimonial { position:relative; overflow:hidden; background:var(--c-coral);
+    border-radius:26px; padding:56px; }
+  .s7-testimonial > *:not(.shl-shape) { position:relative; z-index:1; }
+  .s7-inner { display:grid; grid-template-columns:300px 1fr; gap:56px; align-items:center; }
+  .s7-photo { width:100%; aspect-ratio:1/1.15; object-fit:cover; border-radius:18px; display:block; }
+  .s7-quote { font-size:22px; line-height:1.5; font-weight:300; color:var(--c-ink); }
+  .s7-name { margin-top:26px; font-weight:600; font-size:15px; color:var(--c-ink); }
+  .s7-role { font-size:13px; color:rgba(30,29,29,.72); }
+  .s7-mark { font-size:64px; line-height:.6; color:rgba(30,29,29,.18); display:block; margin-bottom:18px; }
+  .s7-testimonial .shl-shape-svg { right:-12%; bottom:-30%; width:52%; fill:var(--c-cream); opacity:.13; }
+
+  /* ============ C. Foundation portrait, as a WINDOW ============ */
+  /* INK, not cream. The first build of this lab mocked the Foundation block on
+     a cream ground and that was simply wrong - production is
+     .s6 { background: var(--c-ink); color: var(--c-cream) }. It is not a
+     cosmetic error: the photo is monochrome, so on ink the window's outer
+     lobes carry flat grey wall that sinks into the background instead of
+     reading as a silhouette against cream. Judge the crop on this ground. */
+  .s6 { background:var(--c-ink); padding:88px 80px; }
+  .s6-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+    max-width:1280px; margin:0 auto; }
+  .s6 h2 { font-size:var(--type-h2); font-weight:300; line-height:1.18; letter-spacing:-.03em;
+    color:var(--c-cream); margin-bottom:18px; }
+  .s6 p { font-size:17px; line-height:1.7; color:rgba(255,246,241,.72); }
+  .s6-rect img { width:100%; border-radius:18px; display:block; }
+  .s6-win { display:none; width:100%; }
+  .s6-win svg { width:100%; height:auto; display:block; }
+  .shl.is-win .s6-rect { display:none; }
+  .shl.is-win .s6-win { display:block; }
+
+  /* ============ D. in-person training (hp2-ip) ============ */
+  .ip { position:relative; overflow:hidden; background:var(--c-ink); padding:96px 80px; }
+  .ip > *:not(.shl-shape) { position:relative; z-index:1; }
+  .ip-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+    max-width:1280px; margin:0 auto; }
+  .ip h2 { font-size:var(--type-h2); font-weight:300; line-height:1.18; letter-spacing:-.03em;
+    color:var(--c-cream); margin-bottom:18px; }
+  .ip p { font-size:17px; line-height:1.7; color:rgba(255,246,241,.78); }
+  .ip-img { width:100%; border-radius:16px; display:block; }
+  .ip .shl-shape-svg { left:-8%; top:50%; transform:translateY(-50%); width:42%;
+    fill:var(--c-cream); opacity:.05; }
+
+  @media (max-width:860px){
+    .shl-caption,.shl-foot,.shl-evidence{padding-left:20px;padding-right:20px}
+    .sc-section,.ip{padding:64px 20px}
+    .s7,.s6{padding:48px 20px}.s7-testimonial{padding:32px}
+    .s7-inner,.ip-grid,.s6-grid{grid-template-columns:1fr;gap:28px}
+    .shl-bar{position:static;padding:12px 20px}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    
+    
+    <clipPath id="shl-win-v7" clipPathUnits="userSpaceOnUse">
+      <path d="M110.98 5.69912C149.49 5.69912 180.7 42.6851 180.7 88.3091C180.7 133.932 149.49 170.918 110.98 170.918C72.4701 170.918 41.2601 133.932 41.2601 88.3091C41.2601 42.6851 72.4701 5.69912 110.98 5.69912ZM192.62 0.578125C197.79 0.578125 201.99 38.7101 201.99 85.7481C201.99 132.786 197.79 170.918 192.62 170.918C187.44 170.918 183.24 132.786 183.24 85.7481C183.24 38.7101 187.44 0.578125 192.62 0.578125ZM19.5602 5.69912C30.3202 5.69912 39.0502 40.1191 39.0502 82.5781C39.0502 125.037 30.3202 159.457 19.5602 159.457C8.80018 159.457 0.0800781 125.037 0.0800781 82.5781C0.0800781 40.1191 8.80018 5.69912 19.5602 5.69912Z"/>
+    </clipPath>
+    
+    
+    <clipPath id="shl-win-g273" clipPathUnits="userSpaceOnUse">
+      <path d="M49.9141 150.322C77.3255 150.322 99.5469 116.802 99.5469 75.454C99.5469 34.1057 77.3255 0.586426 49.9141 0.586426C22.5026 0.586426 0.28125 34.1057 0.28125 75.454C0.28125 116.802 22.5026 150.322 49.9141 150.322Z"/>
+      <path d="M123.098 150.322C136.821 150.322 147.946 116.802 147.946 75.454C147.946 34.1057 136.821 0.586426 123.098 0.586426C109.375 0.586426 98.2505 34.1057 98.2505 75.454C98.2505 116.802 109.375 150.322 123.098 150.322Z"/>
+    </clipPath>
+    
+    
+    <clipPath id="shl-win-v4" clipPathUnits="userSpaceOnUse">
+      <path d="M150.625 -0.00390625C185.514 -0.00390625 213.797 36.3881 213.797 81.2791C213.797 126.17 185.514 162.562 150.625 162.562C117.322 162.561 90.0392 129.403 87.6272 87.3461C86.0442 122.311 71.0182 149.729 52.7122 149.729C33.3512 149.729 17.6562 119.061 17.6562 81.2311C17.6562 43.4011 33.3512 12.7341 52.7122 12.7331C71.0272 12.7331 86.0582 40.1781 87.6292 75.1681C90.0572 33.1311 117.334 -0.00390625 150.625 -0.00390625ZM9.04419 36.7331C13.8022 36.7331 17.6592 58.2241 17.6592 84.7331C17.6592 111.243 13.8022 132.733 9.04419 132.733C4.28619 132.733 0.430176 111.243 0.430176 84.7331C0.430176 58.2241 4.28619 36.7341 9.04419 36.7331Z"/>
+    </clipPath>
+  </defs>
+    
+    <symbol id="shl-shp-v10" viewBox="0 0 219 201">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M103.17 2.74194C94.3098 10.2019 88.1297 27.3869 83.8397 56.4919C82.7797 63.6419 81.8397 72.4169 81.7397 75.9919L81.5697 82.4919L80.5298 76.9919C79.9698 73.9669 78.6198 65.8489 77.5498 58.9529C73.0798 30.2409 63.9897 14.0519 54.5697 18.0309C50.4697 19.7649 44.5798 29.3879 41.4298 39.4919C38.8698 47.7269 35.0997 68.24 34.9497 74.793C34.8197 80.527 33.0397 76.0779 31.3397 65.7659C28.8597 50.6709 22.9398 38.9919 17.7898 38.9919C11.8798 38.9919 6.02976 50.1849 2.63976 67.9919C-0.0602446 82.1379 -0.0402153 118.651 2.66978 132.492C6.12978 150.177 10.2897 159.332 15.7497 161.3C18.4797 162.281 19.2397 162.08 21.8597 159.672C25.6497 156.195 29.4198 146.295 31.7798 133.633C33.7798 122.917 35.0398 120.281 35.0398 126.791C35.0398 132.978 38.6397 152.413 41.4697 161.492C44.7997 172.158 50.2198 181.13 54.3998 182.887C65.7298 187.65 74.3197 168.548 80.2097 125.492L81.1698 118.492L82.1398 129.492C86.9298 183.514 103.78 213.805 118.71 195.215C127.25 184.593 133.34 161.853 137 127.009C137.92 118.267 138.89 116.522 138.89 123.605C138.89 137.39 145.86 167.158 150.95 175.121C153.68 179.393 159.09 183.992 161.38 183.992C164.6 183.992 170.1 178.547 173.02 172.48C177.16 163.864 181.82 145.137 182.77 133.242C183.23 127.605 184.01 122.992 184.51 122.992C185.01 122.992 185.81 126.254 186.29 130.242C187.43 139.583 191.55 152.463 194.94 157.231C207.44 174.835 220.26 138.369 218.23 90.9919C216.15 42.4519 200 22.5719 189.56 55.6899C188.2 60.0289 186.7 66.8209 186.23 70.7849C185.21 79.3939 183.21 80.3579 183.2 72.2419C183.19 59.3759 177.45 36.3579 171.77 26.3329C165.49 15.2609 158.85 14.4989 152.23 24.0939C146.13 32.9559 138.89 61.858 138.89 77.379C138.89 85.789 137.83 82.0359 136.38 68.4659C131.91 26.8089 121.36 -0.00805664 109.42 -0.00805664C107.77 -0.00805664 104.96 1.22894 103.17 2.74194Z"/>
+    </symbol>
+    
+    <symbol id="shl-shp-g271" viewBox="0 0 293 241">
+      <path d="M18.5577 220.096C28.5694 231.396 52.4655 220.254 71.9313 195.209C91.3971 170.164 99.0612 140.7 89.0495 129.399C79.0379 118.099 55.1418 129.241 35.676 154.286C16.2102 179.331 8.54612 208.795 18.5577 220.096Z"/>
+      <path d="M81.915 199.299C91.9266 210.6 119.178 195.141 142.782 164.771C166.386 134.401 177.405 100.621 167.394 89.3201C157.382 78.0197 130.131 93.4786 106.527 123.849C82.9224 154.219 71.9033 187.999 81.915 199.299Z"/>
+      <path d="M150.401 180.53C160.412 191.83 196.234 165.344 230.411 121.371C264.588 77.3978 284.178 32.5898 274.167 21.2893C264.155 9.98893 228.333 36.4754 194.156 80.4485C159.979 124.422 140.389 169.23 150.401 180.53Z"/>
+    </symbol>
+    
+    <symbol id="shl-shp-v5" viewBox="0 0 247 218">
+      <path d="M213.164 187.513C231.458 187.185 246.372 193.74 246.475 202.152C246.578 210.565 231.83 217.65 213.536 217.978C195.241 218.305 180.328 211.751 180.224 203.339C180.121 194.926 194.869 187.84 213.164 187.513ZM0.734911 202.103C0.837911 193.69 15.7519 187.135 34.0459 187.463C52.3409 187.791 67.0879 194.876 66.9849 203.289C66.8819 211.702 51.9679 218.256 33.6729 217.929C15.3789 217.601 0.631911 210.515 0.734911 202.103ZM197.834 135.584C214.221 124.699 231.686 125.094 236.843 136.465C242 147.836 232.897 165.879 216.509 176.764C200.122 187.648 182.656 187.254 177.499 175.883C172.341 164.511 181.446 146.469 197.834 135.584ZM10.3659 136.419C15.5229 125.048 32.9889 124.653 49.3769 135.538C65.7639 146.423 74.8679 164.465 69.7099 175.836C64.5529 187.207 47.0879 187.602 30.7009 176.717C14.3129 165.832 5.20892 147.79 10.3659 136.419ZM157.57 79.221C166.668 54.399 185.207 40.271 198.978 47.663C212.749 55.056 216.538 81.171 207.44 105.992C198.342 130.813 179.803 144.942 166.032 137.55C152.261 130.157 148.472 104.042 157.57 79.221ZM48.2319 47.617C62.0029 40.225 80.5419 54.353 89.6399 79.175C98.7379 103.996 94.9489 130.11 81.1779 137.503C67.4069 144.896 48.8679 130.767 39.7699 105.945C30.6719 81.124 34.4609 55.01 48.2319 47.617ZM123.604 0.625C141.261 0.625 155.576 26.425 155.576 58.251C155.576 90.077 141.261 115.876 123.604 115.876C105.947 115.876 91.6319 90.077 91.6319 58.251C91.6319 26.425 105.947 0.625 123.604 0.625Z"/>
+    </symbol>
+    
+    <symbol id="shl-shp-v9" viewBox="0 0 232 165">
+      <path d="M116 79.0089C160.65 79.0679 196.85 85.562 196.85 93.5129C196.85 98.646 181.76 103.131 159.04 105.65C201.79 110.181 231.99 121.261 231.99 134.212C231.99 151.195 180.06 164.962 115.99 164.962C51.9302 164.962 -0.00976562 151.195 -0.00976562 134.212C-0.00976562 121.208 30.4402 110.089 73.4702 105.592C50.4602 103.023 35.1403 98.4699 35.1403 93.2969C35.1403 85.3469 71.3402 78.9499 116 79.0089ZM116 52.8469C151.72 52.8939 180.68 58.09 180.68 64.45C180.68 70.811 151.72 75.9279 116 75.88C80.2702 75.832 51.3103 70.638 51.3103 64.278C51.3103 57.917 80.2702 52.7989 116 52.8469ZM116 25.0109C144.58 25.0489 167.74 29.2049 167.74 34.2929C167.74 39.3819 144.58 43.4759 116 43.4379C87.4202 43.3999 64.2502 39.2439 64.2502 34.1549C64.2502 29.0669 87.4202 24.9729 116 25.0109ZM116 0.855931C138.86 0.885931 157.4 4.21095 157.4 8.28095C157.4 12.3519 138.86 15.6269 116 15.5969C93.1402 15.5659 74.6002 12.2419 74.6002 8.17093C74.6002 4.10093 93.1402 0.824931 116 0.855931Z"/>
+    </symbol>
+</svg>
+
+<div class="shl" id="shl">
+
+  <div class="shl-bar">
+    <span class="shl-title">Shape placement lab</span>
+    <span class="shl-group">
+      <span class="shl-label">Background shape</span>
+      <button class="shl-btn" type="button" data-set="shape" data-val="off">Off</button>
+      <button class="shl-btn" type="button" data-set="shape" data-val="v10">Crescendo</button>
+      <button class="shl-btn" type="button" data-set="shape" data-val="g271">Climb</button>
+      <button class="shl-btn" type="button" data-set="shape" data-val="v5">Fan</button>
+      <button class="shl-btn" type="button" data-set="shape" data-val="v9">Cairn</button>
+    </span>
+    <span class="shl-group">
+      <span class="shl-label">Tell the two CTAs apart</span>
+      <button class="shl-btn" type="button" data-set="distinct" data-val="on">On</button>
+      <button class="shl-btn" type="button" data-set="distinct" data-val="off">Off</button>
+    </span>
+    <span class="shl-group">
+      <span class="shl-label">Foundation photo</span>
+      <button class="shl-btn" type="button" data-set="win" data-val="off">Rectangle</button>
+      <button class="shl-btn" type="button" data-set="win" data-val="v7">Vector-7</button>
+      <button class="shl-btn" type="button" data-set="win" data-val="g273">Group 40273</button>
+      <button class="shl-btn" type="button" data-set="win" data-val="v4">Vector-4</button>
+    </span>
+  </div>
+
+  <div class="shl-verdict">
+    <h2>What I would and would not do</h2>
+    <p><span class="shl-yes">Yes to the discovery-call block, and it answers the two-CTA question at the same
+    time.</span> That block already carries a decoration: a breathing 600px radial-gradient halo. A kit shape
+    does not get added to it, it <strong>replaces</strong> it, which keeps the block to one treatment and
+    swaps a generic radial gradient for a verbatim brand shape. Strongest of the four cases.</p>
+    <p><strong>The two blocks then differ by ground, not by words.</strong> Ben's copy is identical in both on
+    purpose, so the distinction has to come from somewhere else. With "tell the two apart" on, the mid-page
+    block takes the shape on the right at .055 and the closer mirrors it left at .075. Same component,
+    different weight.</p>
+    <p><span class="shl-yes">Yes to shape-cropping the Foundation photo</span> - it is a single portrait
+    subject, which is exactly what the guidelines' expressive windows are for. Vector-7 centres the face
+    best; Group 40273 and Vector-4 also work. Evidence at the foot of the page.</p>
+    <p><span class="shl-no">No to cropping the team photo.</span> Twenty-five people across a landscape
+    frame: every kit shape cuts through faces. It can still have a background shape behind a rectangular
+    photo, which is what case D shows.</p>
+    <p><strong>The testimonial is the weakest case.</strong> It is already the loudest thing on the page, a
+    full coral card carrying the one real client quote. Shown so it can be ruled out by looking.</p>
+  </div>
+
+  <div class="shl-case">
+    <div class="shl-caption"><h3>A1 &#8212; discovery call, mid-page</h3>
+      <p>Shape off shows the radial halo it has today; any shape replaces it.</p></div>
+    <section class="sc-section" data-case="cta1">
+      <div class="shl-shape" aria-hidden="true"><svg class="shl-shape-svg" data-shape="v10" viewBox="0 0 219 201"><use href="#shl-shp-v10"></use></svg><svg class="shl-shape-svg" data-shape="g271" viewBox="0 0 293 241"><use href="#shl-shp-g271"></use></svg><svg class="shl-shape-svg" data-shape="v5" viewBox="0 0 247 218"><use href="#shl-shp-v5"></use></svg><svg class="shl-shape-svg" data-shape="v9" viewBox="0 0 232 165"><use href="#shl-shp-v9"></use></svg></div>
+      <h2 class="sc-headline">Looking to support your team's <em class="hp-coral-strong">growth</em> and <em class="hp-coral-strong">development</em>?</h2>
+      <p class="sc-body">Please get in touch with our team for an initial discovery call</p>
+      <a href="#" class="sc-cta"><span>Book a discovery call</span><span class="sc-cta-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></a>
+    </section>
+  </div>
+
+  <div class="shl-case">
+    <div class="shl-caption"><h3>B &#8212; the testimonial card</h3>
+      <p>A shape inside the coral card. Watch whether it competes with the portrait and the quote.</p></div>
+    <div class="s7">
+      <div class="s7-testimonial" data-case="quote">
+        <div class="shl-shape" aria-hidden="true"><svg class="shl-shape-svg" data-shape="v10" viewBox="0 0 219 201"><use href="#shl-shp-v10"></use></svg><svg class="shl-shape-svg" data-shape="g271" viewBox="0 0 293 241"><use href="#shl-shp-g271"></use></svg><svg class="shl-shape-svg" data-shape="v5" viewBox="0 0 247 218"><use href="#shl-shp-v5"></use></svg><svg class="shl-shape-svg" data-shape="v9" viewBox="0 0 232 165"><use href="#shl-shp-v9"></use></svg></div>
+        <div class="s7-inner">
+          <img class="s7-photo" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/ff6361942a6bd254ecda2896819b1a29.jpg" alt="Ikigai Rose, Head of Consulting at Sustain the Future" loading="lazy">
+          <div>
+            <span class="s7-mark" aria-hidden="true">&#8220;</span>
+            <p class="s7-quote">What I love about the platform is that our team can access the right learning at the right time. It's helped our junior consultants show up more composed, capable, and compelling in front of clients, and it's helped our senior clients elevate their commercial performance. And they've all genuinely loved the learning.</p>
+            <p class="s7-name">Ikigai Rose</p>
+            <p class="s7-role">Head of Consulting at Sustain the Future</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shl-case">
+    <div class="shl-caption"><h3>C &#8212; the Foundation portrait, as an expressive window</h3>
+      <p>One subject, so a kit window fits. Switch between the rectangle it has today and the three shapes
+      that keep the face intact.</p></div>
+    <div class="s6">
+      <div class="s6-grid">
+        <div>
+          <h2>Every paid place funds a <em class="hp-coral-strong">free</em> one</h2>
+          <p>Working copy, not Ben's - this block holds the photo at the right scale, it does not propose wording.</p>
+        </div>
+        <div>
+          <div class="s6-rect"><img src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/4e68a398459d88f11ac25191c5d66ba8.jpg" alt="Showing Up Foundation" loading="lazy"></div>
+          <div class="s6-win">
+            <svg id="shl-fnd-svg" viewBox="0 0 202 171" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Showing Up Foundation">
+              <image id="shl-fnd-img" href="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/4e68a398459d88f11ac25191c5d66ba8.jpg"
+                     x="0" y="0" width="202" height="171" preserveAspectRatio="xMidYMin slice"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shl-case">
+    <div class="shl-caption"><h3>D &#8212; in-person training</h3>
+      <p>The alternative to cropping the team photo: shape behind, photo left rectangular.</p></div>
+    <section class="ip" data-case="ip">
+      <div class="shl-shape" aria-hidden="true"><svg class="shl-shape-svg" data-shape="v10" viewBox="0 0 219 201"><use href="#shl-shp-v10"></use></svg><svg class="shl-shape-svg" data-shape="g271" viewBox="0 0 293 241"><use href="#shl-shp-g271"></use></svg><svg class="shl-shape-svg" data-shape="v5" viewBox="0 0 247 218"><use href="#shl-shp-v5"></use></svg><svg class="shl-shape-svg" data-shape="v9" viewBox="0 0 232 165"><use href="#shl-shp-v9"></use></svg></div>
+      <div class="ip-grid">
+        <div>
+          <h2>In-person training that <em class="hp-coral-strong">sticks</em></h2>
+          <p>Working copy, not Ben's - this block holds the photo at the right scale, it does not propose wording.</p>
+        </div>
+        <img class="ip-img" src="https://lwfiles.mycourse.app/67d54c23087ef2433241c799-public/48f36d497a2f2627b71b595bc0917d3f.jpg" alt="The Showing Up team outdoors on the steps of a stone building on a sunny day, sitting together in two rows." loading="lazy">
+      </div>
+    </section>
+  </div>
+
+  <div class="shl-case">
+    <div class="shl-caption"><h3>A2 &#8212; discovery call, the closer</h3>
+      <p>The same component at the foot of the page. With "tell the two apart" on it mirrors left and sits
+      slightly stronger.</p></div>
+    <section class="sc-section is-closer" data-case="cta2">
+      <div class="shl-shape" aria-hidden="true"><svg class="shl-shape-svg" data-shape="v10" viewBox="0 0 219 201"><use href="#shl-shp-v10"></use></svg><svg class="shl-shape-svg" data-shape="g271" viewBox="0 0 293 241"><use href="#shl-shp-g271"></use></svg><svg class="shl-shape-svg" data-shape="v5" viewBox="0 0 247 218"><use href="#shl-shp-v5"></use></svg><svg class="shl-shape-svg" data-shape="v9" viewBox="0 0 232 165"><use href="#shl-shp-v9"></use></svg></div>
+      <h2 class="sc-headline">Looking to support your team's <em class="hp-coral-strong">growth</em> and <em class="hp-coral-strong">development</em>?</h2>
+      <p class="sc-body">Please get in touch with our team for an initial discovery call</p>
+      <a href="#" class="sc-cta"><span>Book a discovery call</span><span class="sc-cta-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></a>
+    </section>
+  </div>
+
+  <div class="shl-case">
+    <div class="shl-caption"><h3>Evidence &#8212; Foundation portrait, six shapes</h3>
+      <p>Vector-7, Group 40273 and Vector-4 keep the subject whole. Vector-2, Vector-8 and Group 40272
+      cut through them.</p></div>
+    <div class="shl-evidence"><img src="shape-crop-test-foundation.png" alt="The Foundation portrait clipped by six kit shapes; three keep the subject intact and three slice through them." loading="lazy"></div>
+  </div>
+
+  <div class="shl-case">
+    <div class="shl-caption"><h3>Evidence &#8212; why the team photo is not cropped</h3>
+      <p>The same test on the twenty-five-person shot. Vector-9 reduces it to strips of wall, Group 40271
+      cuts diagonally through heads, Vector-4 and Vector-7 each bisect someone at the outer lobe.</p></div>
+    <div class="shl-evidence"><img src="shape-crop-test-group-photo.png" alt="The team photo clipped by four kit shapes, each slicing through faces, beside the uncropped rectangular original." loading="lazy"></div>
+  </div>
+
+  <div class="shl-foot">
+    <p><strong>Budget note.</strong> The enablers band already carries a Crescendo wash. If the mid-page CTA
+    takes one too, that is two shape moments a couple of screens apart - inside the "roughly one per
+    viewport" rule, but it is the pair to check on the full page rather than here in isolation.</p>
+    <p><strong>Photo check.</strong> The in-person photo is captioned "The Showing Up team". The embargo gate
+    matches a word list against alt text and never looks at the pixels, so it cannot tell who is in a group
+    shot. It is already published and presumably reviewed, but any change to how it is displayed is a
+    sensible moment to confirm.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById('shl');
+  var state={shape:'off',distinct:'on',win:'off'};
+  var img=document.getElementById('shl-fnd-img');
+  var svg=document.getElementById('shl-fnd-svg');
+  var VIEWBOX={v7:'0 0 202 171', g273:'0 0 148 151', v4:'0 0 214 163'};
+  function apply(){
+    root.querySelectorAll('.shl-shape-svg').forEach(function(s){
+      s.classList.toggle('is-on', state.shape!=='off' && s.getAttribute('data-shape')===state.shape);
+    });
+    root.querySelectorAll('.sc-section, .s7-testimonial, .ip').forEach(function(el){
+      el.classList.toggle('is-shaped', state.shape!=='off');
+    });
+    root.querySelector('[data-case="cta2"]').classList.toggle('is-distinct', state.distinct==='on');
+    root.classList.toggle('is-win', state.win!=='off');
+    // The host svg adopts the ACTIVE shape's own viewBox, and the image is
+    // sized in those same user units. Anything else non-uniformly scales the
+    // shape to the box and quietly ships a stretched version of it.
+    if (state.win!=='off') {
+      var vb = VIEWBOX[state.win], wh = vb.split(' ');
+      svg.setAttribute('viewBox', vb);
+      img.setAttribute('width', wh[2]); img.setAttribute('height', wh[3]);
+      img.setAttribute('clip-path','url(#shl-win-'+state.win+')');
+    } else { img.removeAttribute('clip-path'); }
+    root.querySelectorAll('.shl-btn[data-set]').forEach(function(b){
+      b.setAttribute('aria-pressed', String(state[b.getAttribute('data-set')]===b.getAttribute('data-val')));
+    });
+    if(history.replaceState) history.replaceState(null,'','#shape='+state.shape+'&distinct='+state.distinct+'&win='+state.win);
+  }
+  location.hash.replace(/^#/,'').split('&').forEach(function(p){
+    var kv=p.split('='); if(state.hasOwnProperty(kv[0])) state[kv[0]]=kv[1];
+  });
+  root.querySelectorAll('.shl-btn[data-set]').forEach(function(b){
+    b.addEventListener('click',function(){ state[b.getAttribute('data-set')]=b.getAttribute('data-val'); apply(); });
+  });
+  apply();
+})();
+</script>
+</body>
+</html>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+  .fb-saved { font-size: 12px; color: #9a908a; margin-top: 8px;
+              opacity: 0; transition: opacity .2s; }
+  .fb-saved.fb-show { opacity: 1; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="concept-page-shape-placement-lab.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] concept-page-shape-placement-lab.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead. Your text is still here.</div>
+      <div class="fb-saved" id="fb-saved">Draft saved in this browser.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  var saved = document.getElementById('fb-saved');
+  var box = form.querySelector('textarea[name=message]');
+  var who = form.querySelector('input[name=name]');
+
+  // Draft persistence. A long comment typed into this box used to exist
+  // nowhere else - closing the panel, a stray reload or a dead endpoint
+  // lost the lot, so the standing advice was "keep a copy in Notes".
+  // Keyed per page so comments on different pages don't overwrite
+  // each other. localStorage throws in some privacy modes; a failure
+  // here must never stop the form working, hence the silent try/catch.
+  var key = 'su-fb-draft-' + form.querySelector('input[name=page]').value;
+  function store(k, v) {
+    try { window.localStorage.setItem(k, v); } catch (e) {}
+  }
+  function recall(k) {
+    try { return window.localStorage.getItem(k) || ''; }
+    catch (e) { return ''; }
+  }
+  function forget() {
+    try {
+      window.localStorage.removeItem(key);
+      window.localStorage.removeItem(key + '-name');
+    } catch (e) {}
+  }
+  var draft = recall(key);
+  if (draft) {
+    box.value = draft;
+    saved.classList.add('fb-show');
+  }
+  var priorName = recall(key + '-name');
+  if (priorName && !who.value) who.value = priorName;
+
+  var pending;
+  function keep() {
+    clearTimeout(pending);
+    pending = setTimeout(function() {
+      if (box.value) {
+        store(key, box.value);
+        store(key + '-name', who.value);
+        saved.classList.add('fb-show');
+      } else {
+        forget();
+        saved.classList.remove('fb-show');
+      }
+    }, 400);
+  }
+  box.addEventListener('input', keep);
+  who.addEventListener('input', keep);
+  // A tab close can beat the debounce - flush synchronously on the way out.
+  window.addEventListener('pagehide', function() {
+    if (box.value) { store(key, box.value); store(key + '-name', who.value); }
+  });
+
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        // Only a confirmed 2xx clears the draft. Anything else keeps it,
+        // so a failed send never destroys the text.
+        forget();
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

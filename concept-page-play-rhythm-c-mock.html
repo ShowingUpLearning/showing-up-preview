@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Team games to have (competitive) fun and grow together. — Showing Up (preview)</title>
+</head>
+<body>
+
+<title>Play page, option C</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  .pcm *, .pcm *::before, .pcm *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .pcm {
+    --c-coral: #FF8269; --c-cream: #FFF6F1; --c-ink: #1e1d1d; --c-text: #353434;
+    font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
+    background: var(--c-cream); color: var(--c-text);
+  }
+  .pcm-inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+
+  /* ---- review banner, not part of the design ---- */
+  .pcm-banner { background: var(--c-ink); padding: 22px 0 24px; }
+  .pcm-banner .pcm-inner { display: flex; flex-wrap: wrap; gap: 6px 20px; align-items: baseline; }
+  .pcm-banner-t {
+    font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--c-coral);
+  }
+  .pcm-banner-n { font-size: 13px; line-height: 1.6; color: rgba(255,246,241,.72); max-width: 900px; }
+  .pcm-banner-n b { color: var(--c-cream); font-weight: 500; }
+
+  /* ---- bands. Grounds and paddings are the shell's own values. ---- */
+  .pcm-band { padding: 68px 0 44px; }
+  .pcm-band--cream { background: var(--c-cream); }
+  .pcm-band--ink { background: var(--c-ink); }
+  /* The wider tier, and the whole of option C's second idea. */
+  .pcm-band--roomy { padding: 100px 0 96px; }
+  .pcm-hero { background: var(--c-ink); padding: 104px 0 92px; }
+  .pcm-close { background: var(--c-ink); padding: 92px 0; text-align: center; }
+
+  .pcm-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .16em;
+    color: var(--c-coral); margin-bottom: 26px; text-align: left !important;
+  }
+  .pcm-badge {
+    font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    color: rgba(255,246,241,.5);
+  }
+  .pcm-h1 {
+    font-size: clamp(34px, 4.2vw, 58px); font-weight: 300; line-height: 1.12;
+    letter-spacing: -.03em; color: var(--c-cream); max-width: 940px;
+    text-align: left !important;
+  }
+  .pcm-lead {
+    margin-top: 30px; max-width: 720px; font-size: 17px; line-height: 1.7;
+    color: rgba(255,246,241,.72); text-align: left !important;
+  }
+  .pcm-pill {
+    display: inline-flex; align-items: center; justify-content: center; margin-top: 30px;
+    background: var(--c-coral) !important; color: var(--c-ink) !important;
+    font-size: 15px; font-weight: 500; padding: 14px 28px; border-radius: 100px;
+    text-decoration: none !important; border: none !important; width: fit-content;
+  }
+
+  .pcm-h2 {
+    font-size: clamp(28px, 3vw, 40px); font-weight: 300; line-height: 1.18;
+    letter-spacing: -.025em; color: var(--c-ink); margin-bottom: 20px;
+    text-align: left !important;
+  }
+  .pcm-h2 em { font-style: normal; color: var(--c-coral); font-weight: 500; }
+  .pcm-band--ink .pcm-h2 { color: var(--c-cream); }
+  .pcm-p {
+    font-size: 17px; line-height: 1.7; color: var(--c-text); text-align: left !important;
+  }
+  .pcm-band--ink .pcm-p { color: rgba(255,246,241,.80); }
+
+  /* Duo, lifted from the Play page's own bespoke body. */
+  .pcm-duo {
+    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 64px; align-items: center; max-width: 1120px;
+  }
+  .pcm-duo > * { min-width: 0; }
+  .pcm-duo--flip .pcm-duo-copy { order: 2; }
+  .pcm-duo--flip .pcm-duo-media { order: 1; }
+  .pcm-duo-copy { max-width: 560px; }
+
+  .pcm-hold {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 14px; border: 1px dashed rgba(30,29,29,.28); background: rgba(30,29,29,.03);
+    border-radius: 16px; padding: 28px; text-align: center;
+  }
+  .pcm-hold--video { aspect-ratio: 16 / 9; }
+  .pcm-hold--sheet { aspect-ratio: 210 / 297; max-width: 420px; margin: 0 auto; }
+  /* On the ink band the frame flips, which is the detail that would break quietly
+     if the grounds moved and the placeholders did not. */
+  .pcm-hold--dark { border-color: rgba(255,246,241,.34); background: rgba(255,246,241,.04); }
+  .pcm-hold-mark {
+    width: 62px; height: 62px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center;
+    background: rgba(255,130,105,.16); color: var(--c-coral); flex: 0 0 auto;
+  }
+  .pcm-hold-mark svg { width: 26px; height: 26px; }
+  .pcm-hold-title { font-size: 15px; font-weight: 500; color: var(--c-ink); line-height: 1.4; }
+  .pcm-hold-note { font-size: 12.5px; letter-spacing: .04em; color: #6f6764; line-height: 1.5; max-width: 340px; }
+  .pcm-hold--dark .pcm-hold-title { color: var(--c-cream); }
+  .pcm-hold--dark .pcm-hold-note { color: rgba(255,246,241,.62); }
+
+  /* THE CORAL MOMENT. Coral fill, ink text - the cluster-grid pattern, where ink on
+     coral is already the checked combination. No border: the fill is the edge. */
+  .pcm-quad {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px; max-width: 1120px; margin-top: 34px;
+  }
+  .pcm-quad > * { min-width: 0; }
+  .pcm-box {
+    display: flex; flex-direction: column; gap: 10px;
+    background: var(--c-coral); border-radius: 18px; padding: 26px 24px 28px;
+  }
+  .pcm-box-name {
+    font-size: 17px; font-weight: 500; color: var(--c-ink); letter-spacing: -.01em;
+    line-height: 1.3; text-align: left !important;
+  }
+  .pcm-box-body {
+    font-size: 15px; font-weight: 400; line-height: 1.65; color: var(--c-ink);
+    text-align: left !important;
+  }
+
+  .pcm-close-h {
+    font-size: clamp(30px, 3.4vw, 46px); font-weight: 300; line-height: 1.16;
+    letter-spacing: -.03em; color: var(--c-cream);
+  }
+  .pcm-close-h em { font-style: normal; color: var(--c-coral); font-weight: 500; }
+
+  @media (max-width: 960px) {
+    .pcm-inner { padding: 0 32px; }
+    .pcm-duo { display: flex; flex-direction: column; gap: 26px; }
+    .pcm-duo > * { align-self: stretch !important; }
+    .pcm-duo-copy { display: contents; }
+    .pcm-duo-copy h2 { order: 1; margin-bottom: 0; }
+    .pcm-duo-media { order: 2; }
+    .pcm-duo-copy p { order: 3; }
+    .pcm-duo--flip .pcm-duo-copy, .pcm-duo--flip .pcm-duo-media { order: unset; }
+    .pcm-quad { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .pcm-band--roomy { padding: 76px 0 72px; }
+  }
+  @media (max-width: 540px) {
+    .pcm-inner { padding: 0 22px; }
+    .pcm-quad { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
+
+<div class="pcm">
+
+  <div class="pcm-banner">
+    <div class="pcm-inner">
+      <span class="pcm-banner-t">Option C &middot; full size</span>
+      <span class="pcm-banner-n">Ben&#39;s copy exactly as it is on the live page. Only three things change: <b>Two ways to play</b> goes cream, <b>Manager-led sessions</b> goes ink and takes the wider spacing tier, and the four boxes go <b>coral</b>. The page then runs ink, cream, ink, cream, ink from hero to close, so no two neighbours share a ground and no new colour enters the palette.</span>
+    </div>
+  </div>
+
+  <section class="pcm-hero">
+    <div class="pcm-inner">
+      <div class="pcm-eyebrow">Play <span class="pcm-badge">Element five of six</span></div>
+      <h1 class="pcm-h1">Team games to have (competitive) fun and grow together.</h1>
+      <p class="pcm-lead">We&#39;ve created immersive challenges for teams to play together. These video-based games are designed to be engaging, fun and competitive, with absolute utility: your team will learn something that has an immediate and meaningful impact on client work.</p>
+      <a class="pcm-pill" href="#pcm-two-ways">Try a team challenge</a>
+    </div>
+  </section>
+
+  
+  <section class="pcm-band pcm-band--cream" id="pcm-two-ways">
+    <div class="pcm-inner">
+      <div class="pcm-duo">
+        <div class="pcm-duo-copy">
+          <h2 class="pcm-h2">Two ways to <em>play</em></h2>
+          <p class="pcm-p">There&#39;s two ways to play. The first is your team gets together, in a room or online, opens up the video, and simply presses play. Take Test Yourself Against Canadian Doctors: the team receives every instruction they need, along with the workbook, and away they go.</p>
+        </div>
+        <div class="pcm-duo-media">
+          <div class="pcm-hold pcm-hold--video">
+            <span class="pcm-hold-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="pcm-hold-title">Introductory film: Test Yourself Against Canadian Doctors</span>
+            <span class="pcm-hold-note">Film to come. The frame is the size the real one will be.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="pcm-band pcm-band--ink pcm-band--roomy">
+    <div class="pcm-inner">
+      <div class="pcm-duo pcm-duo--flip">
+        <div class="pcm-duo-copy">
+          <h2 class="pcm-h2">Manager-led <em>sessions</em></h2>
+          <p class="pcm-p">Alternatively, a manager can run the game themselves. They&#39;re provided with a toolkit explaining exactly how to facilitate the session, and it&#39;s all very straightforward: in a team session, ideally in a room together, the manager presses play and coordinates the session.</p>
+        </div>
+        <div class="pcm-duo-media">
+          <div class="pcm-hold pcm-hold--sheet pcm-hold--dark">
+            <span class="pcm-hold-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 3.5h8.5L19 8v12.5H6V3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3.5V8h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="pcm-hold-title">The manager workbook for Canadian Doctors</span>
+            <span class="pcm-hold-note">Image to come, at A4 portrait.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="pcm-band pcm-band--cream">
+    <div class="pcm-inner">
+      <h2 class="pcm-h2">Immediate impact, lasting <em>unity</em></h2>
+      <div class="pcm-quad">
+        <div class="pcm-box">
+          <span class="pcm-box-name">Immersive fun</span>
+          <span class="pcm-box-body">Highly fun, immersive games, built on true stories and metaphors from the world of consulting.</span>
+        </div>
+        <div class="pcm-box">
+          <span class="pcm-box-name">Together as one</span>
+          <span class="pcm-box-body">Teams play and learn together, building the unity and togetherness great client work depends on.</span>
+        </div>
+        <div class="pcm-box">
+          <span class="pcm-box-name">Learning that sticks</span>
+          <span class="pcm-box-body">Every game comes with a toolkit and clear direction, so the learning lasts long after play ends.</span>
+        </div>
+        <div class="pcm-box">
+          <span class="pcm-box-name">Play it your way</span>
+          <span class="pcm-box-body">Run by a manager with full support, or played by simply pressing play: every game works both ways.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pcm-close">
+    <div class="pcm-inner">
+      <p class="pcm-close-h">Looking to support your team&#39;s <em>growth</em> and <em>development</em>?</p>
+    </div>
+  </section>
+
+</div>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+  .fb-saved { font-size: 12px; color: #9a908a; margin-top: 8px;
+              opacity: 0; transition: opacity .2s; }
+  .fb-saved.fb-show { opacity: 1; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="concept-page-play-rhythm-c-mock.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] concept-page-play-rhythm-c-mock.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead. Your text is still here.</div>
+      <div class="fb-saved" id="fb-saved">Draft saved in this browser.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  var saved = document.getElementById('fb-saved');
+  var box = form.querySelector('textarea[name=message]');
+  var who = form.querySelector('input[name=name]');
+
+  // Draft persistence. A long comment typed into this box used to exist
+  // nowhere else - closing the panel, a stray reload or a dead endpoint
+  // lost the lot, so the standing advice was "keep a copy in Notes".
+  // Keyed per page so comments on different pages don't overwrite
+  // each other. localStorage throws in some privacy modes; a failure
+  // here must never stop the form working, hence the silent try/catch.
+  var key = 'su-fb-draft-' + form.querySelector('input[name=page]').value;
+  function store(k, v) {
+    try { window.localStorage.setItem(k, v); } catch (e) {}
+  }
+  function recall(k) {
+    try { return window.localStorage.getItem(k) || ''; }
+    catch (e) { return ''; }
+  }
+  function forget() {
+    try {
+      window.localStorage.removeItem(key);
+      window.localStorage.removeItem(key + '-name');
+    } catch (e) {}
+  }
+  var draft = recall(key);
+  if (draft) {
+    box.value = draft;
+    saved.classList.add('fb-show');
+  }
+  var priorName = recall(key + '-name');
+  if (priorName && !who.value) who.value = priorName;
+
+  var pending;
+  function keep() {
+    clearTimeout(pending);
+    pending = setTimeout(function() {
+      if (box.value) {
+        store(key, box.value);
+        store(key + '-name', who.value);
+        saved.classList.add('fb-show');
+      } else {
+        forget();
+        saved.classList.remove('fb-show');
+      }
+    }, 400);
+  }
+  box.addEventListener('input', keep);
+  who.addEventListener('input', keep);
+  // A tab close can beat the debounce - flush synchronously on the way out.
+  window.addEventListener('pagehide', function() {
+    if (box.value) { store(key, box.value); store(key + '-name', who.value); }
+  });
+
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        // Only a confirmed 2xx clears the draft. Anything else keeps it,
+        // so a failed send never destroys the text.
+        forget();
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

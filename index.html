@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Showing Up - site preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --cream:#FFF6F1; --ink:#1e1d1d; --coral:#FF8269; --text:#353434; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  /* Explicit opaque background: dark text on a dark-mode UA background is
+     otherwise unreadable (this bit the plain list index before). */
+  body { font-family:'DM Sans',sans-serif; background:var(--cream);
+         color:var(--text); max-width:1180px; margin:0 auto;
+         padding:56px 32px 80px; line-height:1.5; }
+  h1 { font-family:'DM Sans'; font-weight:300; font-size:34px;
+       letter-spacing:-.03em; color:var(--ink); }
+  p.note { color:#9a908a; font-size:14px; margin-top:6px; }
+  h2 { font-weight:500; font-size:12px; letter-spacing:.16em;
+       text-transform:uppercase; color:var(--coral); margin:52px 0 18px;
+       padding-bottom:10px; border-bottom:1px solid rgba(0,0,0,.09); }
+  /* -- Section tabs. Panels ship VISIBLE; only [data-tabs-ready], set by the
+        script once it runs, hides the inactive ones. So a blocked or broken
+        script degrades to the old long single page, never to a blank one. -- */
+  .idx-tabs { display:flex; flex-wrap:wrap; gap:8px; margin:28px 0 8px;
+              border-bottom:1px solid rgba(0,0,0,.09); padding-bottom:14px; }
+  .idx-tab { font-family:inherit; font-size:13px; font-weight:500;
+             color:var(--text); background:none; cursor:pointer;
+             border:1px solid rgba(0,0,0,.18); border-radius:100px;
+             padding:7px 16px; display:inline-flex; align-items:center; gap:7px; }
+  .idx-tab:hover { border-color:var(--coral); color:var(--ink); }
+  .idx-tab[aria-selected="true"] { background:var(--ink); border-color:var(--ink);
+                                   color:var(--cream); }
+  /* 2px ink, not coral: coral fails the 3:1 non-text contrast bar on cream. */
+  .idx-tab:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
+  .idx-n { font-size:11.5px; opacity:.72; font-variant-numeric:tabular-nums; }
+  /* The tab bar already names the section, so the in-panel h2 would repeat it. */
+  [data-tabs-ready] .idx-panel > h2 { display:none; }
+  [data-tabs-ready] .idx-panel[hidden] { display:none; }
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px 22px; }
+  .grid > * { min-width:0; }
+  .card { display:block; }
+  .shot { display:block; aspect-ratio:16/10; border:1px solid rgba(0,0,0,.10);
+          border-radius:10px; overflow:hidden; background:#f0ece9;
+          position:relative; }
+  .shot img { width:100%; height:100%; object-fit:cover;
+              object-position:top center; display:block; }
+  .card:hover .shot { border-color:var(--coral); }
+  .nm { font-weight:500; font-size:14.5px; margin-top:11px; }
+  .nm a { color:var(--ink); text-decoration:none; }
+  .nm a:hover { text-decoration:underline; }
+  .mt { font-size:12.5px; color:#9a908a; margin-top:2px; }
+  .dt { font-size:12px; color:#8a807a; margin-top:4px; font-weight:500;
+        letter-spacing:.01em; }
+  a.cmp { font-size:12.5px; color:var(--coral); text-decoration:none;
+          margin-top:3px; display:inline-block; }
+  a.cmp:hover { text-decoration:underline; }
+  .fn { color:#bbb; font-size:11.5px; margin-top:2px; }
+  .play { position:absolute; inset:0; display:grid; place-items:center;
+          pointer-events:none; }
+  .play span { width:46px; height:46px; border-radius:50%;
+               background:rgba(255,255,255,.9); display:grid;
+               place-items:center; color:var(--ink); font-size:15px;
+               padding-left:3px; }
+  /* -- Latest updates strip: a cross-section feed above the tab bar, so the
+        newest work is findable without knowing which tab it landed in. -- */
+  .idx-latest { background:#fff; border:1px solid rgba(0,0,0,.09);
+                border-radius:12px; padding:18px 22px 20px; margin:26px 0 6px; }
+  .idx-latest h2 { margin:0 0 12px; border-bottom:0; padding-bottom:0; }
+  .idx-latest .row { display:flex; flex-wrap:wrap; align-items:baseline;
+                     gap:6px 12px; padding:4px 0; }
+  .idx-latest .row a { color:var(--ink); text-decoration:none;
+                       font-weight:500; font-size:14px; }
+  .idx-latest .row a:hover { text-decoration:underline; }
+  .idx-kind { font-size:11px; font-weight:500; letter-spacing:.04em;
+              color:#8a807a; border:1px solid rgba(0,0,0,.14);
+              border-radius:100px; padding:1px 9px; white-space:nowrap; }
+  .idx-when { font-size:12px; color:#8a807a;
+              font-variant-numeric:tabular-nums; }
+  /* Recency band subheads inside a card grid: span the full row. */
+  .idx-sub { grid-column:1 / -1; font-weight:500; font-size:11px;
+             letter-spacing:.14em; text-transform:uppercase; color:#9a908a;
+             margin:14px 0 -8px; }
+</style>
+</head>
+<body>
+  <h1>Showing Up - site preview</h1>
+  <p class="note">Internal preview for review. Not indexed by search engines.
+     22 concept(s), 17 live page(s).</p>
+  <section class="idx-latest">
+    <h2>Latest updates</h2>
+    <div class="row"><a href="page-pricing.html">Pricing</a><span class="idx-kind">Live</span><span class="idx-when">Updated 21 Aug 2026, 14:29</span></div>
+    <div class="row"><a href="page-our-history.html">Our History</a><span class="idx-kind">Live</span><span class="idx-when">Updated 21 Aug 2026, 14:29</span></div>
+    <div class="row"><a href="concept-page-homepage-r26-08.html">R26.08 - Homepage</a><span class="idx-kind">R26.08</span><span class="idx-when">Updated 20 Aug 2026, 22:43</span></div>
+    <div class="row"><a href="concept-page-homepage-opening-lab.html">Homepage opening - your 20 August messages built: the hero line as you wrote it (one wording question flagged inside), the circled section back in - centred without a photo for the release, plus two photo layouts the preview could carry (pick one) - and your new paragraph above the Nine Dimensions grid.</a><span class="idx-kind">Lab</span><span class="idx-when">Updated 20 Aug 2026, 20:48</span></div>
+    <div class="row"><a href="concept-page-seo-cards-lab.html">SEO cards - the image behind a shared link (copy review). When a link to the site is shared, in a LinkedIn post or a WhatsApp message, this is the picture that comes with it. One per page, 38 in all. The eleven marketing cards carry new copy that needs your eye; the nine dimension cards and the eighteen assessment cards reuse copy you have already approved. Nothing is live.</a><span class="idx-kind">Lab</span><span class="idx-when">Updated 20 Aug 2026, 15:14</span></div>
+    <div class="row"><a href="concept-nav-top-concept-c.html">Nav concept C - the six-section top bar (27 July call)</a><span class="idx-kind">Ultra</span><span class="idx-when">Updated 20 Aug 2026, 13:35</span></div>
+    <div class="row"><a href="concept-footer-concept-c.html">Footer concept C - the five-column footer (pairs with nav concept C)</a><span class="idx-kind">Ultra</span><span class="idx-when">New 20 Aug 2026, 13:31</span></div>
+    <div class="row"><a href="concept-page-our-promise-r26-08.html">R26.08 - Our Promise (new page)</a><span class="idx-kind">R26.08</span><span class="idx-when">Updated 20 Aug 2026, 13:31</span></div>
+    <div class="row"><a href="concept-page-platform-ultra.html">Platform (ultra) - type ramp aligned, Meet the facilitators band</a><span class="idx-kind">Ultra</span><span class="idx-when">Updated 20 Aug 2026, 13:31</span></div>
+    <div class="row"><a href="concept-page-section-toolkits-r26-08.html">R26.08 - 4. Toolkits</a><span class="idx-kind">R26.08</span><span class="idx-when">Updated 20 Aug 2026, 13:31</span></div>
+    <div class="row"><a href="concept-page-section-play-r26-08.html">R26.08 - 5. Play</a><span class="idx-kind">R26.08</span><span class="idx-when">Updated 20 Aug 2026, 13:31</span></div>
+    <div class="row"><a href="concept-page-section-learn-r26-08.html">R26.08 - 3. Learn</a><span class="idx-kind">R26.08</span><span class="idx-when">Updated 20 Aug 2026, 13:31</span></div>
+  </section>
+  <nav class="idx-tabs" role="tablist" aria-label="Preview sections">
+    <button class="idx-tab" id="tab-video" role="tab" aria-controls="video" aria-selected="true" tabindex="0">Video edits<span class="idx-n">17</span></button>
+    <button class="idx-tab" id="tab-social" role="tab" aria-controls="social" aria-selected="false" tabindex="-1">Social clips<span class="idx-n">4</span></button>
+    <button class="idx-tab" id="tab-ultra" role="tab" aria-controls="ultra" aria-selected="false" tabindex="-1">Ultra concepts<span class="idx-n">10</span></button>
+    <button class="idx-tab" id="tab-release" role="tab" aria-controls="release" aria-selected="false" tabindex="-1">R26.08<span class="idx-n">9</span></button>
+    <button class="idx-tab" id="tab-concepts" role="tab" aria-controls="concepts" aria-selected="false" tabindex="-1">Concepts<span class="idx-n">22</span></button>
+    <button class="idx-tab" id="tab-labs" role="tab" aria-controls="labs" aria-selected="false" tabindex="-1">Labs<span class="idx-n">11</span></button>
+    <button class="idx-tab" id="tab-evolution" role="tab" aria-controls="evolution" aria-selected="false" tabindex="-1">Design evolution</button>
+    <button class="idx-tab" id="tab-live" role="tab" aria-controls="live" aria-selected="false" tabindex="-1">Live pages<span class="idx-n">17</span></button>
+  </nav>
+  <section class="idx-panel" id="video" role="tabpanel" aria-labelledby="tab-video">
+  <h2>Video edits in review &mdash; Motion graphics - July 2026</h2>
+  <div class="grid">
+    <article class="card"><a class="shot" href="video-9d-part-1-introduction.html"><img src="thumbs/video-9d-part-1-introduction.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-9d-part-1-introduction.html">Nine Dimensions, Part 1: Introduction</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">3 min, 14 graphics across 70% of it. The lightest of the five parts, so it is the fairest read on how the treatment feels when it is not working hard. The arc that sorts the nine into three clusters is a reusable piece and it comes back in Parts 2 to 5. The intro sting also runs over your first four seconds of speech, cold-open style. Does the register feel like us, and is that opening comfortable?</div></article>
+    <article class="card"><a class="shot" href="video-9d-part-2-solving-complex-problems.html"><img src="thumbs/video-9d-part-2-solving-complex-problems.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-9d-part-2-solving-complex-problems.html">Nine Dimensions, Part 2: Solving Complex Problems</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">10 min. The Thinking cluster and the densest film in the set, 41 graphics over 85% of the running time. Three named examples take a card each: da Vinci, Jobs and Curie. This is deliberately more than the finished film should carry, so the question is which of the 41 earn their place, and whether three historical examples in a row is one too many. The subtitle on the sting is mine, not yours, so rename it if you would rather it said something else.</div></article>
+    <article class="card"><a class="shot" href="video-9d-part-3-building-trusted-relationships.html"><img src="thumbs/video-9d-part-3-building-trusted-relationships.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-9d-part-3-building-trusted-relationships.html">Nine Dimensions, Part 3: Building Trusted Relationships</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">8 min. The Presence cluster, 36 graphics at 79%. It opens and closes on the same cluster arc so the section bookends itself. Same question as Part 2: which of these earn their place, and which are restating something you have already said? The subtitle is mine to change. Separately: this export has captions burnt into the picture, which Parts 1 and 2 do not. That is in the export rather than the graphics, so do not spend a comment on it.</div></article>
+    <article class="card"><a class="shot" href="video-9d-part-4-creating-growth-and-momentum.html"><img src="thumbs/video-9d-part-4-creating-growth-and-momentum.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-9d-part-4-creating-growth-and-momentum.html">Nine Dimensions, Part 4: Creating Growth and Momentum</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">12 min, the longest film, 47 graphics at 81%. The Impact cluster. Two of the cards sit on your Chemistry Group story and put the consultancy, the client and the founder&#x27;s name on screen. Telling that story yourself on your own course video is already fine; lifting it into written or marketing use is what needs your sign-off, so say if you would rather those two cards came out. The subtitle is mine to change. Separately: this export has captions burnt into the picture, which Parts 1 and 2 do not. That is in the export rather than the graphics.</div></article>
+    <article class="card"><a class="shot" href="video-9d-part-5-the-close.html"><img src="thumbs/video-9d-part-5-the-close.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-9d-part-5-the-close.html">Nine Dimensions, Part 5: the close</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">Under 2 min, 8 graphics. This part deliberately has no title card, since it runs straight on from Part 4. Two of the graphics draw a distinction on purpose: a career rises up the frame, but the nine dimensions are met at greater depth, which goes into the frame rather than up. Does that distinction land, and is going without a title card here right? Two things in the export rather than the graphics, both already on my list: it has captions burnt into the picture where Parts 1 and 2 have none, and the closing one misspells our own domain as showingupleoner.com. Fixing that needs a fresh export, so it is not something a note can put right.</div></article>
+    <article class="card"><a class="shot" href="video-symbols-of-learning.html"><img src="thumbs/video-symbols-of-learning.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-symbols-of-learning.html">The Symbols of Learning</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">7 min, 38 graphics at 88%. Each of the nine symbol cards plays out that symbol&#x27;s own mathematics and then dissolves into the brush mark itself, so pi ends on the pi mark and sigma on sigma. Do the nine read as one set, and does the mathematics earn its place or is it decoration? The title here is the one in the set taken from your own authored card, so it needs no sign-off.</div></article>
+    <article class="card"><a class="shot" href="video-systems-thinking-course-start.html"><img src="thumbs/video-systems-thinking-course-start.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-systems-thinking-course-start.html">Systems Thinking: the course opening</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">8 min, 31 graphics at 79%. Your Australia story opens it, and no names from that story appear anywhere on screen, because the people in it never agreed to appear. The audio still carries them and this link is public, so say the word if you want this one held back. The two feedback loops are drawn as opposites on purpose: one spirals outward and never returns, the other overshoots and settles. Both title lines on the sting are mine, not sourced from anything you said.</div></article>
+    <article class="card"><a class="shot" href="video-systems-thinker-promo-short.html"><img src="thumbs/video-systems-thinker-promo-short.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-systems-thinker-promo-short.html">The Systems Thinker promo, short cut (31 sec)</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">31 sec, the shorter of two cuts of the same take. Two names are on screen and both are spelled as published, Donella Meadows and Russell Ackoff, rather than as the transcript heard them. This is deliberately lighter than the lesson films, because thirty seconds of you selling something is not the place for a graphic every ten seconds. Which of the two cuts do you want to lead with?</div></article>
+    <article class="card"><a class="shot" href="video-systems-thinker-promo-long.html"><img src="thumbs/video-systems-thinker-promo-long.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-systems-thinker-promo-long.html">The Systems Thinker promo, long cut (36 sec)</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">36 sec, the longer cut. The graphics are identical to the short one; the only difference is one extra sentence of yours, about the very next client engagement. So this is purely about whether that sentence stays in.</div></article>
+    <article class="card"><a class="shot" href="video-what-we-do.html"><img src="thumbs/video-what-we-do.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-what-we-do.html">What We Do</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">4 min, 20 graphics at 84%. This is the film doing the most selling, so the balance between graphic and face matters more here than anywhere else in the set: every second on a card is a second you are not on screen making the case yourself. Is it too much?</div></article>
+    <article class="card"><a class="shot" href="video-99-cents.html"><img src="thumbs/video-99-cents.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-99-cents.html">99 Cents (micro-lesson)</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">3 min, 16 graphics at 68%, the lightest treatment of the three micro-lessons. It is also the one that has to survive the most scrutiny, since it is a public sample. The price roll is the only place in the whole programme where a number moves on screen. Title reads 99 Cents. Happy with it?</div></article>
+    <article class="card"><a class="shot" href="video-8-mile.html"><img src="thumbs/video-8-mile.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-8-mile.html">8 Mile (micro-lesson)</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">5 min, 22 graphics at 81%. Two things need your call here. The title reads 8 Mile, which is suggested rather than taken from anything you said. And one heading on screen is the only authored line anywhere in the programme: the column the flaws move into reads He says it first, because no phrase in the transcript fits. Rename either.</div></article>
+    <article class="card"><a class="shot" href="video-white-whisky.html"><img src="thumbs/video-white-whisky.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-white-whisky.html">White Whiskey (micro-lesson)</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">3 min, 17 graphics at 83%. The title is suggested, not sourced, so sign it off or rename it. One graphic holds an almost empty frame for three and a half seconds, because what is missing is the point of the beat. Tell me if that reads as a mistake rather than a choice.</div></article>
+    <article class="card"><a class="shot" href="video-beth-listening-well-full-motion.html"><img src="thumbs/video-beth-listening-well-full-motion.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-beth-listening-well-full-motion.html">Beth - Listening Well, full motion pass</a></div>
+      <div class="dt">Added 30 Jul 2026, 09:56</div>
+      <div class="mt">10 min. Beth&#x27;s listening lesson with 35 graphics cut across 59% of it, lighter than the films above. Six are already marked as the first to go if it needs air, including three cards on a single four-level model where the staircase on its own probably carries it. Two cuts in her edit are worth your eye, one clipping a name at 2:33 and one landing mid-phrase at 8:54; both need a re-export to change, so they are left alone for now. The title is drawn from Beth&#x27;s own framing rather than agreed with her.</div></article>
+    <article class="card"><a class="shot" href="video-beth-rec5-conflict-resolution-full-motion.html"><img src="thumbs/video-beth-rec5-conflict-resolution-full-motion.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-beth-rec5-conflict-resolution-full-motion.html">Beth - Conflict Resolution, full motion pass</a></div>
+      <div class="dt">Added 29 Jul 2026, 14:26</div>
+      <div class="mt">13 min. Beth’s conflict-resolution lesson with 34 animated graphics cut in across it. Deliberately more than the finished film should carry - the question for this round is which ones earn their place. No intro or end sting in this export. Grade and music not final.</div></article>
+    <article class="card"><a class="shot" href="video-showcase-reel.html"><img src="thumbs/video-showcase-reel.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-showcase-reel.html">Site showcase reel - for LinkedIn</a></div>
+      <div class="dt">Added 24 Jul 2026</div>
+      <div class="mt">32 sec, silent, 4:5 for the LinkedIn feed. Built from screenshots of the site, not filmed - there is no camera footage of anyone in it. Reviewed frame by frame 2026-07-24. Copy and the closing call-to-action are open to change.</div></article>
+    <article class="card"><a class="shot" href="video-beth-rec7-v1.html"><img src="thumbs/video-beth-rec7-v1.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-beth-rec7-v1.html">Beth - lesson edit with motion inserts</a></div>
+      <div class="dt">Added 23 Jul 2026</div>
+      <div class="mt">4 min. Manual edit, motion graphics inserts in place.</div></article>
+  </div>
+  </section>
+  <section class="idx-panel" id="social" role="tabpanel" aria-labelledby="tab-social">
+  <h2>Social clips &mdash; Beth &amp; Ben - July 2026</h2>
+  <div class="grid">
+    <article class="card"><a class="shot" href="video-social-allergic-to-advice.html"><img src="thumbs/video-social-allergic-to-advice.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-social-allergic-to-advice.html">Be allergic to giving advice</a></div>
+      <div class="dt">Added 27 Jul 2026</div>
+      <div class="mt">28 sec. Burnt-in captions.</div></article>
+    <article class="card"><a class="shot" href="video-social-coaching-the-coach.html"><img src="thumbs/video-social-coaching-the-coach.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-social-coaching-the-coach.html">Coaching the coach</a></div>
+      <div class="dt">Added 27 Jul 2026</div>
+      <div class="mt">1 min 41. Burnt-in captions.</div></article>
+    <article class="card"><a class="shot" href="video-social-mate-to-manager.html"><img src="thumbs/video-social-mate-to-manager.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-social-mate-to-manager.html">Going from mate to manager</a></div>
+      <div class="dt">Added 27 Jul 2026</div>
+      <div class="mt">1 min 44. Burnt-in captions.</div></article>
+    <article class="card"><a class="shot" href="video-social-ruinous-empathy.html"><img src="thumbs/video-social-ruinous-empathy.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="play"><span>&#9654;</span></div></a>
+      <div class="nm"><a href="video-social-ruinous-empathy.html">Ruinous empathy</a></div>
+      <div class="dt">Added 27 Jul 2026</div>
+      <div class="mt">2 min 31. Burnt-in captions.</div></article>
+  </div>
+  </section>
+  <section class="idx-panel" id="ultra" role="tabpanel" aria-labelledby="tab-ultra">
+  <h2>Ultra concepts &mdash; July 2026</h2>
+  <div class="grid">
+    <article class="card"><a class="shot" href="concept-page-homepage-ultra.html"><img src="thumbs/concept-page-homepage-ultra.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-homepage-ultra.html">Homepage (ultra)</a></div>
+      <div class="dt">Updated 20 Aug 2026, 22:43</div>
+      <a class="cmp" href="page-homepage.html">compare with live &rarr;</a></article>
+    <article class="card"><a class="shot" href="concept-nav-top-concept-c.html"><img src="thumbs/concept-nav-top-concept-c.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-nav-top-concept-c.html">Nav concept C - the six-section top bar (27 July call)</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:35</div></article>
+    <article class="card"><a class="shot" href="concept-footer-concept-c.html"><img src="thumbs/concept-footer-concept-c.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-footer-concept-c.html">Footer concept C - the five-column footer (pairs with nav concept C)</a></div>
+      <div class="dt">Added 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-define-ultra.html"><img src="thumbs/concept-page-section-define-ultra.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-define-ultra.html">1. Define (ultra) - drafted copy, framework grid, the arc and the nine symbols</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-learn-ultra.html"><img src="thumbs/concept-page-section-learn-ultra.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-learn-ultra.html">3. Learn (ultra) - drafted copy, a real lesson embedded, six live modules</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="concept-page-platform-ultra.html"><img src="thumbs/concept-page-platform-ultra.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-platform-ultra.html">Platform (ultra) - type ramp aligned, Meet the facilitators band</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div>
+      <a class="cmp" href="page-platform-logged-out.html">compare with previous version &rarr;</a></article>
+    <article class="card"><a class="shot" href="concept-page-section-assess-ultra.html"><img src="thumbs/concept-page-section-assess-ultra.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-assess-ultra.html">2. Assess (ultra) - drafted copy</a></div>
+      <div class="dt">Updated 17 Aug 2026, 12:01</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-toolkits-ultra.html"><img src="thumbs/concept-page-section-toolkits-ultra.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-toolkits-ultra.html">4. Toolkits (ultra) - drafted copy</a></div>
+      <div class="dt">Updated 17 Aug 2026, 12:01</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-play-ultra.html"><img src="thumbs/concept-page-section-play-ultra.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-play-ultra.html">5. Play (ultra) - drafted copy</a></div>
+      <div class="dt">Updated 17 Aug 2026, 12:01</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-lead-ultra.html"><img src="thumbs/concept-page-section-lead-ultra.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-lead-ultra.html">6. Lead (ultra) - drafted copy. Renamed from Manage on Ben&#x27;s instruction, 6 August; the file name and URL followed on 7 August</a></div>
+      <div class="dt">Updated 17 Aug 2026, 12:01</div></article>
+  </div>
+  </section>
+  <section class="idx-panel" id="release" role="tabpanel" aria-labelledby="tab-release">
+  <h2>Release candidates &mdash; R26.08 - release candidates</h2>
+  <div class="grid">
+    <article class="card"><a class="shot" href="concept-page-homepage-r26-08.html"><img src="thumbs/concept-page-homepage-r26-08.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-homepage-r26-08.html">R26.08 - Homepage</a></div>
+      <div class="dt">Updated 20 Aug 2026, 22:43</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-define-r26-08.html"><img src="thumbs/concept-page-section-define-r26-08.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-define-r26-08.html">R26.08 - 1. Define</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-assess-r26-08.html"><img src="thumbs/concept-page-section-assess-r26-08.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-assess-r26-08.html">R26.08 - 2. Assess</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-learn-r26-08.html"><img src="thumbs/concept-page-section-learn-r26-08.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-learn-r26-08.html">R26.08 - 3. Learn</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-toolkits-r26-08.html"><img src="thumbs/concept-page-section-toolkits-r26-08.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-toolkits-r26-08.html">R26.08 - 4. Toolkits</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-play-r26-08.html"><img src="thumbs/concept-page-section-play-r26-08.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-play-r26-08.html">R26.08 - 5. Play</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-lead-r26-08.html"><img src="thumbs/concept-page-section-lead-r26-08.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-lead-r26-08.html">R26.08 - 6. Lead</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="concept-page-platform-r26-08.html"><img src="thumbs/concept-page-platform-r26-08.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-platform-r26-08.html">R26.08 - Platform</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="concept-page-our-promise-r26-08.html"><img src="thumbs/concept-page-our-promise-r26-08.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-our-promise-r26-08.html">R26.08 - Our Promise (new page)</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+  </div>
+  </section>
+  <section class="idx-panel" id="concepts" role="tabpanel" aria-labelledby="tab-concepts">
+  <h2>Concepts in review &mdash; Site structure - July 2026</h2>
+  <div class="grid">
+    <h3 class="idx-sub">This week</h3>
+    <article class="card"><a class="shot" href="concept-page-homepage-concept-r3.html"><img src="thumbs/concept-page-homepage-concept-r3.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-homepage-concept-r3.html">Homepage (concept r3)</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div>
+      <a class="cmp" href="page-homepage.html">compare with live &rarr;</a></article>
+    <article class="card"><a class="shot" href="concept-page-nine-dimensions-concept.html"><img src="thumbs/concept-page-nine-dimensions-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-nine-dimensions-concept.html">Nine Dimensions (new page)</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="page-platform-logged-out.html"><img src="thumbs/page-platform-logged-out.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-platform-logged-out.html">Platform, logged out (not yet live)</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="page-platform-logged-in.html"><img src="thumbs/page-platform-logged-in.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-platform-logged-in.html">Platform, logged in (not yet live)</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="page-news.html"><img src="thumbs/page-news.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-news.html">News (not yet live)</a></div>
+      <div class="dt">Updated 15 Aug 2026, 19:33</div></article>
+    <article class="card"><a class="shot" href="page-assessment-hub.html"><img src="thumbs/page-assessment-hub.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-assessment-hub.html">Assessment hub (not yet live)</a></div>
+      <div class="dt">Updated 14 Aug 2026, 19:47</div></article>
+    <article class="card"><a class="shot" href="page-contact-us.html"><img src="thumbs/page-contact-us.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-contact-us.html">Contact us (not yet live)</a></div>
+      <div class="dt">Updated 14 Aug 2026, 19:47</div></article>
+    <article class="card"><a class="shot" href="page-demo.html"><img src="thumbs/page-demo.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-demo.html">Platform demo - intro block (not yet live)</a></div>
+      <div class="dt">Updated 14 Aug 2026, 19:47</div></article>
+    <article class="card"><a class="shot" href="page-demo-curiosity-assessment.html"><img src="thumbs/page-demo-curiosity-assessment.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-demo-curiosity-assessment.html">Platform demo - curiosity assessment (not yet live)</a></div>
+      <div class="dt">Updated 14 Aug 2026, 19:47</div></article>
+    <h3 class="idx-sub">Earlier</h3>
+    <article class="card"><a class="shot" href="concept-page-section-define-concept.html"><img src="thumbs/concept-page-section-define-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-define-concept.html">1. Define (new section page - structure only, copy to come)</a></div>
+      <div class="dt">Updated 12 Aug 2026, 12:34</div></article>
+    <article class="card"><a class="shot" href="concept-page-platform-concept.html"><img src="thumbs/concept-page-platform-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-platform-concept.html">Platform (concept)</a></div>
+      <div class="dt">Updated 12 Aug 2026, 12:34</div>
+      <a class="cmp" href="page-platform-logged-out.html">compare with previous version &rarr;</a></article>
+    <article class="card"><a class="shot" href="concept-page-section-assess-concept.html"><img src="thumbs/concept-page-section-assess-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-assess-concept.html">2. Assess (new section page - structure only, copy to come)</a></div>
+      <div class="dt">Updated 11 Aug 2026, 08:32</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-learn-concept.html"><img src="thumbs/concept-page-section-learn-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-learn-concept.html">3. Learn (new section page - structure only; carries two open questions)</a></div>
+      <div class="dt">Updated 11 Aug 2026, 08:32</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-toolkits-concept.html"><img src="thumbs/concept-page-section-toolkits-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-toolkits-concept.html">4. Toolkits (new section page - structure only, copy to come)</a></div>
+      <div class="dt">Updated 11 Aug 2026, 08:32</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-play-concept.html"><img src="thumbs/concept-page-section-play-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-play-concept.html">5. Play (new section page - structure only, copy to come)</a></div>
+      <div class="dt">Updated 11 Aug 2026, 08:32</div></article>
+    <article class="card"><a class="shot" href="concept-page-section-manage-concept.html"><img src="thumbs/concept-page-section-manage-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-section-manage-concept.html">6. Lead (new section page - structure only, copy to come). The filename still says manage; the URL was deliberately left alone so links already sent stay working</a></div>
+      <div class="dt">Updated 11 Aug 2026, 08:32</div></article>
+    <article class="card"><a class="shot" href="concept-page-meet-facilitators-concept.html"><img src="thumbs/concept-page-meet-facilitators-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-meet-facilitators-concept.html">Meet the facilitators (new section - layout only, names and photos are placeholders)</a></div>
+      <div class="dt">Updated 28 Jul 2026</div></article>
+    <article class="card"><a class="shot" href="concept-page-dimension-curiosity-concept.html"><img src="thumbs/concept-page-dimension-curiosity-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-dimension-curiosity-concept.html">Dimension page: Curiosity (concept)</a></div>
+      <div class="dt">Updated 23 Jul 2026</div>
+      <a class="cmp" href="page-dimension-curiosity.html">compare with live &rarr;</a></article>
+    <article class="card"><a class="shot" href="concept-page-testimonials-deck-concept.html"><img src="thumbs/concept-page-testimonials-deck-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-testimonials-deck-concept.html">Client testimonials - carousel (new section; card 1 real, cards 2-3 placeholders to show the interaction)</a></div>
+      <div class="dt">Added 23 Jul 2026</div></article>
+    <article class="card"><a class="shot" href="concept-page-assessments-concept.html"><img src="thumbs/concept-page-assessments-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-assessments-concept.html">Assessments (superseded - earlier thinking, see 2. Assess)</a></div>
+      <div class="dt">Added 12 Jul 2026</div>
+      <a class="cmp" href="page-assessment-hub.html">compare with previous version &rarr;</a></article>
+    <article class="card"><a class="shot" href="concept-page-team-challenges-concept.html"><img src="thumbs/concept-page-team-challenges-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-team-challenges-concept.html">Team challenges (superseded - earlier thinking, see 5. Play)</a></div>
+      <div class="dt">Added 12 Jul 2026</div></article>
+    <article class="card"><a class="shot" href="concept-page-video-learning-concept.html"><img src="thumbs/concept-page-video-learning-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-video-learning-concept.html">Video learning (superseded - earlier thinking, see 3. Learn)</a></div>
+      <div class="dt">Added 12 Jul 2026</div></article>
+  </div>
+  </section>
+  <section class="idx-panel" id="labs" role="tabpanel" aria-labelledby="tab-labs">
+  <h2>Labs &mdash; Pick-one pages</h2>
+  <div class="grid">
+    <h3 class="idx-sub">This week</h3>
+    <article class="card"><a class="shot" href="concept-page-homepage-opening-lab.html"><img src="thumbs/concept-page-homepage-opening-lab.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-homepage-opening-lab.html">Homepage opening - your 20 August messages built: the hero line as you wrote it (one wording question flagged inside), the circled section back in - centred without a photo for the release, plus two photo layouts the preview could carry (pick one) - and your new paragraph above the Nine Dimensions grid.</a></div>
+      <div class="dt">Updated 20 Aug 2026, 20:48</div></article>
+    <article class="card"><a class="shot" href="concept-page-seo-cards-lab.html"><img src="thumbs/concept-page-seo-cards-lab.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-seo-cards-lab.html">SEO cards - the image behind a shared link (copy review). When a link to the site is shared, in a LinkedIn post or a WhatsApp message, this is the picture that comes with it. One per page, 38 in all. The eleven marketing cards carry new copy that needs your eye; the nine dimension cards and the eighteen assessment cards reuse copy you have already approved. Nothing is live.</a></div>
+      <div class="dt">Updated 20 Aug 2026, 15:14</div></article>
+    <article class="card"><a class="shot" href="concept-page-nine-dimensions-concept-bloom.html"><img src="thumbs/concept-page-nine-dimensions-concept-bloom.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-nine-dimensions-concept-bloom.html">Nine Dimensions - bloom variant, to set against the main Nine Dimensions page in Concepts</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div></article>
+    <article class="card"><a class="shot" href="concept-page-play-rhythm-lab.html"><img src="thumbs/concept-page-play-rhythm-lab.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-play-rhythm-lab.html">Play page rhythm - three ways to stop the three sections running together (pick one). Your colours are option A; B and C get the same result without spending coral on a background</a></div>
+      <div class="dt">Added 14 Aug 2026, 18:22</div></article>
+    <article class="card"><a class="shot" href="concept-page-play-rhythm-c-mock.html"><img src="thumbs/concept-page-play-rhythm-c-mock.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-play-rhythm-c-mock.html">Play page, option C at full size - the companion to the rhythm lab above. Your copy unchanged; only the grounds, the spacing of the middle band and the colour of the four boxes are different</a></div>
+      <div class="dt">Added 14 Aug 2026, 18:22</div></article>
+    <h3 class="idx-sub">Earlier</h3>
+    <article class="card"><a class="shot" href="concept-page-band-cta-lab.html"><img src="thumbs/concept-page-band-cta-lab.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-band-cta-lab.html">Homepage band buttons - the Explore button on all six bands, and the copy behind it. The scheme shown as chosen is ALREADY LIVE on the R26.08 homepage; this page is the alternatives and the two questions still open (does Play get a real game, and should the band title be a link)</a></div>
+      <div class="dt">Added 14 Aug 2026, 14:08</div></article>
+    <article class="card"><a class="shot" href="concept-page-define-layout-lab.html"><img src="thumbs/concept-page-define-layout-lab.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-define-layout-lab.html">Define page - layout options. NOTE: this is a 7 August snapshot and your rounds 8-13 have overtaken it. Of the five sections it offers layouts for, three (the symbols, the films, one dimension in full) you have since had removed from the page, and the five-levels one now carries your own sheet instead. Only the development section is still a live question, and it has been retitled since. Worth a look for the treatments rather than the sections</a></div>
+      <div class="dt">Updated 12 Aug 2026, 12:34</div></article>
+    <article class="card"><a class="shot" href="concept-page-poster-lab.html"><img src="thumbs/concept-page-poster-lab.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-poster-lab.html">Video thumbnails — the approved set (for the record, no decision needed). Every lesson film shows a still image before you press play; the player currently picks its own freeze frame, which rarely catches anyone well. These are the replacements you signed off on 11 August: a cream card per lesson with the module title alongside. Shown at the size they are really seen on the site, and again on a phone. The last card is not a thumbnail — it is the template deliberately overloaded with the longest title in the library, to show where its limit is.</a></div>
+      <div class="dt">Updated 11 Aug 2026, 16:51</div></article>
+    <article class="card"><a class="shot" href="concept-page-enablers-layout-lab.html"><img src="thumbs/concept-page-enablers-layout-lab.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-enablers-layout-lab.html">The six learning enablers - four ways to lay out the band (pick one). The homepage band that names DEFINE / ASSESS / LEARN / TOOLKITS / PLAY / LEAD, shown as a 3x3, a 3x2, two columns of three, and today&#x27;s split rebalanced. Buttons at the top switch layout, switch how the arrow signals that each one jumps you down the page, and flip the band between the dark and cream backgrounds. It reports each layout&#x27;s height so you can see which is shortest</a></div>
+      <div class="dt">Added 9 Aug 2026, 19:40</div></article>
+    <article class="card"><a class="shot" href="concept-page-shape-placement-lab.html"><img src="thumbs/concept-page-shape-placement-lab.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-shape-placement-lab.html">Shape backgrounds - where else on the homepage (pick what to take forward). The discovery-call block, the testimonial card, the Foundation photo and the in-person block, each with the shape switchable. Also answers whether the two identical discovery-call blocks should be told apart, and shows why the team photo should not be shape-cropped but the Foundation portrait should</a></div>
+      <div class="dt">Added 9 Aug 2026, 18:10</div></article>
+    <article class="card"><a class="shot" href="concept-page-facilitator-photos-concept.html"><img src="thumbs/concept-page-facilitator-photos-concept.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="concept-page-facilitator-photos-concept.html">Facilitator photos - window shape and backdrop (pick one of each; shape is on a toggle at the top of the page)</a></div>
+      <div class="dt">Updated 28 Jul 2026</div></article>
+  </div>
+  </section>
+  <section class="idx-panel" id="evolution" role="tabpanel" aria-labelledby="tab-evolution">
+  <h2>Design evolution</h2>
+  <div class="grid">
+    <article class="card"><a class="shot" href="evolution.html"><img src="evolution/v3-2026-07-24/page-homepage-desktop.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="evolution.html">Design evolution</a></div>
+      <div class="mt">Every milestone side by side - compare any two versions, desktop or mobile</div></article>
+  </div>
+  </section>
+  <section class="idx-panel" id="live" role="tabpanel" aria-labelledby="tab-live">
+  <h2>Current live pages</h2>
+  <div class="grid">
+    <article class="card"><a class="shot" href="page-our-history.html"><img src="thumbs/page-our-history.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-our-history.html">Our History</a></div>
+      <div class="dt">Updated 21 Aug 2026, 14:29</div>
+      <div class="fn">page-our-history.html</div></article>
+    <article class="card"><a class="shot" href="page-pricing.html"><img src="thumbs/page-pricing.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-pricing.html">Pricing</a></div>
+      <div class="dt">Updated 21 Aug 2026, 14:29</div>
+      <div class="fn">page-pricing.html</div></article>
+    <article class="card"><a class="shot" href="page-faq.html"><img src="thumbs/page-faq.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-faq.html">FAQ</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div>
+      <div class="fn">page-faq.html</div></article>
+    <article class="card"><a class="shot" href="page-homepage.html"><img src="thumbs/page-homepage.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-homepage.html">Homepage</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div>
+      <div class="fn">page-homepage.html</div></article>
+    <article class="card"><a class="shot" href="page-in-person-training.html"><img src="thumbs/page-in-person-training.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-in-person-training.html">In-Person Training</a></div>
+      <div class="dt">Updated 20 Aug 2026, 13:31</div>
+      <div class="fn">page-in-person-training.html</div></article>
+    <article class="card"><a class="shot" href="page-dimension-character.html"><img src="thumbs/page-dimension-character.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-dimension-character.html">Character</a></div>
+      <div class="dt">Updated 17 Aug 2026, 12:01</div>
+      <div class="fn">page-dimension-character.html</div></article>
+    <article class="card"><a class="shot" href="page-dimension-coaching.html"><img src="thumbs/page-dimension-coaching.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-dimension-coaching.html">Coaching</a></div>
+      <div class="dt">Updated 17 Aug 2026, 12:01</div>
+      <div class="fn">page-dimension-coaching.html</div></article>
+    <article class="card"><a class="shot" href="page-dimension-collaboration.html"><img src="thumbs/page-dimension-collaboration.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-dimension-collaboration.html">Collaboration</a></div>
+      <div class="dt">Updated 17 Aug 2026, 12:01</div>
+      <div class="fn">page-dimension-collaboration.html</div></article>
+    <article class="card"><a class="shot" href="page-dimension-commercial-acumen.html"><img src="thumbs/page-dimension-commercial-acumen.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-dimension-commercial-acumen.html">Commercial Acumen</a></div>
+      <div class="dt">Updated 17 Aug 2026, 12:01</div>
+      <div class="fn">page-dimension-commercial-acumen.html</div></article>
+    <article class="card"><a class="shot" href="page-dimension-communication.html"><img src="thumbs/page-dimension-communication.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-dimension-communication.html">Communication</a></div>
+      <div class="dt">Updated 17 Aug 2026, 12:01</div>
+      <div class="fn">page-dimension-communication.html</div></article>
+    <article class="card"><a class="shot" href="page-dimension-creativity.html"><img src="thumbs/page-dimension-creativity.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-dimension-creativity.html">Creativity</a></div>
+      <div class="dt">Updated 17 Aug 2026, 12:01</div>
+      <div class="fn">page-dimension-creativity.html</div></article>
+    <article class="card"><a class="shot" href="page-dimension-critical-thinking.html"><img src="thumbs/page-dimension-critical-thinking.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-dimension-critical-thinking.html">Critical Thinking</a></div>
+      <div class="dt">Updated 17 Aug 2026, 12:01</div>
+      <div class="fn">page-dimension-critical-thinking.html</div></article>
+    <article class="card"><a class="shot" href="page-dimension-curation.html"><img src="thumbs/page-dimension-curation.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-dimension-curation.html">Curation</a></div>
+      <div class="dt">Updated 17 Aug 2026, 12:01</div>
+      <div class="fn">page-dimension-curation.html</div></article>
+    <article class="card"><a class="shot" href="page-dimension-curiosity.html"><img src="thumbs/page-dimension-curiosity.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-dimension-curiosity.html">Curiosity</a></div>
+      <div class="dt">Updated 17 Aug 2026, 12:01</div>
+      <div class="fn">page-dimension-curiosity.html</div></article>
+    <article class="card"><a class="shot" href="page-foundation.html"><img src="thumbs/page-foundation.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-foundation.html">The Foundation</a></div>
+      <div class="dt">Updated 14 Aug 2026, 19:47</div>
+      <div class="fn">page-foundation.html</div></article>
+    <article class="card"><a class="shot" href="page-privacy.html"><img src="thumbs/page-privacy.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-privacy.html">Privacy Policy</a></div>
+      <div class="dt">Updated 14 Aug 2026, 19:47</div>
+      <div class="fn">page-privacy.html</div></article>
+    <article class="card"><a class="shot" href="page-terms.html"><img src="thumbs/page-terms.jpg" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+      <div class="nm"><a href="page-terms.html">Terms &amp; Conditions</a></div>
+      <div class="dt">Updated 14 Aug 2026, 19:47</div>
+      <div class="fn">page-terms.html</div></article>
+  </div>
+  </section>
+<script>
+(function () {
+  var bar = document.querySelector('.idx-tabs');
+  if (!bar) return;                       // one section only: nothing to tab
+  var tabs = [].slice.call(bar.querySelectorAll('.idx-tab'));
+  if (tabs.length < 2) return;            // ditto - leave the page as authored
+
+  function panelOf(tab) {
+    return document.getElementById(tab.getAttribute('aria-controls'));
+  }
+  function select(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab, p = panelOf(t);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;           // roving tabindex: one stop in the
+      if (p) p.hidden = !on;              // page's tab order, not one per tab
+    });
+    if (focus) tab.focus();
+    history.replaceState(null, '', '#' + tab.getAttribute('aria-controls'));
+  }
+
+  bar.addEventListener('click', function (e) {
+    var tab = e.target.closest('.idx-tab');
+    if (tab) select(tab, false);
+  });
+  // role="tab" promises arrow-key navigation. Implement it rather than
+  // announce a behaviour that isn't there.
+  bar.addEventListener('keydown', function (e) {
+    var i = tabs.indexOf(document.activeElement);
+    if (i === -1) return;
+    var to = null;
+    if (e.key === 'ArrowRight') to = tabs[(i + 1) % tabs.length];
+    else if (e.key === 'ArrowLeft') to = tabs[(i - 1 + tabs.length) % tabs.length];
+    else if (e.key === 'Home') to = tabs[0];
+    else if (e.key === 'End') to = tabs[tabs.length - 1];
+    if (to) { e.preventDefault(); select(to, true); }
+  });
+
+  // Only now does the CSS start hiding inactive panels - before this line the
+  // page is the full scrollable list, which is the no-JS fallback.
+  document.body.setAttribute('data-tabs-ready', '');
+  var wanted = tabs.filter(function (t) {
+    return '#' + t.getAttribute('aria-controls') === location.hash;
+  })[0];
+  select(wanted || tabs[0], false);
+}());
+</script>
+</body>
+</html>

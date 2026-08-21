@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Three ways to give the Play page a rhythm — Showing Up (preview)</title>
+</head>
+<body>
+
+<title>Play page rhythm</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  .prl *, .prl *::before, .prl *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .prl {
+    --c-coral: #FF8269; --c-cream: #FFF6F1; --c-ink: #1e1d1d; --c-text: #353434;
+    --c-mint: #A7DDC3; --c-white: #ffffff;
+    font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
+    background: var(--c-cream); color: var(--c-text);
+    padding: 56px 32px 90px;
+  }
+  .prl-shell { max-width: 1180px; margin: 0 auto; }
+
+  .prl-over {
+    font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--c-coral); margin-bottom: 12px;
+  }
+  .prl h1 {
+    font-size: clamp(30px, 3.4vw, 46px); font-weight: 300; line-height: 1.16;
+    letter-spacing: -.03em; color: var(--c-ink); margin-bottom: 18px;
+  }
+  .prl h1 em { font-style: normal; color: var(--c-coral); font-weight: 500; }
+  .prl .prl-lede { font-size: 17px; line-height: 1.7; max-width: 780px; }
+  .prl .prl-lede + .prl-lede { margin-top: 12px; }
+  .prl-quote {
+    border-left: 3px solid var(--c-coral); padding: 4px 0 4px 18px; margin: 22px 0 0;
+    font-size: 15px; line-height: 1.7; color: #6f6764; max-width: 780px;
+  }
+
+  .prl h2 {
+    font-size: 26px; font-weight: 300; letter-spacing: -.02em; color: var(--c-ink);
+    margin: 54px 0 6px; padding-top: 30px; border-top: 1px solid rgba(0,0,0,.1);
+  }
+  .prl .prl-sub { font-size: 15px; line-height: 1.65; max-width: 820px; margin-bottom: 26px; color: #6f6764; }
+
+  /* ---- the three sequences, side by side ---- */
+  .prl-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .prl-opts > * { min-width: 0; }
+  .prl-opt { display: flex; flex-direction: column; }
+  .prl-opt-head { margin-bottom: 12px; }
+  .prl-opt-name { font-size: 18px; font-weight: 500; color: var(--c-ink); }
+  .prl-opt-seq { font-size: 12px; color: #9a908a; letter-spacing: .04em; margin-top: 3px; }
+
+  /* A band in the scale model. Padding is proportional to the real thing, so a
+     band that gets more room in the shell looks like it here too. */
+  .prl-strip { border: 1px solid rgba(0,0,0,.12); border-radius: 12px; overflow: hidden; }
+  .prl-band { padding: 20px 18px; }
+  .prl-band--cream { background: var(--c-cream); }
+  .prl-band--white { background: var(--c-white); }
+  .prl-band--ink   { background: var(--c-ink); }
+  .prl-band--coral { background: var(--c-coral); }
+  /* The wider spacing tier, option C. 96/64 against 68/44 in the shell. */
+  .prl-band--roomy { padding: 34px 18px; }
+
+  .prl-bh { font-size: 15px; font-weight: 300; letter-spacing: -.01em; line-height: 1.25; color: var(--c-ink); }
+  .prl-bh em { font-style: normal; color: var(--c-coral); font-weight: 500; }
+  .prl-band--ink .prl-bh { color: var(--c-cream); }
+  /* On coral the accent has nowhere to go: same colour as the ground it sits on.
+     Deliberately rendered honestly rather than quietly recoloured. */
+  .prl-band--coral .prl-bh { color: var(--c-ink); }
+  .prl-band--coral .prl-bh em { color: var(--c-coral); }
+
+  .prl-lines { margin-top: 9px; display: flex; flex-direction: column; gap: 5px; }
+  .prl-line { height: 4px; border-radius: 2px; background: rgba(30,29,29,.16); }
+  .prl-line:nth-child(2) { width: 92%; }
+  .prl-line:nth-child(3) { width: 74%; }
+  .prl-band--ink .prl-line { background: rgba(255,246,241,.26); }
+  .prl-band--coral .prl-line { background: rgba(30,29,29,.24); }
+
+  .prl-media {
+    margin-top: 12px; border-radius: 8px; border: 1px dashed rgba(30,29,29,.3);
+    background: rgba(30,29,29,.04); height: 54px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #9a908a;
+  }
+  .prl-band--ink .prl-media { border-color: rgba(255,246,241,.34); background: rgba(255,246,241,.05); color: rgba(255,246,241,.6); }
+  .prl-band--coral .prl-media { border-color: rgba(30,29,29,.32); background: rgba(30,29,29,.05); color: rgba(30,29,29,.55); }
+
+  .prl-cards { margin-top: 12px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+  .prl-card { height: 42px; border-radius: 6px; background: var(--c-white); border: 1px solid rgba(0,0,0,.08); }
+  .prl-card--coral { background: var(--c-coral); border-color: transparent; }
+  .prl-band--coral .prl-card { background: var(--c-white); }
+
+  .prl-cap {
+    font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    color: #9a908a; margin-bottom: 6px;
+  }
+  .prl-band--ink .prl-cap { color: rgba(255,246,241,.5); }
+  .prl-band--coral .prl-cap { color: rgba(30,29,29,.5); }
+
+  .prl-verdict { margin-top: 14px; font-size: 13px; line-height: 1.6; }
+  .prl-verdict b { color: var(--c-ink); font-weight: 500; }
+  .prl-tick { color: #2f7d5b; font-weight: 500; }
+  .prl-cost { color: #b3402a; font-weight: 500; }
+  .prl-pick {
+    display: inline-block; margin-top: 12px; font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; font-weight: 600; color: var(--c-ink);
+    background: var(--c-mint); padding: 5px 12px; border-radius: 100px;
+  }
+  .prl .prl-link, .prl .prl-link:link, .prl .prl-link:visited {
+    display: inline-flex; align-items: center; margin-top: 12px;
+    font-size: 13px; font-weight: 500; color: var(--c-ink) !important;
+    text-decoration: none !important; border: none !important; border-bottom: none !important;
+    transition: color .2s;
+  }
+  .prl .prl-link:hover, .prl .prl-link:active { color: var(--c-coral) !important; }
+
+  /* ---- the accent demonstration, at real size ---- */
+  .prl-two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .prl-two > * { min-width: 0; }
+  .prl-demo { border-radius: 16px; padding: 34px 30px; border: 1px solid rgba(0,0,0,.1); }
+  .prl-demo--cream { background: var(--c-cream); }
+  .prl-demo--coral { background: var(--c-coral); border-color: transparent; }
+  .prl-demo-h {
+    font-size: 27px; font-weight: 300; line-height: 1.18; letter-spacing: -.02em;
+    color: var(--c-ink);
+  }
+  .prl-demo-h em { font-style: normal; color: var(--c-coral); font-weight: 500; }
+  .prl-demo-note { margin-top: 14px; font-size: 13px; line-height: 1.6; color: #6f6764; }
+  .prl-demo--coral .prl-demo-note { color: rgba(30,29,29,.72); }
+
+  .prl-note { font-size: 12.5px; color: #6f6764; margin-top: 14px; line-height: 1.6; max-width: 900px; }
+  .prl-note b { color: var(--c-ink); font-weight: 500; }
+
+  .prl-q {
+    background: #fff; border: 1px solid rgba(0,0,0,.1); border-left: 3px solid var(--c-coral);
+    border-radius: 12px; padding: 18px 22px; margin-top: 14px;
+  }
+  .prl-q h3 { font-size: 16px; font-weight: 500; color: var(--c-ink); margin-bottom: 6px; }
+  .prl-q p { font-size: 14px; line-height: 1.65; }
+
+  @media (max-width: 960px) {
+    .prl-opts, .prl-two { grid-template-columns: 1fr; }
+    .prl { padding: 40px 20px 70px; }
+  }
+</style>
+
+<div class="prl">
+<div class="prl-shell">
+
+  <p class="prl-over">R26.08 &middot; 5. Play &middot; 14 August 2026</p>
+  <h1>Three ways to give the Play page a <em>rhythm</em></h1>
+  <p class="prl-lede">Ben, on the Play page as it went live this afternoon:</p>
+  <p class="prl-quote">"Section background colours, to break up the page rhythm so no two consecutive sections share a colour. Two ways to play &#8594; white, not cream. Manager-led sessions &#8594; black. Immediate impact, lasting unity &#8594; coral."</p>
+  <p class="prl-lede" style="margin-top:18px">The test is right: three bands running together read as one scroll. All three options below pass it. They differ in what they spend to get there, and option A spends the one thing the page uses for emphasis.</p>
+
+  <h2>The three sequences</h2>
+  <p class="prl-sub">Scale models, not screenshots: real palette, real proportions, simplified content. The ink band at the foot of each is the page's existing closing block, which is part of the sequence whether we choose it or not.</p>
+
+  <div class="prl-opts">
+
+    
+    <div class="prl-opt">
+      <div class="prl-opt-head">
+        <div class="prl-opt-name">A &middot; As Ben wrote it</div>
+        <div class="prl-opt-seq">white &#183; black &#183; coral</div>
+      </div>
+      <div class="prl-strip">
+        <div class="prl-band prl-band--white">
+          <div class="prl-cap">Two ways to play</div>
+          <div class="prl-bh">Two ways to <em>play</em></div>
+          <div class="prl-lines"><span class="prl-line"></span><span class="prl-line"></span><span class="prl-line"></span></div>
+          <div class="prl-media">film</div>
+        </div>
+        <div class="prl-band prl-band--ink">
+          <div class="prl-cap">Manager-led sessions</div>
+          <div class="prl-bh">Manager-led <em>sessions</em></div>
+          <div class="prl-lines"><span class="prl-line"></span><span class="prl-line"></span><span class="prl-line"></span></div>
+          <div class="prl-media">workbook</div>
+        </div>
+        <div class="prl-band prl-band--coral">
+          <div class="prl-cap">Immediate impact</div>
+          <div class="prl-bh">Immediate impact, lasting <em>unity</em></div>
+          <div class="prl-cards"><span class="prl-card"></span><span class="prl-card"></span><span class="prl-card"></span><span class="prl-card"></span></div>
+        </div>
+        <div class="prl-band prl-band--ink"><div class="prl-cap">Closing block</div></div>
+      </div>
+      <div class="prl-verdict">
+        <span class="prl-tick">Passes his test.</span> <b>Costs:</b> the coral accent on "unity" disappears into the ground &#8212; see below. White against cream is the palette's smallest possible step, so the first change separates least. And coral at band scale is new to the site.
+      </div>
+    </div>
+
+    
+    <div class="prl-opt">
+      <div class="prl-opt-head">
+        <div class="prl-opt-name">B &middot; Coral on the cards</div>
+        <div class="prl-opt-seq">cream &#183; ink &#183; cream</div>
+      </div>
+      <div class="prl-strip">
+        <div class="prl-band prl-band--cream">
+          <div class="prl-cap">Two ways to play</div>
+          <div class="prl-bh">Two ways to <em>play</em></div>
+          <div class="prl-lines"><span class="prl-line"></span><span class="prl-line"></span><span class="prl-line"></span></div>
+          <div class="prl-media">film</div>
+        </div>
+        <div class="prl-band prl-band--ink">
+          <div class="prl-cap">Manager-led sessions</div>
+          <div class="prl-bh">Manager-led <em>sessions</em></div>
+          <div class="prl-lines"><span class="prl-line"></span><span class="prl-line"></span><span class="prl-line"></span></div>
+          <div class="prl-media">workbook</div>
+        </div>
+        <div class="prl-band prl-band--cream">
+          <div class="prl-cap">Immediate impact</div>
+          <div class="prl-bh">Immediate impact, lasting <em>unity</em></div>
+          <div class="prl-cards"><span class="prl-card prl-card--coral"></span><span class="prl-card prl-card--coral"></span><span class="prl-card prl-card--coral"></span><span class="prl-card prl-card--coral"></span></div>
+        </div>
+        <div class="prl-band prl-band--ink"><div class="prl-cap">Closing block</div></div>
+      </div>
+      <div class="prl-verdict">
+        <span class="prl-tick">Passes his test.</span> The coral moment lands on the four boxes instead of behind them, which is the cluster-grid pattern already used across the site &#8212; coral fill, ink text, contrast already checked. Uses only grounds the shell has, so nothing new enters the palette.
+      </div>
+      <span class="prl-pick">Recommended</span>
+    </div>
+
+    
+    <div class="prl-opt">
+      <div class="prl-opt-head">
+        <div class="prl-opt-name">C &middot; B, plus room to breathe</div>
+        <div class="prl-opt-seq">cream &#183; ink &#183; cream, retimed</div>
+      </div>
+      <div class="prl-strip">
+        <div class="prl-band prl-band--cream">
+          <div class="prl-cap">Two ways to play</div>
+          <div class="prl-bh">Two ways to <em>play</em></div>
+          <div class="prl-lines"><span class="prl-line"></span><span class="prl-line"></span><span class="prl-line"></span></div>
+          <div class="prl-media">film</div>
+        </div>
+        <div class="prl-band prl-band--ink prl-band--roomy">
+          <div class="prl-cap">Manager-led sessions</div>
+          <div class="prl-bh">Manager-led <em>sessions</em></div>
+          <div class="prl-lines"><span class="prl-line"></span><span class="prl-line"></span><span class="prl-line"></span></div>
+          <div class="prl-media">workbook</div>
+        </div>
+        <div class="prl-band prl-band--cream">
+          <div class="prl-cap">Immediate impact</div>
+          <div class="prl-bh">Immediate impact, lasting <em>unity</em></div>
+          <div class="prl-cards"><span class="prl-card prl-card--coral"></span><span class="prl-card prl-card--coral"></span><span class="prl-card prl-card--coral"></span><span class="prl-card prl-card--coral"></span></div>
+        </div>
+        <div class="prl-band prl-band--ink"><div class="prl-cap">Closing block</div></div>
+      </div>
+      <div class="prl-verdict">
+        <span class="prl-tick">Passes his test.</span> B, with the middle band given the shell's wider spacing tier so it reads as a movement rather than a stripe. Rhythm from <b>timing</b> as well as colour, which is what a page with three sections of similar length actually lacks.
+      </div>
+      
+      <a class="prl-link" href="concept-page-play-rhythm-c-mock.html">See option C at full size &#8594;</a>
+    </div>
+
+  </div>
+
+  <h2>The one thing worth seeing full size</h2>
+  <p class="prl-sub">Both headings below are the real thing at the real size, with the coral accent exactly as the page carries it today.</p>
+
+  <div class="prl-two">
+    <div class="prl-demo prl-demo--cream">
+      <div class="prl-demo-h">Immediate impact, lasting <em>unity</em></div>
+      <div class="prl-demo-note">On cream. The accent does its job: one word carries the emphasis, the way every other heading on the site works.</div>
+    </div>
+    <div class="prl-demo prl-demo--coral">
+      <div class="prl-demo-h">Immediate impact, lasting <em>unity</em></div>
+      <div class="prl-demo-note">On coral. "Unity" is still marked up as the accent. It is the same colour as the ground behind it, so the emphasis is gone, and any coral pill or chip placed in this band would go the same way.</div>
+    </div>
+  </div>
+
+  <p class="prl-note"><b>This is not an argument against coral.</b> It is an argument about where coral goes. As a background it removes emphasis from everything inside it; as a fill on the four boxes it creates the strongest moment on the page and keeps the accent system working. Option B spends it on the cards for that reason.</p>
+  <p class="prl-note"><b>Two smaller notes.</b> Pure white is not a canvas colour in the palette &#8212; cream is the default and white is for reversed text and button labels &#8212; and next to cream it is the smallest step available, so it separates least where Ben wants most. And whatever we pick should be a rule for all six element pages or a stated Play exception: they share one shell, and the recent universal rounds have been pulling them together, not apart.</p>
+
+  <h2>What we need back from Ben</h2>
+  <div class="prl-q">
+    <h3>1. A, B or C?</h3>
+    <p>All three do what he asked. B is the recommendation because it costs nothing new in the palette and puts the coral where it does the most work. C is B if the page still feels flat once it is built.</p>
+  </div>
+  <div class="prl-q">
+    <h3>2. Does this become the rule for all six element pages?</h3>
+    <p>The alternation is worth having everywhere, not just on Play. If yes, it goes into the shared shell and every page gets the same rhythm; if no, Play is a deliberate exception and worth recording as one.</p>
+  </div>
+
+</div>
+</div>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+  .fb-saved { font-size: 12px; color: #9a908a; margin-top: 8px;
+              opacity: 0; transition: opacity .2s; }
+  .fb-saved.fb-show { opacity: 1; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="concept-page-play-rhythm-lab.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] concept-page-play-rhythm-lab.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead. Your text is still here.</div>
+      <div class="fb-saved" id="fb-saved">Draft saved in this browser.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  var saved = document.getElementById('fb-saved');
+  var box = form.querySelector('textarea[name=message]');
+  var who = form.querySelector('input[name=name]');
+
+  // Draft persistence. A long comment typed into this box used to exist
+  // nowhere else - closing the panel, a stray reload or a dead endpoint
+  // lost the lot, so the standing advice was "keep a copy in Notes".
+  // Keyed per page so comments on different pages don't overwrite
+  // each other. localStorage throws in some privacy modes; a failure
+  // here must never stop the form working, hence the silent try/catch.
+  var key = 'su-fb-draft-' + form.querySelector('input[name=page]').value;
+  function store(k, v) {
+    try { window.localStorage.setItem(k, v); } catch (e) {}
+  }
+  function recall(k) {
+    try { return window.localStorage.getItem(k) || ''; }
+    catch (e) { return ''; }
+  }
+  function forget() {
+    try {
+      window.localStorage.removeItem(key);
+      window.localStorage.removeItem(key + '-name');
+    } catch (e) {}
+  }
+  var draft = recall(key);
+  if (draft) {
+    box.value = draft;
+    saved.classList.add('fb-show');
+  }
+  var priorName = recall(key + '-name');
+  if (priorName && !who.value) who.value = priorName;
+
+  var pending;
+  function keep() {
+    clearTimeout(pending);
+    pending = setTimeout(function() {
+      if (box.value) {
+        store(key, box.value);
+        store(key + '-name', who.value);
+        saved.classList.add('fb-show');
+      } else {
+        forget();
+        saved.classList.remove('fb-show');
+      }
+    }, 400);
+  }
+  box.addEventListener('input', keep);
+  who.addEventListener('input', keep);
+  // A tab close can beat the debounce - flush synchronously on the way out.
+  window.addEventListener('pagehide', function() {
+    if (box.value) { store(key, box.value); store(key + '-name', who.value); }
+  });
+
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        // Only a confirmed 2xx clears the draft. Anything else keeps it,
+        // so a failed send never destroys the text.
+        forget();
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>

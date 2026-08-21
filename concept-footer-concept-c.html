@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Footer Concept C.Html — Showing Up (preview)</title>
+</head>
+<body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<noscript><style>
+  /* Surface everything if JS is disabled */
+  .sf-root .sf-reveal { opacity: 1 !important; transform: none !important; }
+</style></noscript>
+
+<style>
+  /* -- Scoped reset ----------------------------------------------- */
+  .sf-root, .sf-root *, .sf-root *::before, .sf-root *::after {
+    box-sizing: border-box; margin: 0; padding: 0;
+  }
+
+  /* -- Root ------------------------------------------------------- */
+  .sf-root {
+    background: #1e1d1d;
+    color: #FFF6F1;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 246, 241, 0.08);
+  }
+
+  /* No decorative ground. v3's two hand-drawn coral oval rings sat here; they
+     were the ellipse approximation DESIGN-SYSTEM.md 5.1 retired, and a verbatim
+     kit shape that replaced them was dropped in review - 5.1 budgets roughly one
+     shape moment per viewport, and this footer sits under every page on the site.
+     .sf-root keeps position: relative and overflow: hidden regardless: the
+     Foundation ring and the reveal transforms both rely on them. */
+
+  .sf-inner {
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 80px 40px;
+  }
+
+  /* -- Row 1: Brand + sitemap ------------------------------------- */
+  .sf-top {
+    display: grid;
+    /* Five tracks. The brand column gives up 20px against the live footer's
+       minmax(220px,1fr) to pay for the new Contact column; Nine Dimensions keeps
+       its 1.4fr because it carries three groups of three. */
+    grid-template-columns: minmax(200px, 1fr) 1fr 1.4fr 1fr 1fr;
+    gap: 48px 40px;
+    align-items: start;
+    padding-bottom: 56px;
+  }
+
+  /* Brand column */
+  .sf-brand { display: flex; flex-direction: column; gap: 20px; }
+  .sf-logo-link {
+    display: inline-flex; align-items: center;
+    width: fit-content;
+    color: #FF8269 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+  }
+  .sf-logo-link:link, .sf-logo-link:visited,
+  .sf-logo-link:hover, .sf-logo-link:active {
+    color: #FF8269 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+  }
+  .sf-logo-mark { width: 40px; height: auto; display: block; }
+  .sf-brand-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    letter-spacing: 0.02em;
+    color: #FFF6F1;
+    margin-top: 4px;
+  }
+  /* As shipped on the homepage client quote: body copy sets in DM Sans, not
+     EB Garamond. DM Sans carries a taller x-height and a wider set
+     than the serif, so matched at 18px it would read heavier and run longer; the
+     size steps back to 17px and the weight drops to 300, which lands the line at
+     about the same visual weight and the same number of lines it had. Leading
+     opens to 1.6 - the sans has less to separate its lines with than a serif. */
+  .sf-tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(255, 246, 241, 0.65);
+    max-width: 240px;
+  }
+  /* Coral-bold, the default heading emphasis (DESIGN-SYSTEM.md 5) - the serif
+     italic accent it replaces is retired outside display moments.
+     Literal hex, not var(--c-coral): the footer is a site-wide body slot, outside
+     .showing-up-wrapper, so the token does not resolve here. */
+  .sf-tagline em {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: #FF8269;
+  }
+
+  /* Column header */
+  .sf-col-head {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #FF8269;
+    margin-bottom: 20px;
+  }
+
+  /* Link lists */
+  .sf-list { display: flex; flex-direction: column; gap: 12px; }
+  .sf-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 300;
+    line-height: 1.4;
+    color: rgba(255, 246, 241, 0.72) !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+    transition: color 0.2s ease;
+    width: fit-content;
+  }
+  .sf-link:link, .sf-link:visited {
+    color: rgba(255, 246, 241, 0.72) !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+  }
+  .sf-link:hover, .sf-link:active {
+    color: #FFF6F1 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+  }
+
+  /* Explore column - stacks two sub-blocks */
+  .sf-col-explore { display: flex; flex-direction: column; gap: 40px; }
+
+  /* Hairline between the six sections and In-Person. Cream at the same 0.08
+     alpha as the .sf-root top border, so it reads as the same family of line. */
+  .sf-list-rule {
+    height: 1px;
+    background: rgba(255, 246, 241, 0.14);
+    margin: 18px 0 16px;
+    max-width: 120px;
+  }
+
+  /* LearnWorlds section styling can underline SPANS inside anchors even when the
+     anchor itself is text-decoration:none (found live on /define, 17 Aug - see
+     CLAUDE.md constraint 4). One blanket guard per scoped wrapper. Harmless here
+     in the concept; required the moment this ports into components/. */
+  .sf-root a * { text-decoration: none !important; }
+  .sf-contact-email { font-size: 14px; font-weight: 400; }
+  .sf-social-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+  }
+  .sf-social-inline svg {
+    width: 14px; height: 14px;
+    display: block;
+    flex-shrink: 0;
+    fill: currentColor;
+  }
+
+  /* Nine Dimensions column */
+  .sf-dims { display: flex; flex-direction: column; gap: 28px; }
+  .sf-dim-group { display: flex; flex-direction: column; gap: 10px; }
+  .sf-group-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: rgba(255, 246, 241, 0.85);
+  }
+  .sf-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    display: inline-block; flex-shrink: 0;
+  }
+  .sf-dot--coral  { background: #FF8269; }
+  .sf-dot--purple { background: #C8B4E4; }
+  .sf-dot--mint   { background: #A7DDC3; }
+  .sf-dim-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 18px;
+  }
+
+  /* -- Row 2: Foundation strip ------------------------------------ */
+  .sf-found {
+    position: relative;
+    border-top: 1px solid rgba(255, 246, 241, 0.08);
+    border-bottom: 1px solid rgba(255, 246, 241, 0.08);
+    padding: 36px 0;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 32px;
+    align-items: center;
+  }
+  .sf-found-ring {
+    position: relative;
+    width: 36px; height: 36px;
+    flex-shrink: 0;
+  }
+  .sf-found-ring::before,
+  .sf-found-ring::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid #FF8269;
+  }
+  .sf-found-ring::before { width: 20px; height: 20px; opacity: 0.9; }
+  .sf-found-ring::after  { width: 34px; height: 34px; opacity: 0.4; }
+
+  .sf-found-copy { display: flex; flex-direction: column; gap: 8px; }
+  .sf-found-over {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #FF8269;
+  }
+  .sf-found-text {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(255, 246, 241, 0.82);
+    max-width: 720px;
+  }
+  /* Coral 500, not the 600 heading emphasis, and never italic - this is a
+     running sentence. 500 matches page-foundation.html, where the identical
+     commitment is already set as coral 500 on the same dark ground; the strip
+     and the Foundation page should not disagree about this sentence. */
+  .sf-found-text em { font-style: normal; font-weight: 500; color: #FF8269; }
+
+  .sf-found-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
+    color: #FFF6F1 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+    white-space: nowrap;
+    transition: color 0.2s ease, gap 0.2s ease;
+  }
+  .sf-found-link:link, .sf-found-link:visited {
+    color: #FFF6F1 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+  }
+  .sf-found-link:hover, .sf-found-link:active {
+    color: #FF8269 !important;
+    gap: 12px;
+  }
+  .sf-found-link svg { width: 14px; height: 14px; display: block; }
+
+  /* -- Row 3: Copyright + legal ----------------------------------- */
+  .sf-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .sf-copyright {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 300;
+    color: rgba(255, 246, 241, 0.55);
+    line-height: 1.5;
+  }
+  .sf-legal {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .sf-legal-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 300;
+    color: rgba(255, 246, 241, 0.55) !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+    transition: color 0.2s ease;
+  }
+  .sf-legal-link:link, .sf-legal-link:visited {
+    color: rgba(255, 246, 241, 0.55) !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+  }
+  .sf-legal-link:hover, .sf-legal-link:active {
+    color: #FFF6F1 !important;
+    text-decoration: none !important;
+    border: none !important; border-bottom: none !important;
+  }
+
+  /* -- Reveal animation ------------------------------------------- */
+  .sf-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1);
+  }
+  .sf-reveal.sf-vis { opacity: 1; transform: none; }
+  .sf-d1 { transition-delay: 0.05s; }
+  .sf-d2 { transition-delay: 0.12s; }
+  .sf-d3 { transition-delay: 0.18s; }
+  .sf-d4 { transition-delay: 0.24s; }
+  .sf-d5 { transition-delay: 0.30s; }
+
+  /* -- Tablet / narrow desktop ------------------------------------ */
+  @media (max-width: 1080px) {
+    .sf-inner { padding: 64px 48px 32px; }
+    /* Five tracks go to three, not two. Brand takes a full-width row of its own,
+       the three link columns sit side by side beneath it, and the dimensions
+       keep a full-width row for their own 3-wide grid. Going 5 -> 2 would strand
+       three link columns across two tracks and leave one of them orphaned. */
+    .sf-top {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas:
+        "brand   brand   brand"
+        "explore about   contact"
+        "dims    dims    dims";
+      gap: 48px 40px;
+      padding-bottom: 48px;
+    }
+    .sf-top > * { align-self: stretch !important; }
+    .sf-brand       { grid-area: brand; }
+    .sf-col-explore { grid-area: explore; }
+    .sf-col-about   { grid-area: about; }
+    .sf-col-contact { grid-area: contact; }
+    .sf-col-dims    { grid-area: dims; }
+    .sf-dims {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px 32px;
+    }
+  }
+
+  /* -- Mobile ----------------------------------------------------- */
+  @media (max-width: 768px) {
+    .sf-inner { padding: 56px 28px 32px; }
+    .sf-top {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+    .sf-top > * { align-self: stretch !important; width: 100%; }
+    .sf-col-explore { gap: 32px; }
+    .sf-dims {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .sf-found {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 32px 0;
+      align-items: flex-start;
+    }
+    .sf-found-ring { width: 32px; height: 32px; }
+
+    .sf-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      padding-top: 28px;
+    }
+    .sf-legal { flex-wrap: wrap; gap: 20px; }
+
+  }
+</style>
+
+<footer class="sf-root" role="contentinfo">
+
+  <div class="sf-inner">
+
+    
+    <div class="sf-top">
+
+      
+      <div class="sf-brand sf-reveal">
+        <a href="https://www.showinguplearning.com/" class="sf-logo-link" aria-label="Showing Up Learning &mdash; Home">
+          <svg class="sf-logo-mark" viewBox="0 0 309 431" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <mask id="sf-lm0" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="309" height="431">
+              <path d="M309 0H0V430.176H309V0Z" fill="white"/>
+            </mask>
+            <g mask="url(#sf-lm0)">
+              <path d="M244.985 186.584C246.198 188.221 246.806 190.479 246.806 193.33C246.806 196.435 246.114 198.863 244.732 200.599C243.433 202.32 241.697 203.619 239.538 204.494C237.464 205.354 235.164 205.877 232.667 206.047C230.154 206.217 227.727 206.3 225.399 206.3H215.535V180.486H227.219C229.378 180.486 231.622 180.614 233.964 180.868C236.292 181.136 238.41 181.743 240.315 182.689C242.219 183.549 243.771 184.848 244.985 186.584Z" fill="#FF8269"/>
+              <path d="M231.154 0C197.4 0 168.657 59.3627 157.876 142.366C154.911 165.09 153.303 189.564 153.303 215.081C153.303 224.453 153.515 233.698 153.939 242.758C155.675 241.615 157.099 240.287 158.227 238.764C159.879 236.689 161.036 234.446 161.742 232.017C162.434 229.52 162.772 227.134 162.772 224.89V167.276H179.127V225.399C179.127 230.944 178.168 235.956 176.263 240.458C174.356 244.875 171.775 248.63 168.486 251.748C166.412 253.696 164.112 255.39 161.558 256.801C160.048 257.633 158.468 258.368 156.803 259.018C156.21 259.229 155.603 259.441 154.982 259.624C155.701 269.278 156.676 278.678 157.876 287.796C168.657 370.813 197.4 430.176 231.154 430.176C274.152 430.176 309.006 333.877 309.006 215.081C309.006 96.284 274.152 0 231.154 0ZM252.899 215.391C249.528 217.297 245.59 218.595 241.089 219.287C236.687 219.979 232.058 220.317 227.218 220.317H215.534V258.34H199.193V166.473H230.068C234.485 166.473 238.719 166.896 242.783 167.772C246.93 168.632 250.558 170.1 253.676 172.174C256.794 174.164 259.265 176.889 261.071 180.347C262.976 183.72 263.935 187.968 263.935 193.063C263.935 198.863 262.932 203.535 260.944 207.079C258.954 210.635 256.272 213.401 252.899 215.391Z" fill="#FF8269"/>
+              <path d="M162.764 192.496V224.887C162.764 227.131 162.426 229.516 161.735 232.014C161.028 234.442 159.872 236.685 158.221 238.761C157.091 240.286 155.667 241.612 153.931 242.755C153.282 243.178 152.604 243.573 151.871 243.955C149.275 245.254 146.029 245.903 142.134 245.903C138.239 245.903 134.952 245.254 132.285 243.955C129.687 242.572 127.557 240.85 125.92 238.761C124.368 236.685 123.239 234.442 122.548 232.014C121.856 229.516 121.504 227.131 121.504 224.887V167.275H105.163V225.395C105.163 230.943 106.066 235.952 107.886 240.455C109.791 244.872 112.388 248.627 115.676 251.745C119.048 254.85 122.985 257.279 127.473 259.014C131.974 260.651 136.856 261.47 142.134 261.47C146.707 261.47 150.982 260.849 154.976 259.62C155.597 259.438 156.203 259.225 156.795 259.014C158.461 258.365 160.041 257.632 161.551 256.798C160.662 267.623 159.42 277.997 157.868 287.793C149.529 340.55 132.426 376.737 112.656 376.737C84.7016 376.737 62.0391 304.362 62.0391 215.091C62.0391 125.822 84.7016 53.4321 112.656 53.4321C132.426 53.4321 149.529 89.6056 157.868 142.363C160.309 157.818 161.989 174.698 162.764 192.496Z" fill="#FF8269"/>
+              <path d="M33.9623 308.063C52.6976 308.063 67.8856 266.433 67.8856 215.082C67.8856 163.729 52.6976 122.099 33.9623 122.099C15.2269 122.099 0.0390625 163.729 0.0390625 215.082C0.0390625 266.433 15.2269 308.063 33.9623 308.063Z" fill="#FF8269"/>
+            </g>
+            <rect x="93.8262" y="155.667" width="179.1" height="115.495" fill="#FF8269"/>
+          </svg>
+        </a>
+        <div class="sf-brand-name">Showing Up Learning</div>
+        <div class="sf-tagline">Be <em>irreplaceable</em> to your clients.</div>
+      </div>
+
+      
+      <div class="sf-col-explore sf-reveal sf-d1">
+        <div>
+          <div class="sf-col-head">Explore</div>
+          <div class="sf-list">
+            <a href="https://www.showinguplearning.com/define" class="sf-link">Define</a>
+            <a href="https://www.showinguplearning.com/assess" class="sf-link">Assess</a>
+            <a href="https://www.showinguplearning.com/learn" class="sf-link">Learn</a>
+            <a href="https://www.showinguplearning.com/toolkits" class="sf-link">Toolkits</a>
+            <a href="https://www.showinguplearning.com/play" class="sf-link">Play</a>
+            <a href="https://www.showinguplearning.com/lead" class="sf-link">Lead</a>
+          </div>
+          
+          <div class="sf-list-rule" aria-hidden="true"></div>
+          <div class="sf-list">
+            <a href="https://www.showinguplearning.com/in-person-training" class="sf-link">In-Person Training</a>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="sf-col-dims sf-reveal sf-d2">
+        <div class="sf-col-head">Nine Dimensions</div>
+        <div class="sf-dims">
+
+          <div class="sf-dim-group">
+            <div class="sf-group-label"><span class="sf-dot sf-dot--coral"></span>Think Differently</div>
+            <div class="sf-dim-links">
+              <a href="https://www.showinguplearning.com/curiosity" class="sf-link">Curiosity</a>
+              <a href="https://www.showinguplearning.com/critical-thinking" class="sf-link">Critical Thinking</a>
+              <a href="https://www.showinguplearning.com/creativity" class="sf-link">Creativity</a>
+            </div>
+          </div>
+
+          <div class="sf-dim-group">
+            <div class="sf-group-label"><span class="sf-dot sf-dot--purple"></span>Build Trust</div>
+            <div class="sf-dim-links">
+              <a href="https://www.showinguplearning.com/character" class="sf-link">Character</a>
+              <a href="https://www.showinguplearning.com/communication" class="sf-link">Communication</a>
+              <a href="https://www.showinguplearning.com/collaboration" class="sf-link">Collaboration</a>
+            </div>
+          </div>
+
+          <div class="sf-dim-group">
+            <div class="sf-group-label"><span class="sf-dot sf-dot--mint"></span>Deliver Impact</div>
+            <div class="sf-dim-links">
+              <a href="https://www.showinguplearning.com/curation" class="sf-link">Curation</a>
+              <a href="https://www.showinguplearning.com/commercial-acumen" class="sf-link">Commercial Acumen</a>
+              <a href="https://www.showinguplearning.com/coaching" class="sf-link">Coaching</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      
+      <div class="sf-col-about sf-reveal sf-d3">
+        <div class="sf-col-head">About</div>
+        <div class="sf-list">
+          <a href="https://www.showinguplearning.com/our-history" class="sf-link">Our History</a>
+          <a href="https://www.showinguplearning.com/pricing" class="sf-link">Our Pricing</a>
+          <a href="https://www.showinguplearning.com/blog" class="sf-link">Articles</a>
+          <a href="https://www.showinguplearning.com/foundation" class="sf-link">Foundation</a>
+          <a href="https://www.showinguplearning.com/faq" class="sf-link">FAQs</a>
+        </div>
+      </div>
+
+      
+      <div class="sf-col-contact sf-reveal sf-d3">
+        <div class="sf-col-head">Contact</div>
+        <div class="sf-list">
+          <a href="https://www.showinguplearning.com/contact-us" class="sf-link">Contact Us</a>
+          <a href="mailto:contact@showinguplearning.com" class="sf-link sf-contact-email">contact@showinguplearning.com</a>
+          <a href="https://www.linkedin.com/company/showinguplearning/" class="sf-link sf-social-inline" target="_blank" rel="noopener noreferrer" aria-label="Follow Showing Up Learning on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.95v5.66H9.33V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.13 2.07 2.07 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
+            </svg>
+            Follow on LinkedIn
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    
+    <div class="sf-found sf-reveal sf-d4">
+      <div class="sf-found-ring" aria-hidden="true"></div>
+      <div class="sf-found-copy">
+        <div class="sf-found-over">Our commitment</div>
+        <div class="sf-found-text">
+          For every person we train, we fund a free scholarship for a young person facing barriers &mdash; our goal is <em>one million young people by 2035</em>.
+        </div>
+      </div>
+      <a href="https://www.showinguplearning.com/foundation" class="sf-found-link">
+        Learn about the Foundation
+        <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    
+    <div class="sf-bottom sf-reveal sf-d5">
+      <div class="sf-copyright">
+        &copy; 2026 Showing Up Learning Limited &nbsp;&middot;&nbsp; Company No. 16286537
+      </div>
+      <div class="sf-legal">
+        <a href="https://www.showinguplearning.com/privacy" class="sf-legal-link">Privacy</a>
+        <a href="https://www.showinguplearning.com/terms" class="sf-legal-link">Terms</a>
+        <a href="https://www.showinguplearning.com/cookies" class="sf-legal-link">Cookies</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.querySelector('.sf-root');
+  if (!root) return;
+
+  var reveals = root.querySelectorAll('.sf-reveal');
+  if (!('IntersectionObserver' in window)) {
+    for (var i = 0; i < reveals.length; i++) reveals[i].classList.add('sf-vis');
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('sf-vis');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(function (el) { observer.observe(el); });
+})();
+</script>
+
+<style>
+  .fb-wrap { position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+             font-family: 'DM Sans', -apple-system, system-ui, sans-serif; }
+  .fb-tab { background: #1e1d1d; color: #FFF6F1; border: none;
+            border-radius: 100px; padding: 10px 18px; font-size: 13px;
+            font-weight: 500; cursor: pointer; font-family: inherit; }
+  .fb-tab:hover { background: #FF8269; color: #1e1d1d; }
+  .fb-panel { display: none; position: absolute; right: 0; bottom: 46px;
+              width: 300px; background: #fff; border: 1px solid
+              rgba(0,0,0,.12); border-radius: 12px; padding: 16px;
+              box-sizing: border-box; }
+  .fb-panel.fb-open { display: block; }
+  .fb-panel h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600;
+                 color: #1e1d1d; }
+  .fb-panel p { margin: 0 0 10px; font-size: 12px; color: #9a908a; }
+  .fb-panel textarea { width: 100%; min-height: 84px; box-sizing: border-box;
+                       border: 1px solid rgba(0,0,0,.15); border-radius: 8px;
+                       padding: 8px; font-family: inherit; font-size: 13px;
+                       resize: vertical; }
+  .fb-panel input[type="text"] { width: 100%; box-sizing: border-box;
+                                 border: 1px solid rgba(0,0,0,.15);
+                                 border-radius: 8px; padding: 8px;
+                                 font-family: inherit; font-size: 13px;
+                                 margin-top: 8px; }
+  .fb-send { margin-top: 10px; background: #FF8269; color: #1e1d1d;
+             border: none; border-radius: 100px; padding: 9px 18px;
+             font-size: 13px; font-weight: 600; cursor: pointer;
+             font-family: inherit; }
+  .fb-send:disabled { opacity: .6; cursor: default; }
+  .fb-note { font-size: 12px; color: #9a908a; margin-top: 8px; }
+  .fb-error { display: none; font-size: 12px; color: #b3402a;
+              margin-top: 8px; }
+  .fb-error.fb-show { display: block; }
+  .fb-saved { font-size: 12px; color: #9a908a; margin-top: 8px;
+              opacity: 0; transition: opacity .2s; }
+  .fb-saved.fb-show { opacity: 1; }
+</style>
+<div class="fb-wrap">
+  <div class="fb-panel" id="fb-panel">
+    <h3>Feedback on this page</h3>
+    <p>Goes straight to the Showing Up team.</p>
+    <form id="fb-form">
+      <textarea name="message" required
+        placeholder="What works, what to change..."></textarea>
+      <input type="text" name="name" placeholder="Your name (optional)">
+      <input type="text" name="_honey" style="display:none" tabindex="-1"
+        autocomplete="off">
+      <input type="hidden" name="page" value="concept-footer-concept-c.html">
+      <input type="hidden" name="_subject"
+        value="[preview-feedback] concept-footer-concept-c.html">
+      <button type="submit" class="fb-send">Send</button>
+      <div class="fb-error" id="fb-error">Could not send &mdash; email
+        contact@showinguplearning.com instead. Your text is still here.</div>
+      <div class="fb-saved" id="fb-saved">Draft saved in this browser.</div>
+      <noscript><div class="fb-note">Email your thoughts to
+        contact@showinguplearning.com and mention this page.</div></noscript>
+    </form>
+  </div>
+  <button type="button" class="fb-tab" id="fb-tab">Feedback</button>
+</div>
+<script>
+(function() {
+  var tab = document.getElementById('fb-tab');
+  var panel = document.getElementById('fb-panel');
+  var form = document.getElementById('fb-form');
+  var err = document.getElementById('fb-error');
+  var saved = document.getElementById('fb-saved');
+  var box = form.querySelector('textarea[name=message]');
+  var who = form.querySelector('input[name=name]');
+
+  // Draft persistence. A long comment typed into this box used to exist
+  // nowhere else - closing the panel, a stray reload or a dead endpoint
+  // lost the lot, so the standing advice was "keep a copy in Notes".
+  // Keyed per page so comments on different pages don't overwrite
+  // each other. localStorage throws in some privacy modes; a failure
+  // here must never stop the form working, hence the silent try/catch.
+  var key = 'su-fb-draft-' + form.querySelector('input[name=page]').value;
+  function store(k, v) {
+    try { window.localStorage.setItem(k, v); } catch (e) {}
+  }
+  function recall(k) {
+    try { return window.localStorage.getItem(k) || ''; }
+    catch (e) { return ''; }
+  }
+  function forget() {
+    try {
+      window.localStorage.removeItem(key);
+      window.localStorage.removeItem(key + '-name');
+    } catch (e) {}
+  }
+  var draft = recall(key);
+  if (draft) {
+    box.value = draft;
+    saved.classList.add('fb-show');
+  }
+  var priorName = recall(key + '-name');
+  if (priorName && !who.value) who.value = priorName;
+
+  var pending;
+  function keep() {
+    clearTimeout(pending);
+    pending = setTimeout(function() {
+      if (box.value) {
+        store(key, box.value);
+        store(key + '-name', who.value);
+        saved.classList.add('fb-show');
+      } else {
+        forget();
+        saved.classList.remove('fb-show');
+      }
+    }, 400);
+  }
+  box.addEventListener('input', keep);
+  who.addEventListener('input', keep);
+  // A tab close can beat the debounce - flush synchronously on the way out.
+  window.addEventListener('pagehide', function() {
+    if (box.value) { store(key, box.value); store(key + '-name', who.value); }
+  });
+
+  tab.addEventListener('click', function() {
+    panel.classList.toggle('fb-open');
+  });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.fb-send');
+    if (btn.disabled) return;
+    err.classList.remove('fb-show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/contact@showinguplearning.com', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        // Only a confirmed 2xx clears the draft. Anything else keeps it,
+        // so a failed send never destroys the text.
+        forget();
+        panel.innerHTML = '<h3>Sent</h3><p>Thank you &mdash; the team ' +
+          'will pick this up with the next revision.</p>';
+      } else { fail(); }
+    }).catch(fail);
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      err.classList.add('fb-show');
+    }
+  });
+})();
+</script></body>
+</html>
